@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function OutConsultant() {
   return (
-    <section className="bg-[#F6F2EB] py-16 px-6 md:px-12">
+    <section className="bg-[#FBF8F3] py-16 px-6 md:px-12">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         
         {/* Left - Consultant Image */}

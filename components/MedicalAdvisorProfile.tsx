@@ -2,7 +2,7 @@ import React from 'react';
 
 const MedicalAdvisorProfile: React.FC = () => {
   return (
-    <div className="bg-[#F8F5F1] min-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-4 sm:p-10">
+    <div className="bg-[#FBF8F3] min-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-4 sm:p-10">
       <div className="w-full max-w-7xl mx-auto">
         <header className="text-center mb-10">
           <h1 className="font-serif text-5xl md:text-6xl text-stone-900">Our Medical Advisor</h1>

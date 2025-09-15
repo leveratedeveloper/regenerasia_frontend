@@ -1,61 +1,66 @@
-import React from "react";
-import { FaWhatsapp, FaInstagram, FaEnvelope } from "react-icons/fa";
 
-const Footer = () => {
+"use client"
+import React from 'react';
+
+import { WhatsappIcon } from './icons/WhatsappIcon';
+import { InstagramIcon } from './icons/InstagramIcon';
+import { EnvelopeIcon } from './icons/EnvelopeIcon';
+import Image from "next/image";
+const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-gray-200 bg-white py-8 px-6 md:px-12">
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-between max-w-7xl mx-auto gap-8">
+    <footer className="bg-white border-t border-[#F5F1E9] py-16 px-6 sm:px-12">
+      <div className="max-w-7xl flex flex-col lg:flex-row justify-between items-center lg:items-start gap-12 lg:gap-8">
         
-        {/* Left: Logo */}
-        <div className="flex-shrink-0">
-          <img
-            src="/logo.png" // replace with your logo path
-            alt="Regenerasia Logo"
-            className="h-14"
+        {/* Left: Logo + Address */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6">
+        <Image
+            src="/image/logo_green.jpg"
+            alt="Logo"
+            width={100}
+            height={40}
+            className="h-24 w-auto"
           />
-        </div>
-
-        {/* Middle: Address */}
-        <div className="text-center md:text-left text-gray-700">
-          <h3 className="text-lg font-semibold">AYANA Midplaza Jakarta</h3>
-          <p className="mt-2 text-sm leading-relaxed">
-            Jl. Jenderal Sudirman No.Kav 10-11, RT.10/RW.11,<br />
-            Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat,<br />
-            Daerah Khusus Ibukota Jakarta 10220
-          </p>
+          <div className="text-gray-700 text-base leading-relaxed mt-2">
+            <h3 className="font-serif text-2xl text-gray-800 mb-2">
+              AYANA Midplaza Jakarta
+            </h3>
+            <p className="text-gray-500">
+              Jl. Jenderal Sudirman No.Kav 10-11, RT.10/RW.11,
+              <br />
+              Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat,
+              <br />
+              Daerah Khusus Ibukota Jakarta 10220
+            </p>
+          </div>
         </div>
 
         {/* Right: Socials + Copyright */}
-        <div className="flex flex-col items-center md:items-end gap-4">
-          {/* Social Icons */}
+        <div className="flex flex-col items-center lg:items-end gap-5">
           <div className="flex gap-3">
             <a
-              href="https://wa.me/628123456789" // update link
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-900 text-white p-3 rounded-full hover:bg-green-800 transition"
+              href="#"
+              aria-label="Whatsapp"
+              className="bg-[#3C4D34] text-white p-3 rounded-full hover:bg-opacity-80 transition-all duration-300"
             >
-              <FaWhatsapp size={18} />
+              <WhatsappIcon className="w-6 h-6" />
             </a>
             <a
-              href="https://instagram.com/regenerasia" // update link
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-900 text-white p-3 rounded-full hover:bg-green-800 transition"
+              href="#"
+              aria-label="Instagram"
+              className="bg-[#3C4D34] text-white p-3 rounded-full hover:bg-opacity-80 transition-all duration-300"
             >
-              <FaInstagram size={18} />
+              <InstagramIcon className="w-6 h-6" />
             </a>
             <a
-              href="mailto:info@regenerasia.com" // update link
-              className="bg-green-900 text-white p-3 rounded-full hover:bg-green-800 transition"
+              href="#"
+              aria-label="Email"
+              className="bg-[#3C4D34] text-white p-3 rounded-full hover:bg-opacity-80 transition-all duration-300"
             >
-              <FaEnvelope size={18} />
+              <EnvelopeIcon className="w-6 h-6" />
             </a>
           </div>
-
-          {/* Copyright */}
-          <p className="text-sm text-gray-600">
-            Copyright © {new Date().getFullYear()} Regenerasia. All rights reserved.
+          <p className="text-sm text-gray-500 text-right">
+            Copyright © 2025 Regenerasia. All rights reserved.
           </p>
         </div>
       </div>
