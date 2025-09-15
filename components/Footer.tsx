@@ -8,12 +8,12 @@ import { EnvelopeIcon } from './icons/EnvelopeIcon';
 import Image from "next/image";
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white border-t border-[#F5F1E9] py-16 px-6 sm:px-12">
-      <div className="max-w-7xl flex flex-col lg:flex-row justify-between items-center lg:items-start gap-12 lg:gap-8">
+    <footer className="bg-white border-t border-[#F5F1E9] py-10 px-6 sm:px-8">
+      <div className="max-w-12xl w-full flex flex-col lg:flex-row justify-between gap-12 lg:gap-8">
         
         {/* Left: Logo + Address */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6">
-        <Image
+          <Image
             src="/image/logo_green.jpg"
             alt="Logo"
             width={100}
@@ -34,8 +34,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Right: Socials + Copyright */}
-        <div className="flex flex-col items-center lg:items-end gap-5">
+        {/* Right: stick bottom right */}
+        <div className="flex flex-col items-center lg:items-end gap-5 justify-end flex-1">
           <div className="flex gap-3">
             <a
               href="#"
@@ -65,6 +65,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
+
   );
 };
 

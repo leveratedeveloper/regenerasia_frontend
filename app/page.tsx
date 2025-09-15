@@ -91,7 +91,7 @@ export default function Home() {
         </section>
 
         {/* Energize */}
-        <section className="min-h-screen w-full bg-[#FBF8F3] text-[#3A3A3A] flex flex-col items-center py-40">
+        <section className="min-h-screen w-full bg-[#FBF8F3] text-[#3A3A3A] flex flex-col items-center py-10">
           <Energize steps={energizeSteps} />
         </section>
 

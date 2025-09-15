@@ -30,12 +30,17 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
 
   return (
     <div className="w-[90%] mx-auto">
-    <div className="flex flex-col items-center gap-8 md:gap-12">
+    <div className="flex flex-col items-center gap-4 md:gap-4">
       {/* Title */}
-      <h2 className={`${cormorant.className} text-4xl md:text-5xl text-center text-[#3A3A3A] mb-12`}>
-      Energize Your Body and Mind
+      <h2
+        className={`${cormorant.className} text-4xl md:text-5xl font-bold leading-[1.1] text-center text-[#3A3A3A]`}
+      >
+        <i>Energize</i> Your Body and Mind
       </h2>
-  
+
+      <p className={`${roboto.className} text-[24px] mb-4`}>
+        Get the benefits of our program
+      </p>
       {/* Top Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         {topRowSteps.map((step) => (
