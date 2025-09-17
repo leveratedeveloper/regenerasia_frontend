@@ -1,6 +1,6 @@
 import React from 'react';
-import JourneyStep from './JourneyStep';
 import { Cormorant_Garamond, Roboto } from "next/font/google";
+import EnergizeStep from './EnergizeStep';
 
 
 const cormorant = Cormorant_Garamond({
@@ -29,7 +29,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
   const bottomRowSteps = steps.slice(3, 6);
 
   return (
-    <div className="w-[90%] mx-auto">
+    <div className="w-[98%] mx-auto">
     <div className="flex flex-col items-center gap-4 md:gap-4">
       {/* Title */}
       <h2
@@ -38,20 +38,20 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
         <i>Energize</i> Your Body and Mind
       </h2>
 
-      <p className={`${roboto.className} text-[24px] mb-4`}>
+      <p className={`${roboto.className} text-[20px] mb-4`}>
         Get the benefits of our program
       </p>
       {/* Top Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         {topRowSteps.map((step) => (
-          <JourneyStep key={step.id} {...step} />
+          <EnergizeStep key={step.id} {...step} />
         ))}
       </div>
   
       {/* Bottom Row */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 gap-8 w-full">
         {bottomRowSteps.map((step) => (
-          <JourneyStep key={step.id} {...step} />
+          <EnergizeStep key={step.id} {...step} />
         ))}
       </div>
     </div>

@@ -29,7 +29,7 @@ const Journey: React.FC<JourneyProps> = ({ steps }) => {
   const bottomRowSteps = steps.slice(3, 5);
 
   return (
-    <div className="w-[90%] mx-auto">
+    <div className="w-[98%] mx-auto">
     <div className="flex flex-col items-center gap-8 md:gap-12">
       {/* Title */}
       <h2
@@ -37,10 +37,6 @@ const Journey: React.FC<JourneyProps> = ({ steps }) => {
       >
         Start Your Longevity Journey
       </h2>
-
-
-
-
   
       {/* Top Row */}
   

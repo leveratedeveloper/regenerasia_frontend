@@ -1,5 +1,18 @@
 
 import React from 'react';
+import { Cormorant_Garamond, Roboto } from "next/font/google";
+
+
+const cormorant = Cormorant_Garamond({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"], // choose weights you need
+    style: ["normal", "italic"], // aktifkan italic
+});
+
+const roboto = Roboto({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "700"],
+});
 
 interface JourneyStepProps {
   imageUrl: string;
@@ -13,10 +26,10 @@ const JourneyStep: React.FC<JourneyStepProps> = ({ imageUrl, caption }) => {
         <img
           src={imageUrl}
           alt={caption}
-          className="w-full h-64 object-cover"
+          className="w-full h-70 object-cover"
         />
       </div>
-      <p className="mt-6 text-xl font-serif-display text-center text-gray-700">
+      <p className={`${roboto.className} mt-6 text-xl text-center text-gray-700`}>
         {caption}
       </p>
     </div>
