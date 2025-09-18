@@ -11,7 +11,7 @@ const cormorant = Cormorant_Garamond({
 
 const roboto = Roboto({
     subsets: ["latin"],
-    weight: ["300", "400", "500", "700"],
+    weight: ["300"],
 });
 
 interface Step {
@@ -30,7 +30,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
 
   return (
     <div className="container w-[100%] mx-auto">
-      <div className="flex flex-col items-center gap-4 md:gap-4">
+      <div className="flex flex-col items-center gap-2 md:gap-2">
         {/* Title */}
         <h2
           className={`${cormorant.className} text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-center text-[#3A3A3A] w-[100%] lg:w-[60%] mx-auto`}
@@ -38,18 +38,18 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
           <i>Energize</i> Your Body and Mind
         </h2>
 
-        <p className={`${roboto.className} text-[20px] mb-4`}>
+        <p className={`${roboto.className} text-[20px] mb-2`}>
           Get the benefits of our program
         </p>
         {/* Top Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full p-2 md:p-0 lg:p-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-1 w-full p-2 md:p-0 lg:p-0">
           {topRowSteps.map((step) => (
             <EnergizeStep key={step.id} {...step} />
           ))}
         </div>
     
         {/* Bottom Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-0 md:mt-12 lg:mt-12 justify-center p-2 md:p-0 lg:p-0 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-1 mt-0  justify-center p-2 md:p-0 lg:p-0 w-full">
           {bottomRowSteps.map((step) => (
             <EnergizeStep key={step.id} {...step} />
           ))}
