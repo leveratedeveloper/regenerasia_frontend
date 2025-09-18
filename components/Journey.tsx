@@ -38,14 +38,14 @@ const Journey: React.FC<JourneyProps> = ({ steps }) => {
   
       {/* Top Row */}
   
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full p-2 md:p-0 lg:p-0">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full p-2 md:p-0 lg:p-0">
       {topRowSteps.map((step) => (
         <JourneyStep key={step.id} {...step} />
       ))}
     </div>
 
     {/* Bottom Row */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-0 md:mt-12 lg:mt-12 justify-center p-2 md:p-0 lg:p-0">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-0 md:mt-12 lg:mt-12 justify-center p-2 md:p-0 lg:p-0">
       {bottomRowSteps.map((step) => (
         <JourneyStep key={step.id} {...step} />
       ))}

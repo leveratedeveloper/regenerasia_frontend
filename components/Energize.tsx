@@ -42,14 +42,14 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
         Get the benefits of our program
       </p>
       {/* Top Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full p-2 md:p-0 lg:p-0">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full p-2 md:p-0 lg:p-0">
         {topRowSteps.map((step) => (
           <EnergizeStep key={step.id} {...step} />
         ))}
       </div>
   
       {/* Bottom Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-0 md:mt-12 lg:mt-12 justify-center p-2 md:p-0 lg:p-0 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-0 md:mt-12 lg:mt-12 justify-center p-2 md:p-0 lg:p-0 w-full">
         {bottomRowSteps.map((step) => (
           <EnergizeStep key={step.id} {...step} />
         ))}
