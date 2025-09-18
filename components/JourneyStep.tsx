@@ -29,7 +29,7 @@ const JourneyStep: React.FC<JourneyStepProps> = ({ imageUrl, caption }) => {
           className="w-full h-70 object-cover"
         />
       </div>
-      <p className={`${roboto.className} mt-6 text-xl text-center text-gray-700`}>
+      <p className={`${cormorant.className} mt-4 text-xl text-[33px] text-center text-gray-700`}>
         {caption}
       </p>
     </div>
