@@ -24,7 +24,7 @@ export default function HeroSection() {
         </p>
         <a
           href="#book"
-          className={`${cormorant.className} px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-md  md:text-2xl lg:text-3xl text-[18px] text-white hover:bg-white/10 transition drop-shadow-lg`}>
+          className={`${cormorant.className} px-6 py-2  border border-white/40   md:text-2xl lg:text-3xl text-[18px] text-white hover:bg-white/10 transition drop-shadow-lg`}>
           Book a Session Now
         </a>
       </section>

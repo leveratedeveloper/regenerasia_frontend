@@ -2,13 +2,13 @@ import React from 'react';
 
 const MedicalAdvisorProfile: React.FC = () => {
   return (
-    <div className="bg-[#FBF8F3] min-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
+    <div className="bg-[#f3eee7] min-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
       <div className="w-full max-w-7xl mx-auto">
         <header className="text-center mb-3">
           <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl text-stone-900">Our Medical Advisor</h1>
         </header>
 
-        <main className="bg-transparent  border-stone-300/60 rounded-3xl p-6 sm:p-8 md:p-12">
+        <main className="bg-[#f3eee7]  border-stone-300/60 rounded-3xl p-6 sm:p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
             
             {/* Image Column */}
