@@ -11,7 +11,7 @@ export default function OutConsultant() {
         <div className="flex justify-center">
           <div className="bg-white rounded-2xl shadow-md overflow-hidden">
             <Image
-              src="/consultant/dr-pande.png" // place your image in public/consultant/
+              src="/image/dr-pande.png" // place your image in public/consultant/
               alt="Dr. Pande"
               width={500}
               height={600}
