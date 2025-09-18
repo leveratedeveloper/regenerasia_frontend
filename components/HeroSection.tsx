@@ -10,6 +10,7 @@ const cormorant = Cormorant_Garamond({
 
 const roboto = Roboto({
     subsets: ["latin"],
+    weight: ["300"], 
 });
 
 export default function HeroSection() {
@@ -19,7 +20,7 @@ export default function HeroSection() {
           className={`${cormorant.className} text-2xl md:text-3xl lg:text-5xl font-bold italic mb-4 drop-shadow-lg`}>
           Restart, Restore, Regenerate
         </h1>
-        <p className={`${roboto.className} text-[10px] sm:text-[12px] md:text-[14px] lg:text-[18px] mb-6 drop-shadow-md`}>
+        <p className={`${roboto.className} text-[10px] sm:text-[12px] md:text-[14px] lg:text-[18px] mb-6`}>
           Cold Atmospheric Plasma by Human Regenerator
         </p>
         <a
