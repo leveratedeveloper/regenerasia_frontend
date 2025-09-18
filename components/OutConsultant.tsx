@@ -22,14 +22,14 @@ export default function OutConsultant() {
 
         {/* Right - Consultant Content */}
         <div>
-          <h2 className="text-4xl md:text-5xl font-cormorant text-[#3A3A3A] mb-6">
+          <h2 className="text-2xl md:text-5xl lg:text-5xl font-cormorant text-[#3A3A3A] mb-6 mt-0">
             Our Consultant
           </h2>
 
           <h3 className="text-2xl font-cormorant text-[#3A3A3A] mb-2">
             DR. Pande
           </h3>
-          <p className="text-lg italic text-[#3A3A3A] mb-4">
+          <p className="text-base italic text-[#3A3A3A] mb-4">
             Global Chief Medical Advisor
           </p>
 

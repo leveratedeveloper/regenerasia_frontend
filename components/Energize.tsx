@@ -33,7 +33,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
     <div className="flex flex-col items-center gap-4 md:gap-4">
       {/* Title */}
       <h2
-        className={`${cormorant.className} text-4xl md:text-5xl font-bold leading-[1.1] text-center text-[#3A3A3A]`}
+        className={`${cormorant.className} text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-center text-[#3A3A3A] w-[100%] lg:w-[60%] mx-auto`}
       >
         <i>Energize</i> Your Body and Mind
       </h2>
@@ -42,14 +42,14 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
         Get the benefits of our program
       </p>
       {/* Top Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full p-2 md:p-0 lg:p-0">
         {topRowSteps.map((step) => (
           <EnergizeStep key={step.id} {...step} />
         ))}
       </div>
   
       {/* Bottom Row */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 gap-8 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-0 md:mt-12 lg:mt-12 justify-center p-2 md:p-0 lg:p-0 w-full">
         {bottomRowSteps.map((step) => (
           <EnergizeStep key={step.id} {...step} />
         ))}

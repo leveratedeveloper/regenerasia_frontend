@@ -23,12 +23,12 @@ export default function Home() {
   ];
 
   const energizeSteps = [
-    { id: 1, imageUrl: 'https://picsum.photos/id/1015/600/400', caption: 'Fill registration form' },
-    { id: 2, imageUrl: 'https://picsum.photos/id/219/600/400', caption: 'Treatment program' },
-    { id: 3, imageUrl: 'https://picsum.photos/id/20/600/400', caption: 'Screening & data collection' },
-    { id: 4, imageUrl: 'https://picsum.photos/id/1079/600/400', caption: 'Program report by consultant' },
-    { id: 5, imageUrl: 'https://picsum.photos/id/431/600/400', caption: 'Analysis & report by consultant' },
-    { id: 6, imageUrl: 'https://picsum.photos/id/431/600/400', caption: 'Analysis & report by consultant' },
+    { id: 1, imageUrl: 'https://picsum.photos/id/1015/600/400', caption: 'Cellular regeneration' },
+    { id: 2, imageUrl: 'https://picsum.photos/id/219/600/400', caption: 'Strengthening immune system' },
+    { id: 3, imageUrl: 'https://picsum.photos/id/20/600/400', caption: 'Accelerate recovery' },
+    { id: 4, imageUrl: 'https://picsum.photos/id/1079/600/400', caption: 'Enhance energy level' },
+    { id: 5, imageUrl: 'https://picsum.photos/id/431/600/400', caption: 'Aids quality of sleep' },
+    { id: 6, imageUrl: 'https://picsum.photos/id/431/600/400', caption: 'Support anti aging' },
   ];
 
   const oliviaData = { /* ...unchanged... */ };

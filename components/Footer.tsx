@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
             <h3 className="font-serif text-2xl text-gray-800 mb-2">
               AYANA Midplaza Jakarta
             </h3>
-            <p className="text-gray-500">
+            <p className="text-gray-500 text-xs lg:text-base">
               Jl. Jenderal Sudirman No.Kav 10-11, RT.10/RW.11,
               <br />
               Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat,
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
               <EnvelopeIcon className="w-6 h-6" />
             </a>
           </div>
-          <p className="text-sm text-gray-500 text-right">
+          <p className="text-xs md:text-sm lg:text-xl text-gray-500 text-right">
             Copyright © 2025 Regenerasia. All rights reserved.
           </p>
         </div>

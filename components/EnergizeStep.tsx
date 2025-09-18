@@ -29,7 +29,7 @@ const EnergizeStep: React.FC<EnergizeStepProps> = ({ imageUrl, caption }) => {
           className="w-full h-64 object-cover"
         />
       </div>
-      <p className={`${roboto.className} mt-6 text-xl font-serif-display text-center text-gray-700`}>
+      <p className={`${cormorant.className} mt-2 mb-6  text-[35px] font-serif-display text-center text-gray-700`}>
         {caption}
       </p>
     </div>
