@@ -30,22 +30,22 @@ const Journey: React.FC<JourneyProps> = ({ steps }) => {
 
   return (
     <div className="container w-[100%] mx-auto">
-      <div className="flex flex-col items-center gap-8 md:gap-12">
+      <div className="flex flex-col items-center gap-2 md:gap-2">
         {/* Title */}
-        <h2 className={`${cormorant.className} text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-center text-[#3A3A3A] w-[100%] lg:w-[60%] mx-auto`}>
-          Start Your Longevity Journey
+        <h2 className={`${cormorant.className} py-6 text-3xl md:text-4xl  lg:text-5xl font-bold leading-[1.1] text-center text-[#3A3A3A] w-[100%] lg:w-[60%] mx-auto`}>
+          Start Your <i>Longevity</i> Journey
         </h2>
     
         {/* Top Row */}
     
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full p-2 md:p-0 lg:p-0">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full p-2 md:p-0 lg:p-0">
         {topRowSteps.map((step) => (
           <JourneyStep key={step.id} {...step} />
         ))}
       </div>
 
       {/* Bottom Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-0 md:mt-12 lg:mt-12 justify-center p-2 md:p-0 lg:p-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-0 md:mt-6 lg:mt-6 justify-center p-2 md:p-0 lg:p-0">
         {bottomRowSteps.map((step) => (
           <JourneyStep key={step.id} {...step} />
         ))}

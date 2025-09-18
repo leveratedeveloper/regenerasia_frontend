@@ -97,7 +97,7 @@ export default function Home() {
       )}
 
       {/* Main Content */}
-      <main className="relative z-10">
+      <main className="relative z-1 bg-[#f3eee7]">
         {/* Hero with video background */}
         <section className="relative min-h-screen flex items-center justify-center bg-black/40" id="first-section">
           <video
@@ -112,12 +112,12 @@ export default function Home() {
         </section>
 
         {/* Journey */}
-        <section className=" min-h-screen w-full bg-[#f3eee7] text-[#3A3A3A] flex flex-col items-center py-10 sm:py-28 md:py-32 lg:py-40">
+        <section className=" min-h-screen w-full bg-[#f3eee7] text-[#3A3A3A] flex flex-col items-center py-4  md:py-14">
           <Journey steps={journeySteps} />
         </section>
 
         {/* Energize */}
-        <section className="min-h-screen w-full bg-[#f3eee7] text-[#3A3A3A] flex flex-col items-center py-10">
+        <section className="min-h-screen w-full bg-[#f3eee7] text-[#3A3A3A] flex flex-col items-center mt-10">
           <Energize steps={energizeSteps} />
         </section>
 
