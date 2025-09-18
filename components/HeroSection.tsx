@@ -16,15 +16,15 @@ export default function HeroSection() {
     return (
       <section className="flex flex-col items-center justify-center text-center min-h-screen px-4">
         <h1
-          className={`${cormorant.className} text-4xl md:text-6xl font-bold italic mb-4 drop-shadow-lg`}>
+          className={`${cormorant.className} text-3xl md:text-5xl lg:text-6xl font-bold italic mb-4 drop-shadow-lg`}>
           Restart, Restore, Regenerate
         </h1>
-        <p className={`${roboto.className} text-[24px] mb-8 drop-shadow-md`}>
+        <p className={`${roboto.className} text-[16px] sm:text-[18px] md:text-[18px] lg:text-[20px] mb-8 drop-shadow-md`}>
           Cold Atmospheric Plasma by Human Regenerator
         </p>
         <a
           href="#book"
-          className={`${cormorant.className} px-6 py-1 bg-white/20 backdrop-blur-md border border-white/40 rounded-md text-lg  md:text-4xl  text-white hover:bg-white/10 transition drop-shadow-lg`}>
+          className={`${cormorant.className} px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-md  md:text-2xl lg:text-3xl text-[18px] text-white hover:bg-white/10 transition drop-shadow-lg`}>
           Book a Session Now
         </a>
       </section>

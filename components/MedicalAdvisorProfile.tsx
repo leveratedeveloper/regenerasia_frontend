@@ -2,10 +2,10 @@ import React from 'react';
 
 const MedicalAdvisorProfile: React.FC = () => {
   return (
-    <div className="bg-[#FBF8F3] min-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-4 sm:p-10">
+    <div className="bg-[#FBF8F3] min-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
       <div className="w-full max-w-7xl mx-auto">
-        <header className="text-center mb-10">
-          <h1 className="font-serif text-5xl md:text-6xl text-stone-900">Our Medical Advisor</h1>
+        <header className="text-center mb-3">
+          <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl text-stone-900">Our Medical Advisor</h1>
         </header>
 
         <main className="bg-transparent  border-stone-300/60 rounded-3xl p-6 sm:p-8 md:p-12">
@@ -22,7 +22,7 @@ const MedicalAdvisorProfile: React.FC = () => {
 
             {/* Text Column */}
             <div className="md:col-span-7">
-              <h2 className="text-3xl lg:text-4xl font-serif text-stone-900 uppercase tracking-widest">DR. OLIVIA LY LESSLAR</h2>
+              <h2 className="text-2xl lg:text-4xl font-serif text-stone-900 uppercase tracking-widest">DR. OLIVIA LY LESSLAR</h2>
               <h3 className="text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-8">Global Chief Medical Advisor</h3>
 
               <div className="space-y-5 text-stone-700 leading-relaxed text-base">
@@ -53,7 +53,7 @@ const MedicalAdvisorProfile: React.FC = () => {
             </div>
             
               {/* Text Column */}
-              <div className="md:col-span-7 order-2 md:order-1">
+              <div className="md:col-span-7 order-2 md:order-1 mt-6">
               <h2 className="text-3xl lg:text-4xl font-serif text-stone-900 uppercase tracking-wide">
                 DR. ISABELLA SILLAR
               </h2>

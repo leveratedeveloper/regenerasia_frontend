@@ -7,7 +7,7 @@ const ContactUsSection = () => {
   };
 
   return (
-    <section className="bg-[rgb(243,238,231)] rounded-2xl overflow-hidden py-16 px-6 md:px-12">
+    <section className="bg-[rgb(243,238,231)] overflow-hidden py-16 px-6 md:px-12">
   <div className="grid grid-cols-1 md:grid-cols-2 min-h-[650px]">
     {/* Left: Image */}
     <div className="w-full h-full">
@@ -19,9 +19,9 @@ const ContactUsSection = () => {
     </div>
 
     {/* Right: Content */}
-    <div className="flex items-center justify-center p-10 bg-white">
+    <div className="flex items-center justify-center p-6 md:p-10 lg:p-10 bg-white">
       <section className="text-left max-w-md">
-        <h1 className="text-4xl font-serif font-bold text-gray-900 leading-snug">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-gray-900 leading-snug">
           Regenerate with <br />
           Regenerasia{" "}
           <span className="italic text-green-900">Today</span>
