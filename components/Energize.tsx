@@ -54,7 +54,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
           {bottomRowSteps.map((step) => (
             <EnergizeStep key={step.id} {...step} />
           ))}
-        </div> */}
+        </div>
       </div>
   </div>
   
