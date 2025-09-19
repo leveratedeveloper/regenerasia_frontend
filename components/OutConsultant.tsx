@@ -19,7 +19,7 @@ export default function OutConsultant() {
   return (
     <div className="bg-[#f3eee7] cmin-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
     <div className="w-full max-w-7xl mx-auto">
-      <header className="text-center mb-3 mt-20">
+      <header className="text-center mb-3 mt-10 md:mt-20 lg:mt-20">
         <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900">Our Consultant</h1>
       </header>
 
@@ -35,14 +35,13 @@ export default function OutConsultant() {
           </div>
 
           {/* Text Column */}
-          <div className="md:col-span-6 flex flex-col justify-center mt-12 md:mt-12">
+          <div className="md:col-span-6 flex flex-col justify-center mt-0 md:mt-12 lg:mt-12">
             <h2 className={`${cormorant.className} text-2xl lg:text-3xl text-stone-900 uppercase tracking-widest font-semibold`}>
             DR. Pande
             </h2>
             <h3 className={`${cormorant.className} text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-2 font-semibold`}>
               Global Chief Medical Advisor
             </h3>
-
             <div className={`${roboto.className} text-stone-700 leading-relaxed text-base mb-10`}>
               <p>
               She is also affiliated with LifeSpan Medicine LA, Wellgevity UK, and Everest Health DC. Dr. 
