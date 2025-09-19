@@ -121,8 +121,10 @@ export default function Home() {
           <Energize steps={energizeSteps} />
         </section>
 
-        <MedicalAdvisorProfile />
-        <OutConsultant />
+        <section className="container w-[100%] mx-auto">
+          <MedicalAdvisorProfile />
+          <OutConsultant />
+        </section>
         <ContactUsSection />
         <Footer />
       </main>

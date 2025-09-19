@@ -1,66 +1,81 @@
 // components/OutConsultant.tsx
 
 import Image from "next/image";
+import { Cormorant_Garamond, Roboto } from "next/font/google";
+
+
+const cormorant = Cormorant_Garamond({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"], // choose weights you need
+    style: ["normal", "italic"], // aktifkan italic
+});
+
+const roboto = Roboto({
+    subsets: ["latin"],
+    weight: ["300"],
+});
 
 export default function OutConsultant() {
   return (
-    <section className="bg-[#FBF8F3] py-16 px-6 md:px-12">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        
-        {/* Left - Consultant Image */}
-        <div className="flex justify-center">
-          <div className="bg-white rounded-2xl shadow-md overflow-hidden">
-            <Image
-              src="/image/dr-pande.png" // place your image in public/consultant/
-              alt="Dr. Pande"
-              width={500}
-              height={600}
-              className="object-cover"
+    <div className="bg-[#f3eee7] cmin-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
+    <div className="w-full max-w-7xl mx-auto">
+      <header className="text-center mb-3 mt-20">
+        <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900">Our Consultant</h1>
+      </header>
+
+      <main className="bg-[#f3eee7]  border-stone-300/60 rounded-3xl p-6 sm:p-8 md:p-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+{/* Image Column */}
+          <div className="md:col-span-5 flex items-center justify-center">
+            <img
+              src="/image/dr-pande.png"
+              alt="Dr. Olivia Ly Lesslar"
+              className="rounded-2xl w-full h-auto object-cover shadow-lg"
             />
+          </div>
+
+          {/* Text Column */}
+          <div className="md:col-span-6 flex flex-col justify-center mt-12 md:mt-12">
+            <h2 className={`${cormorant.className} text-2xl lg:text-3xl text-stone-900 uppercase tracking-widest font-semibold`}>
+            DR. Pande
+            </h2>
+            <h3 className={`${cormorant.className} text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-2 font-semibold`}>
+              Global Chief Medical Advisor
+            </h3>
+
+            <div className={`${roboto.className} text-stone-700 leading-relaxed text-base mb-10`}>
+              <p>
+              She is also affiliated with LifeSpan Medicine LA, Wellgevity UK, and Everest Health DC. Dr. 
+              Olivia is dedicated to advancing the field of functional and longevity medicine worldwide.
+              </p>
+              <ul className="list-disc list-inside ">
+                <li>
+                  CINGULUM HEALTH (Australia) 
+                    - Medical Director, Functional & Longevity Medicine
+                </li>
+                <li>
+                  ATLUS (Australia) 
+                   - Chief Medical Officer
+                </li>
+                <li>
+                  LIBER8 (USA) - Medical Director
+                </li>
+                <li>
+                  VETERAN PEACE(USA) - Medical Director
+                </li>
+                <li>
+                  SENS.AI (CANADA) - Science Director
+                </li>
+              </ul>
+              <p>
+              Dr. Olivia holds key leadership roles in innovative medical and longevity-focused institutions worldwide, including:
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Right - Consultant Content */}
-        <div>
-          <h2 className="text-2xl md:text-5xl lg:text-5xl font-cormorant text-[#3A3A3A] mb-6 mt-0">
-            Our Consultant
-          </h2>
-
-          <h3 className="text-2xl font-cormorant text-[#3A3A3A] mb-2">
-            DR. Pande
-          </h3>
-          <p className="text-base italic text-[#3A3A3A] mb-4">
-            Global Chief Medical Advisor
-          </p>
-
-          <p className="text-[#3A3A3A] mb-4">
-            She is also affiliated with LifeSpan Medicine LA, Wellgevity UK, and
-            Everest Health DC. Dr. Olivia is dedicated to advancing the field of
-            functional and longevity medicine worldwide.
-          </p>
-
-          <ul className="list-disc list-inside text-[#3A3A3A] mb-4 space-y-1">
-            <li>CINGULUM HEALTH (Australia) – Medical Director, Functional & Longevity Medicine</li>
-            <li>ATLUS (Australia) – Chief Medical Officer</li>
-            <li>LIBER8 (USA) – Medical Director</li>
-            <li>VETERAN PEACE (USA) – Medical Director</li>
-            <li>SENS.AI (Canada) – Science Director</li>
-          </ul>
-
-          <p className="text-[#3A3A3A] mb-4">
-            Dr. Olivia holds key leadership roles in innovative medical and
-            longevity-focused institutions worldwide, including:
-          </p>
-
-          <p className="text-[#3A3A3A]">
-            Dr. Olivia Ly Lesslar is an Australian medical doctor specialising
-            in psychoneuroimmunology, with postgraduate expertise in skin cancer
-            medicine, dermatology, and clinical nutrition management. She is the
-            co-founder of Legacy Sciences, an organisation exploring medical
-            conditions through a non-conventional lens.
-          </p>
-        </div>
-      </div>
-    </section>
+      </main>
+    </div>
+  </div>
   );
 }

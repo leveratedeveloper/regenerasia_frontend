@@ -10,12 +10,12 @@ const cormorant = Cormorant_Garamond({
 
 const roboto = Roboto({
     subsets: ["latin"],
-    weight: ["300", "400", "500", "700"],
+    weight: ["300"],
 });
 
 const MedicalAdvisorProfile: React.FC = () => {
   return (
-    <div className="bg-[#f3eee7] min-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
+    <div className="bg-[#f3eee7] cmin-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
       <div className="w-full max-w-7xl mx-auto">
         <header className="text-center mb-3 mt-20">
           <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900">Our Medical Advisor</h1>
@@ -33,50 +33,42 @@ const MedicalAdvisorProfile: React.FC = () => {
             </div>
 
             {/* Text Column */}
-            <div className="md:col-span-7 flex flex-col justify-center mt-6 md:mt-0">
-              <h2 className={`${cormorant.className} text-2xl lg:text-3xl text-stone-900 uppercase tracking-widest`}>
+            <div className="md:col-span-6 flex flex-col justify-center mt-12 md:mt-12">
+              <h2 className={`${cormorant.className} text-2xl lg:text-3xl text-stone-900 uppercase tracking-widest font-semibold`}>
                 DR. OLIVIA LY LESSLAR
               </h2>
-              <h3 className={`${cormorant.className} text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-2`}>
+              <h3 className={`${cormorant.className} text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-2 font-semibold`}>
                 Global Chief Medical Advisor
               </h3>
 
-              <div className="space-y-5 text-stone-700 leading-relaxed text-base">
+              <div className={`${roboto.className} text-stone-700 leading-relaxed text-base mb-10`}>
                 <p>
-                  Dr. Olivia Ly Lesslar is an Australian medical doctor specialising in
-                  psychoneuroimmunology, with postgraduate expertise in skin cancer
-                  medicine, dermatology, and clinical nutrition management. She is the
-                  co-founder of Legacy Sciences, an organisation exploring medical
-                  conditions through a non-conventional lens.
+                Dr. Olivia Ly Lesslar is an Australian medical doctor specialising in psychoneuroimmunology, 
+                with postgraduate expertise in skin cancer medicine, dermatology, and clinical nutrition management. 
+                 She is the co-founder of Legacy Sciences, an organisation exploring medical conditions 
+                 through a non-conventional lens
                 </p>
                 <p>
                   Dr. Olivia holds key leadership roles in innovative medical and
                   longevity-focused institutions worldwide, including:
                 </p>
-                <ul className="list-disc list-inside space-y-2 pl-2 font-medium text-stone-800">
+                <ul className="list-disc list-inside ">
                   <li>
-                    CINGULUM HEALTH (Australia) –{" "}
-                    <span className="font-normal text-stone-700">
-                      Medical Director, Functional & Longevity Medicine
-                    </span>
+                    CINGULUM HEALTH (Australia) 
+                      - Medical Director, Functional & Longevity Medicine
                   </li>
                   <li>
-                    ATLUS (Australia) –{" "}
-                    <span className="font-normal text-stone-700">
-                      Chief Medical Officer
-                    </span>
+                    ATLUS (Australia) 
+                     - Chief Medical Officer
                   </li>
                   <li>
-                    LIBER8 (USA) –{" "}
-                    <span className="font-normal text-stone-700">Medical Director</span>
+                    LIBER8 (USA) - Medical Director
                   </li>
                   <li>
-                    VETERAN PEACE(USA) –{" "}
-                    <span className="font-normal text-stone-700">Medical Director</span>
+                    VETERAN PEACE(USA) - Medical Director
                   </li>
                   <li>
-                    SENS.AI (CANADA) –{" "}
-                    <span className="font-normal text-stone-700">Science Director.</span>
+                    SENS.AI (CANADA) - Science Director
                   </li>
                 </ul>
                 <p>
