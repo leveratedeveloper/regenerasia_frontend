@@ -25,7 +25,7 @@ interface EnergizeProps {
 }
 
 const Energize: React.FC<EnergizeProps> = ({ steps }) => {
-  const topRowSteps = steps.slice(0, 3);
+  const topRowSteps = steps.slice(0, 6);
   const bottomRowSteps = steps.slice(3, 6);
 
   return (
@@ -42,18 +42,18 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
           Get the benefits of our program
         </p>
         {/* Top Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full p-2 md:p-0 lg:p-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full p-4 md:p-0 lg:p-0">
           {topRowSteps.map((step) => (
             <EnergizeStep key={step.id} {...step} />
           ))}
         </div>
     
         {/* Bottom Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-1 mt-0  justify-center p-2 md:p-0 lg:p-0 w-full">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-1 mt-0  justify-center p-4 md:p-0 lg:p-0 w-full">
           {bottomRowSteps.map((step) => (
             <EnergizeStep key={step.id} {...step} />
           ))}
-        </div>
+        </div> */}
       </div>
   </div>
   

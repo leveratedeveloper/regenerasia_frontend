@@ -33,7 +33,7 @@ const MedicalAdvisorProfile: React.FC = () => {
             </div>
 
             {/* Text Column */}
-            <div className="md:col-span-6 flex flex-col justify-center mt-12 md:mt-12">
+            <div className="md:col-span-7 flex flex-col justify-center mt-0 md:mt-12 lg:mt-12">
               <h2 className={`${cormorant.className} text-2xl lg:text-3xl text-stone-900 uppercase tracking-widest font-semibold`}>
                 DR. OLIVIA LY LESSLAR
               </h2>
@@ -81,14 +81,14 @@ const MedicalAdvisorProfile: React.FC = () => {
 
             {/* Text Column */}
             <div className="md:col-span-7 order-2 md:order-1 flex flex-col justify-center">
-              <h2 className="text-3xl lg:text-4xl font-serif text-stone-900 uppercase tracking-wide">
+              <h2 className={`${cormorant.className} text-2xl lg:text-3xl text-stone-900 uppercase tracking-widest font-semibold`}>
                 DR. ISABELLA SILLAR
               </h2>
-              <h3 className="text-lg lg:text-xl font-serif text-stone-600 mt-2 mb-6">
-                Our Medical Advisor – Australia/New Zealand
+              <h3 className={`${cormorant.className} text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-2 font-semibold`}>
+                Our Medical Advisor - Australia/New Zealand
               </h3>
 
-              <div className="space-y-5 text-stone-700 leading-relaxed text-base">
+              <div className={`${roboto.className} text-stone-700 leading-relaxed text-base mb-10`}>
                 <p>
                   Driven by a passion for enhancing both lifespan and healthspan, Dr.
                   Isabella Sillar brings a unique blend of clinical experience and

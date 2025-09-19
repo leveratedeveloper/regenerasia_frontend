@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
           <Image
             src="/image/logo_green.jpg"
             alt="Logo"
-            width={80}
+            width={200}
             height={40}
             className="h-18 w-auto"
           />
