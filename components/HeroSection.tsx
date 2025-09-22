@@ -24,7 +24,7 @@ export default function HeroSection() {
           Cold Atmospheric Plasma by Human Regenerator
         </p>
         <a
-          href="#book"
+          href="/booking"
           className={`${cormorant.className} px-4 py-1 border border-white/40 md:text-1xl lg:text-2xl text-[20px] text-white hover:bg-white/10 transition drop-shadow-lg backdrop-blur-[24px]`}>
           Book a Session Now
         </a>

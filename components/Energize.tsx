@@ -47,14 +47,6 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
             <EnergizeStep key={step.id} {...step} />
           ))}
         </div>
-    
-        {/* Bottom Row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-0  justify-center p-2 md:p-0 lg:p-0 w-full">
-
-          {bottomRowSteps.map((step) => (
-            <EnergizeStep key={step.id} {...step} />
-          ))}
-        </div>
       </div>
   </div>
   
