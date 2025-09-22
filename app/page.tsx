@@ -7,7 +7,6 @@ import Energize from "@/components/Energize";
 import MedicalAdvisorProfile from '@/components/MedicalAdvisorProfile';
 import OutConsultant from "@/components/OutConsultant";
 import ContactUsSection from "@/components/ContactUsSection";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   const journeySteps = [
@@ -62,7 +61,6 @@ export default function Home() {
           <OutConsultant />
         </section>
         <ContactUsSection />
-        <Footer />
       </main>
     </div>
   );
