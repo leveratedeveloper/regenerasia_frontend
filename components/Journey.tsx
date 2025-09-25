@@ -18,6 +18,7 @@ interface Step {
   id: number;
   imageUrl: string;
   caption: string;
+  description: string;
 }
 
 interface JourneyProps {
