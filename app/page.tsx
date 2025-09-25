@@ -10,20 +10,20 @@ import ContactUsSection from "@/components/ContactUsSection";
 
 export default function Home() {
   const journeySteps = [
-    { id: 1, imageUrl: '/image/journey_1.png', caption: 'Fill registration form' },
-    { id: 2, imageUrl: '/image/journey_2.png', caption: 'Treatment program' },
-    { id: 3, imageUrl: '/image/journey_3.png', caption: 'Screening & data collection' },
-    { id: 4, imageUrl: '/image/journey_4.png', caption: 'Program report by consultant' },
-    { id: 5, imageUrl: '/image/journey_5.png', caption: 'Analysis & report by consultant' },
+    { id: 1, imageUrl: '/image/journey_1.png', caption: 'Fill registration form', description: 'Start by registering and sharing your personal details to help us understand you better.' },
+    { id: 2, imageUrl: '/image/journey_2.png', caption: 'Screening & Data Collection', description: 'Collecting your health profile through personalized screening to ensure accurate recommendations.' },
+    { id: 3, imageUrl: '/image/journey_3.png', caption: 'Analysis & Report by Consultant', description: 'Comprehensive analysis and tailored report by our consultant to guide your treatment plan.' },
+    { id: 4, imageUrl: '/image/journey_4.png', caption: 'Treatment Program', description: 'Personalized Cold Atmospheric Plasma therapy for effective and targeted healing.' },
+    { id: 5, imageUrl: '/image/journey_5.png', caption: 'Program Report by Consultant', description: 'Comprehensive progress report and personalized guidance post-treatment.' },
   ];
 
   const energizeSteps = [
-    { id: 1, imageUrl: '/image/energize_1.png', caption: 'Cellular regeneration' },
-    { id: 2, imageUrl: '/image/energize_2.png', caption: 'Strengthening immune system' },
-    { id: 3, imageUrl: '/image/energize_3.png', caption: 'Accelerate recovery' },
-    { id: 4, imageUrl: '/image/energize_4.png', caption: 'Enhance energy level' },
-    { id: 5, imageUrl: '/image/energize_5.png', caption: 'Aids quality of sleep' },
-    { id: 6, imageUrl: '/image/energize_6.png', caption: 'Support anti aging' },
+    { id: 1, imageUrl: '/image/energize_1.png', caption: 'Cellular regeneration',  description: '' },
+    { id: 2, imageUrl: '/image/energize_2.png', caption: 'Strengthening immune system',  description: '' },
+    { id: 3, imageUrl: '/image/energize_3.png', caption: 'Exelerate Recovery',  description: '' },
+    { id: 4, imageUrl: '/image/energize_4.png', caption: 'Enhance Energy Level',  description: '' },
+    { id: 5, imageUrl: '/image/energize_5.png', caption: 'Aids Quality of Sleep',  description: '' },
+    { id: 6, imageUrl: '/image/energize_6.png', caption: 'Support Anti Aging',  description: '' },
   ];
 
   const oliviaData = { /* ...unchanged... */ };
@@ -57,7 +57,6 @@ export default function Home() {
         </section>
 
         <section className="container w-[100%] mx-auto">
-          <MedicalAdvisorProfile />
           <OutConsultant />
         </section>
         <ContactUsSection />
