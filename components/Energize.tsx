@@ -39,7 +39,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
         </h2>
 
         <p className={`${roboto.className} text-[20px] mb-2`}>
-          Get the benefits of our program
+          Get the benefits of Cold Atmospheric Plasma
         </p>
         {/* Top Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full p-4 md:p-0 lg:p-0">

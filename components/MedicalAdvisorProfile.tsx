@@ -111,7 +111,7 @@ const MedicalAdvisorProfile: React.FC = () => {
               </div>
             </div>
 
-            {/* Image Column */}
+            
             <div className="md:col-span-5 order-1 md:order-2 flex items-center justify-center">
               <img
                 src="/image/Issabela.jpg"

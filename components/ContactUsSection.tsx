@@ -40,13 +40,31 @@ const ContactUsSection = () => {
           </h1>
 
           <p className={`${roboto.className} mt-2 text-gray-700`}>
-            Contact us to book sessions on the Human Regenerator or to enquire
-            about purchasing for your home or business.
+            Contact us to book sessions on the Human Regenerator or to enquire about purchasing for your home or business.
           </p>
 
           <button className="mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition">
             Contact Us
           </button>
+
+          {/* <ul>
+            <li className={`${roboto.className} mt-2 text-gray-700`}>
+              Address: <br />
+              Ayana Midplaza Jakarta <br />
+              Jl. Jenderal Sudirman No.Kav 10-11, RT.10/RW.11, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat,
+Daerah Khusus Ibukota Jakarta 10220
+            </li>
+            <li className={`${roboto.className} mt-2 text-gray-700`}>
+              <h3>
+              <a href="tel:+62877123456" className="text-green-900">(+62) 877123456</a>
+              </h3>
+            </li>
+            <li className={`${roboto.className} mt-4 text-gray-700`}>
+              <h3>
+              <a href="mailto:booking@regenerasia.co.id" className="text-green-900">booking@regenerasia.co.id</a>
+              </h3>
+            </li>
+          </ul> */}
         </section>
       </div>
     </div>

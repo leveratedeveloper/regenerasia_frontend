@@ -35,40 +35,22 @@ export default function OutConsultant() {
           </div>
 
           {/* Text Column */}
-          <div className="md:col-span-6 flex flex-col justify-center mt-0 md:mt-12 lg:mt-12">
-            <h2 className={`${cormorant.className} text-2xl lg:text-3xl text-stone-900 uppercase tracking-widest font-semibold`}>
-            DR. Pande
+          <div className="md:col-span-7 flex flex-col justify-center mt-0 md:mt-6 lg:mt-6">
+            <h2 className={`${cormorant.className} text-2xl lg:text-2xl text-stone-900 uppercase tracking-widest font-semibold`}>
+            Dr PANDE PUTU AGUS MAHENDRA, M.Gizi, Sp.GK
             </h2>
-            <h3 className={`${cormorant.className} text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-2 font-semibold`}>
+            {/* <h3 className={`${cormorant.className} text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-2 font-semibold`}>
               Global Chief Medical Advisor
-            </h3>
+            </h3> */}
             <div className={`${roboto.className} text-stone-700 leading-relaxed text-base mb-10`}>
               <p>
-              She is also affiliated with LifeSpan Medicine LA, Wellgevity UK, and Everest Health DC. Dr. 
-              Olivia is dedicated to advancing the field of functional and longevity medicine worldwide.
+                Dr. Pande Putu Agus Mahendra, M.Gizi, Sp.GK has extensive experience practicing in various hospitals, with a strong passion for the field of nutrition reflected in his career journey and dedication. He has also served as part of the medical team in multiple prestigious sporting events, including the Indonesia Open Aquatic Championship 2017 & 2018, the Asian Games 2018, the Asian Para Games 2018, and several other national and international sports competitions.
               </p>
-              <ul className="list-disc list-inside ">
-                <li>
-                  CINGULUM HEALTH (Australia) 
-                    - Medical Director, Functional & Longevity Medicine
-                </li>
-                <li>
-                  ATLUS (Australia) 
-                   - Chief Medical Officer
-                </li>
-                <li>
-                  LIBER8 (USA) - Medical Director
-                </li>
-                <li>
-                  VETERAN PEACE(USA) - Medical Director
-                </li>
-                <li>
-                  SENS.AI (CANADA) - Science Director
-                </li>
-              </ul>
-              <p>
-              Dr. Olivia holds key leadership roles in innovative medical and longevity-focused institutions worldwide, including:
+              <p>Commonly addressed as Dr. Putu, he earned his Medical Doctor degree from the Faculty of Medicine at UKI, then continued his postgraduate education in Clinical Nutrition at the Faculty of Medicine, Universitas Indonesia in 2014. He further pursued the Clinical Nutrition Specialist Program in 2016. In the same year, he completed the Doping Control Officer Training (LADI), followed by the PWC Certified Doping Control Course (2017) and Food Safety Training in Jakarta (2017).
               </p>
+              <p>Beyond his clinical practice, Dr. Pande Putu Agus Mahendra is actively involved in several professional organizations, including the Medical and Nutrition Division of PRSI (Indonesian Swimming Association), Head of Nutrition Installation at Bhayangkara Level 1 Hospital, as well as serving as a Certified Doping Control Officer in Indonesia, among others.</p>
+              <p>With his strong expertise in clinical nutrition, Dr. Putu provides health consultation services focused on nutritional balance and dietary management to support overall well-being and performance.</p>
+              
             </div>
           </div>
         </div>

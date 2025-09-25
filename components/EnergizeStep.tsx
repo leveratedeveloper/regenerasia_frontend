@@ -29,9 +29,9 @@ const EnergizeStep: React.FC<EnergizeStepProps> = ({ imageUrl, caption }) => {
           className="w-full h-64 object-cover"
         />
       </div>
-      <p className={`${cormorant.className} mt-2 text-xl md:text-[30px] lg:text-[33px] text-center text-gray-700`}>
+      <h3 className={`${cormorant.className} mt-2 text-xl md:text-[30px] lg:text-[33px] text-center text-gray-700`}>
         {caption}
-      </p>
+      </h3>
     </div>
   );
 };
