@@ -40,7 +40,7 @@ export default function Header() {
         <div className="flex items-center">
           <Link href="/">
             <Image
-              src={scrolled ? "/image/logo_green.jpg" : "/image/logo.jpg"}
+              src={scrolled ? "/image/new-logo.webp" : "/image/new-logo-white.webp"}
               alt="Logo"
               width={100}
               height={40}
@@ -63,9 +63,8 @@ export default function Header() {
         }`}
       >
         <div className="flex justify-between items-center p-4 border-b">
-          {/* <h2 className="text-lg font-semibold">Menu AA</h2> */}
           <Image
-                src="/image/logo_green.jpg"
+                src="/image/new-logo.webp"
                 alt="Logo"
                 width={200}
                 height={20}
