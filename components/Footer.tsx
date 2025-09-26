@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
         {/* Left: Logo + Address */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6">
           <Image
-            src="/image/logo_green.jpg"
+            src="/image/new-logo.webp"
             alt="Logo"
             width={200}
             height={40}

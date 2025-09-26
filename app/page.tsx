@@ -37,7 +37,7 @@ export default function Home() {
         <section className="relative min-h-screen flex items-center justify-center bg-black/40" id="first-section">
           <video
             className="absolute inset-0 w-full h-full object-cover -z-10"
-            src="https://res.cloudinary.com/deyfby6ir/video/upload/v1757412142/Regenerasia_Hero_Video_hd55xi.mp4"
+            src="https://res.cloudinary.com/deyfby6ir/video/upload/v1758861193/Hero-Landing-Page-Regerenerasia_wkjxv2.mp4"
             autoPlay
             muted
             loop
