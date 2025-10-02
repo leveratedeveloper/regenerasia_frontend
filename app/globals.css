@@ -32,3 +32,8 @@ p{
 .text-overlay{
   line-height: 1.7rem;
 }
+.blur-hover{
+  transition-duration: 0.25s;
+  background: rgba(0, 0, 0, 0.40);
+  backdrop-filter: blur(50px);
+}

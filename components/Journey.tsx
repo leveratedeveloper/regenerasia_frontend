@@ -16,6 +16,7 @@ const roboto = Roboto({
 
 interface Step {
   id: number;
+  number: number;
   imageUrl: string;
   caption: string;
   description: string;
@@ -33,22 +34,25 @@ const Journey: React.FC<JourneyProps> = ({ steps }) => {
     <div className="container w-[100%] mx-auto">
       <div className="flex flex-col items-center gap-2 md:gap-2">
         {/* Title */}
-        <h2 className={`${cormorant.className} py-6 text-3xl md:text-4xl  lg:text-5xl font-bold leading-[1.1] text-center text-[#3A3A3A] w-[100%] lg:w-[60%] mx-auto`}>
+        <h2 className={`${cormorant.className} py-6 text-3xl md:text-4xl  lg:text-5xl font-bold leading-[1.1] text-center text-[#768c43] w-[100%] lg:w-[60%] mx-auto`}>
           Start Your <i>Longevity</i> Journey
         </h2>
     
         {/* Top Row */}
     
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full p-4 md:p-0 lg:p-0">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full p-4 md:p-0 lg:p-0 justify-center">
         {topRowSteps.map((step) => (
-          <JourneyStep key={step.id} {...step} />
+          <JourneyStep 
+          key={step.id} 
+          number={step.id} 
+          {...step} />
         ))}
       </div>
 
       {/* Bottom Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-0 md:mt-6 lg:mt-6 justify-center p-4 md:p-0 lg:p-0">
         {bottomRowSteps.map((step) => (
-          <JourneyStep key={step.id} {...step} />
+          <JourneyStep key={step.id} number={step.id}  {...step} />
         ))}
       </div>
 
