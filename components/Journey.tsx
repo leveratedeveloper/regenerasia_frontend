@@ -44,7 +44,6 @@ const Journey: React.FC<JourneyProps> = ({ steps }) => {
         {topRowSteps.map((step) => (
           <JourneyStep 
           key={step.id} 
-          number={step.id} 
           {...step} />
         ))}
       </div>
@@ -52,7 +51,7 @@ const Journey: React.FC<JourneyProps> = ({ steps }) => {
       {/* Bottom Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-0 md:mt-6 lg:mt-6 justify-center p-4 md:p-0 lg:p-0">
         {bottomRowSteps.map((step) => (
-          <JourneyStep key={step.id} number={step.id}  {...step} />
+          <JourneyStep key={step.id} {...step} />
         ))}
       </div>
 
