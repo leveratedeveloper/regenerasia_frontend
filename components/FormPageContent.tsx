@@ -7,7 +7,7 @@ import BookingForm from "@/components/BookingForm";
 type ActiveTab = "booking" | "rfq";
 
 export default function PageContent() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>("rfq");
+  const [activeTab, setActiveTab] = useState<ActiveTab>("booking");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -29,8 +29,8 @@ export default function PageContent() {
       onClick={() => setActiveTab(tabName)}
       className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
         activeTab === tabName
-          ? "bg-brand-primary text-white"
-          : "bg-transparent text-brand-primary border border-brand-primary hover:bg-brand-primary/10"
+          ? "bg-green-900 text-white text-white"
+          : ""
       }`}
     >
       {label}
@@ -38,19 +38,23 @@ export default function PageContent() {
   );
 
   return (
-    <div className="bg-brand-background min-h-screen font-sans text-brand-text p-4 md:p-8">
-      <div className="max-w-5xl mx-auto bg-brand-surface rounded-lg relative">
-        <header className="flex justify-between items-center p-6 border-b border-brand-border">
-          <h1 className="text-xl font-serif font-bold text-brand-primary tracking-widest">
-            REGENERASIA
-          </h1>
+    <div className="min-h-screen font-sans text-brand-text">
+      <div className=" bg-brand-surface rounded-lg relative">
+        <header className="relative">
+            <img
+                src="/image/bg-contact-us.jpg"
+                alt="Banner"
+                className="w-full h-96 object-cover rounded-t-lg"
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <h1 className="text-3xl md:text-4xl font-alta font-bold text-white tracking-widest">
+                {activeTab === "rfq" ? 'Request for Quotation' : 'Book Your Appointment Online'}
+                </h1>
+            </div>
         </header>
 
-        <main className="p-6 md:p-12">
+        <main className="p-6 md:p-12 max-w-5xl mx-auto">
           <div className="text-center mb-8">
-            <h2 className="text-4xl md:text-5xl font-serif text-brand-text mb-6">
-              Contact Us
-            </h2>
             <div className="inline-flex items-center space-x-2 p-1 rounded-lg border border-brand-border">
               <TabButton label="Booking Form" tabName="booking" />
               <TabButton label="Request for Quotation" tabName="rfq" />

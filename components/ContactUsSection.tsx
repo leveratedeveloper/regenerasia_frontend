@@ -30,9 +30,9 @@ const ContactUsSection = () => {
             Contact us to book sessions on the Human Regenerator or to enquire about purchasing for your home or business.
           </p>
 
-          <button className="mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition">
+          <a href="/booking" className="mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition">
             Contact Us
-          </button>
+          </a>
 
           {/* <ul>
             <li className={`${roboto.className} mt-2 text-gray-700`}>
