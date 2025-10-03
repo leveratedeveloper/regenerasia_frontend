@@ -38,7 +38,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
           <i>Energize</i> Your Body and Mind
         </h2>
 
-        <p className={`${roboto.className} text-[20px] mb-2`}>
+        <p className={`${roboto.className} text-[20px] mb-2 text-center`}>
           Get the benefits of Cold Atmospheric Plasma
         </p>
         {/* Top Row */}
