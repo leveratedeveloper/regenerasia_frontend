@@ -105,7 +105,7 @@ const SelectField: React.FC<any> = ({ label, placeholder, options, containerClas
     <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
     <select className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition bg-white appearance-none" {...rest}>
       <option value="">{placeholder}</option>
-      {options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+      {options.map((opt: string) => <option key={opt} value={opt}>{opt}</option>)}
     </select>
   </div>
 );
