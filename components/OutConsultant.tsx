@@ -1,31 +1,18 @@
 // components/OutConsultant.tsx
 
 import Image from "next/image";
-import { Cormorant_Garamond, Roboto } from "next/font/google";
-
-
-const cormorant = Cormorant_Garamond({
-    subsets: ["latin"],
-    weight: ["400", "500", "600", "700"], // choose weights you need
-    style: ["normal", "italic"], // aktifkan italic
-});
-
-const roboto = Roboto({
-    subsets: ["latin"],
-    weight: ["300"],
-});
 
 export default function OutConsultant() {
   return (
     <div className="bg-[#f3eee7] cmin-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
     <div className="w-full max-w-7xl mx-auto">
       <header className="text-center mb-3 mt-10 md:mt-20 lg:mt-20">
-        <h1 className="font-alta text-3xl md:text-4xl lg:text-5xl text-stone-900">Our Consultant</h1>
+        <h1 className="font-alta text-3xl md:text-4xl lg:text-5xl text-[#768c43]">Our Consultant</h1>
       </header>
 
-      <main className="bg-[#f3eee7]  border-stone-300/60 rounded-3xl p-6 sm:p-8 md:p-12">
+      <main className="bg-[#f3eee7] border-stone-300/60 rounded-3xl p-6 sm:p-8 md:p-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-{/* Image Column */}
+          {/* Image Column */}
           <div className="md:col-span-5 flex items-center justify-center">
             <img
               src="/image/dr-pande.png"

@@ -1,17 +1,4 @@
 import React from "react";
-import { Cormorant_Garamond, Roboto } from "next/font/google";
-
-
-const cormorant = Cormorant_Garamond({
-    subsets: ["latin"],
-    weight: ["400", "500", "600", "700"], // choose weights you need
-    style: ["normal", "italic"], // aktifkan italic
-});
-
-const roboto = Roboto({
-    subsets: ["latin"],
-    weight: ["300"],
-});
 
 const ContactUsSection = () => {
   const imageData = {
@@ -34,12 +21,12 @@ const ContactUsSection = () => {
       {/* Right: Content (1/3 width on desktop) */}
       <div className="md:col-span-1 flex items-left p-6 md:p-10 lg:p-10 bg-white">
         <section className="text-left max-w-md">
-          <h1 className={`${cormorant.className} text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 leading-snug`}>
+          <h1 className={`font-alta text-3xl md:text-4xl lg:text-4xl text-[#768c43] leading-snug`}>
             Regenerate with <br />
-            Regenerasia <span className="italic text-green-900">Today</span>
+            Regenerasia Today
           </h1>
 
-          <p className={`${roboto.className} mt-2 text-gray-700`}>
+          <p className={`font-helvetica mt-2 text-stone-700`}>
             Contact us to book sessions on the Human Regenerator or to enquire about purchasing for your home or business.
           </p>
 

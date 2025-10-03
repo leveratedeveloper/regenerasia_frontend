@@ -26,7 +26,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
           Energize Your Body and Mind
         </h2>
 
-        <p className={`font-helvetica text-[20px] mb-2 text-center`}>
+        <p className={`font-helvetica text-[20px] mb-2 text-center text-stone-700`}>
           Get the benefits of Cold Atmospheric Plasma
         </p>
         {/* Top Row */}

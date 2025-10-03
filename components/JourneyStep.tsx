@@ -32,7 +32,7 @@ const JourneyStep: React.FC<JourneyStepProps> = ({ number, imageUrl, caption, de
           </p>
         </div>
       </div>
-      <h3 className={`font-helvetica text-xl md:text-[20px] lg:text-[20px] text-center mt-2`}> {caption} </h3>
+      <h3 className={`font-helvetica text-xl md:text-[20px] lg:text-[20px] text-center mt-2 text-stone-700`}> {caption} </h3>
     </div>
   );
 };
