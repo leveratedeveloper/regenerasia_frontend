@@ -1,18 +1,6 @@
 import React from 'react';
-import { Cormorant_Garamond, Roboto } from "next/font/google";
 import EnergizeStep from './EnergizeStep';
 
-
-const cormorant = Cormorant_Garamond({
-    subsets: ["latin"],
-    weight: ["400", "500", "600", "700"], // choose weights you need
-    style: ["normal", "italic"], // aktifkan italic
-});
-
-const roboto = Roboto({
-    subsets: ["latin"],
-    weight: ["300"],
-});
 
 interface Step {
   id: number;
@@ -33,12 +21,12 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
       <div className="flex flex-col items-center gap-2 md:gap-2">
         {/* Title */}
         <h2
-          className={`${cormorant.className} text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] text-center text-[#768c43] w-[100%] lg:w-[60%] mx-auto`}
+          className={`font-alta text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-center text-[#768c43] w-[100%] lg:w-[60%] mx-auto`}
         >
-          <i>Energize</i> Your Body and Mind
+          Energize Your Body and Mind
         </h2>
 
-        <p className={`${roboto.className} text-[20px] mb-2 text-center`}>
+        <p className={`font-helvetica text-[20px] mb-2 text-center`}>
           Get the benefits of Cold Atmospheric Plasma
         </p>
         {/* Top Row */}
