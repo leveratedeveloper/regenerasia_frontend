@@ -22,11 +22,22 @@ export default function AboutUsPage() {
       <section className="relative w-full h-screen bg-[#1c1917] flex items-center justify-left p-8 md:p-16">
         {/* Background image + gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br">
-          <img
-            src="/image/aboutUs.png"
+          {/* <img
+            src="/image/aboutUs.webp"
             alt="A woman looking thoughtfully towards the sunset over the sea."
             className="w-full h-full object-cover object-center"
+          /> */}
+          <img
+            src="/image/aboutUs.webp"
+            alt="A woman looking thoughtfully towards the sunset over the sea."
+            className="hidden md:block w-full h-full object-cover object-center"
           />
+          <img
+            src="/image/aboutUs-mobile.jpeg"
+            alt="A woman looking thoughtfully towards the sunset over the sea."
+            className="block md:hidden w-full h-full object-cover object-center"
+          />
+
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-yellow-900/20" />
         </div>
 
@@ -42,10 +53,10 @@ export default function AboutUsPage() {
             <div className="w-25 h-px bg-gray-400/100 mt-2"></div>
           </div>
 
-          <h2 className={`${roboto.className} font-serif text-4xl md:text-6xl text-white font-normal leading-tight mb-4`}>
+          <h2 className={`font-alta text-4xl md:text-6xl text-white font-normal leading-tight mb-4`}>
             Bring Regeneration in Asia
           </h2>
-          <p className={`${roboto.className} font-sans text-base md:text-lg text-gray-300/90 leading-relaxed max-w-2xl`}>
+          <p className={`font-helvetica text-base md:text-lg text-gray-300/90 leading-relaxed max-w-2xl`}>
             With cutting edge technology, restore your body's stability.
           </p>
         </div>
@@ -57,7 +68,7 @@ export default function AboutUsPage() {
           {/* Image on top for mobile */}
           <div className="order-1 md:order-2 md:col-span-2">
             <img
-              src="/image/senior-women.png"
+              src="/image/senior-women.webp"
               alt="A woman looking thoughtfully towards the sunset over the sea."
               className="rounded-2xl shadow-lg w-full h-auto object-cover"
             />
@@ -66,10 +77,10 @@ export default function AboutUsPage() {
           {/* Text section */}
           <div className="order-2 md:order-1 text-zinc-700 font-sans mt-8 md:mt-24">
             <div className="w-16 h-0.5 bg-zinc-600/80 mb-6 md:mb-8"></div>
-            <p className="text-base leading-relaxed mb-4 md:mb-6">
+            <p className="font-helvetica text-base leading-relaxed mb-4 md:mb-6">
               Dr. Sarah Chen witnessed her grandmother's struggle with chronic pain and limited mobility. Despite countless treatments, nothing provided lasting relief until she discovered cellular regeneration therapy.
             </p>
-            <p className="text-base leading-relaxed">
+            <p className="font-helvetica text-base leading-relaxed">
               This personal journey sparked a mission to make natural, effective healing accessible to everyone. Regenerasia is here to bring the power of cellular regeneration therapy in Asia.
             </p>
           </div>

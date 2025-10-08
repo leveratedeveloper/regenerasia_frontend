@@ -29,14 +29,14 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
       <div className="absolute bottom-0 left-0 right-0 p-6 text-white flex flex-col justify-end h-[50%]">
         {/* Wrapper supaya naik saat hover */}
         <div className="transition-all duration-500 ease-in-out group-hover:translate-y-[-20px]">
-          <h3 className="text-2xl font-serif mb-1">{name}</h3>
-          <p className="text-sm text-white/90 font-sans mb-0">{title}</p>
+          <h3 className="text-2xl font-alta mb-1">{name}</h3>
+          <p className="text-sm text-white/90 font-helvetica mb-0">{title}</p>
         </div>
 
         {/* Description muncul saat hover */}
         {description && (
           <p
-            className="text-sm text-white/80 font-sans mt-3 border-t border-white/20 pt-3 
+            className="text-sm text-white/80 font-helvetica mt-3 border-t border-white/20 pt-3 
               overflow-hidden max-h-0 opacity-0 translate-y-3
               transition-all duration-500 ease-in-out delay-100
               group-hover:opacity-100 group-hover:translate-y-0 group-hover:max-h-40"

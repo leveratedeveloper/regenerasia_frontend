@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactUsSection = () => {
   const imageData = {
-    src: "/image/bg_contact.png",
+    src: "/image/bg_contact.webp",
     alt: "A serene lake surrounded by lush green forests and mountains in the background under a cloudy sky."
   };
 
@@ -31,7 +31,7 @@ const ContactUsSection = () => {
             Contact us to book sessions on the Human Regenerator or to enquire about purchasing for your home or business.
           </p>
 
-          <a href="/booking" className="mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition">
+          <a href="/booking" className="bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition">
             Contact Us
           </a>
         </section>

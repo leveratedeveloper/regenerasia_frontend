@@ -31,7 +31,7 @@ const VisionMissionSection: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
-      <h1 className={`${cormorant.className} text-4xl md:text-5xl font-serif text-center text-[#4a442d] mb-12 `}>
+      <h1 className={`font-alta text-4xl md:text-5xl text-center text-[#4a442d] mb-12 `}>
         <b>Our <i>Vision</i> and <i>Mission</i></b>
       </h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8  mx-auto">

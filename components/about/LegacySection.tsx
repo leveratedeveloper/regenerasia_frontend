@@ -35,12 +35,12 @@ const LegacySection: React.FC = () => {
         <div className="relative flex justify-end p-8 sm:p-12 md:p-24">
           <div className="w-full max-w-lg text-right">
             {/* Title */}
-            <h2 className={`${cormorant.className} text-5xl md:text-6xl font-serif mb-6 leading-tight `}>
+            <h2 className={`font-alta text-5xl md:text-6xl mb-6 leading-tight `}>
               Our Legacy
             </h2>
 
             {/* Description */}
-            <p className={`${roboto.className} text-lg md:text-xl text-white/90 font-light mb-16 leading-relaxed `}>
+            <p className={`font-helvetica text-lg md:text-xl text-white/90 mb-16 leading-relaxed `}>
               Founded in 2018 by a team of visionary medical professionals, Regenerator has grown from a small clinic to a leading center for regenerative medicine, helping thousands reclaim their health.
             </p>
 
