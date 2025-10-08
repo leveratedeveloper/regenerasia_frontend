@@ -13,7 +13,7 @@ export default function HeroSection() {
         <a
           href="/booking?booking-form"
           className={`font-helvetica px-4 py-2 border border-white/40 md:text-1xl lg:text-2xl text-[20px] text-white hover:bg-white/10 transition drop-shadow-lg backdrop-blur-[24px] mt-6`}>
-          Book a Session Now
+          BOOK A SESSION NOW
         </a>
       </section>
     );

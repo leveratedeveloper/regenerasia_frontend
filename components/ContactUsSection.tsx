@@ -8,7 +8,8 @@ const ContactUsSection = () => {
 
   return (
     <section className="bg-[rgb(243,238,231)] overflow-hidden py-16 px-6 md:px-12">
-    <div className="grid grid-cols-1 md:grid-cols-3 min-h-[650px] rounded-xl overflow-hidden">
+      <div className="container mx-auto px-4 py-12 md:py-24">
+      <div className="grid grid-cols-1 md:grid-cols-3 min-h-[650px] rounded-xl overflow-hidden">
       {/* Left: Image (2/3 width on desktop) */}
       <div className="md:col-span-2 w-full h-full">
         <img
@@ -33,28 +34,11 @@ const ContactUsSection = () => {
           <a href="/booking" className="mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition">
             Contact Us
           </a>
-
-          {/* <ul>
-            <li className={`${roboto.className} mt-2 text-gray-700`}>
-              Address: <br />
-              Ayana Midplaza Jakarta <br />
-              Jl. Jenderal Sudirman No.Kav 10-11, RT.10/RW.11, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat,
-Daerah Khusus Ibukota Jakarta 10220
-            </li>
-            <li className={`${roboto.className} mt-2 text-gray-700`}>
-              <h3>
-              <a href="tel:+62877123456" className="text-green-900">(+62) 877123456</a>
-              </h3>
-            </li>
-            <li className={`${roboto.className} mt-4 text-gray-700`}>
-              <h3>
-              <a href="mailto:booking@regenerasia.co.id" className="text-green-900">booking@regenerasia.co.id</a>
-              </h3>
-            </li>
-          </ul> */}
         </section>
       </div>
     </div>
+      </div>
+    
 
   </section>  
 
