@@ -76,8 +76,8 @@ export default function Header() {
         </div>
         <nav className="flex flex-grow flex-col items-center justify-center gap-4 p-4">
           <Link href="/" className="hover:underline" onClick={() => setOpen(false)}>Home</Link>
-          <Link href="/#about" className="hover:underline" onClick={() => setOpen(false)}>About</Link>
-          <Link href="/#services" className="hover:underline" onClick={() => setOpen(false)}>Services</Link>
+          <Link href="/aboutus" className="hover:underline" onClick={() => setOpen(false)}>About</Link>
+          <Link href="/product" className="hover:underline" onClick={() => setOpen(false)}>Services</Link>
           <Link href="/#contact" className="hover:underline" onClick={() => setOpen(false)}>Contact</Link>
           <Link href="/booking" className="hover:underline" onClick={() => setOpen(false)}>Booking</Link>
         </nav>
