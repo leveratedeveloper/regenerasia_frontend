@@ -12,6 +12,7 @@ const roboto = Roboto({
     subsets: ["latin"],
     weight: ["300"],
 });
+
 interface InfoCardProps {
   imageUrl: string;
   category: string;
@@ -43,24 +44,24 @@ const InfoCard: React.FC<InfoCardProps> = ({ imageUrl, category, title, descript
         "
       >
         {/* Category */}
-        <p className="text-sm text-white/80 font-sans uppercase tracking-wider">
+        <p className={`${roboto.className} text-sm text-white/80 font-sans uppercase tracking-wider `}>
           {category}
         </p>
 
         {/* Title */}
-        <h2 className="text-2xl md:text-3xl text-white/80 font-serif my-2 leading-tight">
+        <h2 className={`${cormorant.className} text-2xl md:text-3xl text-white/80 font-serif my-2 leading-tight `}>
           {title}
         </h2>
 
         {/* Description: hidden before hover */}
         {description && (
           <p
-            className="
+            className={`${roboto.className}
               text-base text-white/90 font-sans mt-2 max-w-md
               opacity-0 translate-y-2
               transition-all duration-500 ease-in-out
               group-hover:opacity-100 group-hover:translate-y-0
-            "
+            `}
           >
             {description}
           </p>
