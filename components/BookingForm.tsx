@@ -261,12 +261,12 @@ const BookingForm: React.FC = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              What you want to be treated?
+              Please let us know your concern so we can assist you.
             </label>
             <textarea
               rows={4}
               className="w-full p-4 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition"
-              placeholder="Hi, I have knee inflamation so I want..."
+              placeholder=""
             />
           </div>
         </div>

@@ -91,7 +91,6 @@ export default function AboutUsPage() {
           <OurMissionVision />
           <Legacy />
           <ExpertsSection />
-          <ContactUsSection />
       </section>
     </main>
     );
