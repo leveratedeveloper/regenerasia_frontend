@@ -1,56 +1,51 @@
-
-import Legacy from "@/components/about/LegacySection";
-import ExpertsSection from "@/components/about/ExpertsSection";
-import ContactUsSection from "@/components/ContactUsSection";
 import { Cormorant_Garamond, Roboto } from "next/font/google";
-import Experience from "@/components/product/Experience";
 import Understanding from "@/components/product/Understanding";
+import Experience from "@/components/product/Experience";
+import ContactUsSection from "@/components/ContactUsSection";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // choose weights you need
-  style: ["normal", "italic"], // aktifkan italic
-});
-
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["300"],
-});
 
 export default function ProductPage() {
-    return (
-      <main className="relative z-1 bg-[#f3eee7]">
-      {/* Hero with video background */}
-      <section className="relative w-full h-screen bg-[#1c1917] flex items-center justify-left p-8 md:p-16">
+  return (
+    <main className="relative z-1 bg-[#f3eee7]">
+      {/* Hero Section */}
+      <section className="relative w-full h-screen flex items-center justify-center text-center text-white">
+        {/* Background image */}
         <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(/image/humanGenerator.jpg)` }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(/image/product/human-regenerator.jpg)` }}
+        ></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/30"></div>
+
+        {/* Text content */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(/image/product/human-generator.jpg)` }}
         ></div>
         <div className="absolute inset-0 bg-black opacity-40"></div>
-        
-        <div className="relative z-10 flex flex-col items-center px-4 -mt-24">
-            <div className="flex items-center gap-2 mb-4">
 
-            <span className="text-sm uppercase tracking-widest">Product</span>
-            </div>
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-8xl">
-            <span className="font-light">The Human </span>
-            <span className="font-semibold italic">Regenerator</span>
-            <span className="font-light"> Power Jet</span>
-            </h1>
-            <p className="mt-4 text-lg md:text-xl max-w-2xl">
-            Rediscover your vitality and embrace a life of renewed energy and comfort.
-            </p>
+        {/* Text content */}
+        <div className="relative z-10 max-w-3xl px-6 text-center -translate-y-35  ">
+          {/* 👆 Moves the text upward (adjust value as needed, e.g., -translate-y-12 or -translate-y-20) */}
+
+          <p className="uppercase tracking-widest text-sm mb-4 text-gray-200">
+            Product
+          </p>
+          <h1 className="font-alta text-3xl md:text-4xl font-medium leading-tight text-white">
+            The Human <span className="italic font-semibold">Regenerator</span> Power Jet
+          </h1>
+          <p className="font-helvetica mt-3 text-lg md:text-xl text-gray-200 leading-relaxed">
+            Rediscover your vitality and embrace a life of renewed <br />energy and comfort.
+          </p>
         </div>
-
       </section>
-      <section className="bg-[rgb(243,238,231)] py-16 md:py-24 px-8">
+
+      {/* Content sections below */}
+      <section className="bg-[#f3eee7] py-16 md:py-20 px-8">
         <Understanding />
         <Experience />
-        {/* <Details />
-        <Testimonial /> */}
+        <ContactUsSection />
       </section>
     </main>
-    );
-  }
-  
+  );
+}

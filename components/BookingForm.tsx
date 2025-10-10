@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const bookingSchema = z.object({
   fullName: z.string().min(1, { message: "Full name is required" }),
@@ -141,6 +143,22 @@ const BookingForm: React.FC = () => {
       </div>
     );
   }
+  //date disable
+  const [date, setDate] = useState<Date | null>(null);
+
+  const today = new Date();
+  const threeDaysLater = new Date();
+  threeDaysLater.setDate(today.getDate() + 3);
+
+  const blockedDates = Array.from({ length: 3 }, (_, i) => {
+    const d = new Date();
+    d.setDate(today.getDate() + i + 1);
+    return d.toDateString();
+  });
+
+  const isBlockedDate = (d: Date | null) =>
+    !!d && blockedDates.includes(d.toDateString());
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
@@ -241,10 +259,28 @@ const BookingForm: React.FC = () => {
                   <label className="block text-xs font-medium text-gray-500 mb-1">
                     Date
                   </label>
-                  <input
-                    type="date"
-                    className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition"
-                  />
+                  <div
+                    className={`rounded-md transition duration-200 ${
+                      isBlockedDate(date)
+                        ? "border-2 border-red-500 p-[1px]" // 🔴 Full red border when user picks within 3 days
+                        : "border border-gray-300"
+                    }`}
+                  >
+                    <DatePicker
+                      selected={date}
+                      onChange={(d) => setDate(d)}
+                      minDate={threeDaysLater} // can't select before 3 days
+                      dateFormat="dd/MM/yyyy" 
+                      placeholderText="dd/mm/yyyy" 
+                      className="w-full px-4 py-2 rounded-md focus:outline-none"
+                      // 🔴 Highlight all blocked dates in calendar
+                      dayClassName={(d: Date) =>
+                        blockedDates.includes(d.toDateString())
+                          ? "bg-red-100 text-red-600 font-semibold rounded-full"
+                          : ""
+                      }
+                    />
+                  </div>
                 </div>
                 <div className="md:col-span-1">
                   <label className="block text-xs font-medium text-gray-500 mb-1">
