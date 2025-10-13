@@ -4,17 +4,6 @@ import ExpertsSection from "@/components/about/ExpertsSection";
 import ContactUsSection from "@/components/ContactUsSection";
 import { Cormorant_Garamond, Roboto } from "next/font/google";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // choose weights you need
-  style: ["normal", "italic"], // aktifkan italic
-});
-
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["300"],
-});
-
 export default function AboutUsPage() {
     return (
       <main className="relative z-1 bg-[#f3eee7]">

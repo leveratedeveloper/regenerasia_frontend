@@ -180,7 +180,7 @@ const RfqForm: React.FC = () => {
       </div>
     );
   }
-
+ 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
       <Section title="Product Detail">
@@ -243,11 +243,12 @@ const RfqForm: React.FC = () => {
         </button>
       </Section>
       
+      
       <Section title="Shipment Detail">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Time & Date</label>
-                <input type="date" className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" />
+                <input type="date"  className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" />
             </div>
             <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Installation Requirement</label>

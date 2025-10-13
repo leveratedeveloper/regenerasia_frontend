@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
 export default function Header() {
@@ -21,26 +21,28 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   return (
     <>
+      {/* ===== HEADER BAR ===== */}
       <header
-        className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 py-4 z-20 transition-colors duration-300
-          border-[#F5F1E9]
-          ${scrolled ? "bg-[#f3eee7] shadow-lg" : "bg-gradient-to-b from-black/70 to-transparent"}`}
+      className={`fixed top-0 left-0 w-full flex items-center justify-between px-6 py-4 z-20 transition-colors duration-300
+        border-[#F5F1E9]
+        ${scrolled ? "bg-[#f3eee7] shadow-lg" : "bg-gradient-to-b from-black/70 to-transparent"}`}
       >
+        {/* Menu Button */}
         <button
           onClick={() => setOpen(true)}
-          className={`flex items-center gap-2 ${scrolled ? "text-black" : "text-white"} hover:opacity-80`}
+          className="flex items-center gap-2 text-black dark:text-black hover:opacity-80"
         >
           <Menu className="w-6 h-6" />
           <span className="text-sm sm:text-base font-medium">Menu</span>
         </button>
 
+        {/* Logo */}
         <div className="flex items-center">
           <Link href="/">
             <Image
-              src={scrolled ? "/image/new-logo.webp" : "/image/new-logo-white.webp"}
+              src="/image/new-logo.webp"
               alt="Logo"
               width={100}
               height={40}
@@ -50,6 +52,7 @@ export default function Header() {
         </div>
       </header>
 
+      {/* ===== OVERLAY ===== */}
       <div
         className={`fixed inset-0 z-30 transition-opacity duration-300 ${
           open ? "bg-black/50" : "pointer-events-none opacity-0"
@@ -57,29 +60,43 @@ export default function Header() {
         onClick={() => setOpen(false)}
       ></div>
 
+      {/* ===== SIDE MENU ===== */}
       <div
-        className={`fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white shadow-lg z-40 transform transition-transform duration-300 ease-in-out flex flex-col ${
+        className={`fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white dark:bg-white text-black dark:text-black shadow-lg z-40 transform transition-transform duration-300 ease-in-out flex flex-col ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex justify-between items-center p-4 border-b">
+        {/* Top Bar inside sidebar */}
+        <div className="flex justify-between items-center p-4 border-b border-gray-200">
           <Image
-                src="/image/new-logo.webp"
-                alt="Logo"
-                width={200}
-                height={20}
-                className="h-10 w-auto"
-              />
+            src="/image/new-logo.webp"
+            alt="Logo"
+            width={160}
+            height={40}
+            className="h-10 w-auto"
+          />
           <button onClick={() => setOpen(false)} className="hover:opacity-80">
-            <Menu className="w-6 h-6" />
+            <X className="w-6 h-6" />
           </button>
         </div>
+
+        {/* Nav Links */}
         <nav className="flex flex-grow flex-col items-center justify-center gap-4 p-4">
-          <Link href="/" className="hover:underline" onClick={() => setOpen(false)}>Home</Link>
-          <Link href="/aboutus" className="hover:underline" onClick={() => setOpen(false)}>About</Link>
-          <Link href="/product" className="hover:underline" onClick={() => setOpen(false)}>Services</Link>
-          <Link href="/#contact" className="hover:underline" onClick={() => setOpen(false)}>Contact</Link>
-          <Link href="/booking" className="hover:underline" onClick={() => setOpen(false)}>Booking</Link>
+          <Link href="/" className="hover:underline" onClick={() => setOpen(false)}>
+            Home
+          </Link>
+          <Link href="/aboutus" className="hover:underline" onClick={() => setOpen(false)}>
+            About
+          </Link>
+          <Link href="/product" className="hover:underline" onClick={() => setOpen(false)}>
+            Services
+          </Link>
+          <Link href="/#contact" className="hover:underline" onClick={() => setOpen(false)}>
+            Contact
+          </Link>
+          <Link href="/booking" className="hover:underline" onClick={() => setOpen(false)}>
+            Booking
+          </Link>
         </nav>
       </div>
     </>
