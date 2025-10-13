@@ -29,8 +29,8 @@ export default function PageContent() {
       onClick={() => setActiveTab(tabName)}
       className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
         activeTab === tabName
-          ? "bg-green-900 text-white text-white"
-          : ""
+          ? "bg-green-900 text-white"
+          : "bg-white text-black dark:bg-white dark:text-black hover:bg-gray-100"
       }`}
     >
       {label}
@@ -38,24 +38,28 @@ export default function PageContent() {
   );
 
   return (
-    <div className="min-h-screen font-sans text-brand-text">
-      <div className=" bg-brand-surface rounded-lg relative">
+    <div className="min-h-screen bg-white dark:bg-white text-black dark:text-black font-sans">
+      <div className="bg-white dark:bg-white text-black dark:text-black rounded-lg relative">
+        {/* ===== HERO / HEADER SECTION ===== */}
         <header className="relative">
-            <img
-                src="/image/bg-contact-us.jpg"
-                alt="Banner"
-                className="w-full h-96 object-cover rounded-t-lg"
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                <h1 className="text-3xl md:text-4xl font-alta font-bold text-white tracking-widest">
-                {activeTab === "rfq" ? 'Request for Quotation' : 'Book Your Appointment Online'}
-                </h1>
-            </div>
+          <img
+            src="/image/bg-contact-us.jpg"
+            alt="Banner"
+            className="w-full h-96 object-cover rounded-t-lg"
+          />
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <h1 className="text-3xl md:text-4xl font-alta font-bold text-white tracking-widest">
+              {activeTab === "rfq"
+                ? "Request for Quotation"
+                : "Book Your Appointment Online"}
+            </h1>
+          </div>
         </header>
 
+        {/* ===== MAIN CONTENT ===== */}
         <main className="p-6 md:p-12 max-w-5xl mx-auto">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center space-x-2 p-1 rounded-lg border border-brand-border">
+            <div className="inline-flex items-center space-x-2 p-1 rounded-lg border border-gray-300">
               <TabButton label="Booking Form" tabName="booking" />
               <TabButton label="Request for Quotation" tabName="rfq" />
             </div>

@@ -35,14 +35,12 @@ const Checkbox: React.FC<{
     />
     <div
       className={`w-5 h-5 border-2 rounded flex-shrink-0 flex items-center justify-center transition-colors ${
-        checked
-          ? "bg-brand-primary border-brand-primary"
-          : "border-gray-300"
+        checked ? "bg-green-800 border-green-800" : "border-gray-300"
       }`}
     >
       {checked && (
         <svg
-          className="w-3 h-3 text-dark"
+          className="w-3 h-3 text-white"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -56,21 +54,26 @@ const Checkbox: React.FC<{
         </svg>
       )}
     </div>
-    <span className="text-sm">{label}</span>
+    <span className="text-sm text-black">{label}</span>
   </label>
 );
 
 const Section: React.FC<{ title: string; children: React.ReactNode; className?: string }> = ({ title, children, className }) => (
-  <div className={`p-8 border border-brand-border rounded-lg ${className}`}>
-    <h3 className="text-2xl font-serif text-brand-text mb-6">{title}</h3>
+  <div className={`p-8 border border-gray-200 rounded-lg bg-white text-black ${className}`}>
+    <h3 className="text-2xl font-serif text-black mb-6">{title}</h3>
     {children}
   </div>
 );
 
 const InputField: React.FC<any> = ({ label, placeholder, type = "text", containerClassName = "", ...rest }) => (
   <div className={containerClassName}>
-    <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
-    <input type={type} placeholder={placeholder} className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" {...rest} />
+    <label className="block text-sm font-medium text-gray-800 mb-1">{label}</label>
+    <input
+      type={type}
+      placeholder={placeholder}
+      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-800 focus:border-green-800 transition bg-white text-black"
+      {...rest}
+    />
   </div>
 );
 
@@ -82,8 +85,10 @@ const SessionPackageRadio: React.FC<{
   onChange: (value: number) => void;
 }> = ({ value, label, duration, selectedValue, onChange }) => (
   <label
-    className={`p-4 rounded-lg text-center cursor-pointer transition-all duration-200 ${
-      selectedValue === value ? 'border-2 border-brand-primary bg-brand-primary/5 shadow-lg' : 'border-1 border-gray-300 border-brand-border hover:border-brand-primary/50'
+    className={`p-4 rounded-lg text-center cursor-pointer transition-all duration-200 bg-white text-black ${
+      selectedValue === value
+        ? 'border-2 border-green-800 bg-green-50 shadow-md'
+        : 'border border-gray-300 hover:border-green-800/60'
     }`}
   >
     <input
@@ -95,7 +100,7 @@ const SessionPackageRadio: React.FC<{
       className="sr-only"
     />
     <div className="font-bold text-lg">{label}</div>
-    <div className="text-sm text-gray-500">{duration}</div>
+    <div className="text-sm text-gray-600">{duration}</div>
   </label>
 );
 
@@ -104,6 +109,8 @@ type BookingFormData = z.infer<typeof bookingSchema>;
 const BookingForm: React.FC = () => {
   const [sessionPackage, setSessionPackage] = useState<number>(1);
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [date, setDate] = useState<Date | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -126,25 +133,22 @@ const BookingForm: React.FC = () => {
   const onSubmit = async (data: BookingFormData) => {
     setSubmissionStatus('loading');
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 2000)); // simulate API
       console.log(data);
       setSubmissionStatus('success');
-    } catch (error) {
+    } catch {
       setSubmissionStatus('error');
     }
   };
 
   if (submissionStatus === 'success') {
     return (
-      <div className="text-center p-12">
+      <div className="text-center p-12 bg-white text-black">
         <h2 className="text-2xl font-bold mb-4">Thank you!</h2>
         <p>Your booking has been submitted successfully.</p>
       </div>
     );
   }
-  //date disable
-  const [date, setDate] = useState<Date | null>(null);
 
   const today = new Date();
   const threeDaysLater = new Date();
@@ -159,56 +163,30 @@ const BookingForm: React.FC = () => {
   const isBlockedDate = (d: Date | null) =>
     !!d && blockedDates.includes(d.toDateString());
 
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-12 bg-white text-black p-6 md:p-12 rounded-lg shadow-sm"
+    >
       <Section title="Personal Detail">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4 md:col-span-2">
-            <InputField
-              label="Your full name"
-              placeholder="Insert your full name"
-              {...register("fullName")}
-            />
+            <InputField label="Your full name" placeholder="Insert your full name" {...register("fullName")} />
             {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName.message}</p>}
-            <InputField
-              label="Email address"
-              placeholder="Insert your business email"
-              type="email"
-              {...register("email")}
-            />
+
+            <InputField label="Email address" placeholder="Insert your business email" type="email" {...register("email")} />
             {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
-            <InputField
-              label="Phone number"
-              placeholder="+62 | 8123412345"
-              type="tel"
-              {...register("phone")}
-            />
+
+            <InputField label="Phone number" placeholder="+62 | 8123412345" type="tel" {...register("phone")} />
             {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
           </div>
+
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              I want to be contacted by
-            </label>
+            <label className="block text-sm font-medium text-gray-800 mb-2">I want to be contacted by</label>
             <div className="flex space-x-6">
-              <Checkbox
-                label="Whatsapp"
-                value="whatsapp"
-                checked={!!contactBy?.includes("whatsapp")}
-                {...register("contactBy")}
-              />
-              <Checkbox
-                label="Email"
-                value="email"
-                checked={!!contactBy?.includes("email")}
-                {...register("contactBy")}
-              />
-              <Checkbox
-                label="Phone"
-                value="phone"
-                checked={!!contactBy?.includes("phone")}
-                {...register("contactBy")}
-              />
+              <Checkbox label="Whatsapp" value="whatsapp" checked={!!contactBy?.includes("whatsapp")} {...register("contactBy")} />
+              <Checkbox label="Email" value="email" checked={!!contactBy?.includes("email")} {...register("contactBy")} />
+              <Checkbox label="Phone" value="phone" checked={!!contactBy?.includes("phone")} {...register("contactBy")} />
             </div>
             {errors.contactBy && <p className="text-red-500 text-sm">{errors.contactBy.message}</p>}
           </div>
@@ -216,117 +194,81 @@ const BookingForm: React.FC = () => {
       </Section>
 
       <Section title="Session Detail">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            How many session do you want to book?
-          </label>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-            <SessionPackageRadio
-              value={1}
-              label="1 Session"
-              duration="30 Minutes/Session"
-              selectedValue={sessionPackage}
-              onChange={setSessionPackage}
-            />
-            <SessionPackageRadio
-              value={5}
-              label="5 Session"
-              duration="30 Minutes/Session"
-              selectedValue={sessionPackage}
-              onChange={setSessionPackage}
-            />
-            <SessionPackageRadio
-              value={10}
-              label="10 Session"
-              duration="30 Minutes/Session"
-              selectedValue={sessionPackage}
-              onChange={setSessionPackage}
-            />
-          </div>
+        <label className="block text-sm font-medium text-gray-800 mb-3">
+          How many sessions do you want to book?
+        </label>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <SessionPackageRadio value={1} label="1 Session" duration="30 Minutes/Session" selectedValue={sessionPackage} onChange={setSessionPackage} />
+          <SessionPackageRadio value={5} label="5 Sessions" duration="30 Minutes/Session" selectedValue={sessionPackage} onChange={setSessionPackage} />
+          <SessionPackageRadio value={10} label="10 Sessions" duration="30 Minutes/Session" selectedValue={sessionPackage} onChange={setSessionPackage} />
+        </div>
 
-          <div className="space-y-4 mb-8">
-            {Array.from({ length: sessionPackage }, (_, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end"
-              >
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Session {i + 1}
-                  </label>
-                </div>
-                <div className="md:col-span-1">
-                  <label className="block text-xs font-medium text-gray-500 mb-1">
-                    Date
-                  </label>
-                  <div
-                    className={`rounded-md transition duration-200 ${
-                      isBlockedDate(date)
-                        ? "border-2 border-red-500 p-[1px]" // 🔴 Full red border when user picks within 3 days
-                        : "border border-gray-300"
-                    }`}
-                  >
-                    <DatePicker
-                      selected={date}
-                      onChange={(d) => setDate(d)}
-                      minDate={threeDaysLater} // can't select before 3 days
-                      dateFormat="dd/MM/yyyy" 
-                      placeholderText="dd/mm/yyyy" 
-                      className="w-full px-4 py-2 rounded-md focus:outline-none"
-                      // 🔴 Highlight all blocked dates in calendar
-                      dayClassName={(d: Date) =>
-                        blockedDates.includes(d.toDateString())
-                          ? "bg-red-100 text-red-600 font-semibold rounded-full"
-                          : ""
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="md:col-span-1">
-                  <label className="block text-xs font-medium text-gray-500 mb-1">
-                    Time
-                  </label>
-                  <input
-                    type="time"
-                    className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition"
+        <div className="space-y-4 mb-8">
+          {Array.from({ length: sessionPackage }, (_, i) => (
+            <div key={i} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+              <div className="md:col-span-1">
+                <label className="block text-sm font-medium text-gray-800 mb-1">Session {i + 1}</label>
+              </div>
+
+              <div className="md:col-span-1">
+                <label className="block text-xs font-medium text-gray-500 mb-1">Date</label>
+                <div
+                  className={`rounded-md transition duration-200 ${
+                    isBlockedDate(date) ? "border-2 border-red-500 p-[1px]" : "border border-gray-300"
+                  }`}
+                >
+                  <DatePicker
+                    selected={date}
+                    onChange={(d) => setDate(d)}
+                    minDate={threeDaysLater}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="dd/mm/yyyy"
+                    className="w-full px-4 py-2 rounded-md bg-white text-black focus:outline-none"
+                    dayClassName={(d: Date) =>
+                      blockedDates.includes(d.toDateString())
+                        ? "bg-red-100 text-red-600 font-semibold rounded-full"
+                        : ""
+                    }
                   />
                 </div>
               </div>
-            ))}
-          </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Please let us know your concern so we can assist you.
-            </label>
-            <textarea
-              rows={4}
-              className="w-full p-4 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition"
-              placeholder=""
-            />
-          </div>
+              <div className="md:col-span-1">
+                <label className="block text-xs font-medium text-gray-500 mb-1">Time</label>
+                <input
+                  type="time"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-800 focus:border-green-800 transition bg-white text-black"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-800 mb-1">
+            Please let us know your concern so we can assist you.
+          </label>
+          <textarea
+            rows={4}
+            className="w-full p-4 border border-gray-300 rounded-md focus:ring-green-800 focus:border-green-800 transition bg-white text-black"
+          />
         </div>
       </Section>
 
-      <div className="space-y-4 bg-green-50/50 p-6 rounded-lg border border-green-200">
-        <h4 className="text-xl font-serif text-brand-primary">
-          Safety guidelines
-        </h4>
-        <p className="text-sm text-gray-600">
+      <div className="space-y-4 bg-green-50 p-6 rounded-lg border border-green-200 text-black">
+        <h4 className="text-xl font-serif text-green-900">Safety guidelines</h4>
+        <p className="text-sm text-gray-700">
           For your safety, do not continue the therapy if you are:
         </p>
-        <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-          <li>
-            Anyone with built-in functioning electrical devices (e.g.
-            pacemakers, hearing aids, implanted drug pumps, etc.)
-          </li>
-          <li>Pregnant or breast feeding women</li>
-          <li>Children under the age of 12 years old</li>
+        <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+          <li>Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.)</li>
+          <li>Pregnant or breastfeeding women</li>
+          <li>Children under 12 years old</li>
           <li>Persons over 150 kg body weight</li>
-          <li>Suffers with epileptic seizures</li>
+          <li>Those suffering from epileptic seizures</li>
         </ul>
         <Checkbox
-          label="I have read the safety guidelines and confirm that I do not have the condition listed above."
+          label="I have read the safety guidelines and confirm that I do not have the conditions listed above."
           checked={!!safetyGuidelines}
           {...register("safetyGuidelines")}
         />
@@ -341,7 +283,9 @@ const BookingForm: React.FC = () => {
         >
           {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
-        {submissionStatus === 'error' && <p className="text-red-500 text-sm mt-2">Something went wrong. Please try again.</p>}
+        {submissionStatus === 'error' && (
+          <p className="text-red-500 text-sm mt-2">Something went wrong. Please try again.</p>
+        )}
       </div>
     </form>
   );

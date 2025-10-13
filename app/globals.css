@@ -5,6 +5,9 @@
   --foreground: #171717;
 }
 
+html, body {
+  @apply bg-white text-black dark:bg-white dark:text-black;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -57,3 +60,5 @@ p{
 .font-helvetica{
   font-family: 'Helvetica';
 }
+
+
