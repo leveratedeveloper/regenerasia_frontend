@@ -32,7 +32,7 @@ export default function Header() {
         {/* Menu Button */}
         <button
           onClick={() => setOpen(true)}
-          className="flex items-center gap-2 text-black dark:text-black hover:opacity-80"
+          className={`flex items-center gap-2 ${scrolled ? "text-black" : "text-white"} hover:opacity-80`}
         >
           <Menu className="w-6 h-6" />
           <span className="text-sm sm:text-base font-medium">Menu</span>

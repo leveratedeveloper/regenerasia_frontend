@@ -19,21 +19,25 @@ const VisionMissionSection: React.FC = () => {
     imageUrl: 'https://picsum.photos/seed/sunrise/800/600',
     category: 'Vision',
     title: 'A Future of Limitless Vitality',
-    description: 'We aspire to a world where advanced, accessible regenerative therapies empower every individual to live their fullest, healthiest lives, free from limitations.',
+    description: 'To be the leading and most trusted authority in advanced healthspan and regenerative technology in Southeast Asia, empowering individuals to proactively manage their health and experience a life of vitality at every age.',
   };
 
   const missionData = {
     imageUrl: 'https://picsum.photos/seed/hiker/800/600',
     category: 'Mission',
     title: 'Pioneering Natural Pathways to Renewal',
-    description: 'We aspire to a world where advanced, accessible regenerative therapies empower every individual to live their fullest, healthiest lives, free from limitations.',
-  };
+    description: `1. Introduce and Implement: To successfully introduce and implement the safest and most effective German-engineered Cold Atmospheric Plasma Technology across Indonesia.
+          2. Educate and Empower: To educate our community on the importance of cellular health and provide personalized treatment protocols that promote longevity and combat age-related decline.
+          3. Set the Standard: To maintain the highest international standards of safety, efficacy, and client care in all our regenerative programs.`,
+          };
+  
+  
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
-      <h1 className={`font-alta text-4xl md:text-5xl text-center text-[#4a442d] mb-12 `}>
+      <h2 className={`font-alta text-4xl md:text-5xl text-center text-[#4a442d] mb-12 `}>
         <b>Our <i>Vision</i> and <i>Mission</i></b>
-      </h1>
+      </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8  mx-auto">
         <InfoCard
           imageUrl={visionData.imageUrl}
@@ -45,7 +49,7 @@ const VisionMissionSection: React.FC = () => {
           imageUrl={missionData.imageUrl}
           category={missionData.category}
           title={missionData.title}
-          description={visionData.description}
+          description={missionData.description}
         />
       </div>
     </div>

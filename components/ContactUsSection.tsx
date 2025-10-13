@@ -28,7 +28,7 @@ const ContactUsSection = () => {
           </h1>
 
           <p className={`font-helvetica mt-2 text-stone-700`}>
-            Contact us to book sessions on the Human Regenerator or to enquire about purchasing for your home or business.
+          Contact us to book sessions on the Human Regenerator or to enquire about purchasing for your home or business.
           </p>
 
           <a href="/booking" className="bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition">

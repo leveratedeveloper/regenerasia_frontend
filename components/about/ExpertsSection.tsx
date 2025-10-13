@@ -17,54 +17,54 @@ const roboto = Roboto({
 
 const experts = [
   {
-    name: 'Dr. Sarah Chen',
-    title: 'Chief Medical Officer',
+    name: 'Dr. Pande Putu Agus Mahendra, M.Gizi, Sp.GK',
+    title: 'Medical Advisor',
     description:
-      '15 years of experience in cellular therapy and anti-aging medicine. Published researcher with 47 peer-reviewed papers on regenerative healing protocols.',
+      'Dr. Pande provides the critical medical foundation for all our programs. As a Specialist in Clinical Nutrition, his expertise ensures that our treatments are integrated with a holistic approach to wellness, focusing on how cellular health, nutrition, and lifestyle intertwine. He is committed to validating the scientific integrity and safety of the Cold Atmospheric Plasma (CAP) technology, ensuring every treatment plan is medically sound and tailored for optimal regenerative results.',
     imageUrl: '/image/doctor/doctor1.webp',
   },
   {
-    name: 'Dr. Emily Watson',
-    title: 'Sports Medicine Director',
+    name: 'Kharisma Hidayat',
+    title: 'Founder',
     imageUrl: '/image/doctor/doctor2.webp',
     description:
-    '15 years of experience in cellular therapy and anti-aging medicine. Published researcher with 47 peer-reviewed papers on regenerative healing protocols.',
+    'Kharisma is the visionary force behind Regenerasia. Driven by a passion for longevity and advanced German technology, he was instrumental in introducing the first COLD ATMOSPHERIC PLASMA TECHNOLOGY to Indonesia. His commitment lies in revolutionizing the Indonesian wellness industry by providing non-invasive, evidence-based tools that empower people to proactively manage their aging process and extend their active, healthy years.',
   },
   {
-    name: 'Dr. Michael Rodriguez',
-    title: 'Respiratory Specialist',
+    name: 'Nova Audianto',
+    title: 'General Manager',
     imageUrl: '/image/doctor/doctor3.webp',
     description:
-    '15 years of experience in cellular therapy and anti-aging medicine. Published researcher with 47 peer-reviewed papers on regenerative healing protocols.',
+    'As General Manager, Nova ensures the seamless operation and adherence to international standards of excellence across all Regenerasia services. His focus is on client experience, ensuring that every interaction, from consultation to post-treatment care, is professional, comfortable, and highly effective. He is dedicated to building a brand synonymous with trust, quality, and pioneering regenerative health in Indonesia.',
   },
-  {
-    name: 'Dr. James Liu',
-    title: 'Inflammation Research Lead',
-    imageUrl: '/image/doctor/doctor4.webp',
-    description:
-    '15 years of experience in cellular therapy and anti-aging medicine. Published researcher with 47 peer-reviewed papers on regenerative healing protocols.',
-  },
-  {
-    name: 'Lisa Thompson',
-    title: 'Senior Nurse Practitioner',
-    imageUrl: '/image/doctor/doctor5.webp',
-    description:
-    '15 years of experience in cellular therapy and anti-aging medicine. Published researcher with 47 peer-reviewed papers on regenerative healing protocols.',
-  },
-  {
-    name: 'Lisa Park',
-    title: 'Wellness Coordinator',
-    imageUrl: '/image/doctor/doctor6.webp',
-    description:
-    '15 years of experience in cellular therapy and anti-aging medicine. Published researcher with 47 peer-reviewed papers on regenerative healing protocols.',
-  },
+  // {
+  //   name: 'Dr. James Liu',
+  //   title: 'Inflammation Research Lead',
+  //   imageUrl: '/image/doctor/doctor4.webp',
+  //   description:
+  //   '15 years of experience in cellular therapy and anti-aging medicine. Published researcher with 47 peer-reviewed papers on regenerative healing protocols.',
+  // },
+  // {
+  //   name: 'Lisa Thompson',
+  //   title: 'Senior Nurse Practitioner',
+  //   imageUrl: '/image/doctor/doctor5.webp',
+  //   description:
+  //   '15 years of experience in cellular therapy and anti-aging medicine. Published researcher with 47 peer-reviewed papers on regenerative healing protocols.',
+  // },
+  // {
+  //   name: 'Lisa Park',
+  //   title: 'Wellness Coordinator',
+  //   imageUrl: '/image/doctor/doctor6.webp',
+  //   description:
+  //   '15 years of experience in cellular therapy and anti-aging medicine. Published researcher with 47 peer-reviewed papers on regenerative healing protocols.',
+  // },
 ];
 
 const ExpertsSection: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-12 md:py-12">
       <h2 className={`font-alta text-4xl md:text-5xl text-center text-[#4a442d] mb-4 `}>
-       <b>Our <i>Dedicated</i> Experts</b>
+       <b>TEAM MEMBER </b>
       </h2>
       <h4 className={`font-helvetica text-center text-gray-600 max-w-2xl mx-auto mb-7`}>
         Our multidisciplinary team brings together decades of experience in <br/>regenerative medicine, respiratory therapy, and holistic healing.

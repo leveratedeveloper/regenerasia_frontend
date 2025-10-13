@@ -44,7 +44,6 @@ export default function ProductPage() {
       <section className="bg-[#f3eee7] py-16 md:py-20 px-8">
         <Understanding />
         <Experience />
-        <ContactUsSection />
       </section>
     </main>
   );

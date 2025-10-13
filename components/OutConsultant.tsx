@@ -7,7 +7,7 @@ export default function OutConsultant() {
     <div className="bg-[#f3eee7] cmin-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
     <div className="w-full max-w-7xl mx-auto">
       <header className="text-center mb-3 mt-10 md:mt-20 lg:mt-20">
-        <h1 className="font-alta text-3xl md:text-4xl lg:text-5xl text-[#768c43]">Our Consultant</h1>
+        <h1 className="font-alta text-3xl md:text-4xl lg:text-5xl text-[#768c43]">OUR CONSULTANT</h1>
       </header>
 
       <main className="bg-[#f3eee7] border-stone-300/60 rounded-3xl p-6 sm:p-8 md:p-12">
@@ -30,11 +30,11 @@ export default function OutConsultant() {
               <p>
                 Dr. Pande Putu Agus Mahendra, M.Gizi, Sp.GK has extensive experience practicing in various hospitals, with a strong passion for the field of nutrition reflected in his career journey and dedication. He has also served as part of the medical team in multiple prestigious sporting events, including the Indonesia Open Aquatic Championship 2017 & 2018, the Asian Games 2018, the Asian Para Games 2018, and several other national and international sports competitions.
               </p>
-              <p>Commonly addressed as Dr. Putu, he earned his Medical Doctor degree from the Faculty of Medicine at UKI, then continued his postgraduate education in Clinical Nutrition at the Faculty of Medicine, Universitas Indonesia in 2014. He further pursued the Clinical Nutrition Specialist Program in 2016. In the same year, he completed the Doping Control Officer Training (LADI), followed by the PWC Certified Doping Control Course (2017) and Food Safety Training in Jakarta (2017).
+              <p>
+                Commonly addressed as Dr. Putu, he earned his Medical Doctor degree from the Faculty of Medicine at UKI, then continued his postgraduate education in Clinical Nutrition at the Faculty of Medicine, Universitas Indonesia in 2014. He further pursued the Clinical Nutrition Specialist Program in 2016. In the same year, he completed the Doping Control Officer Training (LADI), followed by the PWC Certified Doping Control Course (2017) and Food Safety Training in Jakarta (2017).
               </p>
               <p>Beyond his clinical practice, Dr. Pande Putu Agus Mahendra is actively involved in several professional organizations, including the Medical and Nutrition Division of PRSI (Indonesian Swimming Association), Head of Nutrition Installation at Bhayangkara Level 1 Hospital, as well as serving as a Certified Doping Control Officer in Indonesia, among others.</p>
-              <p>With his strong expertise in clinical nutrition, Dr. Putu provides health consultation services focused on nutritional balance and dietary management to support overall well-being and performance.</p>
-              
+              <p>With his strong expertise in clinical nutrition, Dr. Putu provides health consultation services focused on nutritional balance and dietary management to support overall well-being and performance.</p>   
             </div>
           </div>
         </div>
