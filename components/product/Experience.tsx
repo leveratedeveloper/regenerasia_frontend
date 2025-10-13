@@ -29,17 +29,19 @@ const Experience: React.FC = () => {
                 A soothing 30 minutes journey to rejuvenation.
               </p>
               <ul className="space-y-4 text-gray-700">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 text-gray-500">◉</span>
+                <li className="flex items-start gap-1">
+                  <span className="mt-1 text-gray-500"><img src="data:image/svg+xml;utf8,<svg width='25' height='25' viewBox='0 0 96 100' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='96' height='100'/><polygon points='48,5 85,28 85,72 48,95 11,72 11,28' stroke='%233C2726' stroke-width='8' fill='none' stroke-linejoin='round'/></svg>" alt="hexagon" />
+                  </span>
                   <span>
                     Experience a deeply soothing 30-minute session, often leading
                     to peaceful sleep or a meditative state
                   </span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 text-gray-500">◉</span>
+                <li className="flex items-start gap-1">
+                  <span className="mt-1 text-gray-500"><img src="data:image/svg+xml;utf8,<svg width='25' height='25' viewBox='0 0 96 100' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='96' height='100'/><polygon points='48,5 85,28 85,72 48,95 11,72 11,28' stroke='%233C2726' stroke-width='8' fill='none' stroke-linejoin='round'/></svg>" alt="hexagon" />
+                  </span>
                   <span>
-                    See noticeable benefits after just one session, with 5–10
+                    See noticeable benefits after just one session, with 5 – 10
                     sessions recommended for optimal, sustained wellness
                   </span>
                 </li>
@@ -63,7 +65,7 @@ const Experience: React.FC = () => {
                   "Suffers with epileptic seizures",
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <span className="text-gray-500 mt-1">⚠️</span>
+                    <span className="text-gray-500 mt-1"><img src="data:image/svg+xml;utf8,<svg width='25' height='25' viewBox='0 0 96 100' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='96' height='100'/><polygon points='48,5 85,28 85,72 48,95 11,72 11,28' stroke='%233C2726' stroke-width='8' fill='none' stroke-linejoin='round'/></svg>" alt="hexagon" /></span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -72,11 +74,11 @@ const Experience: React.FC = () => {
           </div>
 
           {/* Testimonial */}
-          <div className="bg-[#fbf9f6] rounded-2xl p-10 text-center shadow-sm">
-            <h3 className="text-2xl md:text-3xl italic font-serif text-[#2d3b26] mb-8">
+          <div className="bg-[#fbf9f6] rounded-3xl p-10 md:p-16 text-center shadow-sm  mx-auto">
+            <h3 className="font-alta text-2xl md:text-3xl italic font-serif text-[#2d3b26] mb-8">
               "I wish I'd found this sooner"
             </h3>
-            <div className="max-w-2xl mx-auto text-gray-700 text-base leading-relaxed mb-8">
+            <div className="font-helvetica text-gray-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-justify">
               <p>
                 Wow!! Where do I start! I was introduced to The Human Regenerator™
                 by the amazing Helen! I am suffering from severe endometriosis and
@@ -90,21 +92,23 @@ const Experience: React.FC = () => {
                 continues to heal. Thank you Helen and Richie for all your
                 knowledge and support on my journey. I am very grateful!!
               </p>
+          
+              {/* Author info */}
+              <div className="flex flex-col items-end text-right">
+                <Image
+                  src="/image/product/sarah.png"
+                  alt="Sarah"
+                  width={60}
+                  height={60}
+                  className="rounded-full mb-3"
+                />
+                <p className="font-alta italic font-serif text-gray-800 text-lg">
+                  Sarah, 56
+                </p>
+                <p className="font-helvetica text-gray-500 text-sm">Borehamwood, Elstree</p>
+              </div>
             </div>
 
-            {/* Author info */}
-            <div className="flex flex-col items-center">
-              <Image
-                src="/image/testimonial-sarah.png"
-                alt="Sarah"
-                width={60}
-                height={60}
-                className="rounded-full mb-3" />
-              <p className="italic font-serif text-gray-800 text-lg">
-                Sarah, 56
-              </p>
-              <p className="text-gray-500 text-sm">Borehamwood, Elstree</p>
-            </div>
           </div>
         </div>
       </section></>

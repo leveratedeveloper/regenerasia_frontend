@@ -56,12 +56,12 @@ const InfoCard: React.FC<InfoCardProps> = ({ imageUrl, category, title, descript
         {/* Description: hidden before hover */}
         {description && (
           <p
-            className={`font-helvetica
-              text-base text-white/90 mt-2 max-w-md
-              opacity-0 translate-y-2
-              transition-all duration-500 ease-in-out
-              group-hover:opacity-100 group-hover:translate-y-0
+            className={`text-sm text-white/80 font-helvetica mt-3 border-t border-white/20 pt-3 
+              overflow-hidden max-h-0 opacity-0 translate-y-3
+              transition-all duration-500 ease-in-out delay-100
+              group-hover:opacity-100 group-hover:translate-y-0 group-hover:max-h-40
             `}
+            style={{ whiteSpace: 'pre-line' }}
           >
             {description}
           </p>

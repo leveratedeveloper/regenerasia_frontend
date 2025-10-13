@@ -42,11 +42,11 @@ export default function AboutUsPage() {
             <div className="w-25 h-px bg-gray-400/100 mt-2"></div>
           </div>
 
-          <h2 className={`font-alta text-4xl md:text-6xl text-white font-normal leading-tight mb-4`}>
-            Bring Regeneration in Asia
-          </h2>
+          <h1 className={`font-alta text-4xl md:text-6xl text-white font-normal leading-tight mb-4`}>
+            Pioneering Healthspan <br/>in Indonesia
+          </h1>
           <p className={`font-helvetica text-base md:text-lg text-gray-300/90 leading-relaxed max-w-2xl`}>
-            With cutting edge technology, restore your body's stability.
+            Welcome to Regenerasia.
           </p>
         </div>
       </section>
@@ -66,11 +66,14 @@ export default function AboutUsPage() {
           {/* Text section */}
           <div className="order-2 md:order-1 text-zinc-700 font-sans mt-8 md:mt-24">
             <div className="w-16 h-0.5 bg-zinc-600/80 mb-6 md:mb-8"></div>
-            <p className="font-helvetica text-base leading-relaxed mb-4 md:mb-6">
-              Dr. Sarah Chen witnessed her grandmother's struggle with chronic pain and limited mobility. Despite countless treatments, nothing provided lasting relief until she discovered cellular regeneration therapy.
+            <p className="font-helvetica text-base leading-relaxed mb-4 md:mb-5">
+            We are proud to introduce a new era of wellness and longevity to Indonesia as the first dedicated provider of Cold Atmospheric Plasma (CAP) Technology treatments in the nation.
             </p>
             <p className="font-helvetica text-base leading-relaxed">
-              This personal journey sparked a mission to make natural, effective healing accessible to everyone. Regenerasia is here to bring the power of cellular regeneration therapy in Asia.
+            In a world where living longer is a universal desire, our focus is on ensuring you live healthier for longer—extending your healthspan. Regenerasia was founded on the belief that cutting-edge science should be accessible, providing powerful, non-invasive solutions for age-related health concerns.
+            </p>
+            <p className="font-helvetica text-base leading-relaxed">
+            Our core treatment, the innovative Cold Atmospheric Plasma technology, is sourced directly from Germany, a global leader in biomedical engineering. This non-thermal plasma treatment harnesses the regenerative power of reactive oxygen and nitrogen species (RONS) to stimulate cellular repair, modulate inflammation, and enhance overall tissue health.
             </p>
           </div>
         </div>

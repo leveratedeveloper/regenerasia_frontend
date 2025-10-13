@@ -21,7 +21,6 @@ const JourneyStep: React.FC<JourneyStepProps> = ({ number, imageUrl, caption, de
           alt={caption}
           className="w-full h-70 object-cover transform group-hover:scale-105 transition-transform duration-300 ease-in-out blur-hover"
         />
-
         {/* Overlay caption */}
         <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out blur-hover">
           <p
