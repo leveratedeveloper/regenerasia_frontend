@@ -24,28 +24,27 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
 
       {/* Blur gradient hanya bawah */}
       <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-slate-900/90 via-slate-800/40 to-transparent transition-all duration-500 group-hover:backdrop-blur-[8px]" />
-
       {/* Text container */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 text-white flex flex-col justify-end h-[50%]">
-        {/* Wrapper supaya naik saat hover */}
-        <div className="transition-all duration-500 ease-in-out group-hover:translate-y-[-20px]">
+      <div className="absolute bottom-0 left-0 right-0 p-6 text-white flex flex-col justify-end h-auto bg-gradient-to-t from-black/60 via-transparent to-transparent">
+        {/* Always visible: Name + Title */}
+        <div className="transition-all duration-500 ease-in-out">
           <h3 className="text-2xl font-alta mb-1">{name}</h3>
           <p className="text-sm text-white/90 font-helvetica mb-0">{title}</p>
         </div>
 
-        {/* Description muncul saat hover */}
+        {/* Hidden before hover, shows below */}
         {description && (
           <p
-            className="text-sm text-white/80 font-helvetica mt-3 border-t border-white/20 pt-3 
-              overflow-hidden max-h-0 opacity-0 translate-y-3
+            className="text-sm text-white/80 font-helvetica mt-3 border-t border-white/20 pt-3
+              opacity-0 translate-y-4
               transition-all duration-500 ease-in-out delay-100
-              group-hover:opacity-100 group-hover:translate-y-0 group-hover:max-h-40"
+              group-hover:opacity-100 group-hover:translate-y-0"
           >
             {description}
           </p>
         )}
-
       </div>
+
     </div>
   );
 };

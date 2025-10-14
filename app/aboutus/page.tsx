@@ -79,7 +79,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className="bg-[rgb(243,238,231)] py-16 md:py-24 px-8">
+      <section className="bg-[rgb(243,238,231)] py-12 md:py-24 px-6 md:px-8">
           <OurMissionVision />
           <Legacy />
           <ExpertsSection />
