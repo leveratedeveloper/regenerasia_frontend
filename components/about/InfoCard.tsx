@@ -77,15 +77,11 @@ const InfoCard: React.FC<InfoCardProps> = ({
           ${isActive ? "-translate-y-6" : "group-hover:-translate-y-6"}
         `}
       >
-        <p
-          className={`text-xs md:text-sm text-white/70 uppercase tracking-wider ${roboto.className}`}
-        >
+        <p className={`text-xs md:text-sm text-white/70 uppercase tracking-wider ${roboto.className}`}>
           {category}
         </p>
 
-        <h2
-          className={`text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 my-2 leading-tight ${cormorant.className}`}
-        >
+        <h2 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 my-2 leading-tight ${cormorant.className}`} >
           {title}
         </h2>
 
