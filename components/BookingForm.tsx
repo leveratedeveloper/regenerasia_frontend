@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm,Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import DatePicker from "react-datepicker";
@@ -114,6 +114,7 @@ const BookingForm: React.FC = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
     watch,
   } = useForm<BookingFormData>({
@@ -267,13 +268,24 @@ const BookingForm: React.FC = () => {
           <li>Persons over 150 kg body weight</li>
           <li>Those suffering from epileptic seizures</li>
         </ul>
-        <Checkbox
-          label="I have read the safety guidelines and confirm that I do not have the conditions listed above."
-          checked={!!safetyGuidelines}
-          {...register("safetyGuidelines")}
+
+        <Controller
+          name="safetyGuidelines"
+          control={control}
+          render={({ field }) => (
+            <Checkbox
+              label="I have read the safety guidelines and confirm that I do not have the conditions listed above."
+              checked={field.value}
+              onChange={(e) => field.onChange(e.target.checked)}
+            />
+          )}
         />
-        {errors.safetyGuidelines && <p className="text-red-500 text-sm">{errors.safetyGuidelines.message}</p>}
+
+        {errors.safetyGuidelines && (
+          <p className="text-red-500 text-sm">{errors.safetyGuidelines.message}</p>
+        )}
       </div>
+
 
       <div className="text-center">
         <button

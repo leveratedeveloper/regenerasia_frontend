@@ -50,7 +50,7 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
 
       {/* Blur gradient bawah */}
       <div
-        className={`absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-slate-900/90 via-slate-800/40 to-transparent transition-all duration-500 ${
+        className={`absolute bottom-0 left-0 right-0 h-[80%] bg-gradient-to-t from-slate-900/90 via-slate-800/40 to-transparent transition-all duration-500 ${
           isActive ? "backdrop-blur-[8px]" : "group-hover:backdrop-blur-[8px]"
         }`}
       />
@@ -72,22 +72,26 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
           </p>
         </div>
 
-        {/* Description */}
+        {/* Description (scrollable) */}
         {description && (
-          <p
-            className={`text-xs md:text-sm text-white/90 font-helvetica mt-3 border-t border-white/20
-            overflow-hidden max-h-0 opacity-0 translate-y-10 md:translate-y-20
-            transition-all duration-500 ease-in-out delay-100
+          <div
+            className={`mt-3 border-t border-white/20 transition-all duration-500 ease-in-out delay-100
+            overflow-hidden 
             ${
               isActive
-                ? "opacity-100 translate-y-[-40px] md:translate-y-[-70px] max-h-[500px] md:max-h-[1000px]"
-                : "group-hover:opacity-100 group-hover:translate-y-[-40px] md:group-hover:translate-y-[-70px] group-hover:max-h-[500px] md:group-hover:max-h-[1000px]"
+                ? "opacity-100 translate-y-[-80px] md:translate-y-[-70px] max-h-[200px] md:max-h-[300px]"
+                : "opacity-0 translate-y-10 md:translate-y-20 max-h-0 group-hover:opacity-100 group-hover:translate-y-[-40px] md:group-hover:translate-y-[-70px] group-hover:max-h-[200px] md:group-hover:max-h-[300px]"
             }`}
           >
-            {description}
-          </p>
+            <div className="overflow-y-auto max-h-[200px] md:max-h-[300px] pr-2 scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent">
+              <p className="text-xs md:text-sm text-white/90 font-helvetica mt-2">
+                {description}
+              </p>
+            </div>
+          </div>
         )}
       </div>
+
     </div>
   );
 };

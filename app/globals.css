@@ -61,4 +61,9 @@ p{
   font-family: 'Helvetica';
 }
 
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+}
 

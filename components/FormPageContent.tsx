@@ -3,20 +3,37 @@
 import React, { useState, useEffect } from "react";
 import RfqForm from "@/components/RfqForm";
 import BookingForm from "@/components/BookingForm";
+import { useRouter } from "next/navigation";
 
 type ActiveTab = "booking" | "rfq";
 
 export default function PageContent() {
   const [activeTab, setActiveTab] = useState<ActiveTab>("booking");
+  const router = useRouter();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.has("booking-form")) {
-      setActiveTab("booking");
-    } else if (params.has("rfq-form")) {
+
+    if (params.has("rfq-form")) {
       setActiveTab("rfq");
+    } else {
+      // default to booking
+      setActiveTab("booking");
+
+      // if URL has no tag, set it to ?booking-form
+      if (!params.has("booking-form")) {
+        router.replace("?booking-form");
+      }
     }
-  }, []);
+  }, [router]);
+
+  const handleTabChange = (tabName: ActiveTab) => {
+    setActiveTab(tabName);
+
+    // Update the query string without reloading
+    const newUrl = tabName === "rfq" ? "?rfq-form" : "?booking-form";
+    router.replace(newUrl);
+  };
 
   const TabButton = ({
     label,
@@ -26,7 +43,7 @@ export default function PageContent() {
     tabName: ActiveTab;
   }) => (
     <button
-      onClick={() => setActiveTab(tabName)}
+      onClick={() => handleTabChange(tabName)}
       className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
         activeTab === tabName
           ? "bg-green-900 text-white"
