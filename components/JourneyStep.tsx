@@ -7,6 +7,8 @@ interface JourneyStepProps {
   description: string;
 }
 
+
+
 const JourneyStep: React.FC<JourneyStepProps> = ({ number, imageUrl, caption, description }) => {
   return (
     <div className="flex flex-col items-center group relative w-full">
