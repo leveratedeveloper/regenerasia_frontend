@@ -15,19 +15,19 @@ const sources = [
 const Understanding: React.FC = () => {
 const [isOpen, setIsOpen] = useState(false);
   return (
-    <section className="px-4 md:px-8">
-    <h2 className="font-alta text-center font-serif text-3xl md:text-4xl text-[#364028] mb-6">
+    <section className="px-1">
+    <h2 className="font-heveltica text-center font-serif text-3xl md:text-4xl text-[#364028] mb-6">
       Understanding{" "}
-      <span className="italic font-semibold">Cell Regeneration</span>
+      <span className={`font-heveltica italic font-semibold`}>Cell Regeneration</span>
     </h2>
 
     <div className="relative w-full mx-auto bg-[#fbfaf8] rounded-2xl shadow-sm p-6 md:p-16">
-      <p className="font-helvetica text-center text-gray-700 text-base md:text-lg mb-10 md:mb-12">
+      <p className={`font-helvetica text-center text-gray-700 text-base md:text-lg mb-10 md:mb-12`}>
         Cells get damaged from free radicals. They come from many sources:
       </p>
 
       {/* Responsive grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-10 max-w-4xl mx-auto mb-12 md:mb-16">
+      <div className={`font-heveltica grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-10 max-w-4xl mx-auto mb-12 md:mb-16 mt-8`}>
         {sources.map((source) => (
           <div
             key={source}
@@ -42,67 +42,34 @@ const [isOpen, setIsOpen] = useState(false);
       </div>
 
       {/* MOBILE VERSION (Accordion below image) */}
-      <div className="block md:hidden">
-        <img
-          src="/image/product/cell-regenerator.png"
-          alt="Human Regenerator Technology"
-          className="w-full h-auto object-cover rounded-xl"
-        />
+      <div className="relative w-full text-white font-sans overflow-hidden rounded-xl md:rounded-2xl shadow-2xl">
+      {/* Background Image */}
+      <img
+        src="/image/product/cell-regenerator.webp"
+        alt="A serene, high-tech wellness clinic environment with a person receiving treatment"
+        className="w-full h-full object-cover absolute inset-0 transform scale-105"
+      />
 
-        <div className="mt-4 bg-black/40 text-white rounded-xl p-4 backdrop-blur-sm">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex justify-between items-center w-full text-left"
-          >
-            <span className="font-helvetica text-base font-semibold">
-              What does Cold Atmospheric Plasma do?
-            </span>
-            <svg
-              className={`w-5 h-5 transform transition-transform duration-300 ${
-                isOpen ? "rotate-180" : ""
-              }`}
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          {isOpen && (
-            <p className="mt-3 font-helvetica text-sm sm:text-base leading-relaxed">
-              Cold Atmospheric Plasma technology counters free radicals by
-              surrounding your body with a therapeutic blend of static energy,
-              anions, and electrons.
-              <br />
-              <br />
-              It neutralizes free radicals at their source, empowering your body
-              to shift from stress to a state of deep healing and vitality.
-            </p>
-          )}
-        </div>
-      </div>
+      {/* Gradient Overlay for Text Readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent"></div>
 
-      {/* DESKTOP VERSION (Overlay text on image) */}
-      <div className="hidden md:block relative mt-12">
-        <img
-          src="/image/product/cell-regenerator.png"
-          alt="Human Regenerator Technology"
-          className="rounded-2xl w-full object-cover shadow-lg"
-        />
+      {/* Text Content */}
+      <div className="relative flex flex-col justify-center min-h-[60vh] md:min-h-[70vh] p-6 sm:p-10 md:p-16 lg:p-24">
+        <div className="max-w-md lg:max-w-lg">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-gray-300 mb-4 font-light">
 
-        <div className="absolute bottom-8 right-8 md:w-1/3 text-white z-10 rounded-xl p-6 backdrop-blur-sm bg-black/40">
-          <p className="font-helvetica text-base md:text-lg leading-relaxed">
-            Cold Atmospheric Plasma technology counters free radicals by
-            surrounding your body with a therapeutic blend of static energy,
-            anions, and electrons.
-            <br />
-            <br />
-            It neutralizes free radicals at their source, empowering your body
-            to shift from stress to a state of deep healing and vitality.
+          </p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-thin uppercase tracking-wider leading-tight text-gray-100">
+
+          </h1>
+          <p className={`font-heveltica mt-6 sm:text-5xl  md:text-1xl text-sm sm:text-base text-gray-50 leading-relaxed`}>
+            Cold Atmospheric Plasma (CAP) is the "fourth state of matter,"
+             a room-temperature ionized gas known for its cellular regenerative properties.
+            While standard CAP is used on the skin's surface, our Regeneresia Human Regenerator uses a specialized, softer CAP+ with smaller particles that penetrate deep into the tissue to treat the entire body.
           </p>
         </div>
       </div>
+    </div>
     </div>
   </section>
   );
