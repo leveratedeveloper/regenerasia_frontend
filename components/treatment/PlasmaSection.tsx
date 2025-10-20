@@ -12,8 +12,8 @@ const PlasmaItem: React.FC<PlasmaItemProps> = ({ title, children }) => (
       <LeafIcon className="w-6 h-6 text-[#2A402E]" />
     </div>
     <div>
-      <h4 className="font-bold text-lg text-[#2A402E]">{title}</h4>
-      <p className="text-gray-600">{children}</p>
+      <h4 className={`font-helvetica font-bold text-lg text-[#2A402E]`}>{title}</h4>
+      <p className={`font-helvetica text-gray-600`}>{children}</p>
     </div>
   </div>
 );
@@ -23,11 +23,11 @@ const PlasmaSection: React.FC = () => {
     <section className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center p-4 md:p-8">
       {/* Left side: Title and description */}
       <div className="lg:w-1/3 text-center lg:text-left">
-        <h3 className="text-3xl lg:text-4xl font-bold mb-4">
-          What is Plasma and Cold Atmospheric Plasma?
-        </h3>
-        <p className="text-gray-600">
-          In the Human Regenerator Power Jet, CAP is created by applying a controlled electrical charge to air, producing a therapeutic mix of:
+        <h2 className={`font-alta text-3xl lg:text-4xl font-bold mb-4`}>
+          Next-Generation CAP Technology
+        </h2>
+        <p className={`font-helvetica text-gray-600`}>
+        Cold Atmospheric Plasma (CAP) is engineered to restore your natural bioelectric balance. The device applies a precise electrical charge to air, creating a regenerative cocktail essential for cellular regeneration:
         </p>
       </div>
 
@@ -37,18 +37,18 @@ const PlasmaSection: React.FC = () => {
 
       {/* Right side: List of plasma items */}
       <div className="lg:w-2/3 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6`}>
           <PlasmaItem title="Electrons">
-            Free-moving, negatively charged particles that stimulate cellular activity.
+            Stimulate cell activity, effectively acting as the body’s natural power source.
           </PlasmaItem>
-          <PlasmaItem title="Anions (Negative Ions)">
-            Oxygen molecules with extra electrons that help neutralise oxidative stress and support cellular balance.
+          <PlasmaItem title="Anions">
+            Powerful negative ions that immediately reduce oxidative stress and restore balance.
           </PlasmaItem>
-          <PlasmaItem title="Reactive Oxygen and Nitrogen Species (RONS)">
-            Naturally occurring molecules that, in controlled amounts, promote cell repair, immune function, and tissue regeneration.
+          <PlasmaItem title="RONS">
+            Biologically active molecules that promote healing and bolster immune function.
           </PlasmaItem>
-          <PlasmaItem title="Static Electric Fields">
-            Subtle electrical forces that influence cellular membranes, improving ion exchange and optimising cellular communication.
+          <PlasmaItem title="Static Energy">
+          Subtle fields that gently optimize how cells communicate and absorb nutrients
           </PlasmaItem>
         </div>
       </div>
