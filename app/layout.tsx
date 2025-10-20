@@ -1,6 +1,5 @@
 import Script from "next/script";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -31,23 +30,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${alta.variable} antialiased`}
-      >
-        {/* GA4 Script */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-007TQT3W99`}
-          strategy="afterInteractive"
+      <head>
+        {/* ✅ Preload custom Alta font for faster LCP rendering */}
+        <link
+          rel="preload"
+          href="/fonts/alta-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-             window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
+        <style>{`
+          :root {
+            --font-fallback: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+          }
+        `}</style>
+      </head>
 
-              gtag('config', 'G-007TQT3W99');
+      <body className={`${alta.variable} antialiased`}>
+        {/* ✅ GA4 Script - load lazily to avoid blocking render */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-007TQT3W99"
+          strategy="lazyOnload"
+        />
+        <Script id="ga4-init" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-007TQT3W99');
           `}
         </Script>
+
         <Header />
         {children}
         <Footer />
