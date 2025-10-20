@@ -60,7 +60,7 @@ const Checkbox: React.FC<{
 
 const Section: React.FC<{ title: string; children: React.ReactNode; className?: string }> = ({ title, children, className }) => (
   <div className={`p-8 border border-gray-200 rounded-lg bg-white text-black ${className}`}>
-    <h3 className="text-2xl font-serif text-black mb-6">{title}</h3>
+    <h3 className="text-2xl text-black mb-6">{title}</h3>
     {children}
   </div>
 );
@@ -257,7 +257,7 @@ const BookingForm: React.FC = () => {
       </Section>
 
       <div className="space-y-4 bg-green-50 p-6 rounded-lg border border-green-200 text-black">
-        <h4 className="text-xl font-serif text-green-900">Safety guidelines</h4>
+        <h4 className="text-xl text-green-900">Safety guidelines</h4>
         <p className="text-sm text-gray-700">
           For your safety, do not continue the therapy if you are:
         </p>

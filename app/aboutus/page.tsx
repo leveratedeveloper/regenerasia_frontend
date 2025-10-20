@@ -33,7 +33,7 @@ export default function AboutUsPage() {
         {/* Content */}
         <div className="relative max-w-4xl w-full text-white/90">
           <div className="mb-6">
-            <div className="flex items-center space-x-3 text-gray-300 font-serif italic text-lg">
+            <div className="flex items-center space-x-3 text-gray-300 italic text-lg">
               <svg className="w-4 h-4 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M12 2L2 7L2 17L12 22L22 17L22 7L12 2Z"></path>
               </svg>
@@ -64,7 +64,7 @@ export default function AboutUsPage() {
           </div>
 
           {/* Text section */}
-          <div className="order-2 md:order-1 text-zinc-700 font-sans mt-8 md:mt-24">
+          <div className="order-2 md:order-1 text-zinc-700 mt-8 md:mt-24">
             <div className="w-16 h-0.5 bg-zinc-600/80 mb-6 md:mb-8"></div>
             <p className="font-helvetica text-base leading-relaxed mb-4 md:mb-5">
             We are proud to introduce a new era of wellness and longevity to Indonesia as the first dedicated provider of Cold Atmospheric Plasma (CAP) Technology treatments in the nation.

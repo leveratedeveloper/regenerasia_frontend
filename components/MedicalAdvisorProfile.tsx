@@ -15,10 +15,10 @@ const roboto = Roboto({
 
 const MedicalAdvisorProfile: React.FC = () => {
   return (
-    <div className="bg-[#f3eee7] cmin-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
+    <div className="bg-[#f3eee7] cmin-h-screen text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
       <div className="w-full max-w-7xl mx-auto">
         <header className="text-center mb-3 mt-20">
-          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900">Our Medical Advisor</h1>
+          <h1 className=" text-3xl md:text-4xl lg:text-5xl text-stone-900">Our Medical Advisor</h1>
         </header>
 
         <main className="bg-[#f3eee7]  border-stone-300/60 rounded-3xl p-6 sm:p-8 md:p-12">
@@ -37,7 +37,7 @@ const MedicalAdvisorProfile: React.FC = () => {
               <h2 className={`${cormorant.className} text-2xl lg:text-3xl text-stone-900 uppercase tracking-widest font-semibold`}>
                 DR. OLIVIA LY LESSLAR
               </h2>
-              <h3 className={`${cormorant.className} text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-2 font-semibold`}>
+              <h3 className={`${cormorant.className} text-xl lg:text-2xl  text-stone-600 mt-2 mb-2 font-semibold`}>
                 Global Chief Medical Advisor
               </h3>
 
@@ -84,7 +84,7 @@ const MedicalAdvisorProfile: React.FC = () => {
               <h2 className={`${cormorant.className} text-2xl lg:text-3xl text-stone-900 uppercase tracking-widest font-semibold`}>
                 DR. ISABELLA SILLAR
               </h2>
-              <h3 className={`${cormorant.className} text-xl lg:text-2xl font-serif text-stone-600 mt-2 mb-2 font-semibold`}>
+              <h3 className={`${cormorant.className} text-xl lg:text-2xl  text-stone-600 mt-2 mb-2 font-semibold`}>
                 Our Medical Advisor - Australia/New Zealand
               </h3>
 

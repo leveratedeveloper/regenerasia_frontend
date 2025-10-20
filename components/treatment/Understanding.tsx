@@ -16,7 +16,7 @@ const Understanding: React.FC = () => {
 const [isOpen, setIsOpen] = useState(false);
   return (
     <section className="px-1">
-    <h2 className="font-heveltica text-center font-serif text-3xl md:text-4xl text-[#364028] mb-6">
+    <h2 className="font-heveltica text-center text-3xl md:text-4xl text-[#364028] mb-6">
       Understanding{" "}
       <span className={`font-heveltica italic font-semibold`}>Cell Regeneration</span>
     </h2>
@@ -42,7 +42,7 @@ const [isOpen, setIsOpen] = useState(false);
       </div>
 
       {/* MOBILE VERSION (Accordion below image) */}
-      <div className="relative w-full text-white font-sans overflow-hidden rounded-xl md:rounded-2xl shadow-2xl">
+      <div className="relative w-full text-white overflow-hidden rounded-xl md:rounded-2xl shadow-2xl">
       {/* Background Image */}
       <img
         src="/image/product/cell-regenerator.webp"
@@ -62,7 +62,7 @@ const [isOpen, setIsOpen] = useState(false);
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-thin uppercase tracking-wider leading-tight text-gray-100">
 
           </h1>
-          <p className={`font-heveltica mt-6 sm:text-5xl  md:text-1xl text-sm sm:text-base text-gray-50 leading-relaxed`}>
+          <p className={`font-heveltica mt-6 sm:text-5xl  md:text-xl text-gray-50 leading-relaxed`}>
             Cold Atmospheric Plasma (CAP) is the "fourth state of matter,"
              a room-temperature ionized gas known for its cellular regenerative properties.
             While standard CAP is used on the skin's surface, our Regeneresia Human Regenerator uses a specialized, softer CAP+ with smaller particles that penetrate deep into the tissue to treat the entire body.

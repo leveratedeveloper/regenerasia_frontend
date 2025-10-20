@@ -5,7 +5,7 @@ const Testimonial: React.FC = () => {
   return (
     <section className="py-16 md:py-24 px-4">
       <div className="container mx-auto max-w-3xl text-center">
-        <h2 className="font-serif text-4xl md:text-5xl text-brand-dark mb-8">
+        <h2 className=" text-4xl md:text-5xl text-brand-dark mb-8">
           "I wish I'd found this sooner"
         </h2>
         <div className="space-y-6 text-lg text-brand-text/80 mb-10">

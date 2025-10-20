@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function OutConsultant() {
   return (
-    <div className="bg-[#f3eee7] cmin-h-screen font-sans text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
+    <div className="bg-[#f3eee7] cmin-h-screen text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
     <div className="w-full max-w-7xl mx-auto">
       <header className="text-center mb-3 mt-10 md:mt-20 lg:mt-20">
         <h1 className="font-alta text-3xl md:text-4xl lg:text-5xl text-[#768c43]">OUR CONSULTANT</h1>

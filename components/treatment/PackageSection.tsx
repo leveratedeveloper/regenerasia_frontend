@@ -43,7 +43,7 @@ const PackagesSection: React.FC = () => {
       >
         <div className="border border-white/80 rounded-2xl px-8 py-10 md:px-24 md:py-14 backdrop-blur-sm transition-all duration-500">
           {/* Title */}
-          <h3 className="font-alta text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 font-serif">
+          <h3 className="font-alta text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             Packages Available
           </h3>
 

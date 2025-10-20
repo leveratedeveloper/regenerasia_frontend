@@ -28,7 +28,7 @@ const SuccessStep: React.FC<SuccessStepProps> = ({ resetForm }) => {
       </div>
 
       {/* Title and message */}
-      <h2 className="text-3xl font-semibold text-brand-dark font-serif">
+      <h2 className="text-3xl font-semibold text-brand-dark ">
         Successfully Sent Booking
       </h2>
       <p className="text-brand-gray max-w-sm">

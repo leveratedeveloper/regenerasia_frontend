@@ -55,7 +55,7 @@ export default function PageContent() {
   );
 
   return (
-    <div className="min-h-screen bg-white dark:bg-white text-black dark:text-black font-sans">
+    <div className="min-h-screen bg-white dark:bg-white text-black dark:text-black">
       <div className="bg-white dark:bg-white text-black dark:text-black rounded-lg relative">
         {/* ===== HERO / HEADER SECTION ===== */}
         <header className="relative">

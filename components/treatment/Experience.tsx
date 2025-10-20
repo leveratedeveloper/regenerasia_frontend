@@ -6,7 +6,7 @@ const Experience: React.FC = () => {
   return (
     <><section className="py-16 md:py-24 px-4">
       <div className="container mx-auto text-center">
-        <h2 className="font-alta font-serif text-4xl md:text-5xl text-brand-dark mb-12">
+        <h2 className="font-alta text-4xl md:text-5xl text-brand-dark mb-12">
           The Regeneration <i>Experience</i>
         </h2>
         <div className="max-w-6xl mx-auto">
@@ -22,7 +22,7 @@ const Experience: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8">
             {/* What to expect */}
             <div className="font-helvetica bg-[#fbf9f6] rounded-2xl p-8 shadow-sm">
-              <h3 className="text-xl font-serif text-gray-800 mb-4">
+              <h3 className="text-xl text-gray-800 mb-4">
                 What to expect
               </h3>
               <p className="text-gray-700 mb-6">
@@ -50,7 +50,7 @@ const Experience: React.FC = () => {
 
             {/* Safety guidelines */}
             <div className="bg-[#fbf9f6] rounded-2xl p-8 shadow-sm">
-              <h3 className="text-xl font-serif text-gray-800 mb-4">
+              <h3 className="text-xl text-gray-800 mb-4">
                 Safety guidelines
               </h3>
               <p className="text-gray-700 mb-6">
@@ -75,7 +75,7 @@ const Experience: React.FC = () => {
 
           {/* Testimonial */}
           <div className="bg-[#fbf9f6] rounded-3xl p-10 md:p-16 text-center shadow-sm  mx-auto">
-            <h3 className="font-alta text-2xl md:text-3xl italic font-serif text-[#2d3b26] mb-8">
+            <h3 className="font-alta text-2xl md:text-3xl italic text-[#2d3b26] mb-8">
               "I wish I'd found this sooner"
             </h3>
             <div className="font-helvetica text-gray-700 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-justify">
@@ -102,7 +102,7 @@ const Experience: React.FC = () => {
                   height={60}
                   className="rounded-full mb-3"
                 />
-                <p className="font-alta italic font-serif text-gray-800 text-lg">
+                <p className="font-alta italic text-gray-800 text-lg">
                   Sarah, 56
                 </p>
                 <p className="font-helvetica text-gray-500 text-sm">Borehamwood, Elstree</p>

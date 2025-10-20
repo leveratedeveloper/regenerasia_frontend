@@ -27,7 +27,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative font-sans text-white">
+    <div className="relative text-white">
       {/* Main Content */}
       <main className="relative z-1 bg-[#f3eee7]">
         {/* Hero with video background */}

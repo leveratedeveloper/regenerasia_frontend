@@ -88,7 +88,7 @@ const Checkbox: React.FC<any> = ({ label, checked, onChange, name, value, ...res
 
 const Section: React.FC<{ title: string; children: React.ReactNode; className?: string }> = ({ title, children, className }) => (
   <div className={`mb-10 ${className}`}>
-    <h3 className="text-2xl font-serif text-brand-text border-b border-brand-border pb-3 mb-6">{title}</h3>
+    <h3 className="text-2xl text-brand-text border-b border-brand-border pb-3 mb-6">{title}</h3>
     {children}
   </div>
 );

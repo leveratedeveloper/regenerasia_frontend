@@ -26,14 +26,7 @@ html, body {
   font-family: 'AltaRegular';
   /* font-style: normal;
   font-weight: 400;  */
-  src: url('/fonts/alta-regular.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Helvetica';
-  font-style: normal;
-  font-weight: 400; 
-  src: url('/fonts/Helvetica.ttc') format('truetype');
+  src: url('/fonts/alta-regular.woff2') format('woff2');
 }
 
 body {
@@ -55,10 +48,10 @@ p{
   backdrop-filter: blur(50px);
 }
 .font-alta{
-  font-family: 'AltaRegular';
+  font-family: var(--font-alta);
 }
 .font-helvetica{
-  font-family: 'Helvetica';
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 @layer utilities {
