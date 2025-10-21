@@ -22,7 +22,7 @@ export default function AboutUsPage() {
             className="hidden md:block w-full h-full object-cover object-center"
           />
           <img
-            src="/image/aboutUs-mobile.jpeg"
+            src="/image/aboutUs-mobile.webp"
             alt="A woman looking thoughtfully towards the sunset over the sea."
             className="block md:hidden w-full h-full object-cover object-center"
           />
