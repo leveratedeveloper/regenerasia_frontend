@@ -3,7 +3,14 @@ import Legacy from "@/components/about/LegacySection";
 import ExpertsSection from "@/components/about/ExpertsSection";
 import ContactUsSection from "@/components/ContactUsSection";
 import { Cormorant_Garamond, Roboto } from "next/font/google";
+import { ValuesSection } from "@/components/about/ValuesSection";
 
+
+export interface Value {
+  title: string;
+  imageUrl: string;
+  description: string;
+}
 export default function AboutUsPage() {
     return (
       <main className="relative z-1 bg-[#f3eee7]">
@@ -79,9 +86,10 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className="bg-[rgb(243,238,231)] py-12 md:py-24 px-1 md:px-3">
+      <section className="bg-[rgb(243,238,231)] py-12 md:py-32 px-1 md:px-1">
           <OurMissionVision />
-          <Legacy />
+          {/* <Legacy /> */}
+          <ValuesSection/>
           <ExpertsSection />
       </section>
     </main>
