@@ -21,7 +21,7 @@ const experts = [
     title: 'Medical Advisor',
     description:
       'Dr. Pande provides the critical medical foundation for all our programs. As a Specialist in Clinical Nutrition, his expertise ensures that our treatments are integrated with a holistic approach to wellness, focusing on how cellular health, nutrition, and lifestyle intertwine. He is committed to validating the scientific integrity and safety of the Cold Atmospheric Plasma (CAP) technology, ensuring every treatment plan is medically sound and tailored for optimal regenerative results.',
-    imageUrl: '/image/doctor/doctor1.webp',
+    imageUrl: '/image/doctor/dr-pande.webp',
   },
   {
     name: 'Kharisma Hidayat',
@@ -33,7 +33,7 @@ const experts = [
   {
     name: 'Nova Audianto',
     title: 'General Manager',
-    imageUrl: '/image/doctor/doctor3.webp',
+    imageUrl: '/image/doctor/pak-nova.webp',
     description:
     'As General Manager, Nova ensures the seamless operation and adherence to international standards of excellence across all Regenerasia services. His focus is on client experience, ensuring that every interaction, from consultation to post-treatment care, is professional, comfortable, and highly effective. He is dedicated to building a brand synonymous with trust, quality, and pioneering regenerative health in Indonesia.',
   },
