@@ -6,12 +6,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { postBooking } from "@/lib/api";
 
 const bookingSchema = z.object({
   fullName: z.string().min(1, { message: "Full name is required" }),
   email: z.string().email({ message: "Invalid email address" }),
   phone: z.string().min(1, { message: "Phone number is required" }),
   contactBy: z.array(z.string()).min(1, { message: "Please select a contact method" }),
+  concern: z.string().optional(),
   safetyGuidelines: z.boolean().refine((val) => val === true, {
     message: "You must agree to the safety guidelines",
   }),
@@ -110,6 +112,7 @@ const BookingForm: React.FC = () => {
   const [sessionPackage, setSessionPackage] = useState<number>(1);
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [date, setDate] = useState<Date | null>(null);
+  const [appointmentTime, setAppointmentTime] = useState("");
 
   const {
     register,
@@ -133,12 +136,41 @@ const BookingForm: React.FC = () => {
 
   const onSubmit = async (data: BookingFormData) => {
     setSubmissionStatus('loading');
+
+    // 1. Prepare payload that matches your backend
+    const payload = {
+      name: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      service_type: data.contactBy || [],
+      session_package: sessionPackage,
+      session: date && appointmentTime
+      ? [new Date(`${date.toISOString().split('T')[0]}T${appointmentTime}:00`).toISOString()]
+      : [],
+      appointment_date: date ? date.toISOString() : null,
+      appointment_time: appointmentTime,
+      notes: data.concern || "", // optional text area
+      safety_guidelines: data.safetyGuidelines ? 1 : 0, // boolean to numeric for backend
+    };
+      
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000)); // simulate API
-      console.log(data);
-      setSubmissionStatus('success');
-    } catch {
-      setSubmissionStatus('error');
+      const response = await postBooking({
+        ...payload,
+        sessionPackage,
+        date: date ? date.toISOString() : null,
+      });
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err);
+      }
+  
+      const result = await response.json();
+      console.log("Success:", result);
+  
+      setSubmissionStatus("success");
+    } catch (error) {
+      console.error(" Failed:", error);
+      setSubmissionStatus("error");
     }
   };
 
@@ -183,14 +215,42 @@ const BookingForm: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-800 mb-2">I want to be contacted by</label>
+            <label className="block text-sm font-medium text-gray-800 mb-2">
+              I want to be contacted by
+            </label>
             <div className="flex space-x-6">
-              <Checkbox label="Whatsapp" value="whatsapp" checked={!!contactBy?.includes("whatsapp")} {...register("contactBy")} />
-              <Checkbox label="Email" value="email" checked={!!contactBy?.includes("email")} {...register("contactBy")} />
-              <Checkbox label="Phone" value="phone" checked={!!contactBy?.includes("phone")} {...register("contactBy")} />
+              {["whatsapp", "email", "phone"].map((option) => (
+                <Controller
+                  key={option}
+                  name="contactBy"
+                  control={control}
+                  render={({ field }) => {
+                    const selected = field.value || [];
+                    const checked = selected.includes(option);
+
+                    return (
+                      <Checkbox
+                        label={option.charAt(0).toUpperCase() + option.slice(1)}
+                        value={option}
+                        checked={checked}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            field.onChange([...selected, option]);
+                          } else {
+                            field.onChange(selected.filter((v) => v !== option));
+                          }
+                        }}
+                      />
+                    );
+                  }}
+                />
+              ))}
             </div>
-            {errors.contactBy && <p className="text-red-500 text-sm">{errors.contactBy.message}</p>}
+            {errors.contactBy && (
+              <p className="text-red-500 text-sm">{errors.contactBy.message}</p>
+            )}
           </div>
+
         </div>
       </Section>
 
@@ -238,8 +298,11 @@ const BookingForm: React.FC = () => {
                 <label className="block text-xs font-medium text-gray-500 mb-1">Time</label>
                 <input
                   type="time"
+                  name="appointment_time"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-800 focus:border-green-800 transition bg-white text-black"
-                />
+                  value={appointmentTime}
+                  onChange={(e) => setAppointmentTime(e.target.value)}
+                  />
               </div>
             </div>
           ))}
@@ -252,6 +315,7 @@ const BookingForm: React.FC = () => {
           <textarea
             rows={4}
             className="w-full p-4 border border-gray-300 rounded-md focus:ring-green-800 focus:border-green-800 transition bg-white text-black"
+            {...register("concern")}
           />
         </div>
       </Section>
