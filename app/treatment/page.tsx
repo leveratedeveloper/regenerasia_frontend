@@ -43,12 +43,14 @@ export default function ProductPage() {
       {/* Content sections below */}
       <section className="bg-[#f3eee7] py-16 md:py-20">
         <div className="bg-[#F5F1E9] min-h-screen text-[#2A402E]  mx-auto py-8 md:py-16 px-1 sm:px-2 lg:px-3">
-          <main className="container mx-auto">
-            <h1 className={`font-alta text-4xl md:text-5xl font-bold text-center mb-8 md:mb-12`}>
+         
+          <Understanding />
+          <main className="container mx-auto mt-20">
+            <h1 className={`font-alta text-4xl md:text-5xl font-bold text-center mb-8 md:mb-8`}>
               The Science Behind Regeneration
             </h1>
             <div className="space-y-12 md:space-y-16">
-              <Understanding />
+            
               <Behind />
               <PlasmaSection />
               <PackagesSection />
