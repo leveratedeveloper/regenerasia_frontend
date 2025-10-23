@@ -9,7 +9,7 @@ interface PlasmaItemProps {
 const PlasmaItem: React.FC<PlasmaItemProps> = ({ title, children }) => (
   <div className="flex items-start space-x-4">
     <div className="flex-shrink-0 pt-1">
-      <LeafIcon className="w-6 h-6 text-[#2A402E]" />
+      <LeafIcon className="w-10 h-9 text-[#2A402E]" />
     </div>
     <div>
       <h4 className={`font-helvetica font-bold text-lg text-[#2A402E]`}>{title}</h4>

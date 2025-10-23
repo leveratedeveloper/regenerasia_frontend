@@ -31,7 +31,7 @@ const PackagesSection: React.FC = () => {
       {/* Background Layers */}
       <div className="absolute inset-0 bg-cover bg-center" />
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[url('/image/product/Package.webp')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('/image/product/package_image-treatment.webp')] bg-cover bg-center" />
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
