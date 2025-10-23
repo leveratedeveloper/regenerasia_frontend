@@ -16,14 +16,14 @@ const roboto = Roboto({
 });
 const VisionMissionSection: React.FC = () => {
   const visionData = {
-    imageUrl: 'https://picsum.photos/seed/sunrise/800/600',
+    imageUrl: '/image/aboutus/vission-image-about-us.webp',
     category: 'Vision',
     title: 'A Future of Limitless Vitality',
     description: 'To be the leading and most trusted authority in advanced healthspan and regenerative technology in Southeast Asia, empowering individuals to proactively manage their health and experience a life of vitality at every age.',
   };
   
   const missionData = {
-    imageUrl: 'https://picsum.photos/seed/hiker/800/600',
+    imageUrl: '/image/aboutus/mission-image.webp',
     category: 'Mission',
     title: 'Pioneering Natural Pathways to Renewal',
     description: [

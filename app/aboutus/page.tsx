@@ -64,7 +64,7 @@ export default function AboutUsPage() {
           {/* Image on top for mobile */}
           <div className="order-1 md:order-2 md:col-span-2">
             <img
-              src="/image/senior-women.webp"
+              src="/image/aboutus/wellness.webp"
               alt="A woman looking thoughtfully towards the sunset over the sea."
               className="rounded-2xl shadow-lg w-full h-auto object-cover"
             />
