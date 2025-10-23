@@ -21,18 +21,18 @@ const VisionMissionSection: React.FC = () => {
     title: 'A Future of Limitless Vitality',
     description: 'To be the leading and most trusted authority in advanced healthspan and regenerative technology in Southeast Asia, empowering individuals to proactively manage their health and experience a life of vitality at every age.',
   };
-
+  
   const missionData = {
     imageUrl: 'https://picsum.photos/seed/hiker/800/600',
     category: 'Mission',
     title: 'Pioneering Natural Pathways to Renewal',
-    description: `1. Introduce and Implement: To successfully introduce and implement the safest and most effective German-engineered Cold Atmospheric Plasma Technology across Indonesia.
-          2. Educate and Empower: To educate our community on the importance of cellular health and provide personalized treatment protocols that promote longevity and combat age-related decline.
-          3. Set the Standard: To maintain the highest international standards of safety, efficacy, and client care in all our regenerative programs.`,
-          };
-  
-  
-
+    description: [
+      'Introduce and Implement: To successfully introduce and implement the safest and most effective German-engineered Cold Atmospheric Plasma Technology across Indonesia.',
+      'Educate and Empower: To educate our community on the importance of cellular health and provide personalized treatment protocols that promote longevity and combat age-related decline.',
+      'Set the Standard: To maintain the highest international standards of safety, efficacy, and client care in all our regenerative programs.',
+    ],
+  };
+    
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
       <h2 className={`font-alta text-4xl md:text-5xl text-center text-[#4a442d] mb-12 `}>

@@ -18,7 +18,7 @@ interface InfoCardProps {
   imageUrl: string;
   category: string;
   title: string;
-  description?: string;
+  description?: string | string[];
 }
 
 const InfoCard: React.FC<InfoCardProps> = ({
@@ -83,23 +83,64 @@ const InfoCard: React.FC<InfoCardProps> = ({
             {title}
           </h2>
 
-          {description && (
-            <p
-              className={`
-                text-xs sm:text-sm md:text-base text-white/80 ${roboto.className}
-                mt-3 border-t border-white/20 pt-3 
-                overflow-hidden max-h-0 opacity-0 translate-y-3
-                transition-all duration-500 ease-in-out delay-100
-                 ${
+          {Array.isArray(description) ? (
+            <ul
+            className={`
+              text-xs sm:text-sm md:text-base text-white/80
+              border-t border-white/20 pt-3 
+              overflow-hidden max-h-0 opacity-0 translate-y-3
+              transition-all duration-500 ease-in-out delay-100
+              leading-relaxed space-y-3
+              ${
                 isActive
-                  ? "max-h-[200px] md:max-h-[300px] opacity-100"
-                  : "max-h-0 opacity-0 group-hover:max-h-[200px] md:group-hover:max-h-[300px] group-hover:opacity-100"
-              }`}
-              style={{ whiteSpace: "pre-line" }}
-            >
-              {description}
-            </p>
-          )}
+                  ? "max-h-[500px] opacity-100"
+                  : "max-h-0 opacity-0 group-hover:max-h-[500px] group-hover:opacity-100"
+              }
+            `}
+          >
+            {description.map((item, index) => (
+              <li
+                key={index}
+                className="flex items-start"
+              >
+                {/* Numbering */}
+                <span className="mr-3">{index + 1}.</span>
+          
+                {/* Text */}
+                <p
+                  className="flex-1"
+                  style={{
+                    textAlign: "justify",
+                    textJustify: "inter-word",
+                    hyphens: "auto",
+                  }}
+                >
+                  {item}
+                </p>
+              </li>
+            ))}
+          </ul>          
+            ) : (
+              description && (
+                <p
+                  className={`
+                    text-xs sm:text-sm md:text-base text-white/80 ${roboto.className}
+                    mt-3 border-t border-white/20 pt-3 
+                    overflow-hidden max-h-0 opacity-0 translate-y-3
+                    transition-all duration-500 ease-in-out delay-100
+                    text-justify leading-relaxed
+                    ${
+                      isActive
+                        ? "max-h-[300px] opacity-100"
+                        : "max-h-0 opacity-0 group-hover:max-h-[300px] group-hover:opacity-100"
+                    }
+                  `}
+                  style={{ whiteSpace: "pre-line", textAlign: "justify" }}
+                >
+                  {description}
+                </p>
+              )
+            )}
         </div>
       </div>
   );
