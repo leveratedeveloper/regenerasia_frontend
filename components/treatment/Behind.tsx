@@ -41,7 +41,7 @@ const HealthSpanSection: React.FC = () => {
   return (
     <section className="relative w-full rounded-2xl overflow-hidden p-6 sm:p-8 md:p-12 shadow-2xl">
       <div className="absolute inset-0 bg-cover bg-center"></div>
-      <div className="absolute inset-0 bg-[url('/image/product/TheHealth.webp')] bg-cover bg-center bg-opacity-70"></div>
+      <div className="absolute inset-0 bg-[url('/image/product/Lifespan_Healthspan.webp')] bg-cover bg-center bg-opacity-70"></div>
       
       <div className="relative z-10 text-white text-center max-w-4xl mx-auto">
         <h2 className="font-alta text-3xl sm:text-4xl lg:text-5xl mb-4">

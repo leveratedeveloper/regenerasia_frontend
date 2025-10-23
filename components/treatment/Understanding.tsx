@@ -73,7 +73,7 @@ const Understanding: React.FC = () => {
       {/* Bottom image section */}
       <div className="relative w-full text-white overflow-hidden rounded-xl md:rounded-2xl shadow-2xl mt-10">
         <img
-          src="/image/product/cell-regenerator.webp"
+          src="/image/product/CAP_product-treatment.webp"
           alt="A serene, high-tech wellness clinic environment with a person receiving treatment"
           className="w-full h-full object-cover absolute inset-0 transform scale-105"
         />
