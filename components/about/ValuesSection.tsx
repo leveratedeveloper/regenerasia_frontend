@@ -53,23 +53,31 @@ export const ValuesSection: React.FC = () => {
   return (
     <div className="w-full max-w-7xl mx-auto mt-20 px-4">
       <h1 className="font-alta text-4xl sm:text-5xl font-bold text-center mb-4 uppercase">
-          Benefits of Cold Atmospheric Plasma Programs
+        Benefits of Cold Atmospheric Plasma Programs
       </h1>
       <p className="font-hevaltica text-lg text-center text-gray-800 mb-12 max-w-3xl mx-auto">
         These principles guide our actions and define who we are. Hover over each value to learn more.
       </p>
 
-      {/* ✅ Responsive grid layout: 1 col (mobile), 3 cols (desktop) */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+      {/* ✅ All images visible in one horizontal line */}
+      <div
+        className="
+          flex flex-row flex-wrap sm:flex-nowrap
+          justify-between items-stretch
+          gap-2
+          w-full
+        "
+      >
         {valuesData.map((value, index) => (
-          <ValueCard
-            key={index}
-            value={value}
-            isHovered={hoveredIndex === index}
-            isAnyHovered={hoveredIndex !== null}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          />
+          <div key={index} className="flex-1 min-w-[150px]">
+            <ValueCard
+              value={value}
+              isHovered={hoveredIndex === index}
+              isAnyHovered={hoveredIndex !== null}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            />
+          </div>
         ))}
       </div>
     </div>
