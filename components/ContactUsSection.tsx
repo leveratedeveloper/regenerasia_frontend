@@ -35,32 +35,14 @@ const ContactUsSection = () => {
 
               <a
                 href="/booking"
-                className="inline-block bg-green-900 text-white px-6 py-2 mt-4 hover:bg-green-800 transition"
+                className="inline-block bg-green-900 rounded-xl text-white px-6 py-2 mt-4 hover:bg-green-800 transition"
               >
                 Contact Us
               </a>
             </section>
 
             {/* Contact Info */}
-            <div className="mt-8 pt-6 space-y-4 text-sm text-stone-700">
-              <div className="flex justify-between items-center border-b pb-3">
-                <div>
-                  <h3 className="font-heveltica font-semibold text-1xl md:text-2xl">Address</h3>
-                  <p>Jl HR Rasuna Said Kav X-6/8 Sentra Mulia, Dki Jakarta, 12950.</p>
-                </div>
-                <ArrowRight className="text-gray-500" size={16} />
-              </div>
 
-              <div className="flex justify-between items-center border-b pb-3">
-                <p className="font-heveltica">(+62) 87909938777</p>
-                <ArrowRight className="text-gray-500" size={16} />
-              </div>
-
-              <div className="flex justify-between items-center">
-                <p className="font-heveltica">info@regenerasia.com</p>
-                <ArrowRight className="text-gray-500" size={16} />
-              </div>
-            </div>
           </div>
         </div>
       </div>

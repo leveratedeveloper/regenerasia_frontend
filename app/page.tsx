@@ -44,12 +44,12 @@ export default function Home() {
         </section>
 
         {/* Journey */}
-        <section className=" min-h-screen w-full bg-[#f3eee7] text-[#768c43] flex flex-col items-center py-4  md:py-14">
+        <section className=" w-full bg-[#f3eee7] text-[#768c43] flex flex-col items-center py-4  md:py-14">
           <Journey steps={journeySteps} />
         </section>
 
         {/* Energize */}
-        <section className="min-h-screen w-full bg-[#f3eee7] text-[#768c43] flex flex-col items-center mt-10">
+        <section className="min-h-screen w-full bg-[#f3eee7] text-[#768c43] flex flex-col items-center mt-8">
           <Energize steps={energizeSteps} />
         </section>
 
