@@ -60,9 +60,9 @@ export default function AboutUsPage() {
 
       {/* Founder's Story Section */}
       <section className="bg-[rgb(243,238,231)] py-12 md:py-24 px-1 md:px-3">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-center max-w-6xl">
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl">
           {/* Image on top for mobile */}
-          <div className="order-1 md:order-2 md:col-span-2">
+          <div className="order-1 md:order-2 md:col-span-1">
             <img
               src="/image/aboutus/wellness.webp"
               alt="A woman looking thoughtfully towards the sunset over the sea."
@@ -71,7 +71,7 @@ export default function AboutUsPage() {
           </div>
 
           {/* Text section */}
-          <div className="order-2 md:order-1 text-zinc-700 mt-8 md:mt-24">
+          <div className="order-2 md:order-1 text-zinc-700 mt-8 md:mt-24 text-justify">
             <div className="w-16 h-0.5 bg-zinc-600/80 mb-6 md:mb-8"></div>
             <p className="font-helvetica text-base leading-relaxed mb-4 md:mb-5">
             We are proud to introduce a new era of wellness and longevity to Indonesia as the first dedicated provider of Cold Atmospheric Plasma (CAP) Technology treatments in the nation.
@@ -86,7 +86,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className="bg-[rgb(243,238,231)] py-12 md:py-32 px-1 md:px-1">
+      <section className="bg-[rgb(243,238,231)] py-12 md:py-12 px-1 md:px-1">
           <OurMissionVision />
           {/* <Legacy /> */}
           <ValuesSection/>

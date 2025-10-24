@@ -45,8 +45,8 @@ export const ValueCard: React.FC<ValueCardProps> = ({
     rounded-2xl overflow-hidden shadow-md
     bg-cover bg-center cursor-pointer
     ${isMobile ? "h-[280px]" : "h-[420px]"}
-    flex-1
-    ${active && !isMobile ? "sm:flex-[3] sm:scale-[1.02]" : "sm:flex-[1]"}
+    w-full
+    ${active && !isMobile ? "scale-[1.02]" : "scale-100"}
   `;
 
   const overlayClasses = `
