@@ -21,6 +21,10 @@ const alta = localFont({
 export const metadata: Metadata = {
   title: "Regenerasia - Restart, Restore, Regenerate",
   description: "Human Regenerator",
+  icons: {
+    icon: "/favicon.ico", 
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
