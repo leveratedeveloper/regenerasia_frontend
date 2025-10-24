@@ -71,11 +71,11 @@ const InfoCard: React.FC<InfoCardProps> = ({
       {/* Blurred Bottom Content */}
       <div className={`
           absolute bottom-0 w-full backdrop-blur-sm bg-black/40 
-          p-3 md:p-5 
+          p-2 md:p-5 
           transition-all duration-500 ease-in-out 
-          ${isActive ? "-translate-y-6" : "group-hover:-translate-y-6"}
+          ${isActive ? "-translate-y-6 h-[100%]" : "group-hover:-translate-y-6"}
         `}>
-          <p className={`text-xs md:text-sm text-white/70 uppercase tracking-wider ${roboto.className}`}>
+          <p className={`text-xs sm:text-sm text-white/70 uppercase tracking-wider ${roboto.className}`}>
             {category}
           </p>
 

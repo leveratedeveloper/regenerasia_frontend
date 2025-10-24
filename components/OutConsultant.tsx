@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export default function OutConsultant() {
   return (
-    <div className="bg-[#f3eee7] cmin-h-screen text-stone-800 flex flex-col items-center justify-center p-0 sm:p-10">
+    <div className="bg-[#f3eee7] text-stone-800 flex flex-col items-center justify-center">
     <div className="w-full max-w-7xl mx-auto">
-      <header className="text-center mb-3 mt-10 md:mt-20 lg:mt-20">
+      <header className="text-center mb-3">
         <h1 className="font-alta text-3xl md:text-4xl lg:text-5xl text-[#768c43]">OUR CONSULTANT</h1>
       </header>
 
@@ -15,7 +15,7 @@ export default function OutConsultant() {
           {/* Image Column */}
           <div className="md:col-span-5 flex items-center justify-center">
             <img
-              src="/image/dr-pande.png"
+              src="/image/doctor/dr-pande.webp"
               alt="Dr. Olivia Ly Lesslar"
               className="rounded-2xl w-full h-auto object-cover shadow-lg"
             />

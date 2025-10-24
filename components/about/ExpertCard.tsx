@@ -50,7 +50,7 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
 
       {/* Blur gradient bawah */}
       <div
-        className={`absolute bottom-0 left-0 right-0 h-[80%] bg-gradient-to-t from-slate-900/90 via-slate-800/40 to-transparent transition-all duration-500 ${
+        className={`absolute bottom-0 left-0 right-0 h-[100%] bg-gradient-to-t from-slate-900/90 via-slate-800/40 to-transparent transition-all duration-500 ${
           isActive ? "backdrop-blur-[8px]" : "group-hover:backdrop-blur-[8px]"
         }`}
       />

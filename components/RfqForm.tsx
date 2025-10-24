@@ -33,20 +33,16 @@ const rfqSchema = z.object({
 });
 
 export interface ProductItem {
-    id: number;
-    name: string;
-    qty: number;
-    budget: number;
-    warranty: boolean;
-    request: string;
-    image: string;
-  }
+  id: number;
+  name: string;
+  qty: number;
+  basePrice: number;
+  budget: number;
+  warranty: boolean;
+  request: string;
+  image: string;
+}
 
-const initialProducts: ProductItem[] = [
-  { id: 1, name: 'Regeneration machine', qty: 2, budget: 120000000, warranty: true, request: 'It has to consider allergic response of "illness type-A"', image: 'https://picsum.photos/seed/product1/64/64' },
-  { id: 2, name: 'Regeneration machine', qty: 2, budget: 120000000, warranty: false, request: 'Insert request', image: 'https://picsum.photos/seed/product2/64/64' },
-  { id: 3, name: 'Regeneration machine', qty: 2, budget: 120000000, warranty: true, request: 'Insert request', image: 'https://picsum.photos/seed/product3/64/64' },
-];
 
 const Checkbox: React.FC<any> = ({ label, checked, onChange, name, value, ...rest }) => (
   <label className="flex items-center space-x-3 cursor-pointer">
@@ -113,7 +109,6 @@ const SelectField: React.FC<any> = ({ label, placeholder, options, containerClas
 type RfqFormData = z.infer<typeof rfqSchema>;
 
 const RfqForm: React.FC = () => {
-  const [products, setProducts] = useState<ProductItem[]>(initialProducts);
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const {
     register,
@@ -132,6 +127,28 @@ const RfqForm: React.FC = () => {
         agreeToCommunications: true,
     },
   });
+  const initialProducts: ProductItem[] = [
+    {
+      id: 1,
+      name: "Regeneration machine",
+      qty: 1,
+      basePrice: 120000000,
+      budget: 120000000,
+      warranty: true,
+      request: 'It has to consider allergic response of "illness type-A"',
+      image: "https://picsum.photos/seed/product1/64/64",
+    },
+    {
+      id: 2,
+      name: "Regeneration machine",
+      qty: 1,
+      basePrice: 120000000,
+      budget: 120000000,
+      warranty: false,
+      request: "Insert request",
+      image: "https://picsum.photos/seed/product2/64/64",
+    },
+  ];
 
   const contactBy = watch("contactBy");
   const installationSupport = watch("installationSupport");
@@ -140,7 +157,7 @@ const RfqForm: React.FC = () => {
   const sameAsShippingAddress = watch("sameAsShippingAddress");
   const confirmInformation = watch("confirmInformation");
   const agreeToCommunications = watch("agreeToCommunications");
-
+  
   const onSubmit = async (data: RfqFormData) => {
     setSubmissionStatus('loading');
     try {
@@ -152,17 +169,6 @@ const RfqForm: React.FC = () => {
       setSubmissionStatus('error');
     }
   };
-
-  const addProduct = useCallback(() => {
-    setProducts(prev => [
-      ...prev,
-      { id: Date.now(), name: 'New Item', qty: 1, budget: 0, warranty: false, request: '', image: `https://picsum.photos/seed/${Date.now()}/64/64` }
-    ]);
-  }, []);
-
-  const removeProduct = useCallback((id: number) => {
-    setProducts(prev => prev.filter(p => p.id !== id));
-  }, []);
 
   const handleProductWarrantyChange = (productId: number) => {
     setProducts(prev =>
@@ -180,67 +186,116 @@ const RfqForm: React.FC = () => {
       </div>
     );
   }
- 
+  
+  const [products, setProducts] = useState<ProductItem[]>(initialProducts);
+  const formatIDR = (value: number) =>
+    new Intl.NumberFormat("id-ID").format(value);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
-      <Section title="Product Detail">
-        <div className="space-y-4">
-          <label className="block text-sm font-medium text-gray-700">Product Requirement</label>
-          <textarea 
-            rows={4}
-            className="w-full p-4 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition"
-            defaultValue={"- Quality of the product has to met our global standard and fulfill ISO-900N\n- We need at least 1 year guarantee\n- Flexible price to negotiate"}
-            {...register("productRequirement")}
-          />
-          <button type="button" className="inline-flex items-center space-x-2 px-4 py-2 border border-brand-primary text-brand-primary rounded-md hover:bg-brand-primary/10 transition">
-            <Paperclip size={16} />
-            <span>Attach Document</span>
-          </button>
-        </div>
-      </Section>
-
       <Section title="Product List">
         <div className="space-y-4">
-          {products.map(product => (
-            <div key={product.id} className="grid grid-cols-1 md:grid-cols-[auto_1fr] lg:grid-cols-[auto_repeat(6,1fr)_auto] gap-4 items-center p-4 border border-brand-border rounded-lg">
-              <img src={product.image} alt={product.name} className="w-16 h-16 rounded-md object-cover hidden lg:block" />
-              <div className="md:col-span-2 lg:col-span-1">
-                <label className="text-xs text-gray-500 md:hidden">Product</label>
-                <input defaultValue={product.name} className="w-full p-2 border-b-2 border-transparent focus:border-brand-primary outline-none bg-transparent"/>
-              </div>
-              <div className="grid grid-cols-2 gap-4 md:col-span-4 lg:col-span-5">
-                 <div className="col-span-1 lg:col-span-1">
-                    <label className="text-xs text-gray-500">QTY</label>
-                    <input type="number" defaultValue={product.qty} className="w-full p-2 border-b-2 border-transparent focus:border-brand-primary outline-none bg-transparent"/>
-                 </div>
-                 <div className="col-span-1 lg:col-span-2">
-                    <label className="text-xs text-gray-500">Estimate Budget</label>
-                    <div className="flex items-center">
-                        <span className="text-gray-500 mr-2">IDR</span>
-                        <input type="text" defaultValue={new Intl.NumberFormat('id-ID').format(product.budget)} className="w-full p-2 border-b-2 border-transparent focus:border-brand-primary outline-none bg-transparent"/>
-                    </div>
-                 </div>
-                 <div className="col-span-2 lg:col-span-2">
-                     <label className="text-xs text-gray-500">Specification request</label>
-                     <input defaultValue={product.request} className="w-full p-2 border-b-2 border-transparent focus:border-brand-primary outline-none bg-transparent"/>
-                 </div>
-              </div>
-              <div className="flex items-center justify-between md:col-span-full lg:col-auto lg:flex-col lg:items-center lg:space-y-2">
-                 <div className="flex items-center space-x-2">
-                    <label className="text-xs text-gray-500">Warranty</label>
-                    <Checkbox label="" checked={product.warranty} onChange={() => handleProductWarrantyChange(product.id)}/>
-                 </div>
-                 <button type="button" onClick={() => removeProduct(product.id)} className="text-red-500 hover:text-red-700 transition">
-                    <Trash2 size={20}/>
-                </button>
-              </div>
+        <div className="p-6 space-y-6">
+      {products.map((product) => (
+        <div
+          key={product.id}
+          className="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4 border rounded-2xl shadow-sm bg-white"
+        >
+          {/* 🖼 Product Info */}
+          <div className="flex items-center space-x-4 lg:col-span-1">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-16 h-16 rounded-lg object-cover"
+            />
+            <div>
+              <h3 className="font-semibold text-gray-800">{product.name}</h3>
+              <p className="text-xs text-gray-500">Warranty: {product.warranty ? "Yes" : "No"}</p>
             </div>
-          ))}
+          </div>
+
+          {/* 🔢 QTY */}
+          <div className="col-span-1 flex flex-col justify-center">
+            <label className="text-xs text-gray-500 mb-1">QTY</label>
+            <div className="flex items-center border-b-2 border-transparent focus-within:border-brand-primary transition">
+              <button
+                type="button"
+                onClick={() =>
+                  setProducts((prev) =>
+                    prev.map((p) =>
+                      p.id === product.id && p.qty > 1
+                        ? { ...p, qty: p.qty - 1, budget: (p.qty - 1) * p.basePrice }
+                        : p
+                    )
+                  )
+                }
+                className="px-2 text-gray-500 hover:text-brand-primary"
+              >
+                −
+              </button>
+
+              <input
+                type="number"
+                value={product.qty}
+                onChange={(e) => {
+                  const newQty = Math.max(1, Number(e.target.value) || 1);
+                  setProducts((prev) =>
+                    prev.map((p) =>
+                      p.id === product.id
+                        ? { ...p, qty: newQty, budget: newQty * p.basePrice }
+                        : p
+                    )
+                  );
+                }}
+                className="w-12 text-center outline-none bg-transparent"
+              />
+
+              <button
+                type="button"
+                onClick={() =>
+                  setProducts((prev) =>
+                    prev.map((p) =>
+                      p.id === product.id
+                        ? { ...p, qty: p.qty + 1, budget: (p.qty + 1) * p.basePrice }
+                        : p
+                    )
+                  )
+                }
+                className="px-2 text-gray-500 hover:text-brand-primary"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          {/* 💰 Estimate Budget */}
+          <div className="col-span-1 lg:col-span-2 flex flex-col justify-center">
+            <label className="text-xs text-gray-500 mb-1">Estimate Budget</label>
+            <div className="flex items-center">
+              <span className="text-gray-500 mr-2">IDR</span>
+              <input
+                type="text"
+                value={formatIDR(product.budget)}
+                readOnly
+                className="w-full p-2 border-b-2 border-transparent focus:border-brand-primary outline-none bg-transparent font-medium text-gray-800"
+              />
+            </div>
+          </div>
         </div>
-        <button type="button" onClick={addProduct} className="mt-6 inline-flex items-center space-x-2 px-4 py-2 border border-brand-primary text-brand-primary rounded-md hover:bg-brand-primary/10 transition">
-          <Plus size={16} />
-          <span>Add Item</span>
-        </button>
+      ))}
+
+      {/* 🧾 Total Budget Summary */}
+      <div className="text-right pt-4 border-t mt-8">
+        <span className="font-semibold text-gray-700">
+          Total Estimated Cost:{" "}
+          <span className="text-brand-primary">
+            IDR{" "}
+            {formatIDR(products.reduce((sum, p) => sum + p.budget, 0))}
+          </span>
+        </span>
+      </div>
+    </div>
+        </div>
       </Section>
       
       
@@ -323,7 +378,7 @@ const RfqForm: React.FC = () => {
           <div className="space-y-4 bg-gray-50 p-6 rounded-lg">
              <Checkbox label="I confirm that the information provided is a accurate and I am authorized to request a quotation on behalf of my company." checked={confirmInformation} {...register("confirmInformation")} />
              {errors.confirmInformation && <p className="text-red-500 text-sm">{errors.confirmInformation.message}</p>}
-             <Checkbox label="I agree to receive communications (SMS, email) re booking confirmation & reminders." checked={agreeToCommunications} {...register("agreeToCommunications")} />
+             <Checkbox label="I agree to receive communications (SMS, Email, Whatsapp) re booking confirmation & reminders." checked={agreeToCommunications} {...register("agreeToCommunications")} />
              {errors.agreeToCommunications && <p className="text-red-500 text-sm">{errors.agreeToCommunications.message}</p>}
              <button
                 type="submit"

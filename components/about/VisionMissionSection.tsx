@@ -19,7 +19,7 @@ const VisionMissionSection: React.FC = () => {
     imageUrl: '/image/aboutus/vission-image-about-us.webp',
     category: 'Vision',
     title: 'A Future of Limitless Vitality',
-    description: 'To be the leading and most trusted authority in advanced healthspan and regenerative technology in Southeast Asia, empowering individuals to proactively manage their health and experience a life of vitality at every age.',
+    description: ['To be the leading and most trusted authority in advanced healthspan and regenerative technology in Southeast Asia, empowering individuals to proactively manage their health and experience a life of vitality at every age.'],
   };
   
   const missionData = {
