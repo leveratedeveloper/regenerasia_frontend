@@ -39,16 +39,16 @@ const PlasmaSection: React.FC = () => {
       <div className="lg:w-2/3 w-full">
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6`}>
           <PlasmaItem title="Electrons">
-            Stimulate cell activity, effectively acting as the body’s natural power source.
+           Stimulate cell activity, effectively acting as the body's natural power source
           </PlasmaItem>
           <PlasmaItem title="Anions">
-            Powerful negative ions that immediately reduce oxidative stress and restore balance.
+          Powerful negative ions that immediately reduce oxidative stress and restore balance.
           </PlasmaItem>
-          <PlasmaItem title="RONS">
+          <PlasmaItem title="RONS (Reactive Oxygen and Nitrogen Species)">
             Biologically active molecules that promote healing and bolster immune function.
           </PlasmaItem>
           <PlasmaItem title="Static Energy">
-          Subtle fields that gently optimize how cells communicate and absorb nutrients
+          Subtle fields that gently optimize how cells communicate and absorb nutrients.
           </PlasmaItem>
         </div>
       </div>

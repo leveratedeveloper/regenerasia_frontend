@@ -96,19 +96,21 @@ const HealthSpanSection: React.FC = () => {
       <div className="relative z-10 mt-12 lg:mt-20 flex items-center justify-center lg:h-[500px]">
         
         {/* --- DESKTOP LAYOUT --- */}
-        <div className="hidden lg:block w-full h-full">
+        {/* FIX: Added 'relative' class here.
+          Now, the 'absolute' circle inside will be positioned relative
+          to this div, and will be hidden along with it on mobile.
+        */}
+        <div className="hidden lg:block w-full h-full relative">
           
           {/* Interactive Circle */}
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none"> {/* Added pointer-events-none so it doesn't block boxes underneath */}
             <div
               className={`relative w-[420px] h-[420px] lg:w-[480px] lg:h-[480px] rounded-full border border-white/40 flex items-center justify-center transition-all duration-500 ${
                 circleHovered
                   ? "scale-105 shadow-[0_0_40px_rgba(255,255,255,0.5)] border-white/80" // Active state
                   : "scale-100 shadow-none" // Default state
               }`}
-              // The circle can also be hovered directly
-              onMouseEnter={() => setCircleHovered(true)}
-              onMouseLeave={() => setCircleHovered(false)}
+              // Removed direct mouse events from circle wrapper to let boxes control it
             >
               <p
                 className={`font-helvetica w-72 text-center transition-colors duration-300 ${
@@ -123,6 +125,7 @@ const HealthSpanSection: React.FC = () => {
           </div>
 
           {/* Four boxes around the circle */}
+          {/* Added 'relative' to this container so it sits on top of the circle */}
           <div className="relative w-full h-full flex flex-col items-center justify-center gap-y-42">
             {/* Top row of boxes */}
             <div className="font-helvetica flex justify-center w-full gap-x-40 lg:gap-x-56">
