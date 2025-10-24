@@ -15,7 +15,7 @@ export default function HeroSection() {
       </h1>
       <a
         href="/booking?booking-form"
-        className="font-helvetica px-5 py-2.5 border border-white/40 text-[16px] sm:text-[18px] md:text-[20px] text-white hover:bg-white/10 transition drop-shadow-lg backdrop-blur-[24px] mt-5 "
+        className="font-helvetica px-5 py-2.5 border border-white/40 rounded-md text-[16px] sm:text-[18px] md:text-[20px] text-white hover:bg-white/10 transition drop-shadow-lg backdrop-blur-[24px] mt-5 "
       >
         Book a Session Now
       </a>
