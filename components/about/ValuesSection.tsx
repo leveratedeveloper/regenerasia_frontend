@@ -60,26 +60,28 @@ export const ValuesSection: React.FC = () => {
       </p>
 
       {/* ✅ All images visible in one horizontal line */}
-      <div
-        className="
-          flex flex-row flex-wrap sm:flex-nowrap
-          justify-between items-stretch
-          gap-2
-          w-full
-        "
-      >
-        {valuesData.map((value, index) => (
-          <div key={index} className="flex-1 min-w-[150px]">
-            <ValueCard
-              value={value}
-              isHovered={hoveredIndex === index}
-              isAnyHovered={hoveredIndex !== null}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            />
-          </div>
-        ))}
-      </div>
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full transition-all duration-700 ease-in-out">
+      {valuesData.map((value, index) => (
+        <div
+          key={index}
+          className={`transition-[flex] duration-700 ease-in-out ${
+            hoveredIndex === index
+              ? "sm:flex-[3]"
+              : hoveredIndex !== null
+              ? "sm:flex-[1]"
+              : "sm:flex-[1]"
+          }`}
+        >
+          <ValueCard
+            value={value}
+            isHovered={hoveredIndex === index}
+            isAnyHovered={hoveredIndex !== null}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          />
+        </div>
+      ))}
+    </div>
     </div>
   );
 };

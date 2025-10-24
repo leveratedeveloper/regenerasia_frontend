@@ -41,6 +41,7 @@ export interface ProductItem {
   warranty: boolean;
   request: string;
   image: string;
+  selected: boolean;
 }
 
 
@@ -132,21 +133,23 @@ const RfqForm: React.FC = () => {
       id: 1,
       name: "Regeneration machine",
       qty: 1,
-      basePrice: 120000000,
-      budget: 120000000,
+      basePrice: 1000000000,
+      budget: 1000000000,
       warranty: true,
       request: 'It has to consider allergic response of "illness type-A"',
       image: "https://picsum.photos/seed/product1/64/64",
+      selected: false,
     },
     {
       id: 2,
       name: "Regeneration machine",
       qty: 1,
-      basePrice: 120000000,
-      budget: 120000000,
+      basePrice: 1000000000,
+      budget: 1000000000,
       warranty: false,
       request: "Insert request",
       image: "https://picsum.photos/seed/product2/64/64",
+      selected: false,
     },
   ];
 
@@ -203,6 +206,18 @@ const RfqForm: React.FC = () => {
         >
           {/* 🖼 Product Info */}
           <div className="flex items-center space-x-4 lg:col-span-1">
+            <input
+              type="checkbox"
+              checked={product.selected}
+              onChange={() =>
+                setProducts((prev) =>
+                  prev.map((p) =>
+                    p.id === product.id ? { ...p, selected: !p.selected } : p
+                  )
+                )
+              }
+              className="w-5 h-5 accent-brand-primary cursor-pointer"
+            />
             <img
               src={product.image}
               alt={product.name}
