@@ -41,12 +41,12 @@ export const ValueCard: React.FC<ValueCardProps> = ({
   const active = isHovered || (isMobile && isTapped);
 
   const cardClasses = `
-    relative transition-all duration-700 ease-in-out
+    relative duration-700 
     rounded-2xl overflow-hidden shadow-md
     bg-cover bg-center cursor-pointer
     ${isMobile ? "h-[280px]" : "h-[420px]"}
     w-full
-    ${active && !isMobile ? "scale-[1.02]" : "scale-100"}
+    ${active && !isMobile ? "scale-[1.00]" : "scale-100"}
   `;
 
   const overlayClasses = `
@@ -79,7 +79,7 @@ export const ValueCard: React.FC<ValueCardProps> = ({
       <div
         className="
           absolute inset-0 z-10 flex flex-col items-center justify-end
-          text-white text-center px-3 sm:px-6 pb-6 sm:pb-10
+          text-white text-center px-3 sm:px-6 pb-6 sm:pb-10 text-justify
         "
       >
         <div
@@ -121,7 +121,7 @@ export const ValueCard: React.FC<ValueCardProps> = ({
                 active
                   ? isMobile
                     ? "opacity-100 -translate-y-40" // mobile tap
-                    : "opacity-123 -translate-y-45" // desktop hover
+                    : "opacity-100 -translate-y-45" // desktop hover
                   : "opacity-0 translate-y-3" // default hidden
               }
             `}

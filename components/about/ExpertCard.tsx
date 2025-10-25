@@ -75,7 +75,7 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
         {/* Description (scrollable) */}
         {description && (
           <div
-            className={`mt-3 border-t border-white/20 transition-all duration-500 ease-in-out delay-100
+            className={`mt-3 text-justify border-t border-white/20 transition-all duration-500 ease-in-out delay-100
             overflow-hidden 
             ${
               isActive

@@ -26,7 +26,7 @@ const JourneyStep: React.FC<JourneyStepProps> = ({ number, imageUrl, caption, de
         {/* Overlay caption */}
         <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out blur-hover">
           <p
-            className={`font-helvetica text-sm md:text-[20px] lg:text-[23px] text-white text-center mx-4`}
+            className={`font-helvetica text-sm md:text-[20px] lg:text-[23px] text-white text-justify mx-4`}
             style={{ lineHeight: '1' }}
           >
             {description}

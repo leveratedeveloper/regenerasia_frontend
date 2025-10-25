@@ -26,7 +26,7 @@ export default function OutConsultant() {
             <h2 className={`font-alta text-2xl lg:text-2xl text-stone-900 uppercase tracking-widest font-semibold`}>
             Dr PANDE PUTU AGUS MAHENDRA, M.Gizi, Sp.GK
             </h2>
-            <div className={`font-helvetica text-stone-700 leading-relaxed text-base mb-10`}>
+            <div className={`font-helvetica text-justify text-stone-700 leading-relaxed text-base mb-10`}>
               <p>
                 Dr. Pande Putu Agus Mahendra, M.Gizi, Sp.GK has extensive experience practicing in various hospitals, with a strong passion for the field of nutrition reflected in his career journey and dedication. He has also served as part of the medical team in multiple prestigious sporting events, including the Indonesia Open Aquatic Championship 2017 & 2018, the Asian Games 2018, the Asian Para Games 2018, and several other national and international sports competitions.
               </p>

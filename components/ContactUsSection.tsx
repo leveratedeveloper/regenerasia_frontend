@@ -29,7 +29,7 @@ const ContactUsSection = () => {
                 Regenerasia Today
               </h1>
 
-              <p className="font-helvetica mt-2 text-stone-700">
+              <p className="font-helvetica text-justify mt-2 text-stone-700">
                 Contact us to book sessions on the Human Regenerator or to enquire about purchasing for your home or business.
               </p>
 
