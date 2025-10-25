@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
             className="h-18 w-auto"
           />
           <div className="text-gray-700 text-base leading-relaxed mt-2">
-            <h3 className={`${cormorant.className} text-2xl text-gray-800 mb-2 `}>
+            <h3 className={`${cormorant.className} text-2md text-gray-800 mb-2 `}>
               AYANA Midplaza Jakarta
             </h3>
             <p className={`${roboto.className} text-gray-500 text-xs lg:text-base` }>

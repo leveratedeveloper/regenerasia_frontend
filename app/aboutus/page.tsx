@@ -59,7 +59,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* Founder's Story Section */}
-      <section className="bg-[rgb(243,238,231)] py-12 md:py-24 px-1 md:px-3">
+      <section className="bg-[rgb(243,238,231)] py-12 md:py-14 px-1 md:px-3">
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl">
           {/* Image on top for mobile */}
           <div className="order-1 md:order-2 md:col-span-1">
@@ -86,7 +86,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className="bg-[rgb(243,238,231)] py-12 md:py-12 px-1 md:px-1">
+      <section className="bg-[rgb(243,238,231)] py-12 md:py-12">
           <OurMissionVision />
           {/* <Legacy /> */}
           <ValuesSection/>

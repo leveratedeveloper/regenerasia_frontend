@@ -66,7 +66,7 @@ export const ValuesSection: React.FC = () => {
           key={index}
           className={`transition-[flex] duration-700 ease-in-out ${
             hoveredIndex === index
-              ? "sm:flex-[3]"
+              ? "sm:flex-[2]"
               : hoveredIndex !== null
               ? "sm:flex-[1]"
               : "sm:flex-[1]"

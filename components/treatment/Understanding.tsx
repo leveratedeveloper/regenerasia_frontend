@@ -37,7 +37,7 @@ const Understanding: React.FC = () => {
     <section className="px-1">
       <h2 className="font-heveltica text-center text-3xl md:text-4xl text-[#364028] mb-6">
         Understanding{" "}
-        <span className="font-heveltica italic font-semibold">
+        <span className="font-heveltica font-semibold">
           Cell Regeneration
         </span>
       </h2>
@@ -49,25 +49,29 @@ const Understanding: React.FC = () => {
 
         {/* Grid for image + description */}
         <div className="font-heveltica grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-6 max-w-5xl mx-auto mb-12 md:mb-16 mt-8">
-          {sources.map((source, index) => (
-            <div
-              key={index}
-              className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4"
-            >
-              {/* Logo image */}
-              <img
-                src={source.img}
-                alt={`Icon ${index + 1}`}
-                className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
-              />
+        {sources.map((source, index) => (
+          <div
+            key={index}
+            className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4"
+          >
+            {/* Logo image */}
+            <img
+              src={source.img}
+              alt={`Icon ${index + 1}`}
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
+            />
 
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-gray-600 mt-5">
-                {source.description}
-              </p>
-            </div>
-          ))}
-        </div>
+            {/* Vertical Divider */}
+            <div className="hidden sm:block w-px h-15 bg-gray-800"></div>
+
+            {/* Description */}
+            <p className="text-xs sm:text-sm text-gray-600 mt-5 sm:mt-0">
+              {source.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
       </div>
 
       {/* Bottom image section */}

@@ -91,9 +91,6 @@ export default function Header() {
           <Link href="/treatment" className="hover:underline" onClick={() => setOpen(false)}>
             Treatment
           </Link>
-          <Link href="/#contact" className="hover:underline" onClick={() => setOpen(false)}>
-            Contact
-          </Link>
           <Link href="/booking" className="hover:underline" onClick={() => setOpen(false)}>
             Booking
           </Link>
