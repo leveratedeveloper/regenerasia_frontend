@@ -1,61 +1,50 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { Check, MessageCircle } from "lucide-react";
 
 interface SuccessStepProps {
   resetForm: () => void;
 }
 
-const SuccessStep: React.FC<SuccessStepProps> = ({ resetForm }) => {
-  // Replace with your WhatsApp number (international format, no + or dashes)
+export default function SuccessStep() {
   const whatsappNumber = "628123456789";
   const message = encodeURIComponent("Hi! I just submitted a booking form.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
+
   return (
-    <div className="flex flex-col items-center justify-center text-center space-y-6 animate-fade-in py-16">
-      {/* Success icon */}
-      <div className="relative w-16 h-16">
-        <Check
-          size={40}
-          className="text-brand-green absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-12"
-        />
-        <Check
-          size={40}
-          className="text-brand-green absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12"
-        />
-      </div>
+    <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">
+      <div className="bg-white rounded-2xl shadow-lg max-w-md w-full p-8 flex flex-col items-center text-center space-y-6 animate-fade-in">
+        {/* Success Icon */}
+        <div className="flex items-center justify-center w-20 h-20 bg-green-100 rounded-full">
+          <Check size={40} className="text-green-600" />
+        </div>
 
-      {/* Title and message */}
-      <h2 className="text-3xl font-semibold text-brand-dark ">
-        Successfully Sent Booking
-      </h2>
-      <p className="text-brand-gray max-w-sm">
-        We will review your details and contact you shortly to confirm your session.
-      </p>
+        {/* Title */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+          Booking Sent Successfully!
+        </h2>
 
-      {/* Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4">
-        <button
-          onClick={resetForm}
-          className="bg-brand-green text-white px-8 py-2.5 text-sm font-medium hover:bg-opacity-90 transition-colors rounded-md"
-        >
-          Back to Homepage
-        </button>
+        {/* Message */}
+        <p className="text-gray-600 text-base sm:text-lg">
+          Thank you for submitting your booking. <br />
+          We will review your details and contact you shortly to confirm your session.
+        </p>
+       
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 w-full">
+          <a
+            href="/"
+            className="w-full sm:w-auto bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-3 rounded-lg font-medium transition text-center"
+          >
+            Back to Homepage
+          </a>
 
-        <a
-          href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-8 py-2.5 text-sm font-medium transition-colors rounded-md"
-        >
-          <MessageCircle size={18} />
-          Chat via WhatsApp
-        </a>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1 bg-green-500 hover:bg-green-600 text-white px-8 py-2.5 text-sm font-medium transition-colors rounded-md" > Chat via WhatsApp </a>
+        </div>
       </div>
     </div>
   );
-};
-
-export default SuccessStep;
+}

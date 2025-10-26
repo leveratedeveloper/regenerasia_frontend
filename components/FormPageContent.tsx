@@ -82,7 +82,13 @@ export default function PageContent() {
             </div>
           </div>
 
-          {activeTab === "rfq" ? <RfqForm /> : <BookingForm />}
+          <div className={activeTab === "rfq" ? "block" : "hidden"}>
+            <RfqForm />
+          </div>
+          <div className={activeTab === "booking" ? "block" : "hidden"}>
+            <BookingForm />
+          </div>
+
         </main>
       </div>
     </div>
