@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useRouter,redirect } from "next/navigation";
+import React, { useState,useEffect } from 'react';
 import { useForm,Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -111,8 +112,9 @@ type BookingFormData = z.infer<typeof bookingSchema>;
 const BookingForm: React.FC = () => {
   const [sessionPackage, setSessionPackage] = useState<number>(1);
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [date, setDate] = useState<Date | null>(null);
-  const [appointmentTime, setAppointmentTime] = useState("");
+  const [dates, setDates] = useState<(Date | null)[]>([]);
+  const [appointmentTimes, setAppointmentTimes] = useState<string[]>([]);
+
 
   const {
     register,
@@ -133,6 +135,7 @@ const BookingForm: React.FC = () => {
 
   const contactBy = watch("contactBy");
   const safetyGuidelines = watch("safetyGuidelines");
+  const router = useRouter();
 
   const onSubmit = async (data: BookingFormData) => {
     setSubmissionStatus('loading');
@@ -144,48 +147,44 @@ const BookingForm: React.FC = () => {
       phone: data.phone,
       service_type: data.contactBy || [],
       session_package: sessionPackage,
-      session: date && appointmentTime
-      ? [new Date(`${date.toISOString().split('T')[0]}T${appointmentTime}:00`).toISOString()]
-      : [],
-      appointment_date: date ? date.toISOString() : null,
-      appointment_time: appointmentTime,
-      notes: data.concern || "", // optional text area
-      safety_guidelines: data.safetyGuidelines ? 1 : 0, // boolean to numeric for backend
+      session: dates.map((d, i) =>
+        d && appointmentTimes[i]
+          ? new Date(`${d.toISOString().split("T")[0]}T${appointmentTimes[i]}:00`).toISOString()
+          : null
+      ).filter(Boolean),
+      appointment_date: dates[0] ? dates[0].toISOString() : null, // use first session date as main
+      appointment_time: appointmentTimes[0] || null, // use first session time as main
+      notes: data.concern || "",
+      safety_guidelines: data.safetyGuidelines ? 1 : 0,
     };
-      
+
     try {
-      const response = await postBooking({
+      const result = await postBooking({
         ...payload,
         sessionPackage,
-        date: date ? date.toISOString() : null,
+        date: dates.filter(Boolean).map((d) => d!.toISOString()),
       });
-      if (!response.ok) {
-        const err = await response.json();
-        throw new Error(err);
+
+      if (result.status === "success") {
+        console.log("✅ Booking created:", result.data);
+     
+  
+        // Redirect to success page
+        router.push("/success");
+        setSubmissionStatus("success");
+      } else {
+        console.warn("⚠️ Booking failed:", result.message);
+        setSubmissionStatus("error");
       }
-  
-      const result = await response.json();
-      console.log("Success:", result);
-  
-      setSubmissionStatus("success");
     } catch (error) {
       console.error(" Failed:", error);
       setSubmissionStatus("error");
     }
   };
 
-  if (submissionStatus === 'success') {
-    return (
-      <div className="text-center p-12 bg-white text-black">
-        <h2 className="text-2xl font-bold mb-4">Thank you!</h2>
-        <p>Your booking has been submitted successfully.</p>
-      </div>
-    );
-  }
-
   const today = new Date();
   const threeDaysLater = new Date();
-  threeDaysLater.setDate(today.getDate() + 3);
+  threeDaysLater.setDate(today.getDate() + 1);
 
   const blockedDates = Array.from({ length: 3 }, (_, i) => {
     const d = new Date();
@@ -196,6 +195,29 @@ const BookingForm: React.FC = () => {
   const isBlockedDate = (d: Date | null) =>
     !!d && blockedDates.includes(d.toDateString());
 
+  //time hours
+  const [appointmentTime, setAppointmentTime] = useState("00:00");
+
+  useEffect(() => {
+    // Set default time ke 00:00 saat pertama kali load
+    setAppointmentTime("00:00");
+  }, []);
+
+  const handleTimeChange = (e: { target: { value: any; }; }) => {
+    const time = e.target.value;
+    const [hours, minutes] = time.split(":").map(Number);
+
+    let roundedHour = hours;
+
+    // Jika menit >= 30 → naik ke jam berikutnya
+    if (minutes >= 30) {
+      roundedHour = (hours + 1) % 24; // agar 23:30 jadi 00:00
+    }
+
+    const formatted = `${String(roundedHour).padStart(2, "0")}:00`;
+    setAppointmentTime(formatted);
+  };
+  
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -265,47 +287,71 @@ const BookingForm: React.FC = () => {
         </div>
 
         <div className="space-y-4 mb-8">
-          {Array.from({ length: sessionPackage }, (_, i) => (
-            <div key={i} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
-              <div className="md:col-span-1">
-                <label className="block text-sm font-medium text-gray-800 mb-1">Session {i + 1}</label>
-              </div>
+        {Array.from({ length: sessionPackage }, (_, i) => (
+          <div key={i} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+            <div className="md:col-span-1">
+              <label className="block text-sm font-medium text-gray-800 mb-1">
+                Session {i + 1}
+              </label>
+              {i + 1 > 1 && <div className="text-xs text-gray-500 italic">Optional</div>}
+            </div>
 
-              <div className="md:col-span-1">
-                <label className="block text-xs font-medium text-gray-500 mb-1">Date</label>
-                <div
-                  className={`rounded-md transition duration-200 ${
-                    isBlockedDate(date) ? "border-2 border-red-500 p-[1px]" : "border border-gray-300"
-                  }`}
-                >
-                  <DatePicker
-                    selected={date}
-                    onChange={(d) => setDate(d)}
-                    minDate={threeDaysLater}
-                    dateFormat="dd/MM/yyyy"
-                    placeholderText="dd/mm/yyyy"
-                    className="w-full px-4 py-2 rounded-md bg-white text-black focus:outline-none"
-                    dayClassName={(d: Date) =>
-                      blockedDates.includes(d.toDateString())
-                        ? "bg-red-100 text-red-600 font-semibold rounded-full"
-                        : ""
-                    }
-                  />
-                </div>
-              </div>
-
-              <div className="md:col-span-1">
-                <label className="block text-xs font-medium text-gray-500 mb-1">Time</label>
-                <input
-                  type="time"
-                  name="appointment_time"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-800 focus:border-green-800 transition bg-white text-black"
-                  value={appointmentTime}
-                  onChange={(e) => setAppointmentTime(e.target.value)}
-                  />
+            {/* Date Picker */}
+            <div className="md:col-span-1">
+              <label className="block text-xs font-medium text-gray-500 mb-1">Date</label>
+              <div
+                className={`rounded-md transition duration-200 ${
+                  dates[i] && isBlockedDate(dates[i])
+                    ? "border-2 border-red-500 p-[1px]"
+                    : "border border-gray-300"
+                }`}
+              >
+                <DatePicker
+                  selected={dates[i] || null}
+                  onChange={(d) => {
+                    const newDates = [...dates];
+                    newDates[i] = d;
+                    setDates(newDates);
+                  }}
+                  minDate={threeDaysLater}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText="dd/mm/yyyy"
+                  className="w-full px-4 py-2 rounded-md bg-white text-black focus:outline-none"
+                />
               </div>
             </div>
-          ))}
+
+            {/* Time Picker */}
+            <div className="md:col-span-1">
+              <label className="block text-xs font-medium text-gray-500 mb-1">Time</label>
+              <input
+                type="time"
+                name={`appointment_time_${i}`}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-800 focus:border-green-800 transition bg-white text-black"
+                value={appointmentTimes[i] || "00:00"}
+                onChange={(e) => {
+                  const time = e.target.value;
+                  const [hours, minutes] = time.split(":").map(Number);
+                  let roundedHour = hours;
+
+                  if (minutes >= 30) {
+                    roundedHour = (hours + 1) % 24;
+                  }
+
+                  const formatted = `${String(roundedHour).padStart(2, "0")}:00`;
+
+                  const newTimes = [...appointmentTimes];
+                  newTimes[i] = formatted;
+                  setAppointmentTimes(newTimes);
+                }}
+                min="00:00"
+                max="23:00"
+                step={3600}
+              />
+            </div>
+          </div>
+        ))}
+
         </div>
 
         <div>

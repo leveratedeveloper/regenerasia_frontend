@@ -108,27 +108,7 @@ const SelectField: React.FC<any> = ({ label, placeholder, options, containerClas
 );
 
 type RfqFormData = z.infer<typeof rfqSchema>;
-
-const RfqForm: React.FC = () => {
-  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    watch,
-  } = useForm<RfqFormData>({
-    resolver: zodResolver(rfqSchema),
-    defaultValues: {
-        installationSupport: true,
-        moreThanOneYearWarranty: false,
-        technicalTraining: true,
-        sameAsShippingAddress: false,
-        contactBy: ["email"],
-        confirmInformation: true,
-        agreeToCommunications: true,
-    },
-  });
-  const initialProducts: ProductItem[] = [
+ const initialProducts: ProductItem[] = [
     {
       id: 1,
       name: "Regeneration machine",
@@ -152,6 +132,28 @@ const RfqForm: React.FC = () => {
       selected: false,
     },
   ];
+const RfqForm: React.FC = () => {
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [products, setProducts] = useState<ProductItem[]>(initialProducts); // ✅ moved up
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    watch,
+  } = useForm<RfqFormData>({
+    resolver: zodResolver(rfqSchema),
+    defaultValues: {
+        installationSupport: true,
+        moreThanOneYearWarranty: false,
+        technicalTraining: true,
+        sameAsShippingAddress: false,
+        contactBy: ["email"],
+        confirmInformation: true,
+        agreeToCommunications: true,
+    },
+  });
+ 
 
   const contactBy = watch("contactBy");
   const installationSupport = watch("installationSupport");
@@ -190,7 +192,6 @@ const RfqForm: React.FC = () => {
     );
   }
   
-  const [products, setProducts] = useState<ProductItem[]>(initialProducts);
   const formatIDR = (value: number) =>
     new Intl.NumberFormat("id-ID").format(value);
 
