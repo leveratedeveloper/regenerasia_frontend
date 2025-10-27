@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useState, useCallback } from 'react';
+import React, { useState,useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Plus, Paperclip, Trash2 } from 'lucide-react';
+import { Paperclip } from 'lucide-react';
+import { postRfq } from "@/lib/api";
+import { useRouter } from 'next/navigation'; // <-- 1. IMPORT ROUTER
 
+// --- ZOD SCHEMA (Unchanged) ---
 const rfqSchema = z.object({
   productRequirement: z.string().optional(),
   installationSupport: z.boolean(),
@@ -32,6 +35,7 @@ const rfqSchema = z.object({
   }),
 });
 
+// --- INTERFACES & MOCK COMPONENTS (Unchanged) ---
 export interface ProductItem {
   id: number;
   name: string;
@@ -43,7 +47,6 @@ export interface ProductItem {
   image: string;
   selected: boolean;
 }
-
 
 const Checkbox: React.FC<any> = ({ label, checked, onChange, name, value, ...rest }) => (
   <label className="flex items-center space-x-3 cursor-pointer">
@@ -107,6 +110,7 @@ const SelectField: React.FC<any> = ({ label, placeholder, options, containerClas
   </div>
 );
 
+// --- TYPES & INITIAL DATA (Unchanged) ---
 type RfqFormData = z.infer<typeof rfqSchema>;
  const initialProducts: ProductItem[] = [
     {
@@ -132,9 +136,17 @@ type RfqFormData = z.infer<typeof rfqSchema>;
       selected: false,
     },
   ];
+
+  
+
+// --- MAIN RFQ FORM COMPONENT ---
 const RfqForm: React.FC = () => {
+  const router = useRouter(); // <-- 2. INITIALIZE ROUTER
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [products, setProducts] = useState<ProductItem[]>(initialProducts); // ✅ moved up
+  const [products, setProducts] = useState<ProductItem[]>(initialProducts);
+  const [selectedDateShipment, setSelectedDate] = useState<string>("");
+  const [fileName, setFileName] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const {
     register,
@@ -154,7 +166,7 @@ const RfqForm: React.FC = () => {
     },
   });
  
-
+  // Watch values for controlled checkboxes (unchanged)
   const contactBy = watch("contactBy");
   const installationSupport = watch("installationSupport");
   const moreThanOneYearWarranty = watch("moreThanOneYearWarranty");
@@ -163,18 +175,103 @@ const RfqForm: React.FC = () => {
   const confirmInformation = watch("confirmInformation");
   const agreeToCommunications = watch("agreeToCommunications");
   
+  // NOTE: selectedProducts definition moved inside onSubmit
+
+  // --- 3. CORRECTED ONSUBMIT FUNCTION ---
   const onSubmit = async (data: RfqFormData) => {
     setSubmissionStatus('loading');
+
+    // 1. Get the selected products *inside* the submit handler
+    // This version includes all relevant product details.
+    const selectedProductsList = products
+      .filter(p => p.selected)
+      .map(product => ({
+        id: product.id,
+        name: product.name,
+        qty: product.qty,
+        budget: product.budget,
+        warranty: product.warranty,
+        request: product.request,
+      }));
+
+    // 2. Prepare the *complete* payload
+    const payload = {
+      // Buyer Details (from react-hook-form 'data')
+      fullName: data.fullName,
+      email: data.email,
+      company: data.company,
+      position: data.position,
+      country: data.country,
+      city: data.city,
+      deliveryAddress: data.deliveryAddress,
+      postalCode: data.postalCode,
+      sameAsShippingAddress: data.sameAsShippingAddress,
+      contactBy: data.contactBy,
+      attachment: fileName,
+      // Shipment Details
+      delivery_required_date: selectedDateShipment, // From local state
+      installationSupport: data.installationSupport,
+      moreThanOneYearWarranty: data.moreThanOneYearWarranty,
+      technicalTraining: data.technicalTraining,
+
+      // Purchase Details
+      purpose: data.purpose,
+      paymentTerms: data.paymentTerms,
+      additionalTerms: data.additionalTerms,
+      productRequirement: data.productRequirement,
+
+      // Product List
+      products: selectedProductsList, // Use the list defined above
+
+      // Terms & Agreement
+      confirmInformation: data.confirmInformation,
+      agreeToCommunications: data.agreeToCommunications,
+    };
+    
+    // 3. Calculate total cost (optional, good for verification)
+    const totalEstimatedCost = selectedProductsList.reduce((sum, p) => sum + p.budget, 0);
+
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log(data);
-      setSubmissionStatus('success');
+      // 4. Send the *correct* payload to the backend
+      // Removed the erroneous 'date: dates.filter...' line
+      const result = await postRfq({
+          ...payload,
+          totalEstimatedCost: totalEstimatedCost, // Send total cost if API needs it
+      });
+
+      if (result.status === "success") {
+        
+        console.log("✅ RFQ submitted successfully:", result.data);
+   
+        // Redirect to success page (router is now defined)
+        router.push("/success");
+        setSubmissionStatus("success");
+      } else {
+        console.warn("⚠️ RFQ submission failed:", result.message);
+        setSubmissionStatus("error");
+      }
     } catch (error) {
-      setSubmissionStatus('error');
+      console.error("❌ An error occurred during submission:", error);
+      setSubmissionStatus("error");
     }
   };
 
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFileName(file.name);
+      console.log("📁 File selected:", file.name);
+      // You can store file to send later (for example with FormData)
+      // setSelectedFile(file);
+    }
+  };
+
+  const handleButtonClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  // --- HELPER FUNCTIONS & SUCCESS STATE (Unchanged) ---
   const handleProductWarrantyChange = (productId: number) => {
     setProducts(prev =>
       prev.map(p =>
@@ -195,110 +292,105 @@ const RfqForm: React.FC = () => {
   const formatIDR = (value: number) =>
     new Intl.NumberFormat("id-ID").format(value);
 
+  // --- JSX (Unchanged) ---
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
       <Section title="Product List">
         <div className="space-y-4">
         <div className="p-6 space-y-6">
-      {products.map((product) => (
-        <div
-          key={product.id}
-          className="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4 border rounded-2xl shadow-sm bg-white"
-        >
-          {/* 🖼 Product Info */}
-          <div className="flex items-center space-x-4 lg:col-span-1">
-            <input
-              type="checkbox"
-              checked={product.selected}
-              onChange={() =>
-                setProducts((prev) =>
-                  prev.map((p) =>
-                    p.id === product.id ? { ...p, selected: !p.selected } : p
-                  )
-                )
-              }
-              className="w-5 h-5 accent-brand-primary cursor-pointer"
-            />
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-16 h-16 rounded-lg object-cover"
-            />
-            <div>
-              <h3 className="font-semibold text-gray-800">{product.name}</h3>
-              <p className="text-xs text-gray-500">Warranty: {product.warranty ? "Yes" : "No"}</p>
-            </div>
-          </div>
-
-          {/* 🔢 QTY */}
-          <div className="col-span-1 flex flex-col justify-center">
-            <label className="text-xs text-gray-500 mb-1">QTY</label>
-            <div className="flex items-center border-b-2 border-transparent focus-within:border-brand-primary transition">
-              <button
-                type="button"
-                onClick={() =>
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4 border rounded-2xl shadow-sm bg-white"
+          >
+            <div className="flex items-center space-x-4 lg:col-span-1">
+              <input
+                type="checkbox"
+                checked={product.selected}
+                onChange={() =>
                   setProducts((prev) =>
                     prev.map((p) =>
-                      p.id === product.id && p.qty > 1
-                        ? { ...p, qty: p.qty - 1, budget: (p.qty - 1) * p.basePrice }
-                        : p
+                      p.id === product.id ? { ...p, selected: !p.selected } : p
                     )
                   )
                 }
-                className="px-2 text-gray-500 hover:text-brand-primary"
-              >
-                −
-              </button>
-
-              <input
-                type="number"
-                value={product.qty}
-                onChange={(e) => {
-                  const newQty = Math.max(1, Number(e.target.value) || 1);
-                  setProducts((prev) =>
-                    prev.map((p) =>
-                      p.id === product.id
-                        ? { ...p, qty: newQty, budget: newQty * p.basePrice }
-                        : p
-                    )
-                  );
-                }}
-                className="w-12 text-center outline-none bg-transparent"
+                className="w-5 h-5 accent-brand-primary cursor-pointer"
               />
+              <img src={product.image} alt={product.name} className="w-16 h-16 rounded-lg object-cover" />
+              <div>
+                <h3 className="font-semibold text-gray-800">{product.name}</h3>
+                <p className="text-xs text-gray-500">Warranty: {product.warranty ? "Yes" : "No"}</p>
+              </div>
+            </div>
 
-              <button
-                type="button"
-                onClick={() =>
-                  setProducts((prev) =>
-                    prev.map((p) =>
-                      p.id === product.id
-                        ? { ...p, qty: p.qty + 1, budget: (p.qty + 1) * p.basePrice }
-                        : p
+            {/* QTY */}
+            <div className="col-span-1 flex flex-col justify-center">
+              <label className="text-xs text-gray-500 mb-1">QTY</label>
+              <div className="flex items-center border-b-2 border-transparent focus-within:border-brand-primary transition">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setProducts((prev) =>
+                      prev.map((p) =>
+                        p.id === product.id && p.qty > 1
+                          ? { ...p, qty: p.qty - 1, budget: (p.qty - 1) * p.basePrice }
+                          : p
+                      )
                     )
-                  )
-                }
-                className="px-2 text-gray-500 hover:text-brand-primary"
-              >
-                +
-              </button>
+                  }
+                  className="px-2 text-gray-500 hover:text-brand-primary"
+                >
+                  −
+                </button>
+                <input
+                  type="number"
+                  value={product.qty}
+                  onChange={(e) => {
+                    const newQty = Math.max(1, Number(e.target.value) || 1);
+                    setProducts((prev) =>
+                      prev.map((p) =>
+                        p.id === product.id
+                          ? { ...p, qty: newQty, budget: newQty * p.basePrice }
+                          : p
+                      )
+                    );
+                  }}
+                  className="w-12 text-center outline-none bg-transparent"
+                />
+                <button
+                  type="button"
+                  onClick={() =>
+                    setProducts((prev) =>
+                      prev.map((p) =>
+                        p.id === product.id
+                          ? { ...p, qty: p.qty + 1, budget: (p.qty + 1) * p.basePrice }
+                          : p
+                      )
+                    )
+                  }
+                  className="px-2 text-gray-500 hover:text-brand-primary"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            {/* 💰 Budget */}
+            <div className="col-span-1 lg:col-span-2 flex flex-col justify-center">
+              <label className="text-xs text-gray-500 mb-1">Estimate Budget</label>
+              <div className="flex items-center">
+                <span className="text-gray-500 mr-2">IDR</span>
+                <input
+                  type="text"
+                  value={formatIDR(product.budget)}
+                  readOnly
+                  className="w-full p-2 border-b-2 border-transparent focus:border-brand-primary outline-none bg-transparent font-medium text-gray-800"
+                />
+              </div>
             </div>
           </div>
+        ))}
 
-          {/* 💰 Estimate Budget */}
-          <div className="col-span-1 lg:col-span-2 flex flex-col justify-center">
-            <label className="text-xs text-gray-500 mb-1">Estimate Budget</label>
-            <div className="flex items-center">
-              <span className="text-gray-500 mr-2">IDR</span>
-              <input
-                type="text"
-                value={formatIDR(product.budget)}
-                readOnly
-                className="w-full p-2 border-b-2 border-transparent focus:border-brand-primary outline-none bg-transparent font-medium text-gray-800"
-              />
-            </div>
-          </div>
-        </div>
-      ))}
 
       {/* 🧾 Total Budget Summary */}
       <div className="text-right pt-4 border-t mt-8">
@@ -323,7 +415,10 @@ const RfqForm: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Time & Date</label>
-                <input type="date"  className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" />
+                <input type="date" 
+                value={selectedDateShipment}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" />
             </div>
             <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Installation Requirement</label>
@@ -352,12 +447,17 @@ const RfqForm: React.FC = () => {
                     <input placeholder="Insert payment terms" className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" {...register("paymentTerms")} />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Additional terms</label>
-                    <textarea rows={3} placeholder="Insert additional terms" className="w-full p-4 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" {...register("additionalTerms")} />
-                    <button type="button" className="mt-2 inline-flex items-center space-x-2 px-4 py-2 border border-brand-primary text-brand-primary rounded-md hover:bg-brand-primary/10 transition">
-                        <Paperclip size={16} />
-                        <span>Attach Document</span>
-                    </button>
+                <label htmlFor="file-upload" className="mt-2 inline-flex items-center space-x-2 px-4 py-2 border border-brand-primary text-brand-primary rounded-md hover:bg-brand-primary/10 transition cursor-pointer">
+                    <Paperclip size={16} />
+                    <span>Upload File</span>
+                    <input
+                      id="file-upload"
+                      type="file"
+                      className="hidden"
+                      ref={fileInputRef}
+                      onChange={handleFileChange}
+                    />
+                  </label>
                 </div>
             </div>
             <div className="space-y-4">
@@ -395,20 +495,33 @@ const RfqForm: React.FC = () => {
       </Section>
       
       <Section title="Terms & Agreement">
-          <div className="space-y-4 bg-gray-50 p-6 rounded-lg">
-             <Checkbox label="I confirm that the information provided is a accurate and I am authorized to request a quotation on behalf of my company." checked={confirmInformation} {...register("confirmInformation")} />
-             {errors.confirmInformation && <p className="text-red-500 text-sm">{errors.confirmInformation.message}</p>}
-             <Checkbox label="I agree to receive communications (SMS, Email, Whatsapp) re booking confirmation & reminders." checked={agreeToCommunications} {...register("agreeToCommunications")} />
-             {errors.agreeToCommunications && <p className="text-red-500 text-sm">{errors.agreeToCommunications.message}</p>}
-             <button
-                type="submit"
-                className="font-semibold disabled:opacity-50 mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-              </button>
-              {submissionStatus === 'error' && <p className="text-red-500 text-sm mt-2">Something went wrong. Please try again.</p>}
-          </div>
+        <div className="space-y-4 bg-gray-50 p-6 rounded-lg">
+          <Checkbox
+            label="I confirm that the information provided is accurate and I am authorized to request a quotation."
+            checked={confirmInformation}
+            {...register("confirmInformation")}
+          />
+          {errors.confirmInformation && <p className="text-red-500 text-sm">{errors.confirmInformation.message}</p>}
+
+          <Checkbox
+            label="I agree to receive communications (SMS, Email, Whatsapp) re booking confirmation & reminders."
+            checked={agreeToCommunications}
+            {...register("agreeToCommunications")}
+          />
+          {errors.agreeToCommunications && <p className="text-red-500 text-sm">{errors.agreeToCommunications.message}</p>}
+
+          <button
+            type="submit"
+            className="font-semibold disabled:opacity-50 mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition"
+            disabled={isSubmitting || submissionStatus === "loading"}
+          >
+            {submissionStatus === "loading" ? "Submitting..." : "Submit"}
+          </button>
+
+          {submissionStatus === "error" && (
+            <p className="text-red-500 text-sm mt-2">Something went wrong. Please try again.</p>
+          )}
+        </div>
       </Section>
     </form>
   );
