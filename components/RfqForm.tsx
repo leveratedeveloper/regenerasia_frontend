@@ -117,7 +117,7 @@ type RfqFormData = z.infer<typeof rfqSchema>;
       budget: 1000000000,
       warranty: true,
       request: 'It has to consider allergic response of "illness type-A"',
-      image: "https://picsum.photos/seed/product1/64/64",
+      image: "/image/machine.jpeg",
       selected: false,
     },
     {
@@ -128,7 +128,7 @@ type RfqFormData = z.infer<typeof rfqSchema>;
       budget: 1000000000,
       warranty: false,
       request: "Insert request",
-      image: "https://picsum.photos/seed/product2/64/64",
+      image: "/image/machine2.jpeg",
       selected: false,
     },
   ];
@@ -306,7 +306,11 @@ const RfqForm: React.FC = () => {
           Total Estimated Cost:{" "}
           <span className="text-brand-primary">
             IDR{" "}
-            {formatIDR(products.reduce((sum, p) => sum + p.budget, 0))}
+            {formatIDR(
+              products
+                .filter(p => p.selected) // <-- Add this line
+                .reduce((sum, p) => sum + p.budget, 0)
+            )}
           </span>
         </span>
       </div>
