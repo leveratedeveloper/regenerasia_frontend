@@ -22,7 +22,7 @@ export default function PageContent() {
 
       // if URL has no tag, set it to ?booking-form
       if (!params.has("booking-form")) {
-        router.replace("?booking-form");
+        router.replace("?rfq-form");
       }
     }
   }, [router]);
@@ -31,7 +31,7 @@ export default function PageContent() {
     setActiveTab(tabName);
 
     // Update the query string without reloading
-    const newUrl = tabName === "rfq" ? "?rfq-form" : "?booking-form";
+    const newUrl = tabName === "rfq" ? "?rfq-form" : "?rfq-form";
     router.replace(newUrl);
   };
 
