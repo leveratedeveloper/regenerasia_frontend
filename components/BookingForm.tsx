@@ -321,33 +321,29 @@ const BookingForm: React.FC = () => {
               </div>
             </div>
 
-            {/* Time Picker */}
+           {/* Time Picker */}
             <div className="md:col-span-1">
               <label className="block text-xs font-medium text-gray-500 mb-1">Time</label>
-              <input
-                type="time"
+              <select
                 name={`appointment_time_${i}`}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-800 focus:border-green-800 transition bg-white text-black"
-                value={appointmentTimes[i] || "00:00"}
+                value={appointmentTimes[i] || "09:00"}
                 onChange={(e) => {
-                  const time = e.target.value;
-                  const [hours, minutes] = time.split(":").map(Number);
-                  let roundedHour = hours;
-
-                  if (minutes >= 30) {
-                    roundedHour = (hours + 1) % 24;
-                  }
-
-                  const formatted = `${String(roundedHour).padStart(2, "0")}:00`;
-
                   const newTimes = [...appointmentTimes];
-                  newTimes[i] = formatted;
+                  newTimes[i] = e.target.value;
                   setAppointmentTimes(newTimes);
                 }}
-                min="00:00"
-                max="23:00"
-                step={3600}
-              />
+              >
+               {/* Generate time options from 09:00 to 23:00, every 2 hours */}
+                {Array.from({ length: 8 }, (v, k) => (k * 2) + 9).map((hour) => {
+                  const time = `${String(hour).padStart(2, "0")}:00`;
+                  return (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
           </div>
         ))}
