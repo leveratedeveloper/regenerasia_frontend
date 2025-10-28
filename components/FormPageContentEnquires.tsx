@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import RfqForm from "@/components/RfqForm";
-import BookingForm from "@/components/BookingForm";
+// import BookingForm from "@/components/BookingForm";
 import { useRouter } from "next/navigation";
 
 type ActiveTab = "booking" | "rfq";
@@ -77,7 +77,7 @@ export default function PageContent() {
         <main className="p-6 md:p-12 max-w-5xl mx-auto">
           <div className="text-center mb-8">
             <div className="inline-flex items-center space-x-2 p-1 rounded-lg border border-gray-300">
-              <TabButton label="Booking Treatment Form" tabName="booking" />
+              <TabButton label="Business Enquires" tabName="booking" />
               {/* <TabButton label="Request for Quotation" tabName="rfq" /> */}
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function PageContent() {
             <RfqForm />
           </div> */}
           <div className={activeTab === "booking" ? "block" : "hidden"}>
-            <BookingForm />
+            <RfqForm />
           </div>
 
         </main>
