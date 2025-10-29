@@ -340,7 +340,7 @@ const BookingForm: React.FC = () => {
                 }}
               >
                {/* Generate time options from 09:00 to 23:00, every 2 hours */}
-                {Array.from({ length: 8 }, (v, k) => (k * 2) + 9).map((hour) => {
+                {Array.from({ length: 7 }, (v, k) => (k * 2) + 9).map((hour) => {
                   const time = `${String(hour).padStart(2, "0")}:00`;
                   return (
                     <option key={time} value={time}>
@@ -375,9 +375,10 @@ const BookingForm: React.FC = () => {
         <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
           <li>Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.)</li>
           <li>Pregnant or breastfeeding women</li>
-          <li>Children under 12 years old</li>
-          <li>Persons over 150 kg body weight</li>
+          <li>Under a severe medical condition</li>
+          <li>Children under 17 years old</li>
           <li>Those suffering from epileptic seizures</li>
+          <li>Have an open wound</li>
         </ul>
 
         <Controller

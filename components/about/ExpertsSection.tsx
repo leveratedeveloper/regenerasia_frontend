@@ -20,7 +20,7 @@ const experts = [
     name: 'Dr. Pande Putu Agus Mahendra, M.Gizi, Sp.GK',
     title: 'Medical Advisor',
     description:
-      'Dr. Pande provides the critical medical foundation for all our programs. As a Specialist in Clinical Nutrition, his expertise ensures that our treatments are integrated with a holistic approach to wellness, focusing on how cellular health, nutrition, and lifestyle intertwine. He is committed to validating the scientific integrity and safety of the Cold Atmospheric Plasma (CAP) technology, ensuring every treatment plan is medically sound and tailored for optimal regenerative results.',
+      'Dr. Pande provides the critical medical foundation for all our programs. As a Specialist in Clinical Nutrition, his expertise ensures that our treatments are integrated with a holistic approach to wellness, focusing on how cellular health, nutrition, and lifestyle intertwine. He is committed to validating the scientific integrity and safety of the Cold Atmospheric Plasma+ (CAP+) technology, ensuring every treatment plan is medically sound and tailored for optimal regenerative results.',
     imageUrl: '/image/doctor/dr-pande.webp',
   },
   {
@@ -28,7 +28,7 @@ const experts = [
     title: 'Founder',
     imageUrl: '/image/doctor/bukharisma.webp',
     description:
-    'Kharisma is the visionary force behind Regenerasia. Driven by a passion for longevity and advanced German technology, her was instrumental in introducing the first COLD ATMOSPHERIC PLASMA TECHNOLOGY to Indonesia. His commitment lies in revolutionizing the Indonesian wellness industry by providing non-invasive, evidence-based tools that empower people to proactively manage their aging process and extend their active, healthy years.',
+    'Kharisma Hidayat is the visionary force behind Regenerasia. Driven by a passion for longevity and advanced technology, she was instrumental in introducing the first COLD ATMOSPHERIC PLASMA+ TECHNOLOGY in Asia. Her commitment lies in revolutionizing the Indonesian wellness industry by providing non-invasive, evidence-based tools that empower people to proactively manage their aging process and extend their active, healthy years.',
   },
   {
     name: 'Nova Audianto',

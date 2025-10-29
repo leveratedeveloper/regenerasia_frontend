@@ -50,25 +50,25 @@ const Understanding: React.FC = () => {
         {/* Grid for image + description */}
         <div className="font-heveltica grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-6 max-w-5xl mx-auto mb-12 md:mb-16 mt-8">
         {sources.map((source, index) => (
-          <div
-            key={index}
-            className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4"
-          >
-            {/* Logo image */}
-            <img
-              src={source.img}
-              alt={`Icon ${index + 1}`}
-              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
-            />
-
-            {/* Vertical Divider */}
-            <div className="hidden sm:block w-px h-15 bg-gray-800"></div>
-
-            {/* Description */}
-            <p className="text-xs sm:text-sm text-gray-600 mt-5 sm:mt-0">
-              {source.description}
-            </p>
-          </div>
+            <div
+              key={index}
+              className="flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-4"
+            >
+              {/* Logo image */}
+              <img
+                src={source.img}
+                alt={`Icon ${index + 1}`}
+                className="w-13 h-13 sm:w-13 sm:h-13 md:w-16 md:h-16"
+              />
+            
+              {/* Vertical Divider */}
+              <div className="hidden sm:block w-px h-16 bg-gray-800"></div>
+            
+              {/* Description */}
+              <p className="text-xs sm:text-sm text-gray-600 max-w-xs">
+                {source.description}
+              </p>
+            </div>
         ))}
       </div>
 
