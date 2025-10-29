@@ -37,7 +37,7 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
   return (
     <div
       className={`relative rounded-xl overflow-hidden shadow-lg aspect-[4/5] group cursor-pointer transition-all duration-500 ease-in-out ${
-        isActive ? "scale-[1.02]" : ""
+        isActive ? "scale-[1.02] rounded-xl" : ""
       }`}
       onClick={toggleActive}
     >
@@ -50,13 +50,13 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
 
       {/* Blur gradient bawah */}
       <div
-        className={`absolute bottom-0 left-0 right-0 h-[100%] bg-gradient-to-t from-slate-900/90 via-slate-800/40 to-transparent transition-all duration-500 ${
+        className={`absolute rounded-xl bottom-0 left-0 right-0 h-[100%] bg-gradient-to-t from-slate-900/90 via-slate-800/40 to-transparent transition-all duration-500 ${
           isActive ? "backdrop-blur-[8px]" : "group-hover:backdrop-blur-[8px]"
         }`}
       />
 
       {/* Text container */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white flex flex-col justify-end h-[90%]">
+      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-white flex flex-col justify-end h-[90%] rounded-xl">
         {/* Title & subtitle */}
         <div
           className={`transition-all duration-500 ease-in-out 
@@ -66,7 +66,10 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
               : "group-hover:translate-y-[-40px] md:group-hover:translate-y-[-70px]"
           }`}
         >
-          <h3 className="text-lg md:text-2xl font-alta mb-1">{name}</h3>
+        <h3 className="text-lg md:text-1xl font-alta mb-5 whitespace-nowrap text-balance">
+          {name}
+        </h3>
+
           <p className="text-xs md:text-sm text-white/90 font-helvetica mb-0">
             {title}
           </p>
@@ -79,11 +82,11 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
             overflow-hidden 
             ${
               isActive
-                ? "opacity-100 translate-y-[-80px] md:translate-y-[-70px] max-h-[200px] md:max-h-[300px]"
+                ? "opacity-100 translate-y-[-80px] md:translate-y-[-70px] max-h-[200px] md:max-h-[300px] rounded-sm"
                 : "opacity-0 translate-y-10 md:translate-y-20 max-h-0 group-hover:opacity-100 group-hover:translate-y-[-40px] md:group-hover:translate-y-[-70px] group-hover:max-h-[200px] md:group-hover:max-h-[300px]"
             }`}
           >
-            <div className="overflow-y-auto max-h-[200px] md:max-h-[300px] pr-2 scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent">
+            <div className="overflow-y-auto max-h-[200px] md:max-h-[300px] pr-2 scrollbar-thin scrollbar-thumb-white/30 scrollbar-track-transparent rounded-xl">
               <p className="text-xs md:text-sm text-white/90 font-helvetica mt-2">
                 {description}
               </p>

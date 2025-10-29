@@ -237,9 +237,10 @@ const BookingForm: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-800 mb-2">
-              I want to be contacted by
-            </label>
+          <label className="block text-sm font-medium text-gray-800 mb-2">
+            I want to be contacted by
+            <span className="text-red-500 ml-1">*</span>
+          </label>
             <div className="flex space-x-6">
               {["whatsapp", "email", "phone"].map((option) => (
                 <Controller
@@ -293,7 +294,11 @@ const BookingForm: React.FC = () => {
               <label className="block text-sm font-medium text-gray-800 mb-1">
                 Session {i + 1}
               </label>
-              {i + 1 > 1 && <div className="text-xs text-gray-500 italic">Optional</div>}
+              {i + 1 > 1 && (
+                <div className="text-xs text-gray-500 italic">
+                  Optional (<span className="text-red-500">*</span>)
+                </div>
+              )}
             </div>
 
             {/* Date Picker */}

@@ -35,10 +35,8 @@ const Footer: React.FC = () => {
             className="h-18 w-auto"
           />
           <div className="text-gray-700 text-base leading-relaxed mt-2">
-            <h3 className={`${cormorant.className} text-2md text-gray-800 mb-2 `}>
-              AYANA Midplaza Jakarta
-            </h3>
-            <p className={`${roboto.className} text-gray-500 text-xs lg:text-base` }>
+            <p className={`${roboto.className} text-gray-500 text-xs md:text-base` }>
+              AYANA Midplaza Jakarta<br/>
               Jl. Jenderal Sudirman No.Kav 10-11, RT.10/RW.11,
               <br />
               Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat,
@@ -66,10 +64,11 @@ const Footer: React.FC = () => {
               <InstagramIcon className="w-4 h-4" />
             </a>
             <a
-              href="#"
-              aria-label="Email"
-              className="bg-[#3C4D34] text-white p-3 rounded-full hover:bg-opacity-80 transition-all duration-300"
-            >
+                href="mailto:customer.service@regenerasia.co.id"
+                aria-label="Email"
+                className="bg-[#3C4D34] text-white p-3 rounded-full hover:bg-opacity-80 transition-all duration-300"
+              >
+
               <EnvelopeIcon className="w-4 h-4" />
             </a>
           </div>
