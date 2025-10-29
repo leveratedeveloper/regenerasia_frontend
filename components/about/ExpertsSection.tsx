@@ -28,7 +28,7 @@ const experts = [
     title: 'Founder',
     imageUrl: '/image/doctor/bukharisma.webp',
     description:
-    'Kharisma is the visionary force behind Regenerasia. Driven by a passion for longevity and advanced German technology, he was instrumental in introducing the first COLD ATMOSPHERIC PLASMA TECHNOLOGY to Indonesia. His commitment lies in revolutionizing the Indonesian wellness industry by providing non-invasive, evidence-based tools that empower people to proactively manage their aging process and extend their active, healthy years.',
+    'Kharisma is the visionary force behind Regenerasia. Driven by a passion for longevity and advanced German technology, her was instrumental in introducing the first COLD ATMOSPHERIC PLASMA TECHNOLOGY to Indonesia. His commitment lies in revolutionizing the Indonesian wellness industry by providing non-invasive, evidence-based tools that empower people to proactively manage their aging process and extend their active, healthy years.',
   },
   {
     name: 'Nova Audianto',

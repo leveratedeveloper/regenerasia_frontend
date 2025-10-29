@@ -79,7 +79,7 @@ export const ValueCard: React.FC<ValueCardProps> = ({
       <div
         className="
           absolute inset-0 z-10 flex flex-col items-center justify-end
-          text-white text-center px-3 sm:px-6 pb-6 sm:pb-10 text-justify
+          text-white text-center px-3 sm:px-6 pb-6 sm:pb-10 text-center
         "
       >
         <div
