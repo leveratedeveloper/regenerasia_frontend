@@ -50,19 +50,25 @@ const Footer: React.FC = () => {
         <div className="flex flex-col items-center lg:items-end gap-4 justify-end">
           <div className="flex gap-3">
             <a
-              href="#"
-              aria-label="Whatsapp"
+            href="https://wa.me/6281117019888?text=Hello%20Regenerasia%20Team!"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
               className="bg-[#3C4D34] text-white p-3 rounded-full hover:bg-opacity-80 transition-all duration-300"
             >
               <WhatsappIcon className="w-4 h-4" />
             </a>
+
             <a
-              href="#"
+              href="https://www.instagram.com/regenerasia.longevity"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Instagram"
               className="bg-[#3C4D34] text-white p-3 rounded-full hover:bg-opacity-80 transition-all duration-300"
             >
               <InstagramIcon className="w-4 h-4" />
             </a>
+
             <a
                 href="mailto:customer.service@regenerasia.co.id"
                 aria-label="Email"

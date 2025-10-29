@@ -74,13 +74,13 @@ export default function AboutUsPage() {
           <div className="order-2 md:order-1 text-zinc-700 mt-8 md:mt-24 text-justify">
             <div className="w-16 h-0.5 bg-zinc-600/80 mb-6 md:mb-8"></div>
             <p className="font-helvetica text-base leading-relaxed mb-4 md:mb-5">
-            We are proud to introduce a new era of wellness and longevity to Indonesia as the first dedicated provider of Cold Atmospheric Plasma (CAP) Technology treatments in the nation.
+            We are proud to introduce a new era of wellness and longevity to Indonesia as the first dedicated provider of Cold Atmospheric Plasma+ (CAP+) Technology treatments in the nation.
             </p>
             <p className="font-helvetica text-base leading-relaxed">
             In a world where living longer is a universal desire, our focus is on ensuring you live healthier for longer—extending your healthspan. Regenerasia was founded on the belief that cutting-edge science should be accessible, providing powerful, non-invasive solutions for age-related health concerns.
             </p>
             <p className="font-helvetica text-base leading-relaxed">
-            Our core treatment, the innovative Cold Atmospheric Plasma technology, is sourced directly from Germany, a global leader in biomedical engineering. This non-thermal plasma treatment harnesses the regenerative power of reactive oxygen and nitrogen species (RONS) to stimulate cellular repair, modulate inflammation, and enhance overall tissue health.
+            Our core treatment, the innovative Cold Atmospheric Plasma+ technology, is sourced directly from Germany, a global leader in biomedical engineering. This non-thermal plasma treatment harnesses the regenerative power of reactive oxygen and nitrogen species (RONS) to stimulate cellular repair, modulate inflammation, and enhance overall tissue health.
             </p>
           </div>
         </div>

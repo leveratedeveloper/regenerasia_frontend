@@ -9,9 +9,9 @@ const PackagesSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const packages = [
-    { title: "1 Session Package", description: " " },
-    { title: "5 Session Packages", description: " " },
-    { title: "10 Session Packages", description: " " },
+    { title: "1 Session Package", description: "Rp. 5 jt " },
+    { title: "5 Session Packages", description: "Rp. 20 jt" },
+    { title: "10 Session Packages", description: "Rp. 40 jt" },
   ];
 
   useEffect(() => {
@@ -95,14 +95,28 @@ const PackagesSection: React.FC = () => {
                   <div
                     className={`overflow-hidden transition-all duration-500 ease-in-out ${
                       openIndex === index
-                        ? "max-h-40 mt-2 opacity-100"
+                        ? "max-h-60 mt-2 opacity-100"
                         : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="text-gray-300 text-sm leading-relaxed">
+                    {/* Description */}
+                    <div className="text-gray-300 text-sm leading-relaxed mb-4">
                       {pkg.description}
+                      <a
+                        href="/booking" // 👈 your redirect URL here
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-[rgb(60,77,52)] text-white text-sm px-4 py-2 rounded-lg hover:bg-[rgba(60,77,52,0.8)] transition-all duration-300 float-right"
+                      >
+                        Book
+                      </a>
                     </div>
+
+                    {/* Book Button as a Link */}
+                   
                   </div>
+
+
                 </div>
               ))}
             </div>
