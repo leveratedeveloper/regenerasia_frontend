@@ -72,12 +72,21 @@ export default function Header() {
         {pathSegments.length > 0 && (
           <nav
           className={`px-6 pb-3 text-sm transition-all duration-500 ease-in-out ${
-            showBreadcrumb ? "opacity-100 max-h-10" : "opacity-0 max-h-0 overflow-hidden"
-          }  text-white`}
+            scrolled ? "opacity-100 max-h-10" : "to-transparent"
+          }`}
         >
-          <ol className="flex flex-wrap items-center space-x-2 py-2 rounded-md">
+          <ol
+            className={`flex flex-wrap items-center space-x-2 py-2 rounded-md transition-colors duration-500 ${
+              scrolled ? "text-[#3C4D34]" : "text-white"
+            }`}
+          >
             <li>
-              <Link href="/" className="hover:underline text-white font-medium">
+              <Link
+                href="/"
+                className={`hover:underline font-medium ${
+                  scrolled ? "text-[#3C4D34]" : "text-white"
+                }`}
+              >
                 Home
               </Link>
             </li>
@@ -89,11 +98,22 @@ export default function Header() {
         
               return (
                 <li key={href} className="flex items-center">
-                  <span className="mx-2 text-gray-200">/</span>
+                  <span className={`mx-2 ${scrolled ? "text-[#3C4D34]" : "text-gray-200"}`}>/</span>
                   {isLast ? (
-                    <span className="text-gray-100 font-semibold">{label}</span>
+                    <span
+                      className={`font-semibold ${
+                        scrolled ? "text-[#3C4D34]" : "text-gray-100"
+                      }`}
+                    >
+                      {label}
+                    </span>
                   ) : (
-                    <Link href={href} className="hover:underline text-white font-medium">
+                    <Link
+                      href={href}
+                      className={`hover:underline font-medium ${
+                        scrolled ? "text-[#3C4D34]" : "text-white"
+                      }`}
+                    >
                       {label}
                     </Link>
                   )}
@@ -102,6 +122,7 @@ export default function Header() {
             })}
           </ol>
         </nav>
+        
         
         )}
       </header>

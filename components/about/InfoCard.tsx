@@ -102,8 +102,6 @@ const InfoCard: React.FC<InfoCardProps> = ({
                 key={index}
                 className="flex items-start"
               >
-                {/* Numbering */}
-                <span className="mr-3">{index + 1}.</span>
           
                 {/* Text */}
                 <p
