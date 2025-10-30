@@ -112,26 +112,21 @@ export const ValueCard: React.FC<ValueCardProps> = ({
           {/* ✅ Description */}
           <div
             className={`
+              absolute inset-0 flex items-center justify-center text-center
               text-gray-200 font-light
               text-xs sm:text-sm md:text-base
-              max-w-[90%] sm:max-w-[80%] md:max-w-md
+              px-4 sm:px-6 md:px-8
               leading-relaxed
               transition-all duration-500 ease-in-out
-              ${
-                active
-                  ? isMobile
-                    ? "opacity-100 -translate-y-40" // mobile tap
-                    : "opacity-100 -translate-y-45" // desktop hover
-                  : "opacity-0 translate-y-3" // default hidden
-              }
+              ${active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
             `}
             style={{
               pointerEvents: active ? "auto" : "none",
-              lineHeight: "1em",
+              lineHeight: "1.5em",
             }}
           >
             <div
-              className="overflow-y-auto pr-2 max-h-[340px] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent"
+              className="overflow-y-auto pr-2 max-h-[60%] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent"
               style={{
                 scrollbarWidth: "thin",
                 scrollbarColor: "#6b7280 transparent",
@@ -140,6 +135,7 @@ export const ValueCard: React.FC<ValueCardProps> = ({
               {value.description}
             </div>
           </div>
+
         </div>
       </div>
     </div>
