@@ -9,9 +9,9 @@ const PackagesSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   const packages = [
-    { title: "1 Session Package", description: "Rp. 5 jt " },
-    { title: "5 Session Packages", description: "Rp. 20 jt" },
-    { title: "10 Session Packages", description: "Rp. 40 jt" },
+    { title: "1 Session Package", description: "Rp5.000.000" },
+    { title: "5 Session Packages", description: "Rp20.000.000" },
+    { title: "10 Session Packages", description: "Rp40.000.000" },
   ];
 
   useEffect(() => {
