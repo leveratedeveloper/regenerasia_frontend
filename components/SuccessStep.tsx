@@ -1,18 +1,26 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from 'react';
 import { useRouter } from "next/navigation";
-import { Check, MessageCircle } from "lucide-react";
+import { Check } from "lucide-react";
 
-interface SuccessStepProps {
-  resetForm: () => void;
-}
 
 export default function SuccessStep() {
   const whatsappNumber = "628123456789";
   const message = encodeURIComponent("Hi! I just submitted a booking form.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+  const router = useRouter();
 
+  useEffect(() => {
+    const hasAccess = sessionStorage.getItem("formSuccess");
+
+    if (!hasAccess) {
+      router.replace("/"); // redirect kalau user belum lewat form
+    }
+
+    // opsional: hapus agar gak bisa refresh ulang
+    sessionStorage.removeItem("formSuccess");
+  }, [router]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 px-4">

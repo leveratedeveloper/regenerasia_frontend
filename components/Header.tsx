@@ -76,7 +76,7 @@ export default function Header() {
           }`}
         >
           <ol
-            className={`flex flex-wrap items-center space-x-2 py-2 rounded-md transition-colors duration-500 ${
+            className={`flex flex-wrap items-center space-x-1 py-2 rounded-md transition-colors duration-500 ${
               scrolled ? "text-[#3C4D34]" : "text-white"
             }`}
           >
@@ -93,9 +93,9 @@ export default function Header() {
             {pathSegments.map((segment, index) => {
               const href = "/" + pathSegments.slice(0, index + 1).join("/");
               const isLast = index === pathSegments.length - 1;
-              const label =
-                segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ");
+              let label = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ");
         
+              if (label.toLowerCase() === "aboutus") label = "About Us";
               return (
                 <li key={href} className="flex items-center">
                   <span className={`mx-2 ${scrolled ? "text-[#3C4D34]" : "text-gray-200"}`}>/</span>
