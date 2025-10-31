@@ -133,8 +133,6 @@ const BookingForm: React.FC = () => {
     },
   });
 
-  const contactBy = watch("contactBy");
-  const safetyGuidelines = watch("safetyGuidelines");
   const router = useRouter();
 
   const onSubmit = async (data: BookingFormData) => {
@@ -146,12 +144,10 @@ const BookingForm: React.FC = () => {
       email: data.email,
       phone: data.phone,
       service_type: data.contactBy || [],
-      session_package: sessionPackage,
+      session_package: sessionPackage ?? 1,
       session: dates.map((d, i) =>
-        d && appointmentTimes[i]
-          ? new Date(`${d.toISOString().split("T")[0]}T${appointmentTimes[i]}:00`).toISOString()
-          : null
-      ).filter(Boolean),
+        d ? `${d.toISOString().split("T")[0]} : ${appointmentTimes[i] || "09:00"}` : null
+      ),  
       appointment_date: dates[0] ? dates[0].toISOString() : null, // use first session date as main
       appointment_time: appointmentTimes[0] || null, // use first session time as main
       notes: data.concern || "",
@@ -167,8 +163,7 @@ const BookingForm: React.FC = () => {
 
       if (result.status === "success") {
         console.log("✅ Booking created:", result.data);
-     
-  
+        sessionStorage.setItem("formSuccess", "true");
         // Redirect to success page
         router.push("/success");
         setSubmissionStatus("success");
@@ -195,28 +190,6 @@ const BookingForm: React.FC = () => {
   const isBlockedDate = (d: Date | null) =>
     !!d && blockedDates.includes(d.toDateString());
 
-  //time hours
-  const [appointmentTime, setAppointmentTime] = useState("00:00");
-
-  useEffect(() => {
-    // Set default time ke 00:00 saat pertama kali load
-    setAppointmentTime("00:00");
-  }, []);
-
-  const handleTimeChange = (e: { target: { value: any; }; }) => {
-    const time = e.target.value;
-    const [hours, minutes] = time.split(":").map(Number);
-
-    let roundedHour = hours;
-
-    // Jika menit >= 30 → naik ke jam berikutnya
-    if (minutes >= 30) {
-      roundedHour = (hours + 1) % 24; // agar 23:30 jadi 00:00
-    }
-
-    const formatted = `${String(roundedHour).padStart(2, "0")}:00`;
-    setAppointmentTime(formatted);
-  };
   
   return (
     <form
@@ -307,7 +280,7 @@ const BookingForm: React.FC = () => {
               <div
                 className={`rounded-md transition duration-200 ${
                   dates[i] && isBlockedDate(dates[i])
-                    ? "border-2 border-red-500 p-[1px]"
+                    ? "border-2 p-[1px]"
                     : "border border-gray-300"
                 }`}
               >
