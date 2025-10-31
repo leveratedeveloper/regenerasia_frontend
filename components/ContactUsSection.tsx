@@ -8,7 +8,6 @@ const ContactUsSection = () => {
   };
 
   return (
-    <section className="bg-[rgb(243,238,231)] overflow-hidden py-16 px-6 md:px-12">
       <div className="container mx-auto px-4 py-12 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-3 min-h-[650px] rounded-xl overflow-hidden">
           {/* Left: Image (2/3 width on desktop) */}
@@ -46,7 +45,6 @@ const ContactUsSection = () => {
           </div>
         </div>
       </div>
-    </section>
   );
 };
 

@@ -51,10 +51,11 @@ export default function Home() {
           <OutConsultant />
         </section>
           {/* Journey */}
-          <section className=" w-full bg-[#f3eee7] text-[#768c43] flex flex-col items-center py-4  md:py-14">
+        <section className=" w-full bg-[#f3eee7] text-[#768c43] flex flex-col items-center py-4  md:py-14">
           <Journey steps={journeySteps} />
+          <ContactUsSection />
         </section>
-        <ContactUsSection />
+      
       </main>
     </div>
   );
