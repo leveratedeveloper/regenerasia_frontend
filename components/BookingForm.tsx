@@ -214,7 +214,7 @@ const BookingForm: React.FC = () => {
             I want to be contacted by
             <span className="text-red-500 ml-1">*</span>
           </label>
-            <div className="flex space-x-6">
+            <div className="flex flex-col md:flex-row md:space-x-6 space-y-3 md:space-y-0">
               {["whatsapp", "email", "phone"].map((option) => (
                 <Controller
                   key={option}
@@ -242,6 +242,7 @@ const BookingForm: React.FC = () => {
                 />
               ))}
             </div>
+
             {errors.contactBy && (
               <p className="text-red-500 text-sm">{errors.contactBy.message}</p>
             )}
@@ -375,7 +376,7 @@ const BookingForm: React.FC = () => {
       <div className="text-center">
         <button
           type="submit"
-          className="font-semibold disabled:opacity-50 mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition"
+          className="font-semibold disabled:opacity-50 mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition rounded-xl"
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Submitting...' : 'Submit'}

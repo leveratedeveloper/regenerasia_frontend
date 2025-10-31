@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
             className="h-18 w-auto"
           />
           <div className="text-gray-700 text-base leading-relaxed mt-2">
-            <p className={`${roboto.className} text-gray-500 text-xs md:text-base` }>
+            <p className={`${roboto.className} text-gray-500 text-xs md:text-sm` }>
               AYANA Midplaza Jakarta<br/>
               Jl. Jenderal Sudirman No.Kav 10-11, RT.10/RW.11,
               <br />

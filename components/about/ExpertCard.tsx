@@ -66,10 +66,9 @@ const ExpertCard: React.FC<ExpertCardProps> = ({
               : "group-hover:translate-y-[-40px] md:group-hover:translate-y-[-70px]"
           }`}
         >
-        <h3 className="text-lg md:text-1xl font-alta mb-5 whitespace-nowrap text-balance">
+       <h3 className="text-lg md:text-1xl font-alta mb-5 whitespace-normal md:whitespace-nowrap text-balance">
           {name}
         </h3>
-
           <p className="text-xs md:text-sm text-white/90 font-helvetica mb-0">
             {title}
           </p>

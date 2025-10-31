@@ -86,7 +86,7 @@ const Understanding: React.FC = () => {
         <div className="relative flex flex-col justify-center min-h-[60vh] md:min-h-[70vh] p-6 sm:p-10 md:p-16 lg:p-24">
           <div className="max-w-md lg:max-w-lg">
             <p className="font-heveltica mt-6 sm:text-5xl md:text-xl text-gray-50 leading-relaxed">
-              Cold Atmospheric Plasma (CAP) is the "fourth state of matter," a
+              Cold Atmospheric Plasma+ (CAP+) is the "fourth state of matter," a
               room-temperature ionized gas known for its cellular regenerative
               properties. While standard CAP is used on the skin's surface, our
               Regeneresia Human Regenerator uses a specialized, softer CAP+ with
