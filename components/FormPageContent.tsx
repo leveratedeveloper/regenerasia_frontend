@@ -11,21 +11,21 @@ export default function PageContent() {
   const [activeTab, setActiveTab] = useState<ActiveTab>("booking");
   const router = useRouter();
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+  // useEffect(() => {
+  //   const params = new URLSearchParams(window.location.search);
 
-    if (params.has("rfq-form")) {
-      setActiveTab("rfq");
-    } else {
-      // default to booking
-      setActiveTab("booking");
+  //   if (params.has("rfq-form")) {
+  //     setActiveTab("rfq");
+  //   } else {
+  //     // default to booking
+  //     setActiveTab("booking");
 
-      // if URL has no tag, set it to ?booking-form
-      if (!params.has("booking-form")) {
-        router.replace("?booking-form");
-      }
-    }
-  }, [router]);
+  //     // if URL has no tag, set it to ?booking-form
+  //     if (!params.has("booking-form")) {
+  //       router.replace("?booking-form");
+  //     }
+  //   }
+  // }, [router]);
 
   const handleTabChange = (tabName: ActiveTab) => {
     setActiveTab(tabName);
@@ -60,12 +60,12 @@ export default function PageContent() {
         {/* ===== HERO / HEADER SECTION ===== */}
         <header className="relative">
           <img
-            src="/image/bg-contact-us.jpg"
+            src="/image/treatment-form-desktop.webp"
             alt="Banner"
             className="w-full h-96 object-cover rounded-t-lg"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <h1 className="text-3xl md:text-4xl font-alta font-bold text-white tracking-widest">
+            <h1 className="mx-3 text-3xl md:text-4xl font-alta font-bold text-white tracking-widest">
               {activeTab === "rfq"
                 ? "Request for Quotation"
                 : "Book Your Appointment Online"}

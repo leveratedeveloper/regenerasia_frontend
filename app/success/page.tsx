@@ -1,5 +1,4 @@
 
-import BookingForm from "@/components/BookingForm";
 import SuccessStep from "@/components/SuccessStep";
 
 
