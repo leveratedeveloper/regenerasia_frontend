@@ -14,9 +14,9 @@ export default function SuccessStep() {
   useEffect(() => {
     const hasAccess = sessionStorage.getItem("formSuccess");
 
-    if (!hasAccess) {
-      router.replace("/"); // redirect kalau user belum lewat form
-    }
+    // if (!hasAccess) {
+    //   router.replace("/"); // redirect kalau user belum lewat form
+    // }
 
     // opsional: hapus agar gak bisa refresh ulang
     sessionStorage.removeItem("formSuccess");
@@ -34,13 +34,13 @@ export default function SuccessStep() {
 
         {/* Title */}
         <h2 className="text-2xl sm:text-3xl font-bold text-white font-alta">
-          Booking Sent Successfully!
+          You’re All Set!
         </h2>
 
         {/* Message */}
         <p className="font-helvetica text-[12px] sm:text-[13px] md:text-[16px] text-white">
-          Thank you for submitting your booking. <br />
-          We will review your details and contact you shortly to confirm your session.
+          Your wellness session is booked. <br />
+          Take a moment to breathe and get ready to reset your mind and body. We look forward to seeing you soon.
         </p>
        
         {/* Buttons */}

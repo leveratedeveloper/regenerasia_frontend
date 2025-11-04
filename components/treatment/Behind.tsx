@@ -60,7 +60,7 @@ const HealthSpanSection: React.FC = () => {
   return (
     <section className="relative w-full rounded-2xl overflow-hidden p-6 sm:p-8 md:p-12 shadow-2xl">
       {/* Background Image */}
-      <div className="absolute inset-0 bg-[url('/image/product/Lifespan_Healthspan.webp')] bg-cover bg-center">
+      <div className="absolute inset-0 bg-[url('/image/product/Lifespan_Healthspan-treatment-desktop.webp')] bg-cover bg-center">
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-transparent"></div>
       </div>
@@ -72,7 +72,7 @@ const HealthSpanSection: React.FC = () => {
         </h2>
         <p className="font-helvetica text-gray-300 max-w-3xl mx-auto text-sm sm:text-base">
           While modern medicine has helped extend life expectancy, the quality
-          of those extra years hasn’t kept up. Ageing naturally comes with
+          of those extra years hasn't kept up. Ageing naturally comes with
           changes that can make everyday life harder:
         </p>
       </div>
