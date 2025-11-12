@@ -32,7 +32,7 @@ export default function ProductPage() {
           </div>
           <h1 className="font-alta text-3xl md:text-5xl font-medium leading-tight text-white">
            {/* ? The Human <span className="italic font-semibold">Regenerator</span> Power Jet */}
-            Cold Atmospheric Plasma Treatment
+            Cold Atmospheric Plasma+ Treatment
           </h1>
           <p className="font-helvetica mt-3 text-md sm:text-xl text-gray-200 leading-relaxed">
             Discover the revolutionary treatments in our studio, where our personalized screening packages guide every stage of your health journey to optimize your life and extend your healthspan.

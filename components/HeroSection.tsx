@@ -11,7 +11,7 @@ export default function HeroSection() {
       <h1
         className="font-helvetica text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] mb-5 text-white/90"
       >
-        Cold Atmospheric Plasma by Human Regenerator
+        Cold Atmospheric Plasma+ by Human Regenerator
       </h1>
       <a
         href="/booking"

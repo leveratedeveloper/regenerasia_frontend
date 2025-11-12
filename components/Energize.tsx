@@ -27,7 +27,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
         </h2>
 
         <p className={`font-helvetica text-[20px] mb-2 text-center text-stone-700`}>
-          Get the benefits of Cold Atmospheric Plasma
+          Get the benefits of Cold Atmospheric Plasma+
         </p>
         {/* Top Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full p-4 md:p-0 lg:p-0 justify-center">

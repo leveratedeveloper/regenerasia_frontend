@@ -4,7 +4,7 @@ import React from "react";
 const sources = [
   {
     img: "/image/treatment/icons/Cold_Atmospheric_Plasma.png",
-    description: "Get the benefits of Cold Atmospheric Plasma",
+    description: "Get the benefits of Cold Atmospheric Plasma+",
   },
   {
     img: "/image/treatment/icons/Cellular_regeneration.png",

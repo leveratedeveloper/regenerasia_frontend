@@ -27,7 +27,7 @@ const VisionMissionSection: React.FC = () => {
     category: 'Mission',
     title: 'Pioneering Natural Pathways to Renewal',
     description: [
-      'Introduce and Implement: To successfully introduce and implement the safest and most effective German-engineered Cold Atmospheric Plasma Technology across Indonesia.',
+      'Introduce and Implement: To successfully introduce and implement the safest and most effective German-engineered Cold Atmospheric Plasma+ Technology across Indonesia.',
       'Educate and Empower: To educate our community on the importance of cellular health and provide personalized treatment protocols that promote longevity and combat age-related decline.',
       'Set the Standard: To maintain the highest international standards of safety, efficacy, and client care in all our regenerative programs.',
     ],
