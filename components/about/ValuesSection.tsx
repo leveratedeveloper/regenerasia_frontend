@@ -13,19 +13,19 @@ const valuesData: Value[] = [
     title: "Cellular Regeneration",
     imageUrl: "/image/aboutus/benefit/Cellular-Regeneration-about-mobile.jpg",
     description:
-      "Our CAP technology stimulates reactive oxygen and nitrogen species (RONS) within the body. These molecules are essential for signaling cellular repair, promoting the growth of healthy new tissue, and ensuring your cells function optimally, accelerating the natural process of regeneration.",
+      "Our CAP+ technology stimulates reactive oxygen and nitrogen species (RONS) within the body. These molecules are essential for signaling cellular repair, promoting the growth of healthy new tissue, and ensuring your cells function optimally, accelerating the natural process of regeneration.",
   },
   {
     title: "Strengthening Immune System",
     imageUrl: "/image/aboutus/benefit/Immune-System-about-mobile.jpg",
     description:
-      "Chronic inflammation is a leading cause of immune decline. CAP treatments are proven to help modulate inflammation and support a more balanced and robust immune response, preparing your body to better defend against illness and chronic conditions.",
+      "Chronic inflammation is a leading cause of immune decline. CAP+ treatments are proven to help modulate inflammation and support a more balanced and robust immune response, preparing your body to better defend against illness and chronic conditions.",
   },
   {
     title: "Accelerate Recovery",
     imageUrl: "/image/aboutus/benefit/Accelerate-Recovery-about-mobile.jpg",
     description:
-      "Whether you're recovering from intense exercise, injury, or daily stress, CAP works by boosting localized circulation and tissue repair signals. This targeted action helps to reduce downtime and aids your body in healing faster and more efficiently.",
+      "Whether you're recovering from intense exercise, injury, or daily stress, CAP+ works by boosting localized circulation and tissue repair signals. This targeted action helps to reduce downtime and aids your body in healing faster and more efficiently.",
   },
   {
     title: "Enhance Energy Level",
@@ -37,13 +37,13 @@ const valuesData: Value[] = [
     title: "Aids Quality of Sleep",
     imageUrl: "/image/aboutus/benefit/Aids-Quality-of-Sleep-about-mobile.jpg",
     description:
-      "Restorative sleep is the foundation of good health. CAP treatments help regulate key biological processes and calm the nervous system, making it easier to fall asleep, stay asleep, and achieve the deep, restful cycles necessary for physical and mental recovery.",
+      "Restorative sleep is the foundation of good health. CAP+ treatments help regulate key biological processes and calm the nervous system, making it easier to fall asleep, stay asleep, and achieve the deep, restful cycles necessary for physical and mental recovery.",
   },
   {
     title: "Support Anti-Aging",
     imageUrl: "/image/aboutus/benefit/Support-anti-aging-about-mobile.jpg",
     description:
-      "The core of our CAP philosophy is extending the healthspan. By reducing oxidative stress, repairing DNA damage, and enhancing the overall regenerative capacity of your skin and tissues, our treatments work to proactively slow the biological signs of aging.",
+      "The core of our CAP+ philosophy is extending the healthspan. By reducing oxidative stress, repairing DNA damage, and enhancing the overall regenerative capacity of your skin and tissues, our treatments work to proactively slow the biological signs of aging.",
   },
 ];
 

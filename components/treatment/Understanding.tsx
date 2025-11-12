@@ -88,7 +88,7 @@ const Understanding: React.FC = () => {
             <p className="font-heveltica mt-6 sm:text-5xl md:text-xl text-gray-50 leading-relaxed">
               Cold Atmospheric Plasma+ (CAP+) is the "fourth state of matter," a
               room-temperature ionized gas known for its cellular regenerative
-              properties. While standard CAP is used on the skin's surface, our
+              properties. While standard CAP+ is used on the skin's surface, our
               Regeneresia Human Regenerator uses a specialized, softer CAP+ with
               smaller particles that penetrate deep into the tissue to treat the
               entire body.

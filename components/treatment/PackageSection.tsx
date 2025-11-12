@@ -56,7 +56,7 @@ const PackagesSection: React.FC = () => {
             }`}
           >
             Cellular Regeneration is the ultimate tool for revitalization.
-            Using CAP technology, this device acts as a Full Body Charger,
+            Using CAP+ technology, this device acts as a Full Body Charger,
             delivering deep cellular support for comprehensive renewal and
             regeneration throughout your entire system.
           </p>

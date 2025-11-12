@@ -24,7 +24,7 @@ const PlasmaSection: React.FC = () => {
       {/* Left side: Title and description */}
       <div className="lg:w-1/3 text-center lg:text-left">
         <h2 className={`font-alta text-3xl lg:text-4xl font-bold mb-4`}>
-          Next-Generation CAP Technology
+          Next-Generation CAP+ Technology
         </h2>
         <p className={`font-helvetica text-gray-600`}>
         Cold Atmospheric Plasma+ (CAP+)is engineered to restore your natural bioelectric balance. The device applies a precise electrical charge to air, creating a regenerative cocktail essential for cellular regeneration:
