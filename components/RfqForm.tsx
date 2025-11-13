@@ -115,24 +115,13 @@ type RfqFormData = z.infer<typeof rfqSchema>;
  const initialProducts: ProductItem[] = [
     {
       id: 1,
-      name: "Regeneration machine",
+      name: "Human Regenerator Power Jet",
       qty: 1,
-      basePrice: 1000000000,
-      budget: 1000000000,
+      basePrice: 4600000000,
+      budget: 4600000000,
       warranty: true,
       request: 'It has to consider allergic response of "illness type-A"',
-      image: "/image/machine.jpeg",
-      selected: false,
-    },
-    {
-      id: 2,
-      name: "Regeneration machine",
-      qty: 1,
-      basePrice: 1000000000,
-      budget: 1000000000,
-      warranty: false,
-      request: "Insert request",
-      image: "/image/machine2.jpeg",
+      image: "/image/machine.jpg",
       selected: false,
     },
   ];
@@ -411,25 +400,24 @@ const RfqForm: React.FC = () => {
       </Section>
       
       
-      <Section title="Shipment Detail">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Time & Date</label>
-                <input type="date" 
-                value={selectedDateShipment}
-                onChange={(e) => setSelectedDate(e.target.value)}
-                className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" />
-            </div>
-            <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Installation Requirement</label>
-                <div className="space-y-2 mt-2">
-                    <Checkbox label="I require installation support on-site" checked={installationSupport} {...register("installationSupport")}/>
-                    <Checkbox label="I need more than 1 year warranty" checked={moreThanOneYearWarranty} {...register("moreThanOneYearWarranty")}/>
-                    <Checkbox label="I need technical training for my staff" checked={technicalTraining} {...register("technicalTraining")}/>
-                </div>
-            </div>
+      <Section title="Include Detail">
+        <div className="space-y-2 text-gray-800">
+          <div>
+            <h3 className="font-semibold text-brand-primary mb-2">Include:</h3>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Goods installation</li>
+              <li>3 Years Warranty</li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold text-brand-primary mb-2">Exclude:</h3>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Country Customs & Tax</li>
+            </ul>
+          </div>
         </div>
       </Section>
+
 
       <Section title="Buyer Detail">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
