@@ -61,7 +61,7 @@ const Experience: React.FC = () => {
                    "Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.)",
                    "Pregnant or breastfeeding women",
                    "Active lesions preclude treatment",
-                   "Severe illness contraindicates service. (*minta tolong refrensi lain)",
+                   "Severe illness contraindicates service",
                    "Children under 17 years old",
                    "Persons over 150 kg body weight",
                    "Prohibited for patients with electrical, magnetic, or mechanical implants",
