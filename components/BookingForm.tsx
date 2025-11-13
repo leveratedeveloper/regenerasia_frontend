@@ -361,7 +361,7 @@ const BookingForm: React.FC = () => {
           <li>Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.)</li>
           <li>Pregnant or breastfeeding women</li>
           <li>Active lesions preclude treatment</li>
-          <li>Severe illness contraindicates service. (*minta tolong refrensi lain)</li>
+          <li>Severe illness contraindicates service</li>
           <li>Children under 17 years old</li>
           <li>Persons over 150 kg body weight</li>
           <li>Prohibited for patients with electrical, magnetic, or mechanical implants</li>
