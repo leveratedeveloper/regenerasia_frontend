@@ -58,14 +58,14 @@ const Experience: React.FC = () => {
               </p>
               <ul className="space-y-3 text-gray-700">
                 {[
-                  "Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.)",
-                  "Pregnant or breastfeeding women.",
-                  "Active lesions preclude treatment",
-                  "Severe illness contraindicates service. (*minta tolong refrensi lain)",
-                  "Children under 17 years old.",
-                  "Persons over 150 kg body weight.",
-                  "Prohibited for patients with electrical, magnetic, or mechanical implants.",
-                  "Those suffering from epileptic seizures.",
+                   "Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.)",
+                   "Pregnant or breastfeeding women",
+                   "Active lesions preclude treatment",
+                   "Severe illness contraindicates service. (*minta tolong refrensi lain)",
+                   "Children under 17 years old",
+                   "Persons over 150 kg body weight",
+                   "Prohibited for patients with electrical, magnetic, or mechanical implants",
+                   "Those suffering from epileptic seizures",
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <span className="text-gray-500 mt-1"><img src="data:image/svg+xml;utf8,<svg width='25' height='25' viewBox='0 0 96 100' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='96' height='100'/><polygon points='48,5 85,28 85,72 48,95 11,72 11,28' stroke='%233C2726' stroke-width='8' fill='none' stroke-linejoin='round'/></svg>" alt="hexagon" /></span>
