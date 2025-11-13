@@ -103,7 +103,15 @@ const PackagesSection: React.FC = () => {
                     <div className="text-gray-300 text-sm leading-relaxed mb-4">
                       {pkg.description}
                       <a
-                         href={`/booking?package=${pkg.title.includes("1") ? 1 : pkg.title.includes("5") ? 5 : 10}`}
+                        href={`/booking?package=${
+                          pkg.title.includes("10")
+                            ? 10
+                            : pkg.title.includes("5")
+                            ? 5
+                            : pkg.title.includes("1")
+                            ? 1
+                            : 1
+                        }`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block bg-[rgb(60,77,52)] text-white text-sm px-4 py-2 rounded-lg hover:bg-[rgba(60,77,52,0.8)] transition-all duration-300 float-right"
