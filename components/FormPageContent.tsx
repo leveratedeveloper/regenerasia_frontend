@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import RfqForm from "@/components/RfqForm";
+import React, { useState } from "react";
 import BookingForm from "@/components/BookingForm";
 import { useRouter } from "next/navigation";
 
 type ActiveTab = "booking" | "rfq";
 
-export default function PageContent() {
+export default function FormPageContent() {
   const [activeTab, setActiveTab] = useState<ActiveTab>("booking");
   const router = useRouter();
 
