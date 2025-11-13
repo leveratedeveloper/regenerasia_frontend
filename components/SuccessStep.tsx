@@ -34,7 +34,7 @@ export default function SuccessStep() {
 
         {/* Title */}
         <h2 className="text-2xl sm:text-3xl font-bold text-white font-alta">
-          You’re All Set!
+          You're All Set!
         </h2>
 
         {/* Message */}
