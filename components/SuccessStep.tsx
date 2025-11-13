@@ -14,10 +14,9 @@ export default function SuccessStep() {
   useEffect(() => {
     const hasAccess = sessionStorage.getItem("formSuccess");
 
-    // if (!hasAccess) {
-    //   router.replace("/"); // redirect kalau user belum lewat form
-    // }
-
+    if (!hasAccess) {
+      router.replace("/");
+    }
     // opsional: hapus agar gak bisa refresh ulang
     sessionStorage.removeItem("formSuccess");
   }, [router]);
