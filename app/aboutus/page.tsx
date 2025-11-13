@@ -71,7 +71,7 @@ export default function AboutUsPage() {
           </div>
 
           {/* Text section */}
-          <div className="order-2 md:order-1 text-zinc-700 mt-8 md:mt-24 p-3 md:p-5 text-justify">
+          <div className="order-2 md:order-1 text-zinc-700 mt-4 md:mt-8 p-3 md:p-5 text-justify">
             <div className="w-16 h-0.5 bg-zinc-600/80 mb-6 md:mb-8"></div>
             <p className="font-helvetica text-base leading-relaxed mb-4 md:mb-5">
             We are proud to introduce a new era of wellness and longevity to Indonesia as the first dedicated provider of Cold Atmospheric Plasma+ (CAP+) Technology treatments in the nation.

@@ -103,7 +103,7 @@ const PackagesSection: React.FC = () => {
                     <div className="text-gray-300 text-sm leading-relaxed mb-4">
                       {pkg.description}
                       <a
-                        href="/booking" // 👈 your redirect URL here
+                         href={`/booking?package=${pkg.title.includes("1") ? 1 : pkg.title.includes("5") ? 5 : 10}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block bg-[rgb(60,77,52)] text-white text-sm px-4 py-2 rounded-lg hover:bg-[rgba(60,77,52,0.8)] transition-all duration-300 float-right"
@@ -111,12 +111,8 @@ const PackagesSection: React.FC = () => {
                         Book
                       </a>
                     </div>
-
                     {/* Book Button as a Link */}
-                   
                   </div>
-
-
                 </div>
               ))}
             </div>

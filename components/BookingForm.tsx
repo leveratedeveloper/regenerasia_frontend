@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter,redirect } from "next/navigation";
+import { useRouter,useSearchParams } from "next/navigation";
 import React, { useState,useEffect } from 'react';
 import { useForm,Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -61,7 +61,7 @@ const Checkbox: React.FC<{
   </label>
 );
 
-const Section: React.FC<{ title: string; children: React.ReactNode; className?: string }> = ({ title, children, className }) => (
+const Section: React.FC<{  id?: string; title: string; children: React.ReactNode; className?: string }> = ({ title, children, className }) => (
   <div className={`p-8 border border-gray-200 rounded-lg bg-white text-black ${className}`}>
     <h3 className="text-2xl text-black mb-6">{title}</h3>
     {children}
@@ -114,7 +114,15 @@ const BookingForm: React.FC = () => {
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [dates, setDates] = useState<(Date | null)[]>([]);
   const [appointmentTimes, setAppointmentTimes] = useState<string[]>([]);
+  const searchParams = useSearchParams();
+ 
 
+  useEffect(() => {
+    const pkg = Number(searchParams.get("package"));
+    if (pkg === 1 || pkg === 5 || pkg === 10) {
+      setSessionPackage(pkg);
+    }
+  }, [searchParams]);
 
   const {
     register,
@@ -191,6 +199,7 @@ const BookingForm: React.FC = () => {
     !!d && blockedDates.includes(d.toDateString());
 
   
+  
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -251,7 +260,7 @@ const BookingForm: React.FC = () => {
         </div>
       </Section>
 
-      <Section title="Session Detail">
+      <Section id="session-detail" title="Session Detail">
         <label className="block text-sm font-medium text-gray-800 mb-3">
           How many sessions do you want to book?
         </label>
@@ -265,14 +274,16 @@ const BookingForm: React.FC = () => {
         {Array.from({ length: sessionPackage }, (_, i) => (
           <div key={i} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
             <div className="md:col-span-1">
-              <label className="block text-sm font-medium text-gray-800 mb-1">
-                Session {i + 1}
-              </label>
-              {i + 1 > 1 && (
-                <div className="text-xs text-gray-500 italic">
-                  Optional (<span className="text-red-500">*</span>)
-                </div>
-              )}
+            <label className="block text-sm font-medium text-gray-800 mb-1">
+              Session {i + 1}
+              {i === 0 && <span className="text-red-500 ml-1">(*)</span>}
+            </label>
+
+            {i > 0 && (
+              <div className="text-xs text-gray-500 italic">
+                Optional
+              </div>
+            )}
             </div>
 
             {/* Date Picker */}
