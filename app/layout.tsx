@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import localFont from "next/font/local";
+import ClientLayout from "./ClientLayout";
 
 const alta = localFont({
   src: [
@@ -64,9 +65,7 @@ export default function RootLayout({
             gtag('config', 'G-007TQT3W99');
           `}
         </Script>
-        <Header />
-        {children}
-        <Footer />
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
