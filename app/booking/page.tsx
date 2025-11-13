@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import FormPageContent from "@/components/FormPageContent";
 import type { Metadata } from "next";
 
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <FormPageContent />;
+  return (
+    <Suspense fallback={<div>Loading booking form...</div>}>
+      <FormPageContent />
+    </Suspense>
+  )
 }
