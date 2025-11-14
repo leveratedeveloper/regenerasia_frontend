@@ -12,14 +12,20 @@ export default function SuccessStep() {
   const router = useRouter();
 
   useEffect(() => {
-    const hasAccess = sessionStorage.getItem("formSuccess");
-
-    if (!hasAccess) {
-      router.replace("/");
-    }
-    // opsional: hapus agar gak bisa refresh ulang
-    sessionStorage.removeItem("formSuccess");
-  }, [router]);
+    const allow = sessionStorage.getItem("allowSuccess");
+  
+    // if (!allow) {
+    //   router.replace("/");
+    //   return;
+    // }else{
+    //   sessionStorage.removeItem("allowSuccess");
+    // }
+  
+    // ❗ Hapus langsung, supaya refresh & akses manual URL tidak masuk lagi
+   
+  }, []);
+  
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen px-4 bg-[url('/image/bg-thankyou.webp')] bg-cover bg-center">

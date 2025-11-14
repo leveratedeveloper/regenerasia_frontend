@@ -10,13 +10,11 @@ import { useRouter } from 'next/navigation'; // <-- 1. IMPORT ROUTER
 
 // --- ZOD SCHEMA (Unchanged) ---
 const rfqSchema = z.object({
-  productRequirement: z.string().optional(),
   installationSupport: z.boolean(),
   moreThanOneYearWarranty: z.boolean(),
   technicalTraining: z.boolean(),
   purpose: z.string().optional(),
   paymentTerms: z.string().optional(),
-  additionalTerms: z.string().optional(),
   fullName: z.string().min(1, { message: "Full name is required" }),
   company: z.string().min(1, { message: "Company is required" }),
   position: z.string().min(1, { message: "Position is required" }),
@@ -130,11 +128,11 @@ type RfqFormData = z.infer<typeof rfqSchema>;
 
 // --- MAIN RFQ FORM COMPONENT ---
 const RfqForm: React.FC = () => {
-  const router = useRouter(); // <-- 2. INITIALIZE ROUTER
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [products, setProducts] = useState<ProductItem[]>(initialProducts);
   const [selectedDateShipment, setSelectedDate] = useState<string>("");
   const [fileName, setFileName] = useState<string | null>(null);
+  const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const {
@@ -157,14 +155,9 @@ const RfqForm: React.FC = () => {
  
   // Watch values for controlled checkboxes (unchanged)
   const contactBy = watch("contactBy");
-  const installationSupport = watch("installationSupport");
-  const moreThanOneYearWarranty = watch("moreThanOneYearWarranty");
-  const technicalTraining = watch("technicalTraining");
-  const sameAsShippingAddress = watch("sameAsShippingAddress");
   const confirmInformation = watch("confirmInformation");
   const agreeToCommunications = watch("agreeToCommunications");
-  
-  // NOTE: selectedProducts definition moved inside onSubmit
+  const router = useRouter();
 
   // --- 3. CORRECTED ONSUBMIT FUNCTION ---
   const onSubmit = async (data: RfqFormData) => {
@@ -185,7 +178,6 @@ const RfqForm: React.FC = () => {
 
     // 2. Prepare the *complete* payload
     const payload = {
-      // Buyer Details (from react-hook-form 'data')
       fullName: data.fullName,
       email: data.email,
       company: data.company,
@@ -202,37 +194,29 @@ const RfqForm: React.FC = () => {
       installationSupport: data.installationSupport,
       moreThanOneYearWarranty: data.moreThanOneYearWarranty,
       technicalTraining: data.technicalTraining,
-
       // Purchase Details
       purpose: data.purpose,
       paymentTerms: data.paymentTerms,
-      additionalTerms: data.additionalTerms,
-      productRequirement: data.productRequirement,
-
       // Product List
       products: selectedProductsList, // Use the list defined above
-
       // Terms & Agreement
       confirmInformation: data.confirmInformation,
       agreeToCommunications: data.agreeToCommunications,
     };
     
-    // 3. Calculate total cost (optional, good for verification)
-    const totalEstimatedCost = selectedProductsList.reduce((sum, p) => sum + p.budget, 0);
-
     try {
       // 4. Send the *correct* payload to the backend
-      // Removed the erroneous 'date: dates.filter...' line
+      console.log("ini payload",payload)
       const result = await postRfq({
-          ...payload,
-          totalEstimatedCost: totalEstimatedCost, // Send total cost if API needs it
+        ...payload,
+        attachment: file,
       });
 
       if (result.status === "success") {
-        
         console.log("✅ RFQ submitted successfully:", result.data);
-   
         // Redirect to success page (router is now defined)
+        sessionStorage.setItem("formSuccess", "true");
+        // Redirect to success page
         router.push("/success");
         setSubmissionStatus("success");
       } else {
@@ -250,36 +234,14 @@ const RfqForm: React.FC = () => {
     const file = e.target.files?.[0];
     if (file) {
       setFileName(file.name);
+      setFile(file)
       console.log("📁 File selected:", file.name);
-      // You can store file to send later (for example with FormData)
-      // setSelectedFile(file);
     }
   };
 
-  const handleButtonClick = () => {
-    fileInputRef.current?.click();
-  };
 
-  // --- HELPER FUNCTIONS & SUCCESS STATE (Unchanged) ---
-  const handleProductWarrantyChange = (productId: number) => {
-    setProducts(prev =>
-      prev.map(p =>
-        p.id === productId ? { ...p, warranty: !p.warranty } : p
-      )
-    );
-  };
-
-  if (submissionStatus === 'success') {
-    return (
-      <div className="text-center p-12">
-        <h2 className="text-2xl font-bold mb-4">Thank you!</h2>
-        <p>Your request for quotation has been submitted successfully.</p>
-      </div>
-    );
-  }
-  
   const formatIDR = (value: number) =>
-    new Intl.NumberFormat("id-ID").format(value);
+    isNaN(value) ? "0" : new Intl.NumberFormat("id-ID").format(value);
 
   // --- JSX (Unchanged) ---
   return (
@@ -379,26 +341,10 @@ const RfqForm: React.FC = () => {
             </div>
           </div>
         ))}
-
-
       {/* 🧾 Total Budget Summary */}
-      <div className="text-right pt-4 border-t mt-8">
-        <span className="font-semibold text-gray-700">
-          Total Estimated Cost:{" "}
-          <span className="text-brand-primary">
-            IDR{" "}
-            {formatIDR(
-              products
-                .filter(p => p.selected) // <-- Add this line
-                .reduce((sum, p) => sum + p.budget, 0)
-            )}
-          </span>
-        </span>
-      </div>
     </div>
         </div>
       </Section>
-      
       
       <Section title="Include Detail">
         <div className="space-y-2 text-gray-800">
@@ -418,7 +364,6 @@ const RfqForm: React.FC = () => {
         </div>
       </Section>
 
-
       <Section title="Buyer Detail">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
@@ -437,7 +382,7 @@ const RfqForm: React.FC = () => {
                 <div>
                 <label htmlFor="file-upload" className="mt-2 inline-flex items-center space-x-2 px-4 py-2 border border-brand-primary text-brand-primary rounded-md hover:bg-brand-primary/10 transition cursor-pointer">
                     <Paperclip size={16} />
-                    <span>Upload File</span>
+                    <span>{fileName ?? 'Upload File '}</span>
                     <input
                       id="file-upload"
                       type="file"
@@ -452,23 +397,40 @@ const RfqForm: React.FC = () => {
                 <h4 className="text-lg font-semibold">Contact Detail</h4>
                 <InputField label="Your full name" placeholder="Insert your full name" {...register("fullName")} />
                 {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName.message}</p>}
+
                 <InputField label="Company/organization" placeholder="Insert your job title" {...register("company")} />
                 {errors.company && <p className="text-red-500 text-sm">{errors.company.message}</p>}
+
                 <SelectField label="Position/job title" placeholder="Insert your job title" options={["Manager", "Director", "Specialist"]} {...register("position")} />
                 {errors.position && <p className="text-red-500 text-sm">{errors.position.message}</p>}
-                <InputField label="Email address" placeholder="Insert your business email" type="email" {...register("email")} />
+
+                <InputField
+                  label="Email address"
+                  placeholder="Insert your business email"
+                  type="email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Invalid email format",
+                    },
+                  })}
+                />
                 {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+
                 <div className="grid grid-cols-2 gap-4">
-                    <SelectField label="Country" placeholder="Select country" options={["Indonesia", "Singapore", "Malaysia"]} {...register("country")} />
+                    <InputField label="Country" placeholder="Select country"  {...register("country")} />
                     {errors.country && <p className="text-red-500 text-sm -mt-3"><span className='text-red-500'>{errors.country.message}</span></p>}
-                    <SelectField label="City" placeholder="Select city" options={["Jakarta", "Surabaya", "Bandung"]} {...register("city")} />
+                    <InputField label="City" placeholder="Select city" {...register("city")} />
                     {errors.city && <p className="text-red-500 text-sm -mt-3"><span className='text-red-500'>{errors.city.message}</span></p>}
                 </div>
                 <InputField label="Delivery address" placeholder="Insert address" {...register("deliveryAddress")} />
                 {errors.deliveryAddress && <p className="text-red-500 text-sm">{errors.deliveryAddress.message}</p>}
-                <InputField label="Postal code" placeholder="Insert postal code" {...register("postalCode")} />
+
+                <InputField label="Postal code" placeholder="Insert postal code"  type="number" {...register("postalCode")} />
                 {errors.postalCode && <p className="text-red-500 text-sm">{errors.postalCode.message}</p>}
-                <Checkbox label="This address is same as shipping address" checked={sameAsShippingAddress} {...register("sameAsShippingAddress")} />
+
+                {/* <Checkbox label="This address is same as shipping address" checked={sameAsShippingAddress} {...register("sameAsShippingAddress")} /> */}
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">I want to be contacted by</label>
                     <div className="flex space-x-6">
@@ -500,7 +462,7 @@ const RfqForm: React.FC = () => {
 
           <button
             type="submit"
-            className="font-semibold disabled:opacity-50 mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition"
+            className="font-semibold disabled:opacity-50 mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition rounded-md"
             disabled={isSubmitting || submissionStatus === "loading"}
           >
             {submissionStatus === "loading" ? "Submitting..." : "Submit"}
