@@ -6,7 +6,7 @@ export default function HeroSection() {
       <p
         className="font-alta text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-3 drop-shadow-lg leading-snug"
       >
-        Restart, Restore, Regenerate
+        RECHARGE, REGENERATE, RESTART
       </p>
       <h1
         className="font-helvetica text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] mb-5 text-white/90"

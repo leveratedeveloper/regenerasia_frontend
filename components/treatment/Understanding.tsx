@@ -16,7 +16,7 @@ const sources = [
   },
   {
     img: "/image/treatment/icons/Exelerate_Recovery.png",
-    description: "Exelerate Recovery.",
+    description: "Accelerate Recovery.",
   },
   {
     img: "/image/treatment/icons/Aids_Quality_of_Sleep.png",
