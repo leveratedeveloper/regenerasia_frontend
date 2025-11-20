@@ -73,7 +73,7 @@ const HealthSpanSection: React.FC = () => {
         <p className="font-helvetica text-gray-300 max-w-3xl mx-auto text-sm sm:text-base">
           While modern medicine has helped extend life expectancy, the quality
           of those extra years hasn't kept up. Ageing naturally comes with
-          changes that can make everyday life harder:
+          changes that was not able to keep up:
         </p>
       </div>
 

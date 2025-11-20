@@ -56,7 +56,6 @@ export const ValuesSection: React.FC = () => {
         Benefits of Cold Atmospheric Plasma+ Programs
       </h1>
       <p className="font-heveltica text-lg text-center text-gray-800 mb-12 max-w-3xl mx-auto">
-        These principles guide our actions and define who we are. Hover over each value to learn more.
       </p>
 
       {/* ✅ All images visible in one horizontal line */}
