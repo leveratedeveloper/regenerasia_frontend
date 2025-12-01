@@ -7,6 +7,9 @@ import * as z from 'zod';
 import { Paperclip } from 'lucide-react';
 import { postRfq } from "@/lib/api";
 import { useRouter } from 'next/navigation'; // <-- 1. IMPORT ROUTER
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles (sesuai dokumentasi library yang Anda pakai)
+import 'swiper/css';
 
 // --- ZOD SCHEMA (Unchanged) ---
 const rfqSchema = z.object({
@@ -19,10 +22,10 @@ const rfqSchema = z.object({
   company: z.string().min(1, { message: "Company is required" }),
   position: z.string().min(1, { message: "Position is required" }),
   email: z.string().email({ message: "Invalid email address" }),
-  country: z.string().min(1, { message: "Country is required" }),
+  country: z.string().optional(),
   city: z.string().min(1, { message: "City is required" }),
   deliveryAddress: z.string().min(1, { message: "Delivery address is required" }),
-  postalCode: z.string().min(1, { message: "Postal code is required" }),
+  note: z.string().optional(),
   sameAsShippingAddress: z.boolean(),
   contactBy: z.array(z.string()).min(1, { message: "Please select a contact method" }),
   confirmInformation: z.boolean().refine((val) => val === true, {
@@ -97,6 +100,24 @@ const InputField: React.FC<any> = ({ label, placeholder, type = "text", containe
     <input type={type} placeholder={placeholder} className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" {...rest} />
   </div>
 );
+
+const Textarea: React.FC<any> = ({
+    label,
+    placeholder,
+    containerClassName = "",
+    ...rest
+  }) => (
+    <div className={containerClassName}>
+      <label className="block text-sm font-medium text-gray-700 mb-1">
+        {label}
+      </label>
+      <textarea
+        placeholder={placeholder}
+        className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition h-28"
+        {...rest}
+      ></textarea>
+    </div>
+  );
 
 const SelectField: React.FC<any> = ({ label, placeholder, options, containerClassName = "", ...rest }) => (
   <div className={containerClassName}>
@@ -180,12 +201,11 @@ const RfqForm: React.FC = () => {
     const payload = {
       fullName: data.fullName,
       email: data.email,
-      company: data.company,
       position: data.position,
       country: data.country,
       city: data.city,
       deliveryAddress: data.deliveryAddress,
-      postalCode: data.postalCode,
+      note: data.note,
       sameAsShippingAddress: data.sameAsShippingAddress,
       contactBy: data.contactBy,
       attachment: fileName,
@@ -243,205 +263,205 @@ const RfqForm: React.FC = () => {
   const formatIDR = (value: number) =>
     isNaN(value) ? "0" : new Intl.NumberFormat("id-ID").format(value);
 
+  // Daftar gambar Anda
+  const mobileImages = [
+    '/image/bussines/mobile_photo/1.jpg',
+    '/image/bussines/mobile_photo/2.jpg',
+    '/image/bussines/mobile_photo/3.jpg',
+    '/image/bussines/mobile_photo/4.jpg',
+  ];
+
+  const desktopImages = [
+    '/image/bussines/desktop_photo/1.jpg',
+    '/image/bussines/desktop_photo/2.jpg',
+    '/image/bussines/desktop_photo/3.jpg',
+  ];
   // --- JSX (Unchanged) ---
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
-      <Section title="Product List">
-        <div className="space-y-4">
-        <div className="p-6 space-y-6">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4 border rounded-2xl shadow-sm bg-white"
-          >
-            <div className="flex items-center space-x-4 lg:col-span-1">
-              <input
-                type="checkbox"
-                checked={product.selected}
-                onChange={() =>
-                  setProducts((prev) =>
-                    prev.map((p) =>
-                      p.id === product.id ? { ...p, selected: !p.selected } : p
-                    )
-                  )
-                }
-                className="w-5 h-5 accent-brand-primary cursor-pointer"
-              />
-              <img src={product.image} alt={product.name} className="w-16 h-16 rounded-lg object-cover" />
-              <div>
-                <h3 className="font-semibold text-gray-800">{product.name}</h3>
-                <p className="text-xs text-gray-500">Warranty: {product.warranty ? "Yes" : "No"}</p>
-              </div>
-            </div>
+      <Section title="Product">
+        {/* 📱 Mobile Slider */}
+        <div className="md:hidden">
+            {/* ... Swiper component untuk mobile ... */}
+             <Swiper spaceBetween={10} slidesPerView={1} loop={true}>
+                {mobileImages.map((src, index) => (
+                    <SwiperSlide key={`mob-${index}`}>
+                        <img 
+                            src={src} 
+                            alt={`Mobile Product ${index + 1}`} 
+                            className="w-full h-auto object-cover rounded-lg"
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
 
-            {/* QTY */}
-            <div className="col-span-1 flex flex-col justify-center">
-              <label className="text-xs text-gray-500 mb-1">QTY</label>
-              <div className="flex items-center border-b-2 border-transparent focus-within:border-brand-primary transition">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setProducts((prev) =>
-                      prev.map((p) =>
-                        p.id === product.id && p.qty > 1
-                          ? { ...p, qty: p.qty - 1, budget: (p.qty - 1) * p.basePrice }
-                          : p
-                      )
-                    )
-                  }
-                  className="px-2 text-gray-500 hover:text-brand-primary"
-                >
-                  −
-                </button>
-                <input
-                  type="number"
-                  value={product.qty}
-                  onChange={(e) => {
-                    const newQty = Math.max(1, Number(e.target.value) || 1);
-                    setProducts((prev) =>
-                      prev.map((p) =>
-                        p.id === product.id
-                          ? { ...p, qty: newQty, budget: newQty * p.basePrice }
-                          : p
-                      )
-                    );
-                  }}
-                  className="w-12 text-center outline-none bg-transparent"
-                />
-                <button
-                  type="button"
-                  onClick={() =>
-                    setProducts((prev) =>
-                      prev.map((p) =>
-                        p.id === product.id
-                          ? { ...p, qty: p.qty + 1, budget: (p.qty + 1) * p.basePrice }
-                          : p
-                      )
-                    )
-                  }
-                  className="px-2 text-gray-500 hover:text-brand-primary"
-                >
-                  +
-                </button>
-              </div>
-            </div>
+        {/* 🖥️ Desktop Slider */}
+        <div className="hidden md:block">
+            {/* ... Swiper component untuk desktop ... */}
+             <Swiper spaceBetween={20} slidesPerView={3} loop={false}>
+                {desktopImages.map((src, index) => (
+                    <SwiperSlide key={`desk-${index}`}>
+                        <img 
+                            src={src} 
+                            alt={`Desktop Product ${index + 1}`} 
+                            className="w-full h-64 object-cover rounded-lg"
+                        />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+        </div>
 
-            {/* 💰 Budget */}
-            <div className="col-span-1 lg:col-span-2 flex flex-col justify-center">
-              <label className="text-xs text-gray-500 mb-1">Estimate Budget</label>
-              <div className="flex items-center">
-                <span className="text-gray-500 mr-2">IDR</span>
-                <input
-                  type="text"
-                  value={formatIDR(product.budget)}
-                  readOnly
-                  className="w-full p-2 border-b-2 border-transparent focus:border-brand-primary outline-none bg-transparent font-medium text-gray-800"
-                />
-              </div>
+        {/* =======================
+            2. PRODUCT DESCRIPTION/WORDING SECTION (Diperbarui dengan Rata Kiri)
+        ======================== */}
+        <div className="mt-8 p-4 border-t border-gray-200 text-left">
+            <h2 className="text-2xl font-bold font-alta mb-4">
+                Establish New Era With The Unique Human Regenerator POWER.JET
+            </h2>
+            
+            <p className="text-lg mb-6 text-gray-700 font-hevaltica leading-relaxed">
+                You will be completely in cold atmospheric plasma and fell into a meditative state. 
+            </p>
+
+            {/* Daftar Manfaat dalam bentuk bullet point rata kiri */}
+            <ul className="grid grid-cols-2 font-hevaltica gap-x-6 gap-y-1 list-disc list-inside text-gray-700 mb-3">
+                <li>Enjoy Regenerative time-out for your body and mind</li>
+                <li>Preventive body prophylaxis</li>
+                <li>Rehabilitation Bodyvitalization Celenergization</li>
+                <li>Ultimate Anti-ageing Universal Regeneration</li>
+                <li>Improved Quality Of Life</li>
+                <li>Stress-neutralising</li>
+                <li>Therapy-combining</li>
+                <li>Post-therapeutic Andmanym</li>
+            </ul>
+
+            {/* Dimensi tetap di bawah */}
+            <div className="mt-6 pt-4 border-t border-gray-100">
+                <p className="font-bold text-gray-800">
+                    Dimension: <span className="text-blue-600">250cm x 235cm x 130cm</span>
+                </p>
             </div>
-          </div>
-        ))}
-      {/* 🧾 Total Budget Summary */}
-    </div>
+            
         </div>
       </Section>
       
-      <Section title="Include Detail">
-        <div className="space-y-2 text-gray-800">
-          <div>
-            <h3 className="font-semibold text-brand-primary mb-2">Include:</h3>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Goods installation</li>
-              <li>3 Years Warranty</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold text-brand-primary mb-2">Exclude:</h3>
-            <ul className="list-disc list-inside space-y-1">
-              <li>Country Customs & Tax</li>
-            </ul>
-          </div>
-        </div>
-      </Section>
-
       <Section title="Buyer Detail">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-6">
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Purpose of purchase</label>
-                    <div className="space-y-2">
-                        <label className="flex items-center"><input type="radio" value="operational_resupply" {...register("purpose")} className="h-4 w-4 text-brand-primary focus:ring-brand-primary" defaultChecked/> <span className="ml-2 text-sm">Operational resupply</span></label>
-                        <label className="flex items-center"><input type="radio" value="upgrading" {...register("purpose")} className="h-4 w-4 text-brand-primary focus:ring-brand-primary"/> <span className="ml-2 text-sm">Upgrading existing equipment</span></label>
-                        <label className="flex items-center"><input type="radio" value="other" {...register("purpose")} className="h-4 w-4 text-brand-primary focus:ring-brand-primary"/> <span className="ml-2 text-sm">Other</span></label>
-                    </div>
-                </div>
-                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Payment Terms</label>
-                    <input placeholder="Insert payment terms" className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" {...register("paymentTerms")} />
-                </div>
-                <div>
-                <label htmlFor="file-upload" className="mt-2 inline-flex items-center space-x-2 px-4 py-2 border border-brand-primary text-brand-primary rounded-md hover:bg-brand-primary/10 transition cursor-pointer">
-                    <Paperclip size={16} />
-                    <span>{fileName ?? 'Upload File '}</span>
-                    <input
-                      id="file-upload"
-                      type="file"
-                      className="hidden"
-                      ref={fileInputRef}
-                      onChange={handleFileChange}
-                    />
-                  </label>
-                </div>
-            </div>
-            <div className="space-y-4">
-                <h4 className="text-lg font-semibold">Contact Detail</h4>
-                <InputField label="Your full name" placeholder="Insert your full name" {...register("fullName")} />
-                {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName.message}</p>}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* LEFT COLUMN */}
+        <div className="space-y-4">
 
-                <InputField label="Company/organization" placeholder="Insert your job title" {...register("company")} />
-                {errors.company && <p className="text-red-500 text-sm">{errors.company.message}</p>}
+          <InputField
+            label="Your full name"
+            placeholder="Insert your full name"
+            {...register("fullName")}
+          />
+          {errors.fullName && (
+            <p className="text-red-500 text-sm">{errors.fullName.message}</p>
+          )}
 
-                <SelectField label="Position/job title" placeholder="Insert your job title" options={["Manager", "Director", "Specialist"]} {...register("position")} />
-                {errors.position && <p className="text-red-500 text-sm">{errors.position.message}</p>}
+          <SelectField
+            label="Position/job title"
+            placeholder="Insert your job title"
+            options={["Manager", "Director", "Specialist"]}
+            {...register("position")}
+          />
+          {errors.position && (
+            <p className="text-red-500 text-sm">{errors.position.message}</p>
+          )}
 
-                <InputField
-                  label="Email address"
-                  placeholder="Insert your business email"
-                  type="email"
-                  {...register("email", {
-                    required: "Email is required",
-                    pattern: {
-                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                      message: "Invalid email format",
-                    },
-                  })}
-                />
-                {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+          <InputField
+            label="Email address"
+            placeholder="Insert your business email"
+            type="email"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Invalid email format",
+              },
+            })}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm">{errors.email.message}</p>
+          )}
 
-                <div className="grid grid-cols-2 gap-4">
-                    <InputField label="Country" placeholder="Select country"  {...register("country")} />
-                    {errors.country && <p className="text-red-500 text-sm -mt-3"><span className='text-red-500'>{errors.country.message}</span></p>}
-                    <InputField label="City" placeholder="Select city" {...register("city")} />
-                    {errors.city && <p className="text-red-500 text-sm -mt-3"><span className='text-red-500'>{errors.city.message}</span></p>}
-                </div>
-                <InputField label="Delivery address" placeholder="Insert address" {...register("deliveryAddress")} />
-                {errors.deliveryAddress && <p className="text-red-500 text-sm">{errors.deliveryAddress.message}</p>}
+          <InputField
+            label="Country"
+            placeholder="Select country"
+            {...register("country")}
+          />
+          {errors.country && (
+            <p className="text-red-500 text-sm">{errors.country.message}</p>
+          )}
 
-                <InputField label="Postal code" placeholder="Insert postal code"  type="number" {...register("postalCode")} />
-                {errors.postalCode && <p className="text-red-500 text-sm">{errors.postalCode.message}</p>}
-
-                {/* <Checkbox label="This address is same as shipping address" checked={sameAsShippingAddress} {...register("sameAsShippingAddress")} /> */}
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">I want to be contacted by</label>
-                    <div className="flex space-x-6">
-                       <Checkbox label="Whatsapp" value="whatsapp" checked={contactBy?.includes("whatsapp")} {...register("contactBy")} />
-                       <Checkbox label="Email" value="email" checked={contactBy?.includes("email")} {...register("contactBy")} />
-                       <Checkbox label="Phone" value="phone" checked={contactBy?.includes("phone")} {...register("contactBy")} />
-                    </div>
-                    {errors.contactBy && <p className="text-red-500 text-sm">{errors.contactBy.message}</p>}
-                </div>
-            </div>
+          <InputField
+            label="City"
+            placeholder="Select city"
+            {...register("city")}
+          />
+          {errors.city && (
+            <p className="text-red-500 text-sm">{errors.city.message}</p>
+          )}
         </div>
+
+        {/* RIGHT COLUMN */}
+        <div className="space-y-4">
+          <InputField
+            label="Delivery address"
+            placeholder="Insert address"
+            {...register("deliveryAddress")}
+          />
+          {errors.deliveryAddress && (
+            <p className="text-red-500 text-sm">
+              {errors.deliveryAddress.message}
+            </p>
+          )}
+
+          <Textarea
+            label="Note"
+            placeholder="Write your note here..."
+            {...register("note")}
+          />
+          {errors.note && (
+            <p className="text-red-500 text-sm">{errors.note.message}</p>
+          )}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              I want to be contacted by
+            </label>
+
+            <div className="flex space-x-6">
+              <Checkbox
+                label="Whatsapp"
+                value="whatsapp"
+                checked={contactBy?.includes("whatsapp")}
+                {...register("contactBy")}
+              />
+              <Checkbox
+                label="Email"
+                value="email"
+                checked={contactBy?.includes("email")}
+                {...register("contactBy")}
+              />
+              <Checkbox
+                label="Phone"
+                value="phone"
+                checked={contactBy?.includes("phone")}
+                {...register("contactBy")}
+              />
+            </div>
+
+            {errors.contactBy && (
+              <p className="text-red-500 text-sm">
+                {errors.contactBy.message}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+
       </Section>
       
       <Section title="Terms & Agreement">
