@@ -265,16 +265,16 @@ const RfqForm: React.FC = () => {
 
   // Daftar gambar Anda
   const mobileImages = [
-    '/image/bussines/mobile_photo/1.jpg',
-    '/image/bussines/mobile_photo/2.jpg',
-    '/image/bussines/mobile_photo/3.jpg',
-    '/image/bussines/mobile_photo/4.jpg',
+    '/image/bussines/mobile_photo/1.png',
+    '/image/bussines/mobile_photo/2.png',
+    // '/image/bussines/mobile_photo/3.jpg',
+    // '/image/bussines/mobile_photo/4.jpg',
   ];
 
   const desktopImages = [
-    '/image/bussines/desktop_photo/1.jpg',
-    '/image/bussines/desktop_photo/2.jpg',
-    '/image/bussines/desktop_photo/3.jpg',
+    '/image/bussines/desktop_photo/1.png',
+    '/image/bussines/desktop_photo/2.png',
+    // '/image/bussines/desktop_photo/3.jpg',
   ];
   // --- JSX (Unchanged) ---
   return (
@@ -299,7 +299,7 @@ const RfqForm: React.FC = () => {
         {/* 🖥️ Desktop Slider */}
         <div className="hidden md:block">
             {/* ... Swiper component untuk desktop ... */}
-             <Swiper spaceBetween={20} slidesPerView={3} loop={false}>
+             <Swiper spaceBetween={20} slidesPerView={2} loop={false}>
                 {desktopImages.map((src, index) => (
                     <SwiperSlide key={`desk-${index}`}>
                         <img 
@@ -387,13 +387,14 @@ const RfqForm: React.FC = () => {
           )}
 
           <InputField
-            label="Country"
+            label={
+              <>
+                Country <span className="text-gray-400 text-sm">(optional)</span>
+              </>
+            }
             placeholder="Select country"
             {...register("country")}
           />
-          {errors.country && (
-            <p className="text-red-500 text-sm">{errors.country.message}</p>
-          )}
 
           <InputField
             label="City"
