@@ -328,12 +328,16 @@ const RfqForm: React.FC = () => {
             <ul className="grid grid-cols-2 font-hevaltica gap-x-6 gap-y-1 list-disc list-inside text-gray-700 mb-3">
                 <li>Enjoy Regenerative time-out for your body and mind</li>
                 <li>Preventive body prophylaxis</li>
-                <li>Rehabilitation Bodyvitalization Celenergization</li>
-                <li>Ultimate Anti-ageing Universal Regeneration</li>
-                <li>Improved Quality Of Life</li>
+                <li>Rehabilitation</li>
+                <li>Body vitalization</li>
+                <li>Cell energization</li>
+                <li>Ultimate anti-ageing</li>
+                <li>Universal regeneration</li>
+                <li>Improved quality of life</li>
                 <li>Stress-neutralising</li>
                 <li>Therapy-combining</li>
-                <li>Post-therapeutic Andmanym</li>
+                <li>Post-therapeutic</li>
+                <li>And many more</li>
             </ul>
 
             {/* Dimensi tetap di bawah */}
