@@ -11,14 +11,14 @@ import ContactUsSection from "@/components/ContactUsSection";
 export default function Home() {
   const journeySteps = [
     { id: 1, number: 1, imageUrl: '/image/journey_1.png', caption: 'Registration', description: 'Start by registering and sharing your personal details to help us understand you better.' },
-    { id: 2, number: 2, imageUrl: '/image/journey_2.png', caption: 'Health screening', description: 'Collecting your health profile through personalized screening to ensure accurate recommendations.' },
+    { id: 2, number: 2, imageUrl: '/image/journey_2.png', caption: 'Health Screening', description: 'Collecting your health profile through personalized screening to ensure accurate recommendations.' },
     { id: 3, number: 3, imageUrl: '/image/journey_3.png', caption: 'Analysis by Consultant', description: 'Comprehensive analysis and tailored report by our consultant to guide your treatment plan.' },
     { id: 4, number: 4, imageUrl: '/image/journey_4.webp', caption: 'Treatment Program', description: 'Personalized Cold Atmospheric Plasma+ therapy for effective and targeted healing.' },
     { id: 5, number: 5, imageUrl: '/image/journey_5.png', caption: 'Program Report by Consultant', description: 'Comprehensive progress report and personalized guidance post-treatment.' },
   ];
 
   const energizeSteps = [
-    { id: 1, imageUrl: '/image/energize_1.png', caption: 'Cellular regeneration',  description: '' },
+    { id: 1, imageUrl: '/image/energize_1.png', caption: 'Cellular Regeneration',  description: '' },
     { id: 2, imageUrl: '/image/Strengthening-Immune-System.webp', caption: 'Strengthening Immune System',  description: '' },
     { id: 3, imageUrl: '/image/energize_3.png', caption: 'Accelerate Recovery',  description: '' },
     { id: 4, imageUrl: '/image/energize_4.png', caption: 'Aids Quality of Sleep',  description: '' },
