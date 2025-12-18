@@ -84,9 +84,10 @@ const SessionPackageRadio: React.FC<{
   value: number;
   label: string;
   duration: string;
+  price: string;
   selectedValue: number;
   onChange: (value: number) => void;
-}> = ({ value, label, duration, selectedValue, onChange }) => (
+}> = ({ value, label, duration, price, selectedValue, onChange }) => (
   <label
     className={`p-4 rounded-lg text-center cursor-pointer transition-all duration-200 bg-white text-black ${
       selectedValue === value
@@ -104,6 +105,7 @@ const SessionPackageRadio: React.FC<{
     />
     <div className="font-bold text-lg">{label}</div>
     <div className="text-sm text-gray-600">{duration}</div>
+    <div className="text-sm text-gray-600">{price}</div>
   </label>
 );
 
@@ -265,9 +267,9 @@ const BookingForm: React.FC = () => {
           How many sessions do you want to book?
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <SessionPackageRadio value={1} label="1 Session" duration="30 Minutes/Session" selectedValue={sessionPackage} onChange={setSessionPackage} />
-          <SessionPackageRadio value={5} label="5 Sessions" duration="30 Minutes/Session" selectedValue={sessionPackage} onChange={setSessionPackage} />
-          <SessionPackageRadio value={10} label="10 Sessions" duration="30 Minutes/Session" selectedValue={sessionPackage} onChange={setSessionPackage} />
+          <SessionPackageRadio value={1} label="1 Session" duration="30 Minutes/Session" price="Rp. 5.000.000" selectedValue={sessionPackage} onChange={setSessionPackage} />
+          <SessionPackageRadio value={5} label="5 Sessions" duration="30 Minutes/Session" price="Rp. 20.000.000" selectedValue={sessionPackage} onChange={setSessionPackage} />
+          <SessionPackageRadio value={10} label="10 Sessions" duration="30 Minutes/Session" price="Rp. 40.000.000" selectedValue={sessionPackage} onChange={setSessionPackage} />
         </div>
 
         <div className="space-y-4 mb-8">
