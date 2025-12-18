@@ -278,227 +278,205 @@ const RfqForm: React.FC = () => {
   ];
   // --- JSX (Unchanged) ---
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
-      <Section title="Product">
-        {/* 📱 Mobile Slider */}
-        <div className="md:hidden">
-            {/* ... Swiper component untuk mobile ... */}
-             <Swiper spaceBetween={10} slidesPerView={1} loop={true}>
-                {mobileImages.map((src, index) => (
-                    <SwiperSlide key={`mob-${index}`}>
-                        <img 
-                            src={src} 
-                            alt={`Mobile Product ${index + 1}`} 
-                            className="w-full h-auto object-cover rounded-lg"
-                        />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </div>
-
-        {/* 🖥️ Desktop Slider */}
-        <div className="hidden md:block">
-            {/* ... Swiper component untuk desktop ... */}
-             <Swiper spaceBetween={20} slidesPerView={2} loop={false}>
-                {desktopImages.map((src, index) => (
-                    <SwiperSlide key={`desk-${index}`}>
-                        <img 
-                            src={src} 
-                            alt={`Desktop Product ${index + 1}`} 
-                            className="w-full h-64 object-cover rounded-lg"
-                        />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </div>
-
-        {/* =======================
-            2. PRODUCT DESCRIPTION/WORDING SECTION (Diperbarui dengan Rata Kiri)
-        ======================== */}
-        <div className="mt-8 p-4 border-t border-gray-200 text-left">
-            <h2 className="text-2xl font-bold font-alta mb-4">
-                Establish New Era With The Unique Human Regenerator POWER.JET
-            </h2>
-            
-            <p className="text-lg mb-6 text-gray-700 font-hevaltica leading-relaxed">
-                You will be completely in cold atmospheric plasma and fell into a meditative state. 
-            </p>
-
-            {/* Daftar Manfaat dalam bentuk bullet point rata kiri */}
-            <ul className="grid grid-cols-2 font-hevaltica gap-x-6 gap-y-1 list-disc list-inside text-gray-700 mb-3">
-                <li>Enjoy Regenerative time-out for your body and mind</li>
-                <li>Preventive body prophylaxis</li>
-                <li>Rehabilitation</li>
-                <li>Body vitalization</li>
-                <li>Cell energization</li>
-                <li>Ultimate anti-ageing</li>
-                <li>Universal regeneration</li>
-                <li>Improved quality of life</li>
-                <li>Stress-neutralising</li>
-                <li>Therapy-combining</li>
-                <li>Post-therapeutic</li>
-                <li>And many more</li>
-            </ul>
-
-            {/* Dimensi tetap di bawah */}
-            <div className="mt-6 pt-4 border-t border-gray-100">
-                <p className="font-bold text-gray-800">
-                    Dimension: <span className="text-blue-600">250cm x 235cm x 130cm</span>
-                </p>
-            </div>
-            
-        </div>
-      </Section>
+    <div className="min-h-screen bg-white">
+    {/* Container with relative/flex structure for sticky behavior */}
+    <form 
+      onSubmit={handleSubmit(onSubmit)} 
+      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-start gap-12"
+    >
       
-      <Section title="Buyer Detail">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* LEFT COLUMN */}
-        <div className="space-y-4">
-
-          <InputField
-            label="Your full name"
-            placeholder="Insert your full name"
-            {...register("fullName")}
-          />
-          {errors.fullName && (
-            <p className="text-red-500 text-sm">{errors.fullName.message}</p>
-          )}
-
-          <SelectField
-            label="Position/job title"
-            placeholder="Insert your job title"
-            options={["Manager", "Director", "Specialist"]}
-            {...register("position")}
-          />
-          {errors.position && (
-            <p className="text-red-500 text-sm">{errors.position.message}</p>
-          )}
-
-          <InputField
-            label="Email address"
-            placeholder="Insert your business email"
-            type="email"
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: "Invalid email format",
-              },
-            })}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email.message}</p>
-          )}
-
-          <InputField
-            label={
-              <>
-                Country <span className="text-gray-400 text-sm">(optional)</span>
-              </>
-            }
-            placeholder="Select country"
-            {...register("country")}
-          />
-
-          <InputField
-            label="City"
-            placeholder="Select city"
-            {...register("city")}
-          />
-          {errors.city && (
-            <p className="text-red-500 text-sm">{errors.city.message}</p>
-          )}
-        </div>
-
-        {/* RIGHT COLUMN */}
-        <div className="space-y-4">
-          <InputField
-            label="Delivery address"
-            placeholder="Insert address"
-            {...register("deliveryAddress")}
-          />
-          {errors.deliveryAddress && (
-            <p className="text-red-500 text-sm">
-              {errors.deliveryAddress.message}
-            </p>
-          )}
-
-          <Textarea
-            label="Note"
-            placeholder="Write your note here..."
-            {...register("note")}
-          />
-          {errors.note && (
-            <p className="text-red-500 text-sm">{errors.note.message}</p>
-          )}
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              I want to be contacted by
-            </label>
-
-            <div className="flex space-x-6">
-              <Checkbox
-                label="Whatsapp"
-                value="whatsapp"
-                checked={contactBy?.includes("whatsapp")}
-                {...register("contactBy")}
-              />
-              <Checkbox
-                label="Email"
-                value="email"
-                checked={contactBy?.includes("email")}
-                {...register("contactBy")}
-              />
-              <Checkbox
-                label="Phone"
-                value="phone"
-                checked={contactBy?.includes("phone")}
-                {...register("contactBy")}
-              />
-            </div>
-
-            {errors.contactBy && (
-              <p className="text-red-500 text-sm">
-                {errors.contactBy.message}
-              </p>
-            )}
+      {/* ============================================================
+          LEFT SECTION: STICKY IMAGES (Visible on Desktop)
+          ============================================================ */}
+      <div className="w-full lg:w-1/2 lg:sticky lg:top-32 flex flex-col gap-6">
+        <Section title="Product Gallery" className="lg:border-none">
+          {/* On Mobile: Single stacked image or vertical list as requested */}
+          <div className="space-y-6">
+            {desktopImages.map((src, index) => (
+              <div key={index} className="overflow-hidden rounded-xl shadow-lg group">
+                <img 
+                  src={src} 
+                  alt={`Product view ${index + 1}`} 
+                  className="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500"
+                />
+              </div>
+            ))}
           </div>
-        </div>
+          
+          {/* Dimension Info (Always attached to images on desktop side) */}
+          <div className="mt-2 pt-2 border-t border-gray-100 hidden lg:block">
+            <p className="font-bold text-gray-800 text-sm">
+              DIMENSION: <span className="text-blue-600 font-mono">250CM X 235CM X 130CM</span>
+            </p>
+          </div>
+        </Section>
       </div>
 
-      </Section>
-      
-      <Section title="Terms & Agreement">
-        <div className="space-y-4 bg-gray-50 p-6 rounded-lg">
-          <Checkbox
-            label="I confirm that the information provided is accurate and I am authorized to request a quotation."
-            checked={confirmInformation}
-            {...register("confirmInformation")}
-          />
-          {errors.confirmInformation && <p className="text-red-500 text-sm">{errors.confirmInformation.message}</p>}
+      {/* ============================================================
+          RIGHT SECTION: SCROLLABLE FORM & CONTENT
+          ============================================================ */}
+      <div className="w-full lg:w-1/2 space-y-16">
+        
+        {/* 1. PRODUCT DESCRIPTION SECTION */}
+        <div className="text-left animate-in fade-in duration-700">
+          <h2 className="text-1xl md:text-2xl font-bold font-alta mb-6 leading-tight text-gray-900">
+            Establish New Era With The Unique Human Regenerator POWER.JET
+          </h2>
+          
+          <p className="text-xl mb-8 text-gray-600 font-hevaltica leading-relaxed border-l-4 border-green-800 pl-4">
+            You will be completely immersed in cold atmospheric plasma and enter a profound meditative state of recovery.
+          </p>
 
-          <Checkbox
-            label="I agree to receive communications (SMS, Email, Whatsapp) re booking confirmation & reminders."
-            checked={agreeToCommunications}
-            {...register("agreeToCommunications")}
-          />
-          {errors.agreeToCommunications && <p className="text-red-500 text-sm">{errors.agreeToCommunications.message}</p>}
-
-          <button
-            type="submit"
-            className="font-semibold disabled:opacity-50 mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition rounded-md"
-            disabled={isSubmitting || submissionStatus === "loading"}
-          >
-            {submissionStatus === "loading" ? "Submitting..." : "Submit"}
-          </button>
-
-          {submissionStatus === "error" && (
-            <p className="text-red-500 text-sm mt-2">Something went wrong. Please try again.</p>
-          )}
+          <ul className="grid grid-cols-1 sm:grid-cols-2 font-hevaltica gap-x-8 gap-y-3 list-disc list-inside text-gray-700 mb-8">
+            <li>Regenerative time-out</li>
+            <li>Body prophylaxis</li>
+            <li>Rehabilitation</li>
+            <li>Body vitalization</li>
+            <li>Cell energization</li>
+            <li>Ultimate anti-ageing</li>
+            <li>Universal regeneration</li>
+            <li>Improved quality of life</li>
+            <li>Stress-neutralising</li>
+            <li>Therapy-combining</li>
+            <li>Post-therapeutic</li>
+            <li>And many more</li>
+          </ul>
         </div>
-      </Section>
+
+        {/* 2. BUYER DETAIL SECTION */}
+        <Section title="Buyer Detail">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* LEFT COLUMN FIELDS */}
+            <div className="space-y-6">
+              <InputField
+                label="Your full name"
+                placeholder="Insert your full name"
+                {...register("fullName", { required: "Full name is required" })}
+              />
+              {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
+
+              <SelectField
+                label="Position / Job title"
+                placeholder="Select job title"
+                options={["Manager", "Director", "Specialist", "Owner"]}
+                {...register("position", { required: "Position is required" })}
+              />
+              {errors.position && <p className="text-red-500 text-xs mt-1">{errors.position.message}</p>}
+
+              <InputField
+                label="Email address"
+                placeholder="Insert your business email"
+                type="email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Invalid email format",
+                  },
+                })}
+              />
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+
+              <InputField
+                label={<>Country <span className="text-gray-400 font-normal">(Optional)</span></>}
+                placeholder="Select country"
+                {...register("country")}
+              />
+
+              <InputField
+                label="City"
+                placeholder="Select city"
+                {...register("city", { required: "City is required" })}
+              />
+              {errors.city && <p className="text-red-500 text-xs mt-1">{errors.city.message}</p>}
+            </div>
+
+            {/* RIGHT COLUMN FIELDS */}
+            <div className="space-y-6">
+              <InputField
+                label="Delivery address"
+                placeholder="Insert detailed address"
+                {...register("deliveryAddress", { required: "Delivery address is required" })}
+              />
+              {errors.deliveryAddress && <p className="text-red-500 text-xs mt-1">{errors.deliveryAddress.message}</p>}
+
+              <Textarea
+                label="Note / Special Requests"
+                placeholder="Write your note here..."
+                {...register("note")}
+              />
+
+              <div className="pt-2">
+                <label className="block text-sm font-semibold text-gray-800 mb-4">
+                  Preferred Contact Method
+                </label>
+                <div className="flex flex-wrap gap-x-6 gap-y-4">
+                  <Checkbox
+                    label="Whatsapp"
+                    value="whatsapp"
+                    {...register("contactBy", { required: "Select at least one method" })}
+                  />
+                  <Checkbox
+                    label="Email"
+                    value="email"
+                    {...register("contactBy")}
+                  />
+                  <Checkbox
+                    label="Phone Call"
+                    value="phone"
+                    {...register("contactBy")}
+                  />
+                </div>
+                {errors.contactBy && <p className="text-red-500 text-xs mt-2">{errors.contactBy.message}</p>}
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* 3. TERMS & AGREEMENT SECTION */}
+        <Section title="Terms & Agreement">
+          <div className="space-y-6 bg-gray-50 p-8 rounded-2xl border border-gray-100">
+            <Checkbox
+              label="I confirm that the information provided is accurate and I am authorized to request a quotation."
+              {...register("confirmInformation", { required: "Must confirm information" })}
+            />
+            {errors.confirmInformation && <p className="text-red-500 text-xs mt-1">{errors.confirmInformation.message}</p>}
+
+            <Checkbox
+              label="I agree to receive communications (SMS, Email, Whatsapp) regarding booking confirmation and reminders."
+              {...register("agreeToCommunications", { required: "Must agree to communications" })}
+            />
+            {errors.agreeToCommunications && <p className="text-red-500 text-xs mt-1">{errors.agreeToCommunications.message}</p>}
+
+            <div className="pt-6">
+              <button
+                type="submit"
+                className="w-full md:w-auto font-bold uppercase tracking-widest disabled:opacity-50 bg-green-900 text-white px-10 py-2 hover:bg-black transition-all duration-300 rounded-lg shadow-xl hover:shadow-2xl active:scale-95"
+                disabled={isSubmitting || submissionStatus === "loading"}
+              >
+                {submissionStatus === "loading" ? "Processing..." : "Submit"}
+              </button>
+
+              {submissionStatus === "success" && (
+                <div className="mt-4 p-4 bg-green-100 text-green-800 rounded-lg text-sm font-medium">
+                  Thank you! Your inquiry has been submitted successfully.
+                </div>
+              )}
+              
+              {submissionStatus === "error" && (
+                <p className="text-red-600 text-sm mt-4 font-medium italic">Something went wrong. Please try again or contact support.</p>
+              )}
+            </div>
+          </div>
+        </Section>
+
+        {/* Footer Decoration */}
+        <div className="pt-12 pb-6 text-center text-xs text-gray-400 uppercase tracking-widest">
+          © 2024 Human Regenerator • Future of Wellness
+        </div>
+      </div>
     </form>
+  </div>
   );
 };
 
