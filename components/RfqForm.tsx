@@ -288,10 +288,10 @@ const RfqForm: React.FC = () => {
       {/* ============================================================
           LEFT SECTION: STICKY IMAGES (Visible on Desktop)
           ============================================================ */}
-      <div className="w-full lg:w-1/2 lg:sticky lg:top-32 flex flex-col gap-6">
+      <div className="w-full lg:w-1/2 lg:sticky lg:top-24 flex flex-col gap-6">
         <Section title="Product Gallery" className="lg:border-none">
           {/* On Mobile: Single stacked image or vertical list as requested */}
-          <div className="space-y-6">
+          <div className="space-y-2">
             {desktopImages.map((src, index) => (
               <div key={index} className="overflow-hidden rounded-xl shadow-lg group">
                 <img 
