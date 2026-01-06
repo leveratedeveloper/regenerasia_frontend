@@ -73,7 +73,7 @@ export default function FormPageContent() {
         </header>
 
         {/* ===== MAIN CONTENT ===== */}
-        <main className="p-6 md:p-12 max-w-5xl mx-auto">
+        <main className="p-6 md:p-12 max-w-[1200px] mx-auto">
           <div className="text-center mb-8">
             <div className="inline-flex items-center space-x-2 p-1 rounded-lg border border-gray-300">
               <TabButton label="Booking Treatment Form" tabName="booking" />
