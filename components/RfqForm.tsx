@@ -282,13 +282,13 @@ const RfqForm: React.FC = () => {
     {/* Container with relative/flex structure for sticky behavior */}
     <form 
       onSubmit={handleSubmit(onSubmit)} 
-      className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-start gap-12"
+      className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row items-start gap-12"
     >
       
       {/* ============================================================
           LEFT SECTION: STICKY IMAGES (Visible on Desktop)
           ============================================================ */}
-      <div className="w-full lg:w-1/2 lg:sticky lg:top-26 flex flex-col gap-6">
+     <div className="w-full lg:w-[55%] xl:w-[50%] lg:sticky lg:top-24 flex flex-col gap-8">
         <Section title="Product Gallery" className="lg:border-none">
           {/* On Mobile: Single stacked image or vertical list as requested */}
           <div className="space-y-2">
@@ -297,7 +297,7 @@ const RfqForm: React.FC = () => {
                 <img 
                   src={src} 
                   alt={`Product view ${index + 1}`} 
-                  className="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500"
+                  className="w-full  aspect-[4/3] md:aspect-video  object-cover transform group-hover:scale-105 transition duration-500"
                 />
               </div>
             ))}
@@ -315,7 +315,7 @@ const RfqForm: React.FC = () => {
       {/* ============================================================
           RIGHT SECTION: SCROLLABLE FORM & CONTENT
           ============================================================ */}
-      <div className="w-full lg:w-1/2 space-y-16">
+      <div className="w-full lg:w-[45%] xl:w-[50%] space-y-14">
         
         {/* 1. PRODUCT DESCRIPTION SECTION */}
         <div className="text-left animate-in fade-in duration-700">
