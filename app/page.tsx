@@ -10,15 +10,9 @@ import ContactUsSection from "@/components/ContactUsSection";
 
 export default function Home() {
   const journeySteps = [
-<<<<<<< HEAD
-    { id: 1, number: 1, imageUrl: '/image/journey_1.png', caption: 'Registration', description: 'Start by registering and sharing your personal details to help us understand you better.' },
-    { id: 2, number: 2, imageUrl: '/image/journey_2.png', caption: 'Health Screening', description: 'Collecting your health profile through personalized screening to ensure accurate recommendations.' },
-    { id: 3, number: 3, imageUrl: '/image/journey_3.png', caption: 'Analysis by Consultant', description: 'Comprehensive analysis and tailored report by our consultant to guide your treatment plan.' },
-=======
     { id: 1, number: 1, imageUrl: '/image/journey_1.webp', caption: 'Registration', description: 'Start by registering and sharing your personal details to help us understand you better.' },
     { id: 2, number: 2, imageUrl: '/image/journey_2.webp', caption: 'Health screening', description: 'Collecting your health profile through personalized screening to ensure accurate recommendations.' },
     { id: 3, number: 3, imageUrl: '/image/journey_3.webp', caption: 'Analysis by Consultant', description: 'Comprehensive analysis and tailored report by our consultant to guide your treatment plan.' },
->>>>>>> b2cd72f (update homepage)
     { id: 4, number: 4, imageUrl: '/image/journey_4.webp', caption: 'Treatment Program', description: 'Personalized Cold Atmospheric Plasma+ therapy for effective and targeted healing.' },
     { id: 5, number: 5, imageUrl: '/image/journey_5.webp', caption: 'Program Report by Consultant', description: 'Comprehensive progress report and personalized guidance post-treatment.' },
   ];
