@@ -30,13 +30,13 @@ const experts = [
     description:
     'Kharisma Hidayat is the visionary force behind Regenerasia. Driven by a passion for longevity and advanced technology, she was instrumental in introducing the first COLD ATMOSPHERIC PLASMA+ TECHNOLOGY in Asia. Her commitment lies in revolutionizing the Indonesian wellness industry by providing non-invasive, evidence-based tools that empower people to proactively manage their aging process and extend their active, healthy years.',
   },
-  {
-    name: 'Nova Audianto',
-    title: 'General Manager',
-    imageUrl: '/image/doctor/pak-nova.webp',
-    description:
-    'As General Manager, Nova ensures the seamless operation and adherence to international standards of excellence across all Regenerasia services. His focus is on client experience, ensuring that every interaction, from consultation to post-treatment care, is professional, comfortable, and highly effective. He is dedicated to building a brand synonymous with trust, quality, and pioneering regenerative health in Indonesia.',
-  },
+  // {
+  //   name: 'Nova Audianto',
+  //   title: 'General Manager',
+  //   imageUrl: '/image/doctor/pak-nova.webp',
+  //   description:
+  //   'As General Manager, Nova ensures the seamless operation and adherence to international standards of excellence across all Regenerasia services. His focus is on client experience, ensuring that every interaction, from consultation to post-treatment care, is professional, comfortable, and highly effective. He is dedicated to building a brand synonymous with trust, quality, and pioneering regenerative health in Indonesia.',
+  // },
   // {
   //   name: 'Dr. James Liu',
   //   title: 'Inflammation Research Lead',
@@ -70,7 +70,7 @@ const ExpertsSection: React.FC = () => {
         Our multidisciplinary team brings together decades of experience in <br/>regenerative medicine, respiratory therapy, and holistic healing.
       </h4>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 min-h-[650px] rounded-xl overflow-hidden gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[650px] rounded-xl overflow-hidden gap-8">
         {experts.map((expert, index) => (
           <ExpertCard key={index} {...expert} />
         ))}
