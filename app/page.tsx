@@ -18,12 +18,12 @@ export default function Home() {
   ];
 
   const energizeSteps = [
-    { id: 1, imageUrl: '/image/energize_1.png', caption: 'Cellular Regeneration',  description: '' },
-    { id: 2, imageUrl: '/image/Strengthening-Immune-System.webp', caption: 'Strengthening Immune System',  description: '' },
-    { id: 3, imageUrl: '/image/energize_3.png', caption: 'Accelerate Recovery',  description: '' },
-    { id: 4, imageUrl: '/image/energize_4.png', caption: 'Aids Quality of Sleep',  description: '' },
-    { id: 5, imageUrl: '/image/Enhance-Energy-Level.webp', caption: 'Enhance Energy Level',  description: '' },
-    { id: 6, imageUrl: '/image/energize_6.png', caption: 'Support Anti Aging',  description: '' },
+    { id: 1, imageUrl: '/image/cellular-regeneration.webp', caption: 'Cellular Regeneration',  description: '' },
+    { id: 2, imageUrl: '/image/immune-system.webp', caption: 'Strengthening Immune System',  description: '' },
+    { id: 3, imageUrl: '/image/accelerate-recovery.jpg', caption: 'Accelerate Recovery',  description: '' },
+    { id: 4, imageUrl: '/image/aids-quality-of-sleep.webp', caption: 'Aids Quality of Sleep',  description: '' },
+    { id: 5, imageUrl: '/image/enhance-energy-level.webp', caption: 'Enhance Energy Level',  description: '' },
+    { id: 6, imageUrl: '/image/support-anti-aging.webp', caption: 'Support Anti Aging',  description: '' },
   ];
 
   return (
