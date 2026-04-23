@@ -22,7 +22,7 @@ export default function Home() {
     { id: 2, imageUrl: '/image/immune-system.webp', caption: 'Strengthening Immune System',  description: '' },
     { id: 3, imageUrl: '/image/accelerate-recovery.jpg', caption: 'Accelerate Recovery',  description: '' },
     { id: 4, imageUrl: '/image/aids-quality-of-sleep.webp', caption: 'Aids Quality of Sleep',  description: '' },
-    { id: 5, imageUrl: '/image/enhance-energy-level.webp', caption: 'Enhance Energy Level',  description: '' },
+    { id: 5, imageUrl: '/image/enhance-energy-level-new.webp', caption: 'Enhance Energy Level',  description: '' },
     { id: 6, imageUrl: '/image/support-anti-aging.webp', caption: 'Support Anti Aging',  description: '' },
   ];
 
