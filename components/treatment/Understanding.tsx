@@ -35,7 +35,7 @@ const sources = [
 const Understanding: React.FC = () => {
   return (
     <section className="px-1">
-      <h2 className="font-heveltica text-center text-3xl md:text-4xl text-[#364028] mb-6">
+      <h2 className="font-heveltica text-center text-3xl md:text-4xl text-[#2f332f] mb-6">
         Understanding{" "}
         <span className="font-heveltica font-semibold">
           Cell Regeneration

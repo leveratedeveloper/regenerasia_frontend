@@ -7,7 +7,7 @@ export default function OutConsultant() {
     <div className="bg-[#f3eee7] text-stone-800 flex flex-col items-center justify-center">
     <div className="w-full max-w-7xl mx-auto">
       <header className="text-center mb-3 mt-20">
-        <h1 className="font-alta text-3xl md:text-4xl lg:text-5xl text-[#768c43]">OUR CONSULTANT</h1>
+        <h1 className="font-alta text-3xl md:text-4xl lg:text-5xl text-[#2f332f]">OUR CONSULTANT</h1>
       </header>
 
       <main className="bg-[#f3eee7] border-stone-300/60 rounded-3xl p-6 sm:p-8 md:p-12">

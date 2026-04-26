@@ -34,7 +34,7 @@ const Journey: React.FC<JourneyProps> = ({ steps }) => {
     <div className="container w-[100%] mx-auto">
       <div className="flex flex-col items-center gap-2 md:gap-2">
         {/* Title */}
-        <h2 className={`font-alta py-6 text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-center text-[#768c43] w-[100%] lg:w-[60%] mx-auto`}>
+        <h2 className={`font-alta py-6 text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-center text-[#2f332f] w-[100%] lg:w-[60%] mx-auto`}>
           Start Your Longevity Journey
         </h2>
     

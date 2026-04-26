@@ -59,7 +59,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/image/new-logo.webp"
+              src={scrolled ? "/image/logo-regenerasia.webp" : "/image/logo-regenerasia-white.webp"}
               alt="Logo"
               width={100}
               height={40}
@@ -143,7 +143,7 @@ export default function Header() {
       >
         <div className="flex justify-between items-center p-4 border-b border-gray-200">
           <Image
-            src="/image/new-logo.webp"
+            src="/image/logo-regenerasia.webp"
             alt="Logo"
             width={160}
             height={40}

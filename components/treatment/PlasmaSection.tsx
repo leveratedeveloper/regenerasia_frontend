@@ -23,7 +23,7 @@ const PlasmaSection: React.FC = () => {
     <section className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center p-4 md:p-8">
       {/* Left side: Title and description */}
       <div className="lg:w-1/3 text-center lg:text-left">
-        <h2 className={`font-alta text-3xl lg:text-4xl font-bold mb-4`}>
+        <h2 className={`font-alta text-3xl lg:text-4xl font-bold mb-4 text-[#2f332f]`}>
           Next-Generation CAP+ Technology
         </h2>
         <p className={`font-helvetica text-gray-600`}>

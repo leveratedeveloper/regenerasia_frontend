@@ -13,7 +13,7 @@ export interface Value {
 }
 export default function AboutUsPage() {
     return (
-      <main className="relative z-1 bg-[#f3eee7]">
+      <main className="relative z-1 bg-[#f4f1ea]">
       {/* Hero with video background */}
       <section className="relative w-full h-screen bg-[#1c1917] flex items-center justify-left p-8 md:p-16">
         {/* Background image + gradient overlay */}

@@ -9,7 +9,7 @@ import Understanding from "@/components/treatment/Understanding";
 
 export default function ProductPage() {
   return (
-    <main className="relative z-1 bg-[#f3eee7]">
+    <main className="relative z-1 bg-[#f4f1ea]">
       {/* Hero Section */}
       <section className="relative w-full h-screen flex items-center justify-center text-center text-white">
         {/* Background image */}
@@ -46,7 +46,7 @@ export default function ProductPage() {
          
           <Understanding />
           <main className="container mx-auto mt-20">
-            <h1 className={`font-alta text-4xl md:text-5xl font-bold text-center mb-8 md:mb-8`}>
+            <h1 className={`font-alta text-4xl md:text-5xl font-bold text-center mb-8 md:mb-8 text-[#2f332f]`}>
               The Science Behind Regeneration
             </h1>
             <div className="space-y-12 md:space-y-16">

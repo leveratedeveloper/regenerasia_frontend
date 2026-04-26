@@ -7,9 +7,6 @@ import * as z from 'zod';
 import { Paperclip } from 'lucide-react';
 import { postRfq } from "@/lib/api";
 import { useRouter } from 'next/navigation'; // <-- 1. IMPORT ROUTER
-import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles (sesuai dokumentasi library yang Anda pakai)
-import 'swiper/css';
 
 // --- ZOD SCHEMA (Unchanged) ---
 const rfqSchema = z.object({

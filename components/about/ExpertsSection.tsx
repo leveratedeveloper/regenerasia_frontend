@@ -63,7 +63,7 @@ const experts = [
 const ExpertsSection: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-12 md:py-12">
-      <h2 className={`font-alta text-4xl md:text-5xl text-center text-[#4a442d] mb-4 `}>
+      <h2 className={`font-alta text-4xl md:text-5xl text-center text-[#2f332f] mb-4 `}>
        <b>TEAM MEMBER </b>
       </h2>
       <h4 className={`font-helvetica text-center text-gray-600 max-w-2xl mx-auto mb-7`}>

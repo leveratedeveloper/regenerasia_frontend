@@ -21,7 +21,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
       <div className="flex flex-col items-center gap-2 md:gap-2">
         {/* Title */}
         <h2
-          className={`font-alta text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-center text-[#768c43] w-[100%] lg:w-[60%] mx-auto`}
+          className={`font-alta text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-center text-[#2f332f] w-[100%] lg:w-[60%] mx-auto`}
         >
           Energize Your Body and Mind
         </h2>

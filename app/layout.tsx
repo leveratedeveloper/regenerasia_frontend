@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   title: "Regenerasia - Restart, Restore, Regenerate",
   description: "Human Regenerator",
   icons: {
-    icon: "/favicon.ico", 
-    apple: "/apple-touch-icon.png",
+    icon: "/Regenerasia-G.svg", 
+    apple: "/Regenerasia-G.svg",
   },
 };
 

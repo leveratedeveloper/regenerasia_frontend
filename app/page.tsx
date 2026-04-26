@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <div className="relative text-white">
       {/* Main Content */}
-      <main className="relative z-1 bg-[#f3eee7]">
+      <main className="relative z-1 bg-[#f4f1ea]">
         {/* Hero with video background */}
         <section className="relative min-h-screen flex items-center justify-center bg-black/40" id="first-section">
           <video
@@ -44,14 +44,14 @@ export default function Home() {
         </section>
 
         {/* Energize */}
-        <section className="min-h-screen w-full bg-[#f3eee7] text-[#768c43] flex flex-col items-center mt-8">
+        <section className="min-h-screen w-full bg-[#f4f1ea] text-[#768c43] flex flex-col items-center mt-8">
           <Energize steps={energizeSteps} />
         </section>
         <section className="container w-[100%] mx-auto">
           <OutConsultant />
         </section>
           {/* Journey */}
-        <section className=" w-full bg-[#f3eee7] text-[#768c43] flex flex-col items-center py-4  md:py-14">
+        <section className=" w-full bg-[#f4f1ea] text-[#768c43] flex flex-col items-center py-4  md:py-14">
           <Journey steps={journeySteps} />
           <ContactUsSection />
         </section>

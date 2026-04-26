@@ -11,37 +11,37 @@ export interface Value {
 const valuesData: Value[] = [
   {
     title: "Cellular Regeneration",
-    imageUrl: "/image/aboutus/benefit/Cellular-Regeneration-about-mobile.jpg",
+    imageUrl: "/image/aboutus/benefit/Cellular-Regeneration-about-mobile.webp",
     description:
       "Our CAP+ technology stimulates reactive oxygen and nitrogen species (RONS) within the body. These molecules are essential for signaling cellular repair, promoting the growth of healthy new tissue, and ensuring your cells function optimally, accelerating the natural process of regeneration.",
   },
   {
     title: "Strengthening Immune System",
-    imageUrl: "/image/aboutus/benefit/Immune-System-about-mobile.jpg",
+    imageUrl: "/image/aboutus/benefit/Immune-System-about-mobile.webp",
     description:
       "Chronic inflammation is a leading cause of immune decline. CAP+ treatments are proven to help modulate inflammation and support a more balanced and robust immune response, preparing your body to better defend against illness and chronic conditions.",
   },
   {
     title: "Accelerate Recovery",
-    imageUrl: "/image/aboutus/benefit/Accelerate-Recovery-about-mobile.jpg",
+    imageUrl: "/image/aboutus/benefit/accelerate-recovery.webp",
     description:
       "Whether you're recovering from intense exercise, injury, or daily stress, CAP+ works by boosting localized circulation and tissue repair signals. This targeted action helps to reduce downtime and aids your body in healing faster and more efficiently.",
   },
   {
     title: "Enhance Energy Level",
-    imageUrl: "/image/aboutus/benefit/Enhance-energy-level-about-mobile.jpg",
+    imageUrl: "/image/aboutus/benefit/enhance-energy-level.webp",
     description:
       "By improving mitochondrial function (the energy powerhouses of your cells) and optimizing nutrient delivery through better circulation, our programs help reduce the fatigue associated with cellular stress. Experience a noticeable, sustainable increase in daily vitality and mental clarity.",
   },
   {
     title: "Aids Quality of Sleep",
-    imageUrl: "/image/aboutus/benefit/Aids-Quality-of-Sleep-about-mobile.jpg",
+    imageUrl: "/image/aboutus/benefit/aids-quality-of-sleep.webp",
     description:
       "Restorative sleep is the foundation of good health. CAP+ treatments help regulate key biological processes and calm the nervous system, making it easier to fall asleep, stay asleep, and achieve the deep, restful cycles necessary for physical and mental recovery.",
   },
   {
     title: "Support Anti-Aging",
-    imageUrl: "/image/aboutus/benefit/Support-anti-aging-about-mobile.jpg",
+    imageUrl: "/image/aboutus/benefit/support-anti-aging.webp",
     description:
       "The core of our CAP+ philosophy is extending the healthspan. By reducing oxidative stress, repairing DNA damage, and enhancing the overall regenerative capacity of your skin and tissues, our treatments work to proactively slow the biological signs of aging.",
   },
@@ -52,7 +52,7 @@ export const ValuesSection: React.FC = () => {
 
   return (
     <div className="w-full max-w-7xl mx-auto mt-20 px-4">
-      <h1 className="font-alta text-4xl sm:text-5xl font-bold text-center mb-4 uppercase">
+      <h1 className="font-alta text-4xl sm:text-5xl font-bold text-center mb-4 uppercase text-[#2f332f]">
         Benefits of Cold Atmospheric Plasma+ Programs
       </h1>
       <p className="font-heveltica text-lg text-center text-gray-800 mb-12 max-w-3xl mx-auto">
