@@ -1,28 +1,26 @@
 "use client";
 
-import React, { useEffect } from 'react';
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from 'react';
 import { Check } from "lucide-react";
 
+const WHATSAPP_NUMBER = "628123456789";
+
+const WA_MESSAGES: Record<string, string> = {
+  booking:
+    "Hi! I just submitted a session booking at Regenerasia. Could you please confirm my appointment? Thank you!",
+  rfq:
+    "Hi! I just submitted a Business Enquiry for the Human Regenerator POWER.JET. Looking forward to hearing from you!",
+};
 
 export default function SuccessStep() {
-  const whatsappNumber = "628123456789";
-  const message = encodeURIComponent("Hi! I just submitted a booking form.");
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
-  const router = useRouter();
+  const [whatsappLink, setWhatsappLink] = useState<string>(`https://wa.me/${WHATSAPP_NUMBER}`);
 
   useEffect(() => {
-    const allow = sessionStorage.getItem("allowSuccess");
-  
-    // if (!allow) {
-    //   router.replace("/");
-    //   return;
-    // }else{
-    //   sessionStorage.removeItem("allowSuccess");
-    // }
-  
-    // ❗ Hapus langsung, supaya refresh & akses manual URL tidak masuk lagi
-   
+    const formType = sessionStorage.getItem("formType") ?? "booking";
+    const text = WA_MESSAGES[formType] ?? WA_MESSAGES.booking;
+    setWhatsappLink(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`);
+    sessionStorage.removeItem("formType");
+    sessionStorage.removeItem("formSuccess");
   }, []);
   
   
@@ -44,7 +42,6 @@ export default function SuccessStep() {
 
         {/* Message */}
         <p className="font-helvetica text-[12px] sm:text-[13px] md:text-[16px] text-white">
-          Your wellness session is booked. <br />
           Take a moment to breathe and get ready to reset your mind and body. We look forward to seeing you soon.
         </p>
        

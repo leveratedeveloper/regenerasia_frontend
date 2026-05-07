@@ -10,13 +10,8 @@ import { useRouter } from 'next/navigation'; // <-- 1. IMPORT ROUTER
 
 // --- ZOD SCHEMA (Unchanged) ---
 const rfqSchema = z.object({
-  installationSupport: z.boolean(),
-  moreThanOneYearWarranty: z.boolean(),
-  technicalTraining: z.boolean(),
-  purpose: z.string().optional(),
-  paymentTerms: z.string().optional(),
   fullName: z.string().min(1, { message: "Full name is required" }),
-  company: z.string().min(1, { message: "Company is required" }),
+  company: z.string().optional(),
   position: z.string().min(1, { message: "Position is required" }),
   email: z.string().email({ message: "Invalid email address" }),
   country: z.string().optional(),
@@ -25,6 +20,11 @@ const rfqSchema = z.object({
   note: z.string().optional(),
   sameAsShippingAddress: z.boolean(),
   contactBy: z.array(z.string()).min(1, { message: "Please select a contact method" }),
+  installationSupport: z.boolean(),
+  moreThanOneYearWarranty: z.boolean(),
+  technicalTraining: z.boolean(),
+  purpose: z.string().optional(),
+  paymentTerms: z.string().optional(),
   confirmInformation: z.boolean().refine((val) => val === true, {
     message: "You must confirm the information is accurate",
   }),
@@ -149,7 +149,6 @@ const RfqForm: React.FC = () => {
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [products, setProducts] = useState<ProductItem[]>(initialProducts);
   const [selectedDateShipment, setSelectedDate] = useState<string>("");
-  const [fileName, setFileName] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -177,83 +176,51 @@ const RfqForm: React.FC = () => {
   const agreeToCommunications = watch("agreeToCommunications");
   const router = useRouter();
 
-  // --- 3. CORRECTED ONSUBMIT FUNCTION ---
   const onSubmit = async (data: RfqFormData) => {
     setSubmissionStatus('loading');
 
-    // 1. Get the selected products *inside* the submit handler
-    // This version includes all relevant product details.
     const selectedProductsList = products
       .filter(p => p.selected)
-      .map(product => ({
-        id: product.id,
-        name: product.name,
-        qty: product.qty,
-        budget: product.budget,
-        warranty: product.warranty,
-        request: product.request,
-      }));
+      .map(p => ({ name: p.name, qty: p.qty, budget: p.budget, warranty: p.warranty, request: p.request }));
 
-    // 2. Prepare the *complete* payload
-    const payload = {
-      fullName: data.fullName,
-      email: data.email,
-      position: data.position,
-      country: data.country,
-      city: data.city,
-      deliveryAddress: data.deliveryAddress,
-      note: data.note,
-      sameAsShippingAddress: data.sameAsShippingAddress,
-      contactBy: data.contactBy,
-      attachment: fileName,
-      // Shipment Details
-      delivery_required_date: selectedDateShipment, // From local state
-      installationSupport: data.installationSupport,
-      moreThanOneYearWarranty: data.moreThanOneYearWarranty,
-      technicalTraining: data.technicalTraining,
-      // Purchase Details
-      purpose: data.purpose,
-      paymentTerms: data.paymentTerms,
-      // Product List
-      products: selectedProductsList, // Use the list defined above
-      // Terms & Agreement
-      confirmInformation: data.confirmInformation,
-      agreeToCommunications: data.agreeToCommunications,
-    };
-    
+    const formData = new FormData();
+    formData.append('full_name', data.fullName);
+    formData.append('company', data.company ?? '');
+    formData.append('position', data.position);
+    formData.append('email', data.email);
+    formData.append('country', data.country ?? '');
+    formData.append('city', data.city);
+    formData.append('delivery_address', data.deliveryAddress);
+    formData.append('note', data.note ?? '');
+    formData.append('same_as_shipping_address', data.sameAsShippingAddress ? '1' : '0');
+    formData.append('contact_by', JSON.stringify(data.contactBy));
+    formData.append('delivery_required_date', selectedDateShipment);
+    formData.append('installation_support', data.installationSupport ? '1' : '0');
+    formData.append('more_than_one_year_warranty', data.moreThanOneYearWarranty ? '1' : '0');
+    formData.append('technical_training', data.technicalTraining ? '1' : '0');
+    formData.append('purpose', data.purpose ?? '');
+    formData.append('payment_terms', data.paymentTerms ?? '');
+    formData.append('products', JSON.stringify(selectedProductsList));
+    formData.append('confirm_information', data.confirmInformation ? '1' : '0');
+    formData.append('agree_to_communications', data.agreeToCommunications ? '1' : '0');
+    if (file) formData.append('attachment', file);
+
     try {
-      // 4. Send the *correct* payload to the backend
-      console.log("ini payload",payload)
-      const result = await postRfq({
-        ...payload,
-        attachment: file,
-      });
-
-      if (result.status === "success") {
-        console.log("✅ RFQ submitted successfully:", result.data);
-        // Redirect to success page (router is now defined)
-        sessionStorage.setItem("formSuccess", "true");
-        // Redirect to success page
-        router.push("/success");
-        setSubmissionStatus("success");
-      } else {
-        console.warn("⚠️ RFQ submission failed:", result.message);
-        setSubmissionStatus("error");
-      }
+      await postRfq(formData);
+      sessionStorage.setItem("formSuccess", "true");
+      sessionStorage.setItem("formType", "rfq");
+      router.push("/success");
+      setSubmissionStatus("success");
     } catch (error) {
-      console.error("❌ An error occurred during submission:", error);
+      console.error("RFQ submission failed:", error);
       setSubmissionStatus("error");
     }
   };
 
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setFileName(file.name);
-      setFile(file)
-      console.log("📁 File selected:", file.name);
-    }
+    const selected = e.target.files?.[0];
+    if (selected) setFile(selected);
   };
 
 
@@ -411,16 +378,19 @@ const RfqForm: React.FC = () => {
                   <Checkbox
                     label="Whatsapp"
                     value="whatsapp"
+                    checked={contactBy?.includes("whatsapp")}
                     {...register("contactBy", { required: "Select at least one method" })}
                   />
                   <Checkbox
                     label="Email"
                     value="email"
+                    checked={contactBy?.includes("email")}
                     {...register("contactBy")}
                   />
                   <Checkbox
                     label="Phone Call"
                     value="phone"
+                    checked={contactBy?.includes("phone")}
                     {...register("contactBy")}
                   />
                 </div>
@@ -435,12 +405,14 @@ const RfqForm: React.FC = () => {
           <div className="space-y-6 bg-gray-50 p-8 rounded-2xl border border-gray-100">
             <Checkbox
               label="I confirm that the information provided is accurate and I am authorized to request a quotation."
+              checked={confirmInformation}
               {...register("confirmInformation", { required: "Must confirm information" })}
             />
             {errors.confirmInformation && <p className="text-red-500 text-xs mt-1">{errors.confirmInformation.message}</p>}
 
             <Checkbox
               label="I agree to receive communications (SMS, Email, Whatsapp) regarding booking confirmation and reminders."
+              checked={agreeToCommunications}
               {...register("agreeToCommunications", { required: "Must agree to communications" })}
             />
             {errors.agreeToCommunications && <p className="text-red-500 text-xs mt-1">{errors.agreeToCommunications.message}</p>}
