@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Check } from "lucide-react";
 
-const WHATSAPP_NUMBER = "628123456789";
+const WHATSAPP_NUMBER = "6281117019888";
 
 const WA_MESSAGES: Record<string, string> = {
   booking:
