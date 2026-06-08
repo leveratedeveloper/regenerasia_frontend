@@ -79,7 +79,7 @@ const Footer: React.FC = () => {
             </a>
           </div>
           <p className={`${roboto.className} text-xs md:text-sm  text-gray-500 text-right `}>
-            Copyright © 2025 Regenerasia. All rights reserved.
+            Copyright © 2026 Regenerasia. All rights reserved.
           </p>
         </div>
       </div>

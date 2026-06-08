@@ -16,7 +16,7 @@ const rfqSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
   country: z.string().optional(),
   city: z.string().min(1, { message: "City is required" }),
-  deliveryAddress: z.string().min(1, { message: "Delivery address is required" }),
+  businessSegment: z.string().min(1, { message: "Business segment is required" }),
   note: z.string().optional(),
   sameAsShippingAddress: z.boolean(),
   contactBy: z.array(z.string()).min(1, { message: "Please select a contact method" }),
@@ -86,7 +86,7 @@ const Checkbox: React.FC<any> = ({ label, checked, onChange, name, value, ...res
 
 const Section: React.FC<{ title: string; children: React.ReactNode; className?: string }> = ({ title, children, className }) => (
   <div className={`mb-10 ${className}`}>
-    <h3 className="text-2xl text-brand-text border-b border-brand-border pb-3 mb-6">{title}</h3>
+    <h3 className="text-2xl text-brand-text pb-3 mb-6">{title}</h3>
     {children}
   </div>
 );
@@ -190,7 +190,7 @@ const RfqForm: React.FC = () => {
     formData.append('email', data.email);
     formData.append('country', data.country ?? '');
     formData.append('city', data.city);
-    formData.append('delivery_address', data.deliveryAddress);
+    formData.append('delivery_address', data.businessSegment);
     formData.append('note', data.note ?? '');
     formData.append('same_as_shipping_address', data.sameAsShippingAddress ? '1' : '0');
     formData.append('contact_by', JSON.stringify(data.contactBy));
@@ -253,7 +253,7 @@ const RfqForm: React.FC = () => {
           LEFT SECTION: STICKY IMAGES (Visible on Desktop)
           ============================================================ */}
      <div className="w-full lg:w-[55%] xl:w-[50%] lg:sticky lg:top-24 flex flex-col gap-8">
-        <Section title="Product Gallery" className="lg:border-none">
+        <Section title="" className="lg:border-none">
           {/* On Mobile: Single stacked image or vertical list as requested */}
           <div className="space-y-2">
             {desktopImages.map((src, index) => (
@@ -284,31 +284,23 @@ const RfqForm: React.FC = () => {
         {/* 1. PRODUCT DESCRIPTION SECTION */}
         <div className="text-left animate-in fade-in duration-700">
           <h2 className="text-1xl md:text-2xl font-bold font-alta mb-6 leading-tight text-gray-900">
-            Establish New Era With The Unique Human Regenerator POWER.JET
+            Partnership opportunities . Indonesia’s first CAP+ provider
           </h2>
           
           <p className="text-xl mb-8 text-gray-600 font-hevaltica leading-relaxed border-l-4 border-green-800 pl-4">
-            You will be completely immersed in cold atmospheric plasma and enter a profound meditative state of recovery.
+            "The state-of-the-art non-invasive regenerative technology. Now, in Indonesia" in your business. 
           </p>
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 font-hevaltica gap-x-8 gap-y-3 list-disc list-inside text-gray-700 mb-8">
-            <li>Regenerative time-out</li>
-            <li>Body prophylaxis</li>
-            <li>Rehabilitation</li>
-            <li>Body vitalization</li>
-            <li>Cell energization</li>
-            <li>Ultimate anti-ageing</li>
-            <li>Universal regeneration</li>
-            <li>Improved quality of life</li>
-            <li>Stress-neutralising</li>
-            <li>Therapy-combining</li>
-            <li>Post-therapeutic</li>
-            <li>And many more</li>
+            <li>A new treatment category. Be the first-mover to partner with Regenerasia.</li>
+            <li>Zero recovery time for patients means higher treatment throughput and lower scheduling friction.</li>
+            <li>The treatment your guests have been flying to Europe for. A genuine differentiator for your clientele.</li>
+            <li>Fill in the form and our Business Development team will respond within one business day with a tailored proposal for your business.</li>
           </ul>
         </div>
 
         {/* 2. BUYER DETAIL SECTION */}
-        <Section title="Buyer Detail">
+        <Section title="Detail Information">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* LEFT COLUMN FIELDS */}
             <div className="space-y-6">
@@ -357,19 +349,15 @@ const RfqForm: React.FC = () => {
 
             {/* RIGHT COLUMN FIELDS */}
             <div className="space-y-6">
-              <InputField
-                label="Delivery address"
-                placeholder="Insert detailed address"
-                {...register("deliveryAddress", { required: "Delivery address is required" })}
+              <SelectField
+                label="Business Segment "
+                placeholder="Select business segment"
+                options={["Hotel", "Spa", "Clinic", "Resort", "Other"]}
+                {...register("businessSegment", { required: "Business segment is required" })}
               />
-              {errors.deliveryAddress && <p className="text-red-500 text-xs mt-1">{errors.deliveryAddress.message}</p>}
+              {errors.businessSegment && <p className="text-red-500 text-xs mt-1">{errors.businessSegment.message}</p>}
 
-              <Textarea
-                label="Note / Special Requests"
-                placeholder="Write your note here..."
-                {...register("note")}
-              />
-
+              
               <div className="pt-2">
                 <label className="block text-sm font-semibold text-gray-800 mb-4">
                   Preferred Contact Method
@@ -423,7 +411,7 @@ const RfqForm: React.FC = () => {
                 className="w-full md:w-auto font-bold uppercase tracking-widest disabled:opacity-50 bg-green-900 text-white px-10 py-2 hover:bg-black transition-all duration-300 rounded-lg shadow-xl hover:shadow-2xl active:scale-95"
                 disabled={isSubmitting || submissionStatus === "loading"}
               >
-                {submissionStatus === "loading" ? "Processing..." : "Submit"}
+                {submissionStatus === "loading" ? "Processing..." : "Request a partnership proposal"}
               </button>
 
               {submissionStatus === "success" && (
@@ -441,7 +429,7 @@ const RfqForm: React.FC = () => {
 
         {/* Footer Decoration */}
         <div className="pt-12 pb-6 text-center text-xs text-gray-400 uppercase tracking-widest">
-          © 2024 Human Regenerator • Future of Wellness
+          © 2026 Human Regenerator • Future of Wellness
         </div>
       </div>
     </form>

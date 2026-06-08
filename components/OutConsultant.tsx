@@ -27,14 +27,12 @@ export default function OutConsultant() {
             Dr PANDE PUTU AGUS MAHENDRA, M.Gizi, Sp.GK
             </h2>
             <div className={`font-helvetica text-justify text-stone-700 leading-relaxed text-base mb-10`}>
+              <p>When your body needs to perform at its highest level, nutrition is not optional, it is the foundation. Dr. Putu has built his career on exactly that belief.</p>
               <p>
-                Dr. Pande Putu Agus Mahendra, M.Gizi, Sp.GK has extensive experience practicing in various hospitals, with a strong passion for the field of nutrition reflected in his career journey and dedication. He has also served as part of the medical team in multiple prestigious sporting events, including the Indonesia Open Aquatic Championship 2017 & 2018, the Asian Games 2018, the Asian Para Games 2018, and several other national and international sports competitions.
+                Highly regarded as one of Indonesia's leading Clinical Nutrition Specialists, Dr. Putu has spent over a decade helping patients. From elite athletes to everyday individuals to achieve their health goals through precise, science-backed nutritional strategy. His approach is not about restriction. It is about optimisation: giving the body exactly what it needs to recover faster, perform better, and age well.
               </p>
-              <p>
-                Commonly addressed as Dr. Putu, he earned his Medical Doctor degree from the Faculty of Medicine at UKI, then continued his postgraduate education in Clinical Nutrition at the Faculty of Medicine, Universitas Indonesia in 2014. He further pursued the Clinical Nutrition Specialist Program in 2016. In the same year, he completed the Doping Control Officer Training (LADI), followed by the PWC Certified Doping Control Course (2017) and Food Safety Training in Jakarta (2017).
-              </p>
-              <p>Beyond his clinical practice, Dr. Pande Putu Agus Mahendra is actively involved in several professional organizations, including the Medical and Nutrition Division of PRSI (Indonesian Swimming Association), Head of Nutrition Installation at Bhayangkara Level 1 Hospital, as well as serving as a Certified Doping Control Officer in Indonesia, among others.</p>
-              <p>With his strong expertise in clinical nutrition, Dr. Putu provides health consultation services focused on nutritional balance and dietary management to support overall well-being and performance.</p>   
+              <p>His credentials speak for themselves. A graduate of Universitas Indonesia's Clinical Nutrition Specialist Programme, Dr. Putu has served on the medical teams of some of Indonesia's most prestigious sporting events. Including the Asian Games 2018, the Asian Para Games 2018, and the Indonesia Open Aquatic Championship. He is a Certified Doping Control Officer, a role that reflects both his depth of knowledge and the trust placed in him at the national level.</p>
+              <p>At Regenerasia, Dr. Putu brings that same performance-driven mindset to longevity medicine. Helping clients understand not just how to be healthy today, but how to stay that way for decades to come.</p>   
             </div>
           </div>
         </div>

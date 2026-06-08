@@ -64,10 +64,10 @@ export default function FormPageContent() {
             className="w-full h-96 object-cover rounded-t-lg"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <h1 className="mx-3 text-3xl md:text-4xl font-alta font-bold text-white tracking-widest">
+            <h1 className="mx-3 text-3xl md:text-4xl font-alta font-bold text-white tracking-widest text-center">
               {activeTab === "rfq"
                 ? "Request for Quotation"
-                : "Book Your Appointment Online"}
+                : <>Start your investment on longevity! <br /> Book Your Appointment Online</>}
             </h1>
           </div>
         </header>

@@ -20,8 +20,8 @@ const alta = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Regenerasia - Restart, Restore, Regenerate",
-  description: "Human Regenerator",
+  title: "Regenerasia - Recharge, Regenerate, Restart",
+  description: "Regenerasia introduce a new era of wellness and longevity to Indonesia with CAP+ Technology.",
   icons: {
     icon: "/Regenerasia-G.svg", 
     apple: "/Regenerasia-G.svg",

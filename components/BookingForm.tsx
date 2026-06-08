@@ -201,14 +201,14 @@ const BookingForm: React.FC = () => {
           For your safety, do not continue the therapy if you are:
         </p>
         <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-          <li>Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.)</li>
-          <li>Pregnant or breastfeeding women</li>
-          <li>Active lesions preclude treatment</li>
-          <li>Severe illness contraindicates service</li>
-          <li>Children under 17 years old</li>
-          <li>Persons over 150 kg body weight</li>
-          <li>Prohibited for patients with electrical, magnetic, or mechanical implants</li>
-          <li>Those suffering from epileptic seizures</li>
+          <li>Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.).</li>
+          <li>Pregnant or breastfeeding women.</li>
+          <li>Active lesions preclude treatment.</li>
+          <li>Severe illness contraindicates service.</li>
+          <li>Children under 17 years old.</li>
+          <li>Persons over 150 kg body weight.</li>
+          <li>Prohibited for patients with electrical, magnetic, or mechanical implants.</li>
+          <li>Those suffering from epileptic seizures.</li>
         </ul>
 
         <Controller
