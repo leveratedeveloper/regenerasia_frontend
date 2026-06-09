@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import OurMissionVision from "@/components/about/VisionMissionSection";
+
+export const metadata: Metadata = {
+  title: "Regenerasia - Pioneering Healthspan in Indonesia",
+  description: "Regenerasia is building the first longevity platform in Indonesia with the technology.",
+};
 import Legacy from "@/components/about/LegacySection";
 import ExpertsSection from "@/components/about/ExpertsSection";
 import ContactUsSection from "@/components/ContactUsSection";

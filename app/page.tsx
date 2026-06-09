@@ -1,7 +1,10 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import type { Metadata } from "next";
 import HeroSection from "../components/HeroSection";
+
+export const metadata: Metadata = {
+  title: "Regenerasia - Recharge, Regenerate, Restart",
+  description: "Regenerasia introduces a new era of wellness and longevity to Indonesia with CAP+ Technology.",
+};
 import Journey from '../components/Journey';
 import Energize from "@/components/Energize";
 import MedicalAdvisorProfile from '@/components/MedicalAdvisorProfile';
