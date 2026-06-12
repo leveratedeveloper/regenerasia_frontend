@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Roboto } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Cold Atmospheric Plasma+ Treatment",
+  title: "Treatment Details Cold Atmospheric Plasma+ Treatment",
   description: "Discover the revolutionary treatments and personalized your screening packages.",
 };
 import Behind from "@/components/treatment/Behind";
