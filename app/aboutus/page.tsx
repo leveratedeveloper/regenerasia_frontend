@@ -64,7 +64,6 @@ export default async function AboutUsPage() {
   const defaultMemberImages = [
     '/image/doctor/dr-pande.webp',
     '/image/doctor/bukharisma.webp',
-    '/image/doctor/pak-nova.webp',
   ];
 
   const experts = page
