@@ -10,9 +10,10 @@ interface Step {
 
 interface EnergizeProps {
   steps: Step[];
+  title?: string;
 }
 
-const Energize: React.FC<EnergizeProps> = ({ steps }) => {
+const Energize: React.FC<EnergizeProps> = ({ steps, title = "Energize Your Body and Mind" }) => {
   const topRowSteps = steps.slice(0, 6);
   const bottomRowSteps = steps.slice(3, 6);
 
@@ -23,7 +24,7 @@ const Energize: React.FC<EnergizeProps> = ({ steps }) => {
         <h2
           className={`font-alta text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-center text-[#2f332f] w-[100%] lg:w-[60%] mx-auto`}
         >
-          Energize Your Body and Mind
+          {title}
         </h2>
 
         <p className={`font-helvetica text-[20px] mb-2 text-center text-stone-700`}>

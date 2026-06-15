@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useState } from 'react';
-import { useForm,Controller } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import React, { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { postBooking } from "@/lib/api";
 import { Section } from "@/components/SessionDetail";
 
@@ -19,6 +19,8 @@ const bookingSchema = z.object({
   }),
 });
 
+type BookingFormData = z.infer<typeof bookingSchema>;
+
 const Checkbox: React.FC<{
   label: string;
   checked?: boolean;
@@ -27,32 +29,15 @@ const Checkbox: React.FC<{
   value?: string;
 }> = ({ label, checked, onChange, name, value }) => (
   <label className="flex items-center space-x-3 cursor-pointer">
-    <input
-      type="checkbox"
-      name={name}
-      value={value}
-      checked={checked}
-      onChange={onChange}
-      className="sr-only"
-    />
+    <input type="checkbox" name={name} value={value} checked={checked} onChange={onChange} className="sr-only" />
     <div
       className={`w-5 h-5 border-2 rounded flex-shrink-0 flex items-center justify-center transition-colors ${
         checked ? "bg-green-800 border-green-800" : "border-gray-300"
       }`}
     >
       {checked && (
-        <svg
-          className="w-3 h-3 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="3"
-            d="M5 13l4 4L19 7"
-          ></path>
+        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
         </svg>
       )}
     </div>
@@ -60,8 +45,8 @@ const Checkbox: React.FC<{
   </label>
 );
 
-const InputField: React.FC<any> = ({ label, placeholder, type = "text", containerClassName = "", ...rest }) => (
-  <div className={containerClassName}>
+const InputField: React.FC<any> = ({ label, placeholder, type = "text", ...rest }) => (
+  <div>
     <label className="block text-sm font-medium text-gray-800 mb-1">{label}</label>
     <input
       type={type}
@@ -72,10 +57,34 @@ const InputField: React.FC<any> = ({ label, placeholder, type = "text", containe
   </div>
 );
 
-type BookingFormData = z.infer<typeof bookingSchema>;
+const DEFAULT_SAFETY_ITEMS: Array<{ item: string }> = [
+  { item: "Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.)." },
+  { item: "Pregnant or breastfeeding women." },
+  { item: "Active lesions preclude treatment." },
+  { item: "Severe illness contraindicates service." },
+  { item: "Children under 17 years old." },
+  { item: "Persons over 150 kg body weight." },
+  { item: "Prohibited for patients with electrical, magnetic, or mechanical implants." },
+  { item: "Those suffering from epileptic seizures." },
+];
 
-const BookingForm: React.FC = () => {
-  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+interface BookingFormProps {
+  safetyTitle?: string;
+  safetyLead?: string;
+  safetyItems?: Array<{ item: string }>;
+  safetyCheckboxLabel?: string;
+  submitButtonText?: string;
+}
+
+const BookingForm: React.FC<BookingFormProps> = ({
+  safetyTitle = "Safety guidelines",
+  safetyLead = "For your safety, do not continue the therapy if you are:",
+  safetyItems,
+  safetyCheckboxLabel = "I have read the safety guidelines and confirm that I do not have the conditions listed above.",
+  submitButtonText = "Submit",
+}) => {
+  const [submissionStatus, setSubmissionStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const router = useRouter();
 
   const {
     register,
@@ -93,20 +102,18 @@ const BookingForm: React.FC = () => {
     },
   });
 
-  const router = useRouter();
+  const items = safetyItems && safetyItems.length > 0 ? safetyItems : DEFAULT_SAFETY_ITEMS;
 
   const onSubmit = async (data: BookingFormData) => {
-    setSubmissionStatus('loading');
-
+    setSubmissionStatus("loading");
     const payload = {
-      name: data.fullName,
-      email: data.email,
-      phone: data.phone,
-      contact_by: data.contactBy || [],
-      notes: data.concern || "",
-      safety_guidelines: data.safetyGuidelines ? 1 : 0,
+      name:               data.fullName,
+      email:              data.email,
+      phone:              data.phone,
+      contact_by:         data.contactBy || [],
+      notes:              data.concern || "",
+      safety_guidelines:  data.safetyGuidelines ? 1 : 0,
     };
-
     try {
       await postBooking(payload);
       sessionStorage.setItem("formSuccess", "true");
@@ -124,6 +131,7 @@ const BookingForm: React.FC = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-12 bg-white text-black p-6 md:p-12 rounded-lg shadow-sm"
     >
+      {/* Personal Detail */}
       <Section title="Personal Detail">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4 md:col-span-2">
@@ -138,10 +146,10 @@ const BookingForm: React.FC = () => {
           </div>
 
           <div>
-          <label className="block text-sm font-medium text-gray-800 mb-2">
-            I want to be contacted by
-            <span className="text-red-500 ml-1">*</span>
-          </label>
+            <label className="block text-sm font-medium text-gray-800 mb-2">
+              I want to be contacted by
+              <span className="text-red-500 ml-1">*</span>
+            </label>
             <div className="flex flex-col md:flex-row md:space-x-6 space-y-3 md:space-y-0">
               {["whatsapp", "phone"].map((option) => (
                 <Controller
@@ -151,7 +159,6 @@ const BookingForm: React.FC = () => {
                   render={({ field }) => {
                     const selected = field.value || [];
                     const checked = selected.includes(option);
-
                     return (
                       <Checkbox
                         label={option.charAt(0).toUpperCase() + option.slice(1)}
@@ -170,45 +177,22 @@ const BookingForm: React.FC = () => {
                 />
               ))}
             </div>
-
             {errors.contactBy && (
               <p className="text-red-500 text-sm">{errors.contactBy.message}</p>
             )}
           </div>
-
         </div>
       </Section>
 
-      {/* SessionDetail disabled
-      <SessionDetail
-        sessionPackage={sessionPackage}
-        setSessionPackage={setSessionPackage}
-        dates={dates}
-        setDates={setDates}
-        appointmentTimes={appointmentTimes}
-        setAppointmentTimes={setAppointmentTimes}
-        threeDaysLater={threeDaysLater}
-        isBlockedDate={isBlockedDate}
-        register={register}
-      />
-      */}
-
-
-
+      {/* Safety Guidelines */}
       <div className="space-y-4 bg-green-50 p-6 rounded-lg border border-green-200 text-black">
-        <h4 className="text-xl text-green-900">Safety guidelines</h4>
-        <p className="text-sm text-gray-700">
-          For your safety, do not continue the therapy if you are:
-        </p>
+        <h4 className="text-xl text-green-900">{safetyTitle}</h4>
+        <p className="text-sm text-gray-700">{safetyLead}</p>
+
         <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-          <li>Anyone with built-in functioning electrical devices (e.g. pacemakers, hearing aids, implanted drug pumps, etc.).</li>
-          <li>Pregnant or breastfeeding women.</li>
-          <li>Active lesions preclude treatment.</li>
-          <li>Severe illness contraindicates service.</li>
-          <li>Children under 17 years old.</li>
-          <li>Persons over 150 kg body weight.</li>
-          <li>Prohibited for patients with electrical, magnetic, or mechanical implants.</li>
-          <li>Those suffering from epileptic seizures.</li>
+          {items.map((it, i) => (
+            <li key={i}>{it.item}</li>
+          ))}
         </ul>
 
         <Controller
@@ -216,28 +200,27 @@ const BookingForm: React.FC = () => {
           control={control}
           render={({ field }) => (
             <Checkbox
-              label="I have read the safety guidelines and confirm that I do not have the conditions listed above."
+              label={safetyCheckboxLabel}
               checked={field.value}
               onChange={(e) => field.onChange(e.target.checked)}
             />
           )}
         />
-
         {errors.safetyGuidelines && (
           <p className="text-red-500 text-sm">{errors.safetyGuidelines.message}</p>
         )}
       </div>
 
-
+      {/* Submit */}
       <div className="text-center">
         <button
           type="submit"
           className="font-semibold disabled:opacity-50 mt-6 bg-green-900 text-white px-6 py-2 hover:bg-green-800 transition rounded-xl"
           disabled={isSubmitting}
         >
-          {isSubmitting ? 'Submitting...' : 'Submit'}
+          {isSubmitting ? "Submitting..." : submitButtonText}
         </button>
-        {submissionStatus === 'error' && (
+        {submissionStatus === "error" && (
           <p className="text-red-500 text-sm mt-2">Something went wrong. Please try again.</p>
         )}
       </div>

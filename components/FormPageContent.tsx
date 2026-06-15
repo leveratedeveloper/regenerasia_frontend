@@ -4,90 +4,84 @@ import React, { useState } from "react";
 import BookingForm from "@/components/BookingForm";
 import { useRouter } from "next/navigation";
 
-type ActiveTab = "booking" | "rfq";
+export interface BookingPageData {
+  heroTitle: string;
+  bannerImage: string;
+  formTabLabel: string;
+  safetyTitle: string;
+  safetyLead: string;
+  safetyItems: Array<{ item: string }>;
+  safetyCheckboxLabel: string;
+  submitButtonText: string;
+}
 
-export default function FormPageContent() {
+interface FormPageContentProps {
+  bookingPage?: BookingPageData;
+}
+
+type ActiveTab = "booking";
+
+export default function FormPageContent({ bookingPage }: FormPageContentProps) {
   const [activeTab, setActiveTab] = useState<ActiveTab>("booking");
   const router = useRouter();
 
-  // useEffect(() => {
-  //   const params = new URLSearchParams(window.location.search);
-
-  //   if (params.has("rfq-form")) {
-  //     setActiveTab("rfq");
-  //   } else {
-  //     // default to booking
-  //     setActiveTab("booking");
-
-  //     // if URL has no tag, set it to ?booking-form
-  //     if (!params.has("booking-form")) {
-  //       router.replace("?booking-form");
-  //     }
-  //   }
-  // }, [router]);
-
   const handleTabChange = (tabName: ActiveTab) => {
     setActiveTab(tabName);
-
-    // Update the query string without reloading
-    const newUrl = tabName === "rfq" ? "?rfq-form" : "?booking-form";
-    router.replace(newUrl);
+    router.replace("?booking-form");
   };
 
-  const TabButton = ({
-    label,
-    tabName,
-  }: {
-    label: string;
-    tabName: ActiveTab;
-  }) => (
-    <button
-      onClick={() => handleTabChange(tabName)}
-      className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
-        activeTab === tabName
-          ? "bg-green-900 text-white"
-          : "bg-white text-black dark:bg-white dark:text-black hover:bg-gray-100"
-      }`}
-    >
-      {label}
-    </button>
-  );
+  const heroTitle   = bookingPage?.heroTitle ?? "Start your investment on longevity!\nBook Your Appointment Online";
+  const bannerImage = bookingPage?.bannerImage ?? "/image/treatment-form-desktop.webp";
+  const tabLabel    = bookingPage?.formTabLabel ?? "Booking Treatment Form";
+
+  // Render headline — split by \n into separate lines
+  const heroLines = heroTitle.split('\n').filter(l => l.trim());
 
   return (
-    <div className="min-h-screen bg-white dark:bg-white text-black dark:text-black">
-      <div className="bg-white dark:bg-white text-black dark:text-black rounded-lg relative">
-        {/* ===== HERO / HEADER SECTION ===== */}
+    <div className="min-h-screen bg-white text-black">
+      <div className="bg-white text-black rounded-lg relative">
+
+        {/* Hero / Header */}
         <header className="relative">
           <img
-            src="/image/treatment-form-desktop.webp"
-            alt="Banner"
+            src={bannerImage}
+            alt="Booking Banner"
             className="w-full h-96 object-cover rounded-t-lg"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
             <h1 className="mx-3 text-3xl md:text-4xl font-alta font-bold text-white tracking-widest text-center">
-              {activeTab === "rfq"
-                ? "Request for Quotation"
-                : <>Start your investment on longevity! <br /> Book Your Appointment Online</>}
+              {heroLines.map((line, i) => (
+                <span key={i}>
+                  {line}
+                  {i < heroLines.length - 1 && <br />}
+                </span>
+              ))}
             </h1>
           </div>
         </header>
 
-        {/* ===== MAIN CONTENT ===== */}
+        {/* Main Content */}
         <main className="p-6 md:p-12 max-w-[1200px] mx-auto">
           <div className="text-center mb-8">
             <div className="inline-flex items-center space-x-2 p-1 rounded-lg border border-gray-300">
-              <TabButton label="Booking Treatment Form" tabName="booking" />
-              {/* <TabButton label="Request for Quotation" tabName="rfq" /> */}
+              <button
+                onClick={() => handleTabChange("booking")}
+                className="px-6 py-2 rounded-md text-sm font-medium transition-colors duration-300 bg-green-900 text-white"
+              >
+                {tabLabel}
+              </button>
             </div>
           </div>
 
-          {/* <div className={activeTab === "rfq" ? "block" : "hidden"}>
-            <RfqForm />
-          </div> */}
           <div className={activeTab === "booking" ? "block" : "hidden"}>
-            <BookingForm />
+            <BookingForm
+              safetyTitle={bookingPage?.safetyTitle}
+              safetyLead={bookingPage?.safetyLead}
+              safetyItems={bookingPage?.safetyItems}
+              safetyCheckboxLabel={bookingPage?.safetyCheckboxLabel}
+              submitButtonText={bookingPage?.submitButtonText}
+            />
           </div>
-
         </main>
       </div>
     </div>

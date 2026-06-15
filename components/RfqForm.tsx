@@ -144,8 +144,32 @@ type RfqFormData = z.infer<typeof rfqSchema>;
 
   
 
+interface RfqFormProps {
+  partnershipTitle?: string;
+  partnershipQuote?: string;
+  partnershipBullets?: Array<{ text: string }>;
+  productImage1?: string;
+  productImage2?: string;
+  productDimension?: string;
+  submitButtonText?: string;
+  termsConfirmLabel?: string;
+  termsCommsLabel?: string;
+  footerText?: string;
+}
+
 // --- MAIN RFQ FORM COMPONENT ---
-const RfqForm: React.FC = () => {
+const RfqForm: React.FC<RfqFormProps> = ({
+  partnershipTitle,
+  partnershipQuote,
+  partnershipBullets,
+  productImage1,
+  productImage2,
+  productDimension,
+  submitButtonText,
+  termsConfirmLabel,
+  termsCommsLabel,
+  footerText,
+}) => {
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [products, setProducts] = useState<ProductItem[]>(initialProducts);
   const [selectedDateShipment, setSelectedDate] = useState<string>("");
@@ -227,19 +251,26 @@ const RfqForm: React.FC = () => {
   const formatIDR = (value: number) =>
     isNaN(value) ? "0" : new Intl.NumberFormat("id-ID").format(value);
 
-  // Daftar gambar Anda
-  const mobileImages = [
-    '/image/bussines/mobile_photo/1.png',
-    '/image/bussines/mobile_photo/2.png',
-    // '/image/bussines/mobile_photo/3.jpg',
-    // '/image/bussines/mobile_photo/4.jpg',
-  ];
-
   const desktopImages = [
-    '/image/bussines/desktop_photo/1.png',
-    '/image/bussines/desktop_photo/2.png',
-    // '/image/bussines/desktop_photo/3.jpg',
-  ];
+    productImage1 ?? '/image/bussines/desktop_photo/1.png',
+    productImage2 ?? '/image/bussines/desktop_photo/2.png',
+  ].filter(Boolean) as string[];
+
+  const dimension      = productDimension   ?? "250CM X 235CM X 130CM";
+  const pTitle         = partnershipTitle   ?? "Partnership opportunities . Indonesia's first CAP+ provider";
+  const pQuote         = partnershipQuote   ?? '"The state-of-the-art non-invasive regenerative technology. Now, in Indonesia" in your business.';
+  const pBullets       = (Array.isArray(partnershipBullets) && partnershipBullets.length > 0)
+    ? partnershipBullets
+    : [
+        { text: "A new treatment category. Be the first-mover to partner with Regenerasia." },
+        { text: "Zero recovery time for patients means higher treatment throughput and lower scheduling friction." },
+        { text: "The treatment your guests have been flying to Europe for. A genuine differentiator for your clientele." },
+        { text: "Fill in the form and our Business Development team will respond within one business day with a tailored proposal for your business." },
+      ];
+  const btnText        = submitButtonText   ?? "Request a partnership proposal";
+  const confirmLabel   = termsConfirmLabel  ?? "I confirm that the information provided is accurate and I am authorized to request a quotation.";
+  const commsLabel     = termsCommsLabel    ?? "I agree to receive communications (SMS, Email, Whatsapp) regarding booking confirmation and reminders.";
+  const footer         = footerText         ?? "© 2026 Human Regenerator • Future of Wellness";
   // --- JSX (Unchanged) ---
   return (
     <div className="min-h-screen bg-white">
@@ -270,7 +301,7 @@ const RfqForm: React.FC = () => {
           {/* Dimension Info (Always attached to images on desktop side) */}
           <div className="mt-2 pt-2 border-t border-gray-100 hidden lg:block">
             <p className="font-bold text-gray-800 text-sm">
-              DIMENSION: <span className="text-blue-600 font-mono">250CM X 235CM X 130CM</span>
+              DIMENSION: <span className="text-blue-600 font-mono">{dimension}</span>
             </p>
           </div>
         </Section>
@@ -284,18 +315,17 @@ const RfqForm: React.FC = () => {
         {/* 1. PRODUCT DESCRIPTION SECTION */}
         <div className="text-left animate-in fade-in duration-700">
           <h2 className="text-1xl md:text-2xl font-bold font-alta mb-6 leading-tight text-gray-900">
-            Partnership opportunities . Indonesia’s first CAP+ provider
+            {pTitle}
           </h2>
-          
+
           <p className="text-xl mb-8 text-gray-600 font-hevaltica leading-relaxed border-l-4 border-green-800 pl-4">
-            "The state-of-the-art non-invasive regenerative technology. Now, in Indonesia" in your business. 
+            {pQuote}
           </p>
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 font-hevaltica gap-x-8 gap-y-3 list-disc list-inside text-gray-700 mb-8">
-            <li>A new treatment category. Be the first-mover to partner with Regenerasia.</li>
-            <li>Zero recovery time for patients means higher treatment throughput and lower scheduling friction.</li>
-            <li>The treatment your guests have been flying to Europe for. A genuine differentiator for your clientele.</li>
-            <li>Fill in the form and our Business Development team will respond within one business day with a tailored proposal for your business.</li>
+            {pBullets.map((b, i) => (
+              <li key={i}>{b.text}</li>
+            ))}
           </ul>
         </div>
 
@@ -392,14 +422,14 @@ const RfqForm: React.FC = () => {
         <Section title="Terms & Agreement">
           <div className="space-y-6 bg-gray-50 p-8 rounded-2xl border border-gray-100">
             <Checkbox
-              label="I confirm that the information provided is accurate and I am authorized to request a quotation."
+              label={confirmLabel}
               checked={confirmInformation}
               {...register("confirmInformation", { required: "Must confirm information" })}
             />
             {errors.confirmInformation && <p className="text-red-500 text-xs mt-1">{errors.confirmInformation.message}</p>}
 
             <Checkbox
-              label="I agree to receive communications (SMS, Email, Whatsapp) regarding booking confirmation and reminders."
+              label={commsLabel}
               checked={agreeToCommunications}
               {...register("agreeToCommunications", { required: "Must agree to communications" })}
             />
@@ -411,7 +441,7 @@ const RfqForm: React.FC = () => {
                 className="w-full md:w-auto font-bold uppercase tracking-widest disabled:opacity-50 bg-green-900 text-white px-10 py-2 hover:bg-black transition-all duration-300 rounded-lg shadow-xl hover:shadow-2xl active:scale-95"
                 disabled={isSubmitting || submissionStatus === "loading"}
               >
-                {submissionStatus === "loading" ? "Processing..." : "Request a partnership proposal"}
+                {submissionStatus === "loading" ? "Processing..." : btnText}
               </button>
 
               {submissionStatus === "success" && (
@@ -429,7 +459,7 @@ const RfqForm: React.FC = () => {
 
         {/* Footer Decoration */}
         <div className="pt-12 pb-6 text-center text-xs text-gray-400 uppercase tracking-widest">
-          © 2026 Human Regenerator • Future of Wellness
+          {footer}
         </div>
       </div>
     </form>

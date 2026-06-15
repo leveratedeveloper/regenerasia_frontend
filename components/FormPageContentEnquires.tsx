@@ -1,47 +1,41 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import RfqForm from "@/components/RfqForm";
-// import BookingForm from "@/components/BookingForm";
 import { useRouter } from "next/navigation";
 
 type ActiveTab = "booking" | "rfq";
 
-export default function PageContent() {
+export interface BusinessPageData {
+  heroTitle?: string;
+  heroImage?: string;
+  formTabLabel?: string;
+  partnershipTitle?: string;
+  partnershipQuote?: string;
+  partnershipBullets?: Array<{ text: string }>;
+  productImage1?: string;
+  productImage2?: string;
+  productDimension?: string;
+  submitButtonText?: string;
+  termsConfirmLabel?: string;
+  termsCommsLabel?: string;
+  footerText?: string;
+}
+
+interface Props {
+  businessPage?: BusinessPageData;
+}
+
+export default function PageContent({ businessPage = {} }: Props) {
   const [activeTab, setActiveTab] = useState<ActiveTab>("booking");
   const router = useRouter();
 
-  // useEffect(() => {
-  //   const params = new URLSearchParams(window.location.search);
-
-  //   if (params.has("rfq-form")) {
-  //     setActiveTab("rfq");
-  //   } else {
-  //     // default to booking
-  //     setActiveTab("booking");
-
-  //     // if URL has no tag, set it to ?booking-form
-  //     if (!params.has("booking-form")) {
-  //       router.replace("?rfq-form");
-  //     }
-  //   }
-  // }, [router]);
-
   const handleTabChange = (tabName: ActiveTab) => {
     setActiveTab(tabName);
-
-    // Update the query string without reloading
-    const newUrl = tabName === "rfq" ? "?rfq-form" : "?rfq-form";
-    router.replace(newUrl);
+    router.replace("?rfq-form");
   };
 
-  const TabButton = ({
-    label,
-    tabName,
-  }: {
-    label: string;
-    tabName: ActiveTab;
-  }) => (
+  const TabButton = ({ label, tabName }: { label: string; tabName: ActiveTab }) => (
     <button
       onClick={() => handleTabChange(tabName)}
       className={`px-6 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${
@@ -54,39 +48,49 @@ export default function PageContent() {
     </button>
   );
 
+  const heroImage = businessPage.heroImage ?? "/image/business-opportunity-desktop.webp";
+  const heroTitle = businessPage.heroTitle ?? "STRATEGIC INVESTMENTS FOR EXTENDED WELL-BEING";
+  const formTabLabel = businessPage.formTabLabel ?? "Business Enquiries";
+
   return (
     <div className="min-h-screen bg-white dark:bg-white text-black dark:text-black">
       <div className="bg-white dark:bg-white text-black dark:text-black rounded-lg relative">
-        {/* ===== HERO / HEADER SECTION ===== */}
+        {/* HERO */}
         <header className="relative">
           <img
-            src="/image/business-opportunity-desktop.webp"
+            src={heroImage}
             alt="Banner"
             className="w-full h-96 object-cover rounded-t-lg"
           />
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <h1 className="text-3xl md:text-4xl font-alta font-bold text-white tracking-widest">
-              Strategic investments for extended well-being
+            <h1 className="text-3xl md:text-4xl font-alta font-bold text-white tracking-widest text-center px-4">
+              {heroTitle}
             </h1>
           </div>
         </header>
 
-        {/* ===== MAIN CONTENT ===== */}
+        {/* MAIN */}
         <main className="p-6 md:p-12 max-w-[1800px] mx-auto">
           <div className="text-center mb-8">
             <div className="inline-flex items-center space-x-2 p-1 rounded-lg border border-gray-300">
-              <TabButton label="Business Enquiries" tabName="booking" />
-              {/* <TabButton label="Request for Quotation" tabName="rfq" /> */}
+              <TabButton label={formTabLabel} tabName="booking" />
             </div>
           </div>
 
-          {/* <div className={activeTab === "rfq" ? "block" : "hidden"}>
-            <RfqForm />
-          </div> */}
           <div>
-            <RfqForm />
+            <RfqForm
+              partnershipTitle={businessPage.partnershipTitle}
+              partnershipQuote={businessPage.partnershipQuote}
+              partnershipBullets={businessPage.partnershipBullets}
+              productImage1={businessPage.productImage1}
+              productImage2={businessPage.productImage2}
+              productDimension={businessPage.productDimension}
+              submitButtonText={businessPage.submitButtonText}
+              termsConfirmLabel={businessPage.termsConfirmLabel}
+              termsCommsLabel={businessPage.termsCommsLabel}
+              footerText={businessPage.footerText}
+            />
           </div>
-
         </main>
       </div>
     </div>

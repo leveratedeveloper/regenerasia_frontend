@@ -2,21 +2,24 @@
 
 import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Footer, { type FooterSettings } from "@/components/Footer";
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+interface ClientLayoutProps {
+  children: React.ReactNode;
+  footerSettings?: FooterSettings | null;
+}
+
+export default function ClientLayout({ children, footerSettings }: ClientLayoutProps) {
   const pathname = usePathname();
 
-  // Define routes where header/footer should be hidden
   const noLayoutRoutes = ["/success"];
-
   const hideLayout = noLayoutRoutes.some(path => pathname.startsWith(path));
 
   return (
     <>
       {!hideLayout && <Header />}
       {children}
-      {!hideLayout && <Footer />}
+      {!hideLayout && <Footer settings={footerSettings} />}
     </>
   );
 }

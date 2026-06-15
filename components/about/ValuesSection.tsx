@@ -2,18 +2,23 @@
 import React, { useState } from "react";
 import { ValueCard } from "./ValueCard";
 
-export interface Value {
+export interface BenefitItem {
   title: string;
   imageUrl: string;
   description: string;
 }
 
-const valuesData: Value[] = [
+interface ValuesSectionProps {
+  title?: string;
+  benefits?: BenefitItem[];
+}
+
+const defaultBenefits: BenefitItem[] = [
   {
     title: "Cellular Regeneration",
     imageUrl: "/image/aboutus/benefit/Cellular-Regeneration-about-mobile.webp",
     description:
-      "Our CAP+ technology activates RONS molecules to signal instant cellular repair. It accelerates your body’s natural regeneration, promoting the growth of healthy new tissue and optimizing cell function.",
+      "Our CAP+ technology activates RONS molecules to signal instant cellular repair. It accelerates your body's natural regeneration, promoting the growth of healthy new tissue and optimizing cell function.",
   },
   {
     title: "Strengthening Immune System",
@@ -47,40 +52,42 @@ const valuesData: Value[] = [
   },
 ];
 
-export const ValuesSection: React.FC = () => {
+export const ValuesSection: React.FC<ValuesSectionProps> = ({
+  title = "Benefits of Cold Atmospheric Plasma+ Programs",
+  benefits,
+}) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const items = benefits && benefits.length > 0 ? benefits : defaultBenefits;
 
   return (
     <div className="w-full max-w-7xl mx-auto mt-20 px-4">
       <h1 className="font-alta text-4xl sm:text-5xl font-bold text-center mb-4 uppercase text-[#2f332f]">
-        Benefits of Cold Atmospheric Plasma+ Programs
+        {title}
       </h1>
-      <p className="font-heveltica text-lg text-center text-gray-800 mb-12 max-w-3xl mx-auto">
-      </p>
+      <p className="font-heveltica text-lg text-center text-gray-800 mb-12 max-w-3xl mx-auto"></p>
 
-      {/* ✅ All images visible in one horizontal line */}
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full transition-all duration-700 ease-in-out">
-      {valuesData.map((value, index) => (
-        <div
-          key={index}
-          className={`transition-[flex] duration-700 ease-in-out ${
-            hoveredIndex === index
-              ? "sm:flex-[2]"
-              : hoveredIndex !== null
-              ? "sm:flex-[1]"
-              : "sm:flex-[1]"
-          }`}
-        >
-          <ValueCard
-            value={value}
-            isHovered={hoveredIndex === index}
-            isAnyHovered={hoveredIndex !== null}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          />
-        </div>
-      ))}
-    </div>
+        {items.map((value, index) => (
+          <div
+            key={index}
+            className={`transition-[flex] duration-700 ease-in-out ${
+              hoveredIndex === index
+                ? "sm:flex-[2]"
+                : hoveredIndex !== null
+                ? "sm:flex-[1]"
+                : "sm:flex-[1]"
+            }`}
+          >
+            <ValueCard
+              value={value}
+              isHovered={hoveredIndex === index}
+              isAnyHovered={hoveredIndex !== null}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

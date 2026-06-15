@@ -24,9 +24,10 @@ interface Step {
 
 interface JourneyProps {
   steps: Step[];
+  title?: string;
 }
 
-const Journey: React.FC<JourneyProps> = ({ steps }) => {
+const Journey: React.FC<JourneyProps> = ({ steps, title = "Start Your Longevity Journey" }) => {
   const topRowSteps = steps.slice(0, 3);
   const bottomRowSteps = steps.slice(3, 5);
 
@@ -35,7 +36,7 @@ const Journey: React.FC<JourneyProps> = ({ steps }) => {
       <div className="flex flex-col items-center gap-2 md:gap-2">
         {/* Title */}
         <h2 className={`font-alta py-6 text-3xl md:text-4xl lg:text-5xl leading-[1.1] text-center text-[#2f332f] w-[100%] lg:w-[60%] mx-auto`}>
-          Start Your Longevity Journey
+          {title}
         </h2>
     
         {/* Top Row */}

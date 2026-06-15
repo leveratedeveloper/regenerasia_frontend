@@ -1,10 +1,9 @@
 import Script from "next/script";
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import localFont from "next/font/local";
 import ClientLayout from "./ClientLayout";
+import { getGlobalSettings } from "@/lib/api";
 
 const alta = localFont({
   src: [
@@ -28,11 +27,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const globalSettings = await getGlobalSettings();
+
+  const footerSettings = globalSettings ? {
+    address:       globalSettings.site?.company_address,
+    whatsapp_url:  globalSettings.site?.whatsapp_url,
+    instagram_url: globalSettings.social?.instagram_url,
+    email:         globalSettings.site?.company_email,
+    copyright:     globalSettings.site?.copyright_text,
+  } : null;
+
   return (
     <html lang="en">
       <head>
@@ -65,7 +74,7 @@ export default function RootLayout({
             gtag('config', 'G-007TQT3W99');
           `}
         </Script>
-        <ClientLayout>{children}</ClientLayout>
+        <ClientLayout footerSettings={footerSettings}>{children}</ClientLayout>
       </body>
     </html>
   );
