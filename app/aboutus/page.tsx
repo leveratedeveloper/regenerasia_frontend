@@ -60,19 +60,21 @@ export default async function AboutUsPage() {
       })).filter(b => b.title)
     : [];
 
-  // Team Members — up to 3 from CMS
+  // Team Members — dynamic from CMS repeater
   const defaultMemberImages = [
     '/image/doctor/dr-pande.webp',
     '/image/doctor/bukharisma.webp',
   ];
 
-  const experts = page
-    ? [1, 2, 3].map((n, i) => ({
-        name:        page[`member_name_${n}`]  ?? '',
-        title:       page[`member_title_${n}`] ?? '',
-        imageUrl:    page[`member_image_${n}`] || defaultMemberImages[i],
-        description: page[`member_desc_${n}`]  ?? '',
-      })).filter(e => e.name)
+  const experts = page?.members
+    ? (page.members as { name?: string; title?: string; image?: string; desc?: string }[])
+        .map((m, i) => ({
+          name:        m.name        ?? '',
+          title:       m.title       ?? '',
+          imageUrl:    m.image       || defaultMemberImages[i] || '',
+          description: m.desc        ?? '',
+        }))
+        .filter(e => e.name)
     : [];
 
   return (
