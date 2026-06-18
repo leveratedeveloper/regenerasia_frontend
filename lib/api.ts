@@ -1,5 +1,7 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
+console.log(API_URL)
+
 async function postData(endpoint: string, data: any) {
   const response = await fetch(`${API_URL}${endpoint}`, {
     method: "POST",

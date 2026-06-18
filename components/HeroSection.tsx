@@ -10,12 +10,12 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({
-  title       = "Indonesia's First Cold Atmospheric Plasma+ Longevity Centre.",
-  subtitle    = "Recharge. Regenerate. Restart.",
-  description = "Non-invasive. German-engineered. Cellular-level regeneration. Now in Jakarta.",
-  buttonText  = "Begin Your Journey",
-  buttonUrl   = "/booking",
-  badges      = "Sourced from Germany | Clinically Proven | Zero Downtime | Zero Side Effects",
+  title       = "",
+  subtitle    = "",
+  description = "",
+  buttonText  = "",
+  buttonUrl   = "",
+  badges      = "",
 }: HeroSectionProps) {
   return (
     <section className="flex flex-col items-center justify-center text-center min-h-screen px-4 py-12">
