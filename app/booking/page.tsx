@@ -15,7 +15,7 @@ export default async function BookingPage() {
   const page = await getPageBooking();
 
   const bookingPage = {
-    heroTitle:          page?.hero_title ?? "Start your investment on longevity!\nBook Your Appointment Online",
+    heroTitle:          page?.hero_title ?? "Start your investment on longevity! Book Your Appointment Online",
     bannerImage:        page?.banner_image ?? "/image/treatment-form-desktop.webp",
     formTabLabel:       page?.form_tab_label ?? "Booking Treatment Form",
     safetyTitle:        page?.safety_title ?? "Safety guidelines",
