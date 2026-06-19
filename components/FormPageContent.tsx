@@ -30,7 +30,7 @@ export default function FormPageContent({ bookingPage }: FormPageContentProps) {
     router.replace("?booking-form");
   };
 
-  const heroTitle   = bookingPage?.heroTitle ?? "Start your investment on longevity!\nBook Your Appointment Online";
+  const heroTitle   = bookingPage?.heroTitle ?? "Start your investment on longevity! Book Your Appointment Online";
   const bannerImage = bookingPage?.bannerImage ?? "/image/treatment-form-desktop.webp";
   const tabLabel    = bookingPage?.formTabLabel ?? "Booking Treatment Form";
 
