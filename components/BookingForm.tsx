@@ -47,7 +47,7 @@ const Checkbox: React.FC<{
 
 const InputField: React.FC<any> = ({ label, placeholder, type = "text", ...rest }) => (
   <div>
-    <label className="block text-sm font-medium text-gray-800 mb-1">{label}</label>
+    <label className="block text-sm font-medium text-gray-800 mb-1">{label} <span className="text-red-500 ml-1">*</span></label>
     <input
       type={type}
       placeholder={placeholder}

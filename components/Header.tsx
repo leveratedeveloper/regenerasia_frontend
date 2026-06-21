@@ -5,12 +5,23 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import type { LogoSettings } from "@/app/ClientLayout";
 
-export default function Header() {
+const FALLBACK_LOGO = "/image/logo-regenerasia.webp";
+const FALLBACK_LOGO_WHITE = "/image/logo-regenerasia-white.webp";
+
+interface HeaderProps {
+  logoSettings?: LogoSettings | null;
+}
+
+export default function Header({ logoSettings }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showBreadcrumb, setShowBreadcrumb] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  const colorLogo = logoSettings?.logo || FALLBACK_LOGO;
+  const whiteLogo = logoSettings?.logo_white || FALLBACK_LOGO_WHITE;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,14 +67,15 @@ export default function Header() {
             <span className="text-sm sm:text-base font-medium">Menu</span>
           </button>
 
-          {/* Logo */}
+          {/* Logo: white on transparent header, color when scrolled */}
           <Link href="/" className="flex items-center">
             <Image
-              src={scrolled ? "/image/logo-regenerasia.webp" : "/image/logo-regenerasia-white.webp"}
+              src={scrolled ? colorLogo : whiteLogo}
               alt="Logo"
               width={100}
               height={40}
               className="h-10 w-auto"
+              unoptimized={!!(scrolled ? colorLogo : whiteLogo).startsWith("http")}
             />
           </Link>
         </div>
@@ -71,59 +83,60 @@ export default function Header() {
         {/* ===== BREADCRUMB ===== */}
         {pathSegments.length > 0 && (
           <nav
-          className={`px-6 pb-3 text-sm transition-all duration-500 ease-in-out ${
-            scrolled ? "opacity-100 max-h-10" : "to-transparent"
-          }`}
-        >
-          <ol
-            className={`flex flex-wrap items-center space-x-1 py-2 rounded-md transition-colors duration-500 ${
-              scrolled ? "text-[#3C4D34]" : "text-white"
+            className={`px-6 pb-3 text-sm transition-all duration-500 ease-in-out ${
+              scrolled ? "opacity-100 max-h-10" : "to-transparent"
             }`}
           >
-            <li>
-              <Link
-                href="/"
-                className={`hover:underline font-medium ${
-                  scrolled ? "text-[#3C4D34]" : "text-white"
-                }`}
-              >
-                Home
-              </Link>
-            </li>
-            {pathSegments.map((segment, index) => {
-              const href = "/" + pathSegments.slice(0, index + 1).join("/");
-              const isLast = index === pathSegments.length - 1;
-              let label = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ");
-        
-              if (label.toLowerCase() === "aboutus") label = "About Us";
-              return (
-                <li key={href} className="flex items-center">
-                  <span className={`mx-2 ${scrolled ? "text-[#3C4D34]" : "text-gray-200"}`}>/</span>
-                  {isLast ? (
-                    <span
-                      className={`font-semibold ${
-                        scrolled ? "text-[#3C4D34]" : "text-gray-100"
-                      }`}
-                    >
-                      {label}
+            <ol
+              className={`flex flex-wrap items-center space-x-1 py-2 rounded-md transition-colors duration-500 ${
+                scrolled ? "text-[#3C4D34]" : "text-white"
+              }`}
+            >
+              <li>
+                <Link
+                  href="/"
+                  className={`hover:underline font-medium ${
+                    scrolled ? "text-[#3C4D34]" : "text-white"
+                  }`}
+                >
+                  Home
+                </Link>
+              </li>
+              {pathSegments.map((segment, index) => {
+                const href = "/" + pathSegments.slice(0, index + 1).join("/");
+                const isLast = index === pathSegments.length - 1;
+                let label =
+                  segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ");
+
+                if (label.toLowerCase() === "aboutus") label = "About Us";
+                return (
+                  <li key={href} className="flex items-center">
+                    <span className={`mx-2 ${scrolled ? "text-[#3C4D34]" : "text-gray-200"}`}>
+                      /
                     </span>
-                  ) : (
-                    <Link
-                      href={href}
-                      className={`hover:underline font-medium ${
-                        scrolled ? "text-[#3C4D34]" : "text-white"
-                      }`}
-                    >
-                      {label}
-                    </Link>
-                  )}
-                </li>
-              );
-            })}
-          </ol>
-        </nav>
-        
-        
+                    {isLast ? (
+                      <span
+                        className={`font-semibold ${
+                          scrolled ? "text-[#3C4D34]" : "text-gray-100"
+                        }`}
+                      >
+                        {label}
+                      </span>
+                    ) : (
+                      <Link
+                        href={href}
+                        className={`hover:underline font-medium ${
+                          scrolled ? "text-[#3C4D34]" : "text-white"
+                        }`}
+                      >
+                        {label}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </nav>
         )}
       </header>
 
@@ -143,11 +156,12 @@ export default function Header() {
       >
         <div className="flex justify-between items-center p-4 border-b border-gray-200">
           <Image
-            src="/image/logo-regenerasia.webp"
+            src={colorLogo}
             alt="Logo"
             width={160}
             height={40}
             className="h-10 w-auto"
+            unoptimized={colorLogo.startsWith("http")}
           />
           <button onClick={() => setOpen(false)} className="hover:opacity-80">
             <X className="w-6 h-6" />

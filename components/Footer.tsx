@@ -11,6 +11,7 @@ const roboto = Roboto({
 });
 
 export interface FooterSettings {
+  logo?: string | null;
   address?: string | null;
   whatsapp_url?: string | null;
   instagram_url?: string | null;
@@ -23,6 +24,7 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ settings }) => {
+  const logo         = settings?.logo         ?? "/image/logo-regenerasia.webp";
   const address      = settings?.address      ?? "AYANA Midplaza Jakarta\nJl. Jenderal Sudirman No.Kav 10-11, RT.10/RW.11,\nKaret Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat,\nDaerah Khusus Ibukota Jakarta 10220";
   const whatsappUrl  = settings?.whatsapp_url ?? "https://wa.me/6281117019888";
   const instagramUrl = settings?.instagram_url ?? "https://www.instagram.com/regenerasia.longevity";
@@ -36,11 +38,12 @@ const Footer: React.FC<FooterProps> = ({ settings }) => {
         {/* Left: Logo + Address */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6">
           <Image
-            src="/image/logo-regenerasia.webp"
+            src={logo}
             alt="Logo"
             width={200}
             height={40}
             className="h-18 w-auto"
+            unoptimized={logo.startsWith("http")}
           />
           <div className="text-gray-700 text-base leading-relaxed mt-2">
             <p className={`${roboto.className} text-gray-500 text-xs md:text-sm`}>

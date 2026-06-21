@@ -18,14 +18,20 @@ const alta = localFont({
   preload: true,
 });
 
-export const metadata: Metadata = {
-  title: "Regenerasia - Recharge, Regenerate, Restart",
-  description: "Regenerasia introduce a new era of wellness and longevity to Indonesia with CAP+ Technology.",
-  icons: {
-    icon: "/Regenerasia-G.svg", 
-    apple: "/Regenerasia-G.svg",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const globalSettings = await getGlobalSettings();
+  const favicon = globalSettings?.site?.favicon || "/Regenerasia-G.svg";
+
+  return {
+    title: "Regenerasia - Recharge, Regenerate, Restart",
+    description:
+      "Regenerasia introduce a new era of wellness and longevity to Indonesia with CAP+ Technology.",
+    icons: {
+      icon: favicon,
+      apple: favicon,
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -34,18 +40,29 @@ export default async function RootLayout({
 }>) {
   const globalSettings = await getGlobalSettings();
 
-  const footerSettings = globalSettings ? {
-    address:       globalSettings.site?.company_address,
-    whatsapp_url:  globalSettings.site?.whatsapp_url,
-    instagram_url: globalSettings.social?.instagram_url,
-    email:         globalSettings.site?.company_email,
-    copyright:     globalSettings.site?.copyright_text,
-  } : null;
+  const footerSettings = globalSettings
+    ? {
+        logo: globalSettings.site?.logo,
+        address: globalSettings.site?.company_address,
+        whatsapp_url: globalSettings.site?.whatsapp_url,
+        instagram_url: globalSettings.social?.instagram_url,
+        email: globalSettings.site?.company_email,
+        copyright: globalSettings.site?.copyright_text,
+      }
+    : null;
+
+  const logoSettings = globalSettings
+    ? {
+        logo: globalSettings.site?.logo ?? null,
+        logo_white: globalSettings.site?.logo_white ?? null,
+        favicon: globalSettings.site?.favicon ?? null,
+      }
+    : null;
 
   return (
     <html lang="en">
       <head>
-        {/* ✅ Preload custom Alta font for faster LCP rendering */}
+        {/* Preload custom Alta font for faster LCP rendering */}
         <link
           rel="preload"
           href="/fonts/alta-regular.woff2"
@@ -61,7 +78,7 @@ export default async function RootLayout({
       </head>
 
       <body className={`${alta.variable} antialiased`}>
-        {/* ✅ GA4 Script - load lazily to avoid blocking render */}
+        {/* GA4 Script - load lazily to avoid blocking render */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-007TQT3W99"
           strategy="lazyOnload"
@@ -74,7 +91,9 @@ export default async function RootLayout({
             gtag('config', 'G-007TQT3W99');
           `}
         </Script>
-        <ClientLayout footerSettings={footerSettings}>{children}</ClientLayout>
+        <ClientLayout footerSettings={footerSettings} logoSettings={logoSettings}>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

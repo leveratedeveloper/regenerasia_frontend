@@ -42,8 +42,9 @@ const nextConfig: NextConfig = {
   // Images configuration
   images: {
     remotePatterns: [
-      { protocol: "http", hostname: "127.0.0.1", port: "8000", pathname: "/storage/uploads/**" },
-      { protocol: "http", hostname: "152.42.215.103", pathname: "/storage/uploads/**" },
+      { protocol: "http", hostname: "127.0.0.1", port: "8000", pathname: "/storage/**" },
+      { protocol: "http", hostname: "stg-cms.regenerasia.co.id", pathname: "/storage/**" },
+      { protocol: "https", hostname: "stg-cms.regenerasia.co.id", pathname: "/storage/**" },
     ],
   },
 
