@@ -45,9 +45,11 @@ const Checkbox: React.FC<{
   </label>
 );
 
-const InputField: React.FC<any> = ({ label, placeholder, type = "text", ...rest }) => (
+const InputField: React.FC<any> = ({ label, placeholder, type = "text", required, ...rest }) => (
   <div>
-    <label className="block text-sm font-medium text-gray-800 mb-1">{label} <span className="text-red-500 ml-1">*</span></label>
+    <label className="block text-sm font-medium text-gray-800 mb-1">
+      {label} {required && <span className="text-red-500">*</span>}
+    </label>
     <input
       type={type}
       placeholder={placeholder}
@@ -135,13 +137,13 @@ const BookingForm: React.FC<BookingFormProps> = ({
       <Section title="Personal Detail">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4 md:col-span-2">
-            <InputField label="Your full name" placeholder="Insert your full name" {...register("fullName")} />
+            <InputField label="Your full name" placeholder="Insert your full name" required {...register("fullName")} />
             {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName.message}</p>}
 
-            <InputField label="Email address" placeholder="Insert your business email" type="email" {...register("email")} />
+            <InputField label="Email address" placeholder="Insert your business email" required type="email" {...register("email")} />
             {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
-            <InputField label="Phone number" placeholder="+62 | 8123412345" type="tel" {...register("phone")} />
+            <InputField label="Phone number" placeholder="+62 | 8123412345" required type="tel" {...register("phone")} />
             {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
           </div>
 

@@ -91,9 +91,11 @@ const Section: React.FC<{ title: string; children: React.ReactNode; className?: 
   </div>
 );
 
-const InputField: React.FC<any> = ({ label, placeholder, type = "text", containerClassName = "", ...rest }) => (
+const InputField: React.FC<any> = ({ label, placeholder, type = "text", required, containerClassName = "", ...rest }) => (
   <div className={containerClassName}>
-    <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+    <label className="block text-sm font-medium text-gray-700 mb-1">
+      {label} {required && <span className="text-red-500">*</span>}
+    </label>
     <input type={type} placeholder={placeholder} className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition" {...rest} />
   </div>
 );
@@ -102,6 +104,7 @@ const Textarea: React.FC<any> = ({
     label,
     placeholder,
     containerClassName = "",
+    required,
     ...rest
   }) => (
     <div className={containerClassName}>
@@ -116,9 +119,11 @@ const Textarea: React.FC<any> = ({
     </div>
   );
 
-const SelectField: React.FC<any> = ({ label, placeholder, options, containerClassName = "", ...rest }) => (
+const SelectField: React.FC<any> = ({ label, placeholder, options, required, containerClassName = "", ...rest }) => (
   <div className={containerClassName}>
-    <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+    <label className="block text-sm font-medium text-gray-700 mb-1">
+      {label} {required && <span className="text-red-500">*</span>}
+    </label>
     <select className="w-full px-4 py-2 border border-brand-border rounded-md focus:ring-brand-primary focus:border-brand-primary transition bg-white appearance-none" {...rest}>
       <option value="">{placeholder}</option>
       {options.map((opt: string) => <option key={opt} value={opt}>{opt}</option>)}
@@ -337,6 +342,7 @@ const RfqForm: React.FC<RfqFormProps> = ({
               <InputField
                 label="Your full name"
                 placeholder="Insert your full name"
+                required
                 {...register("fullName", { required: "Full name is required" })}
               />
               {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
@@ -344,6 +350,7 @@ const RfqForm: React.FC<RfqFormProps> = ({
               <SelectField
                 label="Position / Job title"
                 placeholder="Select job title"
+                required
                 options={["Manager", "Director", "Specialist", "Owner"]}
                 {...register("position", { required: "Position is required" })}
               />
@@ -353,6 +360,7 @@ const RfqForm: React.FC<RfqFormProps> = ({
                 label="Email address"
                 placeholder="Insert your business email"
                 type="email"
+                required
                 {...register("email", {
                   required: "Email is required",
                   pattern: {
@@ -372,6 +380,7 @@ const RfqForm: React.FC<RfqFormProps> = ({
               <InputField
                 label="City"
                 placeholder="Select city"
+                required
                 {...register("city", { required: "City is required" })}
               />
               {errors.city && <p className="text-red-500 text-xs mt-1">{errors.city.message}</p>}
@@ -382,6 +391,7 @@ const RfqForm: React.FC<RfqFormProps> = ({
               <SelectField
                 label="Business Segment "
                 placeholder="Select business segment"
+                required
                 options={["Hotel", "Spa", "Clinic", "Resort", "Other"]}
                 {...register("businessSegment", { required: "Business segment is required" })}
               />
